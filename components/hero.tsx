@@ -1,0 +1,84 @@
+import { Button } from "@/components/ui/button"
+import { Star, Shield, CheckCircle2, Award } from 'lucide-react'
+import Image from "next/image"
+
+export function Hero() {
+  return (
+    <section className="relative isolate overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col items-center justify-center py-20 sm:py-28">
+          {/* Headline */}
+          <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl">
+            <span className="block">Dorset's Leading</span>
+            <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)]">
+              Property Maintenance
+            </span>
+            <span className="block">Experts</span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="mt-6 text-center text-lg text-white/80 max-w-2xl leading-relaxed">
+            Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset
+          </p>
+
+          {/* Trust Signals */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/70">
+            <div className="flex items-center gap-2">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <span className="font-medium text-white">4.9 Google Rating</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-[#1E90FF]" />
+              <span>500+ Properties Transformed</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award className="h-5 w-5 text-[#1E90FF]" />
+              <span>Biocide Trained & Registered</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5 text-[#1E90FF]" />
+              <span>Fully Insured</span>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#00C853] text-white font-semibold rounded-lg px-8 py-6 text-lg
+                         hover:bg-[#00A843] hover:shadow-lg hover:scale-105
+                         transition-all duration-300"
+            >
+              <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg px-8 py-6 text-lg
+                         hover:bg-[#1E90FF] hover:text-white transition-all duration-300"
+            >
+              <a href="/our-work">View Transformations</a>
+            </Button>
+          </div>
+
+          {/* Before/After Preview */}
+          <div className="mt-16 w-full max-w-5xl">
+            <div className="glass-border rounded-2xl overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
+                <p className="text-white/60 text-lg">Before/After Slider Preview</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
