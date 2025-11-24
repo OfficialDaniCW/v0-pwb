@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { Clock, Calendar } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { blogPosts } from "@/lib/blog-posts"
 
 export const metadata = {
@@ -77,7 +78,18 @@ export default function BlogPage() {
                         href={`/blog/${post.slug}`}
                         className="block aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center relative overflow-hidden"
                       >
-                        <p className="text-white/60 z-10">Featured Image</p>
+                        {post.featuredImage ? (
+                          <Image
+                            src={post.featuredImage || "/placeholder.svg"}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="flex items-center justify-center h-full">
+                            <p className="text-white/60 z-10">Featured Image</p>
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       </Link>
                     </div>

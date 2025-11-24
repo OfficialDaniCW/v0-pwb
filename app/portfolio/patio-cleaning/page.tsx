@@ -28,8 +28,8 @@ export default function PatioCleaningPage() {
       "Duration: Half day",
       "Result: Complete restoration with safe, non-slip surface and enhanced curb appeal",
     ],
-    beforeImage: "/images/portfolio/patio-cleaning-before.jpg",
-    afterImage: "/images/portfolio/patio-cleaning-after.jpg",
+    beforeImage: "/images/screenshot-202025-11-24-20at-2012-dirty.png",
+    afterImage: "/images/screenshot-202025-11-24-20at-2012-clean.png",
   }
 
   return (

@@ -3,12 +3,11 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useRouter } from 'next/navigation'
-import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle } from "lucide-react"
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -32,6 +31,8 @@ export default function AdminLogin() {
       const data = await response.json()
 
       if (response.ok) {
+        localStorage.setItem("admin-email", data.email)
+
         // Set a cookie that expires in 24 hours
         const expiryDate = new Date()
         expiryDate.setTime(expiryDate.getTime() + 24 * 60 * 60 * 1000)

@@ -61,8 +61,8 @@ export default function SwanagePatioProject() {
                 {/* Before/After Slider */}
                 <div className="mb-8">
                   <BeforeAfterSlider
-                    beforeImage="/images/portfolio/swanage-patio-before.jpg"
-                    afterImage="/images/portfolio/swanage-patio-after.jpg"
+                    beforeImage="/images/screenshot-202025-11-24-20at-2012-dirty.png"
+                    afterImage="/images/screenshot-202025-11-24-20at-2012-clean.png"
                     alt="Swanage Patio Transformation"
                   />
                   <p className="text-center text-sm text-white/60 mt-4">
@@ -156,8 +156,8 @@ export default function SwanagePatioProject() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="glass-border rounded-xl overflow-hidden">
                   <BeforeAfterSlider
-                    beforeImage="/images/portfolio/swanage-patio-before-2.jpg"
-                    afterImage="/images/portfolio/swanage-patio-after-2.jpg"
+                    beforeImage="/images/screenshot-202025-11-24-20at-2012-dirty.png"
+                    afterImage="/images/screenshot-202025-11-24-20at-2012-clean.png"
                     alt="Swanage Patio - Alternative View"
                   />
                   <div className="p-4">
@@ -169,7 +169,7 @@ export default function SwanagePatioProject() {
                 <div className="glass-border rounded-xl overflow-hidden group">
                   <div className="relative aspect-[4/3]">
                     <Image
-                      src="/images/portfolio/swanage-patio-after.jpg"
+                      src="/images/screenshot-202025-11-24-20at-2012-clean.png"
                       alt="Swanage patio after cleaning - natural stone colours revealed"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"

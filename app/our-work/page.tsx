@@ -42,6 +42,16 @@ export default function OurWorkPage() {
 
   const otherProjects = [
     {
+      title: "Commercial Patio Clean",
+      service: "Commercial",
+      serviceLink: "/services/pressure-washing",
+      location: "Dorset",
+      description:
+        "Professional commercial cleaning for high-traffic public space. Complete transformation of train station patio area.",
+      image: "/images/portfolio/commercial-patio-after.jpg",
+      link: "/portfolio/commercial-patio",
+    },
+    {
       title: "Roof Clean & Biocide Treatment",
       service: "Roof Cleaning",
       serviceLink: "/services/roof-cleaning",
@@ -87,41 +97,6 @@ export default function OurWorkPage() {
       description: "Specialist softwash render cleaning removing years of dirt and algae staining.",
       image: "/images/portfolio/render-clean-after.jpg",
       link: "/portfolio/render-clean",
-    },
-    {
-      title: "Historic Building, Wimborne",
-      service: "Roof Cleaning",
-      serviceLink: "/services/roof-cleaning",
-      location: "Wimborne",
-      description: "Gentle moss removal with biocide treatment on listed building",
-    },
-    {
-      title: "Office Building, Poole",
-      service: "Commercial Cleaning",
-      serviceLink: "/services/commercial",
-      location: "Poole",
-      description: "Office building exterior and patio restoration",
-    },
-    {
-      title: "Family Home, Bournemouth",
-      service: "Patio Cleaning",
-      serviceLink: "/services/patio-decking",
-      location: "Bournemouth",
-      description: "Sandstone patio cleaned and protected",
-    },
-    {
-      title: "Retail Unit, Christchurch",
-      service: "Gutter Cleaning",
-      serviceLink: "/services/gutter-cleaning",
-      location: "Christchurch",
-      description: "Blocked gutters cleared preventing water damage",
-    },
-    {
-      title: "Listed Property, Wareham",
-      service: "Heritage Care",
-      serviceLink: "/services/heritage-buildings",
-      location: "Wareham",
-      description: "Careful cleaning of Grade II listed property",
     },
   ]
 

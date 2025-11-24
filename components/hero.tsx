@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Star, Shield, CheckCircle2, Award } from "lucide-react"
-import { TransformationsCarousel } from "@/components/transformations-carousel"
+import { ScrollingTransformations } from "@/components/scrolling-transformations"
 
 export function Hero() {
   return (
@@ -69,13 +69,10 @@ export function Hero() {
               <a href="/our-work">View Transformations</a>
             </Button>
           </div>
-
-          {/* Before/After Preview */}
-          <div className="mt-16 w-full max-w-5xl">
-            <TransformationsCarousel />
-          </div>
         </div>
       </div>
+
+      <ScrollingTransformations />
     </section>
   )
 }

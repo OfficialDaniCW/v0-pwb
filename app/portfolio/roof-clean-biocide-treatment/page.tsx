@@ -63,9 +63,9 @@ export default function RoofCleanBiocidePage() {
               {/* First Slider */}
               <div className="glass-border rounded-2xl p-6">
                 <BeforeAfterSlider
-                  beforeImage="/images/before1.jpeg"
-                  afterImage="/images/after1.jpeg"
-                  alt="Roof cleaning transformation - front view"
+                  beforeImage="/images/before2.jpeg"
+                  afterImage="/images/after3.png"
+                  alt="Roof cleaning transformation - moss removal and biocide treatment"
                 />
                 <p className="text-center text-sm text-white/60 mt-4">← Drag the slider to see the transformation →</p>
               </div>
@@ -73,9 +73,9 @@ export default function RoofCleanBiocidePage() {
               {/* Second Slider */}
               <div className="glass-border rounded-2xl p-6">
                 <BeforeAfterSlider
-                  beforeImage="/images/before7.jpeg"
-                  afterImage="/images/after2.jpeg"
-                  alt="Roof cleaning transformation - side elevation"
+                  beforeImage="/images/before1.jpeg"
+                  afterImage="/images/after1.jpeg"
+                  alt="Roof cleaning transformation - front view"
                 />
                 <p className="text-center text-sm text-white/60 mt-4">← Drag the slider to see the transformation →</p>
               </div>
@@ -172,9 +172,9 @@ export default function RoofCleanBiocidePage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
-                    before: "/images/before3.jpeg",
+                    before: "/images/before2.jpeg",
                     after: "/images/after3.png",
-                    caption: "Complete house view showing pristine finish",
+                    caption: "Close-up detail showing moss removal and biocide treatment",
                   },
                   {
                     before: "/images/before5.jpeg",
@@ -185,8 +185,8 @@ export default function RoofCleanBiocidePage() {
                     caption: "Before - Yellow lichen and moss detail",
                   },
                   {
-                    before: "/images/before2.jpeg",
-                    caption: "Before - Close-up of organic growth",
+                    before: "/images/before3.jpeg",
+                    caption: "Before - Gutter and roof edge detail",
                   },
                   {
                     before: "/images/before4.jpeg",
@@ -194,17 +194,30 @@ export default function RoofCleanBiocidePage() {
                   },
                 ].map((image, index) => (
                   <div key={index} className="glass-border rounded-xl overflow-hidden">
-                    <div className="relative aspect-video">
-                      <Image
-                        src={image.before || image.after || "/placeholder.svg"}
-                        alt={image.caption}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <p className="text-white/70 text-sm">{image.caption}</p>
-                    </div>
+                    {index === 0 && image.after ? (
+                      <>
+                        <div className="relative aspect-video">
+                          <BeforeAfterSlider beforeImage={image.before} afterImage={image.after} alt={image.caption} />
+                        </div>
+                        <div className="p-4">
+                          <p className="text-white/70 text-sm">{image.caption}</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="relative aspect-video">
+                          <Image
+                            src={image.before || "/placeholder.svg"}
+                            alt={image.caption}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <p className="text-white/70 text-sm">{image.caption}</p>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>

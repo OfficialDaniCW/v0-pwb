@@ -7,7 +7,7 @@ export const blogPosts = [
     category: "Company News",
     publishedAt: "2025-11-22",
     readTime: 4,
-    image: "/blog/avoca-partnership.jpg",
+    image: "/blog/avoca-partnership.png",
     relatedService: "/services/commercial",
     author: "PowerWash Bros",
     tags: ["partnership", "commercial cleaning", "avoca group", "industry news"],
@@ -47,7 +47,7 @@ For more information about Avoca Group and their services, please visit their we
     category: "Expert Advice",
     publishedAt: "2025-11-20",
     readTime: 6,
-    image: "/blog/qualifications.jpg",
+    image: "/blog/pasma-training.png",
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["PASMA", "biocide", "roof cleaning", "safety", "BAC50"],
@@ -74,11 +74,11 @@ One of the key products we are trained to use is **BAC50** (Benzalkonium Chlorid
 
 **How We Use It:**
 
-1.  **The Clean**: First, we remove the bulk of the moss and debris. This is done either by:
-    - **Pressure Washing**: For suitable, durable tiles.
-    - **Hand Scraping**: For more delicate roofs where high pressure could cause damage.
-    
-2.  **The Treatment**: Once the surface is prepared, we apply the BAC50 treatment.
+1. **The Clean**: First, we remove the bulk of the moss and debris. This is done either by:
+   - **Pressure Washing**: For suitable, durable tiles.
+   - **Hand Scraping**: For more delicate roofs where high pressure could cause damage.
+   
+2. **The Treatment**: Once the surface is prepared, we apply the BAC50 treatment.
 
 ### Why Use BAC50?
 
@@ -106,7 +106,7 @@ When you choose PowerWash Bros, you're choosing a team that combines the right a
     category: "Property Maintenance",
     publishedAt: "2025-01-08",
     readTime: 8,
-    image: "/blog/moss-guide.jpg",
+    image: "/blog/roof-moss.png",
     relatedService: "/services/demossing",
     author: "PowerWash Bros",
     tags: ["moss", "roof care", "biocide", "property damage"],
@@ -186,15 +186,15 @@ If you're concerned about moss on your property, we offer free assessments acros
 
 ## The Hidden Costs
 
-1.  **Structural Damage**: Leaks can rot timber beams and joists.
-2.  **Insulation Damage**: Wet insulation loses its effectiveness, increasing energy bills.
-3.  **Ceiling and Wall Damage**: Water ingress causes unsightly stains and plaster damage.
+1. **Structural Damage**: Leaks can rot timber beams and joists.
+2. **Insulation Damage**: Wet insulation loses its effectiveness, increasing energy bills.
+3. **Ceiling and Wall Damage**: Water ingress causes unsightly stains and plaster damage.
 
 ## Early Signs of Trouble
 
--   **Moss Growth**: As discussed in our other articles, moss holds water and damages tiles.
--   **Debris in Gutters**: Sand or grit in gutters can indicate eroding tiles.
--   **Damp Patches**: Check your loft for signs of daylight or damp on timbers.
+- **Moss Growth**: As discussed in our other articles, moss holds water and damages tiles.
+- **Debris in Gutters**: Sand or grit in gutters can indicate eroding tiles.
+- **Damp Patches**: Check your loft for signs of daylight or damp on timbers.
 
 ## The Economics of Maintenance
 
@@ -216,18 +216,18 @@ A professional roof clean and biocide treatment might cost a few hundred pounds.
 ## Pressure Washing
 
 High-pressure water is excellent for:
--   **Block Paving**: Removing weeds and deep-seated dirt.
--   **Concrete**: tough, durable surfaces.
--   **Preparation**: Cleaning surfaces before sealing.
+- **Block Paving**: Removing weeds and deep-seated dirt.
+- **Concrete**: tough, durable surfaces.
+- **Preparation**: Cleaning surfaces before sealing.
 
 **Risks**: Can damage render, strip paint, and erode delicate stone.
 
 ## Soft Washing
 
 This method uses low pressure and specialized solutions to clean. It is ideal for:
--   **Render (K-Rend)**: Cleans without damaging the finish.
--   **Roof Tiles**: Removing moss without high impact.
--   **Cladding**: Delicate exterior surfaces.
+- **Render (K-Rend)**: Cleans without damaging the finish.
+- **Roof Tiles**: Removing moss without high impact.
+- **Cladding**: Delicate exterior surfaces.
 
 **Benefits**: Kills spores, longer-lasting results on organic growth, zero risk of physical damage.
 
