@@ -69,16 +69,6 @@ export default function RoofCleanBiocidePage() {
                 />
                 <p className="text-center text-sm text-white/60 mt-4">← Drag the slider to see the transformation →</p>
               </div>
-
-              {/* Second Slider */}
-              <div className="glass-border rounded-2xl p-6">
-                <BeforeAfterSlider
-                  beforeImage="/images/before1.jpeg"
-                  afterImage="/images/after1.jpeg"
-                  alt="Roof cleaning transformation - front view"
-                />
-                <p className="text-center text-sm text-white/60 mt-4">← Drag the slider to see the transformation →</p>
-              </div>
             </div>
           </div>
         </section>
@@ -172,11 +162,6 @@ export default function RoofCleanBiocidePage() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
-                    before: "/images/before2.jpeg",
-                    after: "/images/after3.png",
-                    caption: "Close-up detail showing moss removal and biocide treatment",
-                  },
-                  {
                     before: "/images/before5.jpeg",
                     caption: "Before - Heavy moss coverage",
                   },
@@ -192,32 +177,23 @@ export default function RoofCleanBiocidePage() {
                     before: "/images/before4.jpeg",
                     caption: "Before - Treatment in progress",
                   },
+                  {
+                    before: "/images/before2.jpeg",
+                    caption: "Before - Close-up of moss and organic growth",
+                  },
                 ].map((image, index) => (
                   <div key={index} className="glass-border rounded-xl overflow-hidden">
-                    {index === 0 && image.after ? (
-                      <>
-                        <div className="relative aspect-video">
-                          <BeforeAfterSlider beforeImage={image.before} afterImage={image.after} alt={image.caption} />
-                        </div>
-                        <div className="p-4">
-                          <p className="text-white/70 text-sm">{image.caption}</p>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="relative aspect-video">
-                          <Image
-                            src={image.before || "/placeholder.svg"}
-                            alt={image.caption}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <p className="text-white/70 text-sm">{image.caption}</p>
-                        </div>
-                      </>
-                    )}
+                    <div className="relative aspect-video">
+                      <Image
+                        src={image.before || "/placeholder.svg"}
+                        alt={image.caption}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-white/70 text-sm">{image.caption}</p>
+                    </div>
                   </div>
                 ))}
               </div>

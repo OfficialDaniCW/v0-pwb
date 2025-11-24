@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { BeforeAfterSlider } from "@/components/before-after-slider"
 import { ArrowLeft, MapPin, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 
 export const metadata = {
   title: "Commercial Patio Clean | PowerWash Bros | Professional Results",
@@ -182,34 +181,6 @@ export default function CommercialPatioPage() {
             </div>
           </div>
         </section>
-
-        {/* Gallery */}
-        {galleryImages.length > 0 && (
-          <section className="py-16 bg-white/5">
-            <div className="container mx-auto px-4">
-              <div className="max-w-5xl mx-auto">
-                <h2 className="text-3xl font-bold text-white mb-8 text-center">Additional Photos</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {galleryImages.map((image, index) => (
-                    <div key={index} className="glass-border rounded-xl overflow-hidden group">
-                      <div className="relative aspect-[4/3]">
-                        <Image
-                          src={image.url || "/placeholder.svg"}
-                          alt={image.alt}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <p className="text-white/70 text-sm">{image.caption}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">

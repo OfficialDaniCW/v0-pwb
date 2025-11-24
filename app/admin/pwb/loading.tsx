@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="flex flex-col items-center gap-6">
         <div className="relative">
           {/* Outer spinning ring */}
@@ -13,7 +13,7 @@ export default function Loading() {
           </div>
         </div>
         <div className="text-center">
-          <p className="text-[#0B1E3F] text-lg font-semibold">Loading Admin Portal...</p>
+          <p className="text-[#0B1E3F] text-lg font-semibold">Loading Dashboard...</p>
           <p className="text-gray-500 text-sm mt-1">Please wait</p>
         </div>
       </div>

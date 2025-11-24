@@ -1,8 +1,22 @@
 @import "tailwindcss";
-/* Removing tw-animate-css import to fix build error "Missing closing } at @utility delay-*" */
-/* @import "tw-animate-css"; */
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Replaced @theme inline with @theme and direct color values */
+  --color-pwb-primary-blue: #1e90ff;
+  --color-pwb-deep-navy: #0b1e3f;
+  --color-pwb-white: #ffffff;
+  --color-pwb-light-gray: #f5f7fa;
+  --color-pwb-dark-gray: #37474f;
+  --color-pwb-accent-green: #00c853;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
 
 :root {
   /* PowerWash Bros Brand Colors */
@@ -13,31 +27,31 @@
   --pwb-dark-gray: #37474f;
   --pwb-accent-green: #00c853;
 
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.15 0.02 250);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 250);
+  --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 250);
-  --primary: oklch(0.6 0.2 245);
-  --primary-foreground: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.15 0.02 250);
+  --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.5 0.01 250);
+  --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.15 0.02 250);
+  --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.6 0.2 245);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.75rem;
+  --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -49,31 +63,30 @@
 }
 
 .dark {
-  --background: oklch(0.1 0.02 250);
-  --foreground: oklch(0.99 0 0);
-  --card: oklch(0.1 0.02 250);
-  --card-foreground: oklch(0.99 0 0);
-  --popover: oklch(0.1 0.02 250);
-  --popover-foreground: oklch(0.99 0 0);
-  --primary: oklch(0.6 0.2 245);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.22 0.01 250);
-  --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.22 0.01 250);
-  --muted-foreground: oklch(0.65 0.01 250);
-  --accent: oklch(0.22 0.01 250);
-  --accent-foreground: oklch(0.99 0 0);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.22 0.01 250);
-  --input: oklch(0.22 0.01 250);
-  --ring: oklch(0.5 0.15 245);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --radius: 0.75rem;
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -84,7 +97,8 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+@theme {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -127,9 +141,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
 
   html {
-    /* Changed height to min-height and removed fixed height to allow proper scrolling */
     min-height: 100%;
     overflow-x: hidden;
     overscroll-behavior: none;
@@ -138,7 +160,6 @@
 
   body {
     @apply bg-background text-foreground;
-    /* Removed fixed height constraints that break scroll restoration */
     min-height: 100vh;
     min-height: 100dvh;
     overflow-x: hidden;
@@ -147,9 +168,6 @@
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
   }
-
-  /* Removed the @supports block that was forcing position: fixed on body for iOS */
-  /* This was likely the main cause of the scroll issue */
 
   #__next,
   [data-nextjs-scroll-focus-boundary] {
@@ -174,7 +192,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Improved header glass background for better contrast */
 .liquid-glass-header {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
@@ -182,7 +199,6 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Apple-style glass border utilities - Clean and minimal */
 .glass-border {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(0, 0, 0, 0.5);
@@ -204,7 +220,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced glass border hover effects with chromatic aberration */
 .glass-border:hover {
   filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.1)) drop-shadow(1px 0 2px rgba(0, 255, 0, 0.08))
     drop-shadow(-1px 0 2px rgba(0, 0, 255, 0.06));
@@ -220,7 +235,6 @@
     drop-shadow(-0.5px 0 1px rgba(0, 0, 255, 0.04));
 }
 
-/* Logo Marquee Animations - Seamless Infinite Loop */
 @keyframes scroll-right {
   0% {
     transform: translateX(-33.333%);
@@ -247,7 +261,6 @@
   animation: scroll-left 45s linear infinite;
 }
 
-/* Add bounce animation for floating WhatsApp button */
 @keyframes bounce-subtle {
   0%,
   100% {
@@ -262,7 +275,6 @@
   animation: bounce-subtle 2s ease-in-out infinite;
 }
 
-/* Add gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, #1e90ff 0%, #00c853 100%);
   -webkit-background-clip: text;
@@ -270,19 +282,13 @@
   background-clip: text;
 }
 
-/* Hide v0 preview badge (preview-only; not present in production) */
+/* Hide v0 preview badge */
 a[aria-label="Built with v0"],
 a[title="Built with v0"],
 a[href*="v0.dev"].v0-badge,
 a[data-built-with-v0],
 #built-with-v0,
-.v0-built-with {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* Extra-aggressive hide for any "Built with v0" or "made with v0" preview badge */
+.v0-built-with,
 [aria-label*="v0" i],
 [title*="v0" i],
 [id*="v0" i],

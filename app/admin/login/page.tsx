@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AlertCircle } from "lucide-react"
+import Image from "next/image"
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -50,22 +51,28 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-[#0B1E3F] flex flex-col md:flex-row relative overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-500 rounded-full filter blur-3xl" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#1E90FF] rounded-full filter blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0F2851] rounded-full filter blur-3xl" />
       </div>
 
       {/* Left side - only visible on desktop */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-[#1E90FF]/20 to-[#00C853]/20 backdrop-blur-sm p-12 flex-col justify-between relative z-10">
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-[#1E90FF]/20 to-[#0F2851]/30 backdrop-blur-sm p-12 flex-col justify-between relative z-10">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-[#1E90FF] rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">PWB</span>
+            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center overflow-hidden">
+              <Image
+                src="/images/pwb-logo-circle.png"
+                alt="PowerWash Bros"
+                width={56}
+                height={56}
+                className="object-contain"
+              />
             </div>
             <span className="text-2xl font-semibold text-white">PowerWash Bros</span>
           </div>
           <h1 className="text-4xl font-bold text-white mt-12">Admin Portal</h1>
-          <p className="text-blue-100 mt-4 max-w-md">
+          <p className="text-blue-200 mt-4 max-w-md">
             Manage your website content, bookings, gallery, and business settings from one central dashboard.
           </p>
         </div>
@@ -82,8 +89,14 @@ export default function AdminLogin() {
       <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-12 relative z-10">
         {/* Mobile header - only visible on mobile */}
         <div className="flex md:hidden items-center gap-3 mb-8 w-full">
-          <div className="w-10 h-10 bg-[#1E90FF] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">PWB</span>
+          <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+            <Image
+              src="/images/pwb-logo-circle.png"
+              alt="PowerWash Bros"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
           </div>
           <span className="text-2xl font-semibold text-white">PowerWash Bros</span>
         </div>
@@ -91,7 +104,7 @@ export default function AdminLogin() {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-white">Sign in to your account</h2>
-            <p className="text-neutral-400 mt-2">Enter your credentials to access the admin panel</p>
+            <p className="text-gray-400 mt-2">Enter your credentials to access the admin panel</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -103,7 +116,7 @@ export default function AdminLogin() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-neutral-200">
+              <Label htmlFor="email" className="text-gray-200">
                 Email
               </Label>
               <Input
@@ -119,7 +132,7 @@ export default function AdminLogin() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-neutral-200">
+                <Label htmlFor="password" className="text-gray-200">
                   Password
                 </Label>
               </div>
@@ -134,7 +147,7 @@ export default function AdminLogin() {
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full bg-[#00C853] text-white hover:bg-[#00C853]/90">
+            <Button type="submit" disabled={isLoading} className="w-full bg-[#1E90FF] text-white hover:bg-[#1E90FF]/90">
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
@@ -147,9 +160,9 @@ export default function AdminLogin() {
           </form>
 
           <div className="mt-8 text-center">
-            <p className="text-neutral-400 text-sm">
+            <p className="text-gray-400 text-sm">
               Need help? Contact{" "}
-              <a href="mailto:info@powerwashbros.co.uk" className="text-[#00C853] hover:underline">
+              <a href="mailto:info@powerwashbros.co.uk" className="text-[#1E90FF] hover:underline">
                 info@powerwashbros.co.uk
               </a>
             </p>

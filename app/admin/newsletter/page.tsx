@@ -62,82 +62,91 @@ export default function NewsletterAdmin() {
   const filteredSubscribers = subscribers.filter((s) => s.email.toLowerCase().includes(searchTerm.toLowerCase()))
 
   if (loading) {
-    return <div className="p-8 text-center">Loading subscribers...</div>
+    return (
+      <AdminLayout>
+        <div className="flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="w-12 h-12 border-4 border-[#1E90FF] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-gray-600">Loading subscribers...</p>
+          </div>
+        </div>
+      </AdminLayout>
+    )
   }
 
   return (
     <AdminLayout>
-      <div className="p-8 space-y-8">
+      <div className="p-6 md:p-8 space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Newsletter Subscribers</h1>
-          <p className="text-muted-foreground">Manage your email list</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Newsletter Subscribers</h1>
+          <p className="text-gray-600">Manage your email list</p>
         </div>
 
-        {/* Stats Cards */}
+        {/* Stats Cards with navy accent styling */}
         <div className="grid gap-4 md:grid-cols-3">
-          <Card>
+          <Card className="bg-[#0F2851] border-none shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Total Subscribers</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-gray-300">Total Subscribers</CardTitle>
+              <Users className="h-4 w-4 text-[#1E90FF]" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.total}</div>
+              <div className="text-3xl font-bold text-white">{stats.total}</div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#0F2851] border-none shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Active</CardTitle>
-              <Mail className="h-4 w-4 text-green-500" />
+              <CardTitle className="text-sm font-medium text-gray-300">Active</CardTitle>
+              <Mail className="h-4 w-4 text-green-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.active}</div>
+              <div className="text-3xl font-bold text-white">{stats.active}</div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#0F2851] border-none shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Unsubscribed</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-300">Unsubscribed</CardTitle>
               <Mail className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.inactive}</div>
+              <div className="text-3xl font-bold text-white">{stats.inactive}</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Input
             placeholder="Search by email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-sm"
+            className="max-w-sm bg-white border-gray-200"
           />
-          <Button onClick={exportSubscribers} variant="outline">
+          <Button onClick={exportSubscribers} variant="outline" className="bg-white hover:bg-gray-50">
             <Download className="mr-2 h-4 w-4" />
             Export Active Subscribers
           </Button>
         </div>
 
         {/* Subscribers List */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Subscribers ({filteredSubscribers.length})</CardTitle>
+        <Card className="bg-white border-gray-200 shadow-sm">
+          <CardHeader className="border-b border-gray-100">
+            <CardTitle className="text-gray-900">Subscribers ({filteredSubscribers.length})</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-4">
             <div className="space-y-2">
               {filteredSubscribers.length === 0 ? (
-                <p className="text-center text-muted-foreground py-8">
+                <p className="text-center text-gray-500 py-8">
                   {searchTerm ? "No subscribers found" : "No subscribers yet"}
                 </p>
               ) : (
                 <div className="space-y-2">
                   {filteredSubscribers.map((subscriber) => (
-                    <div key={subscriber.id} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div key={subscriber.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                       <div>
-                        <div className="font-medium">{subscriber.email}</div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="font-medium text-gray-900">{subscriber.email}</div>
+                        <div className="text-sm text-gray-500">
                           Subscribed: {new Date(subscriber.subscribed_at).toLocaleDateString()}
                         </div>
                       </div>
@@ -147,7 +156,7 @@ export default function NewsletterAdmin() {
                             Active
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
                             Unsubscribed
                           </span>
                         )}

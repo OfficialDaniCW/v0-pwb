@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Info } from "lucide-react"
 import { BeforeAfterSlider } from "@/components/before-after-slider"
 import Link from "next/link"
-import Image from "next/image"
 
 export const metadata = {
   title: "Swanage Patio & Wall Refresh | PowerWash Bros Portfolio",
@@ -141,42 +140,6 @@ export default function SwanagePatioProject() {
                         hazards, and long-term protection against regrowth
                       </li>
                     </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Additional Images Section */}
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">Additional Angles</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="glass-border rounded-xl overflow-hidden">
-                  <BeforeAfterSlider
-                    beforeImage="/images/screenshot-202025-11-24-20at-2012-dirty.png"
-                    afterImage="/images/screenshot-202025-11-24-20at-2012-clean.png"
-                    alt="Swanage Patio - Alternative View"
-                  />
-                  <div className="p-4">
-                    <p className="text-white/70 text-sm text-center">
-                      Wall and patio area showing complete transformation
-                    </p>
-                  </div>
-                </div>
-                <div className="glass-border rounded-xl overflow-hidden group">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src="/images/screenshot-202025-11-24-20at-2012-clean.png"
-                      alt="Swanage patio after cleaning - natural stone colours revealed"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-white/70 text-sm text-center">Beautiful natural stone colours fully restored</p>
                   </div>
                 </div>
               </div>

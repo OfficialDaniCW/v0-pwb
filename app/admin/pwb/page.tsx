@@ -98,9 +98,15 @@ export default function PWBAdminDashboard() {
     try {
       const response = await fetch("/api/admin/blog")
       const data = await response.json()
-      setBlogPosts(data)
+      if (Array.isArray(data)) {
+        setBlogPosts(data)
+      } else {
+        console.error("Blog posts data is not an array:", data)
+        setBlogPosts([])
+      }
     } catch (error) {
       console.error("Error loading blog posts:", error)
+      setBlogPosts([])
     }
   }
 
@@ -288,59 +294,76 @@ export default function PWBAdminDashboard() {
 
   return (
     <AdminLayout>
-      <div className="min-h-screen bg-background p-6">
+      <div className="p-6 md:p-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-primary">PowerWash Bros Admin</h1>
-              <p className="text-muted-foreground">Manage your blog, gallery & pricing</p>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">PowerWash Bros Admin</h1>
+              <p className="text-gray-600">Manage your blog, gallery & pricing</p>
             </div>
-            <Button onClick={() => window.open("/", "_blank")} variant="outline" className="gap-2">
+            <Button onClick={() => window.open("/", "_blank")} variant="outline" className="gap-2 bg-white">
               <Eye className="h-4 w-4" />
               Preview Site
             </Button>
           </div>
 
           {saveMessage && (
-            <Alert className={`${saveMessage.includes("Error") ? "bg-destructive/10" : "bg-green-500/10"}`}>
+            <Alert
+              className={`${saveMessage.includes("Error") ? "bg-red-50 border-red-200" : "bg-green-50 border-green-200"}`}
+            >
               {saveMessage.includes("Error") ? (
-                <AlertCircle className="h-4 w-4" />
+                <AlertCircle className="h-4 w-4 text-red-600" />
               ) : (
-                <CheckCircle className="h-4 w-4" />
+                <CheckCircle className="h-4 w-4 text-green-600" />
               )}
-              <AlertDescription>{saveMessage}</AlertDescription>
+              <AlertDescription className={saveMessage.includes("Error") ? "text-red-800" : "text-green-800"}>
+                {saveMessage}
+              </AlertDescription>
             </Alert>
           )}
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="blog" className="gap-2">
+            <TabsList className="grid w-full grid-cols-3 bg-white border border-gray-200 p-1">
+              <TabsTrigger
+                value="blog"
+                className="gap-2 data-[state=active]:bg-[#1E90FF] data-[state=active]:text-white"
+              >
                 <FileText className="h-4 w-4" />
-                Blog Management
+                <span className="hidden sm:inline">Blog Management</span>
+                <span className="sm:hidden">Blog</span>
               </TabsTrigger>
-              <TabsTrigger value="gallery" className="gap-2">
+              <TabsTrigger
+                value="gallery"
+                className="gap-2 data-[state=active]:bg-[#1E90FF] data-[state=active]:text-white"
+              >
                 <ImageIcon className="h-4 w-4" />
-                Gallery Management
+                <span className="hidden sm:inline">Gallery Management</span>
+                <span className="sm:hidden">Gallery</span>
               </TabsTrigger>
-              <TabsTrigger value="pricing" className="gap-2">
+              <TabsTrigger
+                value="pricing"
+                className="gap-2 data-[state=active]:bg-[#1E90FF] data-[state=active]:text-white"
+              >
                 <Calculator className="h-4 w-4" />
-                Pricing Management
+                <span className="hidden sm:inline">Pricing Management</span>
+                <span className="sm:hidden">Pricing</span>
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="blog" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Create/Edit Blog Post</CardTitle>
+            <TabsContent value="blog" className="space-y-6 mt-6">
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Create/Edit Blog Post</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg p-4">
+                <CardContent className="space-y-4 pt-6">
+                  {/* AI Blog Helper */}
+                  <div className="bg-gradient-to-r from-[#1E90FF]/10 to-[#0B1E3F]/10 border border-[#1E90FF]/20 rounded-lg p-4">
                     <div className="flex items-start gap-3">
-                      <Sparkles className="h-5 w-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                      <Sparkles className="h-5 w-5 text-[#1E90FF] flex-shrink-0 mt-0.5" />
                       <div className="flex-1 space-y-3">
                         <div>
-                          <h3 className="font-semibold text-purple-600 mb-1">AI Blog Helper</h3>
-                          <p className="text-sm text-muted-foreground">
+                          <h3 className="font-semibold text-[#1E90FF] mb-1">AI Blog Helper</h3>
+                          <p className="text-sm text-gray-600">
                             Ask AI to help write sections, expand ideas, or improve your content
                           </p>
                         </div>
@@ -350,14 +373,15 @@ export default function PWBAdminDashboard() {
                             onChange={(e) => setAiPrompt(e.target.value)}
                             placeholder="e.g., Write a section about moss prevention tips..."
                             disabled={aiGenerating}
+                            className="bg-white border-gray-200"
                           />
                           <Button
                             onClick={generateWithAI}
                             disabled={aiGenerating || !aiPrompt.trim()}
-                            className="gap-2"
+                            className="gap-2 bg-[#1E90FF] hover:bg-[#1E90FF]/90"
                           >
                             <Sparkles className="h-4 w-4" />
-                            {aiGenerating ? "Generating..." : "Generate"}
+                            {aiGenerating ? "..." : "Generate"}
                           </Button>
                         </div>
                       </div>
@@ -366,7 +390,7 @@ export default function PWBAdminDashboard() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Title</Label>
+                      <Label className="text-gray-700">Title</Label>
                       <Input
                         value={currentPost.title || ""}
                         onChange={(e) => {
@@ -378,22 +402,24 @@ export default function PWBAdminDashboard() {
                           }))
                         }}
                         placeholder="Enter blog post title..."
+                        className="bg-white border-gray-200"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Slug</Label>
+                      <Label className="text-gray-700">Slug</Label>
                       <Input
                         value={currentPost.slug || ""}
                         onChange={(e) => setCurrentPost((prev) => ({ ...prev, slug: e.target.value }))}
                         placeholder="url-friendly-slug"
+                        className="bg-white border-gray-200"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Category</Label>
+                    <Label className="text-gray-700">Category</Label>
                     <select
-                      className="w-full p-2 border rounded-md"
+                      className="w-full p-2 border border-gray-200 rounded-md bg-white text-gray-900"
                       value={currentPost.category || ""}
                       onChange={(e) => setCurrentPost((prev) => ({ ...prev, category: e.target.value }))}
                     >
@@ -406,19 +432,20 @@ export default function PWBAdminDashboard() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Excerpt</Label>
+                    <Label className="text-gray-700">Excerpt</Label>
                     <Textarea
                       value={currentPost.excerpt || ""}
                       onChange={(e) => setCurrentPost((prev) => ({ ...prev, excerpt: e.target.value }))}
                       placeholder="Brief summary of the post..."
                       rows={3}
+                      className="bg-white border-gray-200"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label>Content</Label>
-                      <div className="flex gap-1 border rounded-md p-1">
+                      <Label className="text-gray-700">Content</Label>
+                      <div className="flex gap-1 border border-gray-200 rounded-md p-1 bg-gray-50">
                         <Button
                           type="button"
                           variant="ghost"
@@ -472,15 +499,15 @@ export default function PWBAdminDashboard() {
                       onChange={(e) => setCurrentPost((prev) => ({ ...prev, content: e.target.value }))}
                       placeholder="Write your blog content here... Use the toolbar above for formatting."
                       rows={20}
-                      className="font-mono"
+                      className="font-mono bg-white border-gray-200"
                     />
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-gray-500">
                       Markdown supported: **bold**, _italic_, ## headings, - lists, [links](url)
                     </p>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <label className="flex items-center gap-2">
+                    <label className="flex items-center gap-2 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={currentPost.is_published || false}
@@ -490,19 +517,20 @@ export default function PWBAdminDashboard() {
                             is_published: e.target.checked,
                           }))
                         }
-                        className="w-4 h-4"
+                        className="w-4 h-4 accent-[#1E90FF]"
                       />
-                      <span>Publish immediately</span>
+                      <span className="text-gray-700">Publish immediately</span>
                     </label>
                   </div>
 
                   <div className="flex gap-2">
-                    <Button onClick={saveBlogPost} className="gap-2">
+                    <Button onClick={saveBlogPost} className="gap-2 bg-[#1E90FF] hover:bg-[#1E90FF]/90">
                       <Save className="h-4 w-4" />
                       Save Blog Post
                     </Button>
                     <Button
                       variant="outline"
+                      className="bg-white"
                       onClick={() =>
                         setCurrentPost({
                           title: "",
@@ -520,88 +548,108 @@ export default function PWBAdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Existing Blog Posts</CardTitle>
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Existing Blog Posts</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {blogPosts.map((post) => (
-                      <div key={post.id} className="flex items-center justify-between p-4 border rounded-lg">
-                        <div className="flex-1">
-                          <h3 className="font-semibold">{post.title}</h3>
-                          <p className="text-sm text-muted-foreground">{post.category}</p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {post.is_published ? "Published" : "Draft"}
-                          </p>
+                <CardContent className="pt-4">
+                  <div className="space-y-3">
+                    {blogPosts.length === 0 ? (
+                      <p className="text-sm text-gray-500 text-center py-8">
+                        No blog posts found. Create your first post above.
+                      </p>
+                    ) : (
+                      blogPosts.map((post) => (
+                        <div key={post.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-gray-900">{post.title}</h3>
+                            <p className="text-sm text-gray-600">{post.category}</p>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {post.is_published ? (
+                                <span className="text-green-600">Published</span>
+                              ) : (
+                                <span className="text-amber-600">Draft</span>
+                              )}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-white"
+                              onClick={() => setCurrentPost(post)}
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="bg-white"
+                              onClick={() => window.open(`/blog/${post.slug}`, "_blank")}
+                            >
+                              <Eye className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
-                        <div className="flex gap-2">
-                          <Button variant="outline" size="sm" onClick={() => setCurrentPost(post)}>
-                            Edit
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(`/blog/${post.slug}`, "_blank")}
-                          >
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="gallery" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Create/Edit Gallery Item</CardTitle>
+            <TabsContent value="gallery" className="space-y-6 mt-6">
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Create/Edit Gallery Item</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Title</Label>
+                      <Label className="text-gray-700">Title</Label>
                       <Input
                         value={currentGallery.title || ""}
                         onChange={(e) => setCurrentGallery((prev) => ({ ...prev, title: e.target.value }))}
                         placeholder="e.g., Victorian Driveway Restoration"
+                        className="bg-white border-gray-200"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Location</Label>
+                      <Label className="text-gray-700">Location</Label>
                       <Input
                         value={currentGallery.location || ""}
                         onChange={(e) => setCurrentGallery((prev) => ({ ...prev, location: e.target.value }))}
                         placeholder="e.g., Swanage, Purbeck"
+                        className="bg-white border-gray-200"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Service Type</Label>
+                    <Label className="text-gray-700">Service Type</Label>
                     <Input
                       value={currentGallery.service_type || ""}
                       onChange={(e) => setCurrentGallery((prev) => ({ ...prev, service_type: e.target.value }))}
                       placeholder="e.g., Driveway Cleaning"
+                      className="bg-white border-gray-200"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Description</Label>
+                    <Label className="text-gray-700">Description</Label>
                     <Textarea
                       value={currentGallery.description || ""}
                       onChange={(e) => setCurrentGallery((prev) => ({ ...prev, description: e.target.value }))}
                       placeholder="Describe the transformation..."
                       rows={3}
+                      className="bg-white border-gray-200"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Before Image</Label>
-                      <div className="border-2 border-dashed rounded-lg p-6 text-center">
+                      <Label className="text-gray-700">Before Image</Label>
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center bg-gray-50 hover:bg-gray-100 transition-colors">
                         {currentGallery.before_image_url ? (
                           <div className="space-y-2">
                             <img
@@ -612,6 +660,7 @@ export default function PWBAdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
+                              className="bg-white"
                               onClick={() =>
                                 setCurrentGallery((prev) => ({
                                   ...prev,
@@ -635,8 +684,8 @@ export default function PWBAdminDashboard() {
                               }}
                               disabled={uploadingBefore}
                             />
-                            <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                            <p className="text-sm">
+                            <Upload className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                            <p className="text-sm text-gray-600">
                               {uploadingBefore ? "Uploading..." : "Click to upload before image"}
                             </p>
                           </label>
@@ -645,8 +694,8 @@ export default function PWBAdminDashboard() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label>After Image</Label>
-                      <div className="border-2 border-dashed rounded-lg p-6 text-center">
+                      <Label className="text-gray-700">After Image</Label>
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center bg-gray-50 hover:bg-gray-100 transition-colors">
                         {currentGallery.after_image_url ? (
                           <div className="space-y-2">
                             <img
@@ -657,6 +706,7 @@ export default function PWBAdminDashboard() {
                             <Button
                               variant="outline"
                               size="sm"
+                              className="bg-white"
                               onClick={() => setCurrentGallery((prev) => ({ ...prev, after_image_url: "" }))}
                             >
                               <Trash2 className="h-4 w-4 mr-2" />
@@ -675,8 +725,10 @@ export default function PWBAdminDashboard() {
                               }}
                               disabled={uploadingAfter}
                             />
-                            <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                            <p className="text-sm">{uploadingAfter ? "Uploading..." : "Click to upload after image"}</p>
+                            <Upload className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                            <p className="text-sm text-gray-600">
+                              {uploadingAfter ? "Uploading..." : "Click to upload after image"}
+                            </p>
                           </label>
                         )}
                       </div>
@@ -688,18 +740,19 @@ export default function PWBAdminDashboard() {
                       type="checkbox"
                       checked={currentGallery.featured || false}
                       onChange={(e) => setCurrentGallery((prev) => ({ ...prev, featured: e.target.checked }))}
-                      className="w-4 h-4"
+                      className="w-4 h-4 accent-[#1E90FF]"
                     />
-                    <Label>Feature on homepage</Label>
+                    <Label className="text-gray-700 cursor-pointer">Feature on homepage</Label>
                   </div>
 
                   <div className="flex gap-2">
-                    <Button onClick={saveGalleryItem} className="gap-2">
+                    <Button onClick={saveGalleryItem} className="gap-2 bg-[#1E90FF] hover:bg-[#1E90FF]/90">
                       <Save className="h-4 w-4" />
                       Save Gallery Item
                     </Button>
                     <Button
                       variant="outline"
+                      className="bg-white"
                       onClick={() =>
                         setCurrentGallery({
                           title: "",
@@ -718,57 +771,66 @@ export default function PWBAdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Existing Gallery Items</CardTitle>
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Existing Gallery Items</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {galleryImages.map((item) => (
-                      <div key={item.id} className="border rounded-lg overflow-hidden">
-                        <div className="grid grid-cols-2">
-                          <img
-                            src={item.before_image_url || "/placeholder.svg"}
-                            alt="Before"
-                            className="w-full h-32 object-cover"
-                          />
-                          <img
-                            src={item.after_image_url || "/placeholder.svg"}
-                            alt="After"
-                            className="w-full h-32 object-cover"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <h3 className="font-semibold">{item.title}</h3>
-                          <p className="text-sm text-muted-foreground">{item.location}</p>
-                          <div className="flex gap-2 mt-2">
-                            <Button variant="outline" size="sm" onClick={() => setCurrentGallery(item)}>
-                              Edit
-                            </Button>
+                    {galleryImages.length === 0 ? (
+                      <p className="text-sm text-gray-500 text-center py-8 col-span-2">
+                        No gallery items yet. Add your first transformation above.
+                      </p>
+                    ) : (
+                      galleryImages.map((item) => (
+                        <div key={item.id} className="border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+                          <div className="grid grid-cols-2">
+                            <img
+                              src={item.before_image_url || "/placeholder.svg"}
+                              alt="Before"
+                              className="w-full h-32 object-cover"
+                            />
+                            <img
+                              src={item.after_image_url || "/placeholder.svg"}
+                              alt="After"
+                              className="w-full h-32 object-cover"
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                            <p className="text-sm text-gray-600">{item.location}</p>
+                            <div className="flex gap-2 mt-2">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="bg-white"
+                                onClick={() => setCurrentGallery(item)}
+                              >
+                                Edit
+                              </Button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="pricing" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Pricing Calculator Configuration</CardTitle>
-                  <p className="text-sm text-muted-foreground">
-                    Set base rates and multipliers for the pricing calculator
-                  </p>
+            <TabsContent value="pricing" className="space-y-6 mt-6">
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Pricing Calculator Configuration</CardTitle>
+                  <p className="text-sm text-gray-600">Set base rates and multipliers for the pricing calculator</p>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 pt-6">
                   {Object.entries(pricingData).map(([service, rates]) => (
-                    <div key={service} className="border rounded-lg p-6 space-y-4">
-                      <h3 className="font-semibold capitalize text-lg">{service} Cleaning</h3>
+                    <div key={service} className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+                      <h3 className="font-semibold capitalize text-lg text-gray-900">{service} Cleaning</h3>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="space-y-2">
-                          <Label>Base Rate (£/m²)</Label>
+                          <Label className="text-gray-700">Base Rate (£/m²)</Label>
                           <Input
                             type="number"
                             step="0.1"
@@ -779,10 +841,11 @@ export default function PWBAdminDashboard() {
                                 [service]: { ...rates, baseRate: Number.parseFloat(e.target.value) },
                               }))
                             }
+                            className="bg-white border-gray-200"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Easy Access (×)</Label>
+                          <Label className="text-gray-700">Easy Access (×)</Label>
                           <Input
                             type="number"
                             step="0.05"
@@ -793,10 +856,11 @@ export default function PWBAdminDashboard() {
                                 [service]: { ...rates, easyAccess: Number.parseFloat(e.target.value) },
                               }))
                             }
+                            className="bg-white border-gray-200"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>Hard Access (×)</Label>
+                          <Label className="text-gray-700">Hard Access (×)</Label>
                           <Input
                             type="number"
                             step="0.05"
@@ -807,10 +871,11 @@ export default function PWBAdminDashboard() {
                                 [service]: { ...rates, hardAccess: Number.parseFloat(e.target.value) },
                               }))
                             }
+                            className="bg-white border-gray-200"
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label>No Water (×)</Label>
+                          <Label className="text-gray-700">No Water (×)</Label>
                           <Input
                             type="number"
                             step="0.05"
@@ -821,30 +886,32 @@ export default function PWBAdminDashboard() {
                                 [service]: { ...rates, noWater: Number.parseFloat(e.target.value) },
                               }))
                             }
+                            className="bg-white border-gray-200"
                           />
                         </div>
                       </div>
                     </div>
                   ))}
-
-                  <Button onClick={updatePricing} className="gap-2">
+                  <Button onClick={updatePricing} className="gap-2 bg-[#1E90FF] hover:bg-[#1E90FF]/90">
                     <Save className="h-4 w-4" />
                     Save Pricing Configuration
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Pricing Preview</CardTitle>
-                  <p className="text-sm text-muted-foreground">Example calculations based on current rates</p>
+              <Card className="bg-white border-gray-200 shadow-sm">
+                <CardHeader className="border-b border-gray-100">
+                  <CardTitle className="text-gray-900">Pricing Preview</CardTitle>
+                  <p className="text-sm text-gray-600">Example calculations based on current rates</p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-4">
                   <div className="space-y-3">
                     {Object.entries(pricingData).map(([service, rates]) => (
-                      <div key={service} className="flex items-center justify-between p-3 border rounded">
-                        <span className="capitalize font-medium">{service} (50m², Easy Access, Water Available)</span>
-                        <span className="text-lg font-bold text-primary">
+                      <div key={service} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <span className="capitalize font-medium text-gray-700">
+                          {service} (50m², Easy Access, Water Available)
+                        </span>
+                        <span className="text-lg font-bold text-[#1E90FF]">
                           £{Math.round(50 * rates.baseRate * rates.easyAccess)}
                         </span>
                       </div>

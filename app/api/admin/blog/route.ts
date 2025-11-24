@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const posts = await sql`
       SELECT * FROM blog_posts 
-      ORDER BY created_at DESC
+      ORDER BY updated_at DESC
     `
     return NextResponse.json(posts)
   } catch (error) {

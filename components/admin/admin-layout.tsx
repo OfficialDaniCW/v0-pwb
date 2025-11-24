@@ -1,12 +1,12 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Link from "next/link"
-import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, ChevronRight, Package } from "lucide-react"
+import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, Package } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface AdminLayoutProps {
   children: React.ReactNode
@@ -19,14 +19,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Check authentication
     const cookies = document.cookie.split(";")
     const sessionCookie = cookies.find((cookie) => cookie.trim().startsWith("admin-session="))
 
     if (!sessionCookie || !sessionCookie.includes("authenticated")) {
       router.push("/admin/login")
     } else {
-      // Get user email from localStorage if available
       const email = localStorage.getItem("admin-email")
       setCurrentUser(email)
     }
@@ -47,38 +45,25 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { href: "/admin/quotes", icon: Package, label: "Quote Requests" },
   ]
 
-  // Generate breadcrumbs
-  const generateBreadcrumbs = () => {
-    const paths = pathname.split("/").filter(Boolean)
-    const breadcrumbs = [{ label: "Admin", href: "/admin/pwb" }]
-
-    if (paths.length > 1) {
-      for (let i = 1; i < paths.length; i++) {
-        const label = paths[i].charAt(0).toUpperCase() + paths[i].slice(1)
-        const href = "/" + paths.slice(0, i + 1).join("/")
-        breadcrumbs.push({ label, href })
-      }
-    }
-
-    return breadcrumbs
-  }
-
-  const breadcrumbs = generateBreadcrumbs()
-
   return (
-    <div className="min-h-screen bg-[#0B1E3F] flex flex-col">
-      {/* Header */}
-      <header className="bg-[#0F2851] border-b border-white/10 sticky top-0 z-50">
-        <div className="px-4 md:px-6 py-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <header className="bg-[#0B1E3F] sticky top-0 z-50 shadow-lg">
+        <div className="px-4 md:px-6 py-3">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo - using correct path */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#1E90FF] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">PWB</span>
+              <div className="relative w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/images/pwb-logo-circle.png"
+                  alt="PowerWash Bros"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
               <div className="hidden md:block">
-                <span className="text-xl font-semibold text-white">PowerWash Bros</span>
-                <p className="text-xs text-neutral-400">Admin Portal</p>
+                <span className="text-lg font-bold text-white">PowerWash Bros</span>
+                <p className="text-xs text-gray-400">Admin Portal</p>
               </div>
             </Link>
 
@@ -86,8 +71,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             <div className="flex items-center gap-4">
               {currentUser && (
                 <div className="hidden md:block text-right">
-                  <p className="text-sm text-white">{currentUser}</p>
-                  <p className="text-xs text-neutral-400">Administrator</p>
+                  <p className="text-sm font-medium text-white">{currentUser}</p>
+                  <p className="text-xs text-gray-400">Administrator</p>
                 </div>
               )}
               <Button
@@ -103,28 +88,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </Button>
             </div>
           </div>
-
-          {/* Breadcrumbs */}
-          <nav className="mt-4 flex items-center gap-2 text-sm">
-            {breadcrumbs.map((crumb, index) => (
-              <div key={crumb.href} className="flex items-center gap-2">
-                {index > 0 && <ChevronRight className="h-4 w-4 text-neutral-500" />}
-                {index === breadcrumbs.length - 1 ? (
-                  <span className="text-[#00C853] font-medium">{crumb.label}</span>
-                ) : (
-                  <Link href={crumb.href} className="text-neutral-400 hover:text-white transition-colors">
-                    {crumb.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
         </div>
       </header>
 
       <div className="flex flex-1">
-        {/* Sidebar - Desktop */}
-        <aside className="hidden md:block w-64 bg-[#0F2851] border-r border-white/10">
+        <aside className="hidden md:block w-64 bg-[#0F2851] shadow-lg">
           <nav className="p-4 space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon
@@ -135,12 +103,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                    isActive ? "bg-[#1E90FF] text-white" : "text-neutral-300 hover:bg-white/5 hover:text-white"
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    isActive ? "bg-[#1E90FF] text-white shadow-md" : "text-gray-300 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   <Icon className="h-5 w-5" />
-                  <span>{item.label}</span>
+                  <span className="font-medium">{item.label}</span>
                 </Link>
               )
             })}
@@ -152,7 +120,22 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <div className="fixed inset-0 z-40 md:hidden">
             <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
             <aside className="absolute left-0 top-0 bottom-0 w-64 bg-[#0F2851] shadow-xl">
-              <nav className="p-4 space-y-2 mt-20">
+              <div className="p-4 bg-[#0B1E3F] flex items-center gap-3 border-b border-white/10">
+                <div className="relative w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/images/pwb-logo-circle.png"
+                    alt="PowerWash Bros"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="text-lg font-bold text-white">PowerWash Bros</span>
+                  <p className="text-xs text-gray-400">Admin Portal</p>
+                </div>
+              </div>
+              <nav className="p-4 space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon
                   const isActive = pathname === item.href
@@ -162,12 +145,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setSidebarOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                        isActive ? "bg-[#1E90FF] text-white" : "text-neutral-300 hover:bg-white/5 hover:text-white"
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                        isActive
+                          ? "bg-[#1E90FF] text-white shadow-md"
+                          : "text-gray-300 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
-                      <span>{item.label}</span>
+                      <span className="font-medium">{item.label}</span>
                     </Link>
                   )
                 })}
@@ -176,13 +161,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           </div>
         )}
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-auto">{children}</main>
+        <main className="flex-1 overflow-auto bg-gray-100">{children}</main>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-[#0F2851] border-t border-white/10 py-4 px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-neutral-400">
+      <footer className="bg-[#0B1E3F] py-4 px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-gray-400">
           <p>© 2025 PowerWash Bros. All rights reserved.</p>
           <p>Property-centred pressure washing services across Purbeck and Dorset</p>
         </div>
