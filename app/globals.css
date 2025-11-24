@@ -1,36 +1,37 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* Removing tw-animate-css import to fix build error "Missing closing } at @utility delay-*" */
+/* @import "tw-animate-css"; */
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   /* PowerWash Bros Brand Colors */
-  --pwb-primary-blue: #1E90FF;
-  --pwb-deep-navy: #0B1E3F;
-  --pwb-white: #FFFFFF;
-  --pwb-light-gray: #F5F7FA;
-  --pwb-dark-gray: #37474F;
-  --pwb-accent-green: #00C853;
-  
+  --pwb-primary-blue: #1e90ff;
+  --pwb-deep-navy: #0b1e3f;
+  --pwb-white: #ffffff;
+  --pwb-light-gray: #f5f7fa;
+  --pwb-dark-gray: #37474f;
+  --pwb-accent-green: #00c853;
+
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.15 0.02 250);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.02 250);
-  --primary: oklch(0.60 0.20 245);
+  --primary: oklch(0.6 0.2 245);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.15 0.02 250);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.50 0.01 250);
+  --muted-foreground: oklch(0.5 0.01 250);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.15 0.02 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0 0);
   --input: oklch(0.92 0 0);
-  --ring: oklch(0.60 0.20 245);
+  --ring: oklch(0.6 0.2 245);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -48,13 +49,13 @@
 }
 
 .dark {
-  --background: oklch(0.10 0.02 250);
+  --background: oklch(0.1 0.02 250);
   --foreground: oklch(0.99 0 0);
-  --card: oklch(0.10 0.02 250);
+  --card: oklch(0.1 0.02 250);
   --card-foreground: oklch(0.99 0 0);
-  --popover: oklch(0.10 0.02 250);
+  --popover: oklch(0.1 0.02 250);
   --popover-foreground: oklch(0.99 0 0);
-  --primary: oklch(0.60 0.20 245);
+  --primary: oklch(0.6 0.2 245);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.22 0.01 250);
   --secondary-foreground: oklch(0.99 0 0);
@@ -66,7 +67,7 @@
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.22 0.01 250);
   --input: oklch(0.22 0.01 250);
-  --ring: oklch(0.50 0.15 245);
+  --ring: oklch(0.5 0.15 245);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -128,7 +129,8 @@
   }
 
   html {
-    height: 100%;
+    /* Changed height to min-height and removed fixed height to allow proper scrolling */
+    min-height: 100%;
     overflow-x: hidden;
     overscroll-behavior: none;
     background: #000000;
@@ -136,7 +138,7 @@
 
   body {
     @apply bg-background text-foreground;
-    height: 100%;
+    /* Removed fixed height constraints that break scroll restoration */
     min-height: 100vh;
     min-height: 100dvh;
     overflow-x: hidden;
@@ -146,19 +148,8 @@
     touch-action: manipulation;
   }
 
-  @supports (-webkit-touch-callout: none) {
-    html {
-      height: -webkit-fill-available;
-    }
-
-    body {
-      min-height: -webkit-fill-available;
-      position: fixed;
-      overflow-y: scroll;
-      width: 100%;
-      height: 100%;
-    }
-  }
+  /* Removed the @supports block that was forcing position: fixed on body for iOS */
+  /* This was likely the main cause of the scroll issue */
 
   #__next,
   [data-nextjs-scroll-focus-boundary] {
@@ -258,7 +249,8 @@
 
 /* Add bounce animation for floating WhatsApp button */
 @keyframes bounce-subtle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -272,7 +264,7 @@
 
 /* Add gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #1E90FF 0%, #00C853 100%);
+  background: linear-gradient(135deg, #1e90ff 0%, #00c853 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

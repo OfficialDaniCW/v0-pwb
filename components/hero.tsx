@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { Star, Shield, CheckCircle2, Award } from 'lucide-react'
-import Image from "next/image"
+import { Star, Shield, CheckCircle2, Award } from "lucide-react"
+import { TransformationsCarousel } from "@/components/transformations-carousel"
 
 export function Hero() {
   return (
@@ -18,7 +18,8 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="mt-6 text-center text-lg text-white/80 max-w-2xl leading-relaxed">
-            Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset
+            Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across
+            Dorset
           </p>
 
           {/* Trust Signals */}
@@ -71,11 +72,7 @@ export function Hero() {
 
           {/* Before/After Preview */}
           <div className="mt-16 w-full max-w-5xl">
-            <div className="glass-border rounded-2xl overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
-                <p className="text-white/60 text-lg">Before/After Slider Preview</p>
-              </div>
-            </div>
+            <TransformationsCarousel />
           </div>
         </div>
       </div>

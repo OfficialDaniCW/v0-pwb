@@ -1,48 +1,58 @@
-"use client"
+import { Instagram } from "lucide-react"
+import { getInstagramPosts } from "@/lib/instagram"
 
-import { Instagram } from 'lucide-react'
-import { Card } from "@/components/ui/card"
+export async function InstagramFeed() {
+  // Fetch live posts
+  const livePosts = await getInstagramPosts()
 
-export function InstagramFeed() {
-  // Static Instagram posts - in production, you'd fetch these from Instagram API
-  const posts = [
+  // Fallback static posts if no live data is available
+  const staticPosts = [
     {
-      id: 1,
-      image: "/driveway-transformation-before-after.jpg",
+      id: "1",
+      media_url: "/images/driveway-transformation-before-after.jpg",
       caption: "Another stunning driveway transformation in Swanage",
-      link: "https://www.instagram.com/powerwashbrosltd/"
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
     },
     {
-      id: 2,
-      image: "/roof-cleaning-moss-removal.jpg",
+      id: "2",
+      media_url: "/images/roof-cleaning-moss-removal.jpg",
       caption: "Roof cleaning perfection in Purbeck",
-      link: "https://www.instagram.com/powerwashbrosltd/"
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
     },
     {
-      id: 3,
-      image: "/patio-cleaning-purbeck-stone.jpg",
+      id: "3",
+      media_url: "/images/patio-cleaning-purbeck-stone.jpg",
       caption: "Purbeck stone patio restored to its former glory",
-      link: "https://www.instagram.com/powerwashbrosltd/"
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
     },
     {
-      id: 4,
-      image: "/commercial-property-cleaning.jpg",
+      id: "4",
+      media_url: "/images/commercial-property-cleaning.jpg",
       caption: "Commercial property maintenance in Bournemouth",
-      link: "https://www.instagram.com/powerwashbrosltd/"
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
     },
     {
-      id: 5,
-      image: "/render-cleaning-soft-wash.jpg",
+      id: "5",
+      media_url: "/images/render-cleaning-soft-wash.jpg",
       caption: "Render soft washing brings properties back to life",
-      link: "https://www.instagram.com/powerwashbrosltd/"
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
     },
     {
-      id: 6,
-      image: "/gutter-cleaning-before-after.jpg",
+      id: "6",
+      media_url: "/images/gutter-cleaning-before-after.jpg",
       caption: "Gutter cleaning keeping Dorset properties protected",
-      link: "https://www.instagram.com/powerwashbrosltd/"
-    }
+      permalink: "https://www.instagram.com/powerwashbrosltd/",
+      media_type: "IMAGE",
+    },
   ]
+
+  // Use live posts if available, otherwise fallback
+  const posts = livePosts.length > 0 ? livePosts.slice(0, 6) : staticPosts
 
   return (
     <section className="py-20 bg-white/5">
@@ -50,13 +60,9 @@ export function InstagramFeed() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Instagram className="h-8 w-8 text-[#1E90FF]" />
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Follow Our Work
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white">Follow Our Work</h2>
           </div>
-          <p className="text-xl text-white/70 mb-6">
-            See our latest transformations on Instagram
-          </p>
+          <p className="text-xl text-white/70 mb-6">See our latest transformations on Instagram</p>
           <a
             href="https://www.instagram.com/powerwashbrosltd/"
             target="_blank"
@@ -71,23 +77,25 @@ export function InstagramFeed() {
           {posts.map((post) => (
             <a
               key={post.id}
-              href={post.link}
+              href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden rounded-lg"
+              className="group relative aspect-square overflow-hidden rounded-lg bg-gray-900"
             >
+              {/* Prioritize thumbnail for video/albums if available, or just media_url */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={post.image || "/placeholder.svg"}
-                alt={post.caption}
-                className="h-full w-full object-cover transition-transform group-hover:scale-110"
+                src={post.media_type === "VIDEO" && post.thumbnail_url ? post.thumbnail_url : post.media_url}
+                alt={post.caption || "Instagram post"}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white text-sm line-clamp-2">{post.caption}</p>
+                  <p className="text-white text-xs md:text-sm line-clamp-2">{post.caption}</p>
                 </div>
               </div>
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Instagram className="h-6 w-6 text-white" />
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Instagram className="h-5 w-5 text-white drop-shadow-md" />
               </div>
             </a>
           ))}

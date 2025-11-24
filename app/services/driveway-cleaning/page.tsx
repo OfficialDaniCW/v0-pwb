@@ -260,7 +260,7 @@ export default function DrivewayCleaningPage() {
                 <div className="glass-border rounded-xl p-6">
                   <h3 className="text-xl font-bold text-white mb-3">Oil & Tire Stains</h3>
                   <p className="text-white/70">
-                    Specialized treatments to lift deep-set oil stains and rubber marks from your driveway surface.
+                    Specialised treatments to lift deep-set oil stains and rubber marks from your driveway surface.
                   </p>
                 </div>
                 <div className="glass-border rounded-xl p-6">

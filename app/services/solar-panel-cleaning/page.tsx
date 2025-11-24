@@ -68,7 +68,7 @@ export default function SolarPanelCleaningPage() {
               </div>
               <div className="border-2 border-[#1E90FF]/20 rounded-2xl p-6 bg-[#0B1E3F]/50">
                 <TrendingUp className="h-10 w-10 text-[#1E90FF] mb-4" />
-                <h3 className="text-xl font-semibold mb-3 text-white">Maximize ROI</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white">Maximise ROI</h3>
                 <p className="text-white/70">
                   Dirty panels generate less electricity. Professional cleaning pays for itself through increased energy production.
                 </p>
@@ -116,7 +116,7 @@ export default function SolarPanelCleaningPage() {
             <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Restore Your Solar Panel Efficiency</h2>
               <p className="text-xl text-white/90 mb-8">
-                Professional solar panel cleaning across Swanage, Purbeck and Dorset. Maximize your energy generation today.
+                Professional solar panel cleaning across Swanage, Purbeck and Dorset. Maximise your energy generation today.
               </p>
               <Button size="lg" className="bg-white text-[#1E90FF] hover:bg-white/90 font-bold" asChild>
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">

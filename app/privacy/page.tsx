@@ -128,7 +128,7 @@ export default function PrivacyPolicy() {
               <p>We use cookies to:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Remember your preferences</li>
-                <li>Analyze website traffic (Google Analytics)</li>
+                <li>Analyse website traffic (Google Analytics)</li>
                 <li>Improve user experience</li>
               </ul>
               <p>

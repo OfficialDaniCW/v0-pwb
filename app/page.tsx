@@ -49,7 +49,7 @@ export default function Page() {
     "@type": "WebPage",
     "@id": "https://powerwashbros.co.uk/",
     "name": "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
-    "description": "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centered care that lasts.",
+    "description": "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
     "url": "https://powerwashbros.co.uk/",
   }
 

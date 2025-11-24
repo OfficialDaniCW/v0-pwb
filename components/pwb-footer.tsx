@@ -1,167 +1,306 @@
-import Link from "next/link"
-import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react'
-import { FaTiktok } from 'react-icons/fa'
+"use client"
+import { Instagram, Facebook, Mail, Phone, MapPin, Send, ArrowUp } from "lucide-react"
+import { FaTiktok } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
+import Link from "next/link"
 
 export function PWBFooter() {
   return (
-    <footer className="bg-[#0B1E3F] border-t border-white/10">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-4">
-          {/* Column 1 - About PWB */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E90FF]">
-                <span className="text-sm font-bold text-white">PWB</span>
+    <footer className="relative bg-[#0B1E3F] text-white overflow-hidden">
+      {/* Background Pattern with Overlay */}
+      <div
+        className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: "url('/backgrounds/pwb-dark-white.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
+      {/* Main Footer Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+          {/* Column 1: Brand */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div className="relative h-16 w-16">
+                <Image src="/images/pwb-logo-circle.png" alt="PowerWash Bros Logo" fill className="object-contain" />
               </div>
-              <span className="font-bold text-white text-lg">PowerWash Bros</span>
+              <p className="text-sm text-white/70 leading-relaxed">Dorsets leading pressure washing company.</p>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Dorset's biocide-trained property care specialists
-            </p>
-            
-            <div className="flex gap-3">
+
+            <div className="space-y-2">
+              <h4 className="text-sm font-bold text-white">Open Hours:</h4>
+              <div className="text-sm text-white/70 space-y-1">
+                <p>Mon – Fri: 8 am – 5 pm</p>
+                <p>Saturday: 8am – 6pm</p>
+                <p>Sunday: 9am – 3pm</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: Official info */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">Official info</h3>
+            <ul className="space-y-4 text-sm text-white/70">
+              <li className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+                <span>Hardingredmans, Bridge House, Court Road, Swanage, BH19 1DX</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-[#1E90FF] shrink-0" />
+                <a href="tel:07418610731" className="hover:text-white transition-colors">
+                  07418610731
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="h-5 w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <a href="mailto:info@powerwashbros.co.uk" className="hover:text-white transition-colors">
+                    info@powerwashbros.co.uk
+                  </a>
+                  <a href="mailto:bookings@powerwashbros.co.uk" className="hover:text-white transition-colors">
+                    bookings@powerwashbros.co.uk
+                  </a>
+                </div>
+              </li>
+            </ul>
+
+            {/* Social Icons */}
+            <div className="flex gap-4 pt-2 flex-wrap">
               <a
-                href="https://www.instagram.com/powerwashbrosltd/"
+                href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6119,-1.9598,17z"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 
-                           hover:bg-[#1E90FF] hover:text-white transition-all"
-                aria-label="Instagram"
+                className="text-white/70 hover:text-[#1E90FF] transition-colors"
+                aria-label="Google Reviews"
               >
-                <Instagram className="h-5 w-5" />
+                <svg className="h-5 w-5" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://uk.trustpilot.com/review/powerwashbros.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-[#00B67A] transition-colors"
+                aria-label="Trustpilot Reviews"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=61570513635891"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 
-                           hover:bg-[#1E90FF] hover:text-white transition-all"
+                className="text-white/70 hover:text-[#1E90FF] transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
+                href="https://www.instagram.com/powerwashbrosltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-[#1E90FF] transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
                 href="https://www.tiktok.com/@powerwashbrosltd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 
-                           hover:bg-[#1E90FF] hover:text-white transition-all"
+                className="text-white/70 hover:text-[#1E90FF] transition-colors"
                 aria-label="TikTok"
               >
                 <FaTiktok className="h-5 w-5" />
               </a>
             </div>
-
-            {/* Trust Badges */}
-            <div className="space-y-2 text-xs text-white/60">
-              <div>✓ Biocide Trained & Registered</div>
-              <div>✓ PASMA Trained</div>
-              <div>✓ Fully Insured</div>
-              <div>✓ 4.9★ Google Rating</div>
-            </div>
           </div>
 
-          {/* Column 2 - Quick Links */}
-          <div>
-            <h5 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Quick Links</h5>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/about" className="hover:text-[#1E90FF] transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-[#1E90FF] transition-colors">Services</Link></li>
-              <li><Link href="/powerups" className="hover:text-[#1E90FF] transition-colors">PowerUps Range</Link></li>
-              <li><Link href="/our-work" className="hover:text-[#1E90FF] transition-colors">Our Work</Link></li>
-              <li><Link href="/blog" className="hover:text-[#1E90FF] transition-colors">Blog</Link></li>
-              <li><Link href="/faq" className="hover:text-[#1E90FF] transition-colors">FAQs</Link></li>
-              <li><Link href="/quote" className="hover:text-[#1E90FF] transition-colors">Get Quote</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#1E90FF] transition-colors">Pricing</Link></li>
+          {/* Column 3: Quick Links */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">Quick Links</h3>
+            <ul className="space-y-3 text-sm text-white/70">
+              <li>
+                <Link href="/about" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  All Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/our-work" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  Our Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/get-quote" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  Get a Quote
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/login" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                  Staff Portal
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3 - Services */}
-          <div>
-            <h5 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Services</h5>
+          {/* Column 4: Services */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">Services</h3>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/services/residential" className="hover:text-[#1E90FF] transition-colors">Residential Services</Link></li>
-              <li><Link href="/services/commercial" className="hover:text-[#1E90FF] transition-colors">Commercial Services</Link></li>
-              <li><Link href="/services/driveway-cleaning" className="hover:text-[#1E90FF] transition-colors">Driveway Restoration</Link></li>
-              <li><Link href="/services/roof-cleaning" className="hover:text-[#1E90FF] transition-colors">Roof Cleaning</Link></li>
-              <li><Link href="/services/gutter-cleaning" className="hover:text-[#1E90FF] transition-colors">Gutter Cleaning</Link></li>
-              <li><Link href="/services/exterior-walls" className="hover:text-[#1E90FF] transition-colors">Wall & Render</Link></li>
-              <li><Link href="/services/patio-decking" className="hover:text-[#1E90FF] transition-colors">Patio & Decking</Link></li>
+              <li>
+                <Link href="/services/driveway-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Driveway Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/roof-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Roof Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/patio-decking" className="hover:text-[#1E90FF] transition-colors">
+                  Patio & Decking
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/gutter-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Gutter Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/render-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Render Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/softwash" className="hover:text-[#1E90FF] transition-colors">
+                  Softwash
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/commercial" className="hover:text-[#1E90FF] transition-colors">
+                  Commercial Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/residential" className="hover:text-[#1E90FF] transition-colors">
+                  Residential Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/graffiti-removal" className="hover:text-[#1E90FF] transition-colors">
+                  Graffiti Removal
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/solar-panel-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Solar Panel Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/heritage-buildings" className="hover:text-[#1E90FF] transition-colors">
+                  Heritage Buildings
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 4 - Contact */}
-          <div>
-            <h5 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Contact</h5>
-            <div className="space-y-3 text-sm text-white/70">
-              <a href="tel:07418610731" className="flex items-center gap-2 hover:text-[#1E90FF] transition-colors">
-                <Phone className="h-4 w-4" />
-                <span>07418 610731</span>
-              </a>
-              <a href="mailto:info@powerwashbros.co.uk" className="flex items-center gap-2 hover:text-[#1E90FF] transition-colors">
-                <Mail className="h-4 w-4" />
-                <span>info@powerwashbros.co.uk</span>
-              </a>
-              <div className="flex items-start gap-2 text-white/60">
-                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <div>
-                  <div>Service Areas:</div>
-                  <div className="mt-1 text-xs">
-                    Swanage • Purbeck<br />
-                    Bournemouth • Poole<br />
-                    Wimborne • Wareham<br />
-                    Christchurch • Dorset
-                  </div>
-                </div>
+          {/* Column 5: Newsletter */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold">Newsletter</h3>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Subscribe to our newsletter to get our latest updates & news
+            </p>
+            <form className="flex gap-0">
+              <div className="relative flex-1">
+                <Input
+                  type="email"
+                  placeholder="Your mail address"
+                  className="bg-[#1A2C4E] border-none text-white placeholder:text-white/40 h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
               </div>
-
-              {/* WhatsApp Button */}
               <Button
-                asChild
-                className="w-full bg-[#00C853] text-white font-medium rounded-lg mt-4
-                           hover:bg-[#00A843] transition-all"
+                type="submit"
+                className="h-12 w-12 rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
               >
-                <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
-                  Chat on WhatsApp
-                </a>
+                <Send className="h-5 w-5" />
               </Button>
-
-              {/* Newsletter Signup */}
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <p className="text-xs text-white/60 mb-2">Subscribe to our newsletter</p>
-                <form action="/api/newsletter" method="POST" className="flex gap-2">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Your email"
-                    required
-                    className="bg-white/5 border-white/10 text-white placeholder:text-white/40 text-sm h-9"
-                  />
-                  <Button
-                    type="submit"
-                    size="sm"
-                    className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white shrink-0"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
-          <p>© 2025 PowerWash Bros Ltd. All rights reserved. Company No. 16100439</p>
-          <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
-            <Link href="/privacy" className="hover:text-[#1E90FF] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#1E90FF] transition-colors">Terms & Conditions</Link>
-            <Link href="/cookies" className="hover:text-[#1E90FF] transition-colors">Cookie Policy</Link>
-            {/* Portal link for admin access */}
-            <Link href="/admin/pwb" className="hover:text-[#1E90FF] transition-colors">Portal</Link>
+      {/* Bottom Bar */}
+      <div className="relative z-10 bg-[#0033CC] py-6">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p className="text-sm text-white/90 text-center md:text-left">
+              2025 © All rights reserved by <span className="font-bold">PowerwashBros Ltd</span> | Company no. 16100439
+            </p>
+            <div className="flex items-center gap-6 text-sm text-white/80">
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/cookies" className="hover:text-white transition-colors">
+                Cookies Policy
+              </Link>
+            </div>
           </div>
+
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="h-10 w-10 bg-[#1E90FF] rounded flex items-center justify-center hover:bg-white hover:text-[#1E90FF] transition-all shadow-lg"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </footer>

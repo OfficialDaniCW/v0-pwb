@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -10,33 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import {
-  Home,
-  Settings,
-  LogOut,
-  Save,
-  Sparkles,
-  DollarSign,
-  User,
-  Search,
-  Bell,
-  ChevronRight,
-  ChevronLeft,
-  TrendingUp,
-  FileText,
-  BarChart3,
-  HelpCircle,
-  Eye,
-  AlertCircle,
-  CheckCircle,
-  Video,
-  Menu,
-  X,
-  Plus,
-  Trash2,
-  Package,
-  Move,
-} from "lucide-react"
+import { Home, Settings, LogOut, Save, Sparkles, DollarSign, User, Search, Bell, ChevronRight, ChevronLeft, TrendingUp, FileText, BarChart3, HelpCircle, Eye, AlertCircle, CheckCircle, Video, Menu, X, Plus, Trash2, Package, Move } from 'lucide-react'
 
 interface ContentData {
   hero: {
@@ -1345,13 +1319,6 @@ export default function AdminDashboard() {
                           </Badge>
                         ))}
                     </div>
-                    <Button
-                      onClick={() => window.open("/checkout?plan=pro", "_blank")}
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
-                    >
-                      <Eye className="h-4 w-4 mr-2" />
-                      Test Order Form
-                    </Button>
                   </div>
                 </CardContent>
               </Card>

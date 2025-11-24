@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
+/* Removing tw-animate-css import to fix build error "Missing closing } at @utility delay-*" */
+/* @import 'tw-animate-css'; */
 
 @custom-variant dark (&:is(.dark *));
 

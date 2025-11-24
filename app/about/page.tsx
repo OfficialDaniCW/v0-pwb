@@ -176,7 +176,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   That's why we invested in biocide training, developed our PowerUps product range, and built our business 
-                  around the Property-Centered Approach. We don't just clean surfaces; we protect property investments.
+                  around the Property-Centred Approach. We don't just clean surfaces; we protect property investments.
                 </p>
                 <p className="font-semibold text-white">
                   Today, we're proud to serve hundreds of Dorset property owners who trust us to care for their homes 
@@ -220,7 +220,7 @@ export default function AboutPage() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1E90FF]/20 mx-auto mb-6">
                     <Heart className="h-8 w-8 text-[#1E90FF]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4">Property-Centered Approach</h3>
+                  <h3 className="text-xl font-bold text-white mb-4">Property-Centred Approach</h3>
                   <p className="text-white/70 leading-relaxed">
                     No two properties are the same, and no two jobs should be either. We assess, plan, and execute every 
                     job based on what YOUR property actually needs - not what's quickest for us.
@@ -505,7 +505,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold text-white mb-6">
-                Ready to Experience Property-Centered Care?
+                Ready to Experience Property-Centred Care?
               </h2>
               <Button
                 asChild

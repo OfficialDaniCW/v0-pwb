@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Info, ImageIcon, FileText, Calculator, Mail, Briefcase } from 'lucide-react'
@@ -21,10 +22,14 @@ export function SiteHeader() {
         <div className="flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1E90FF]">
-              <span className="text-sm font-bold text-white">PWB</span>
-            </div>
-            <span className="font-bold tracking-tight text-white">PowerWash Bros</span>
+            <Image 
+              src="/images/pwb-logo-smaller.png" 
+              alt="PowerWash Bros" 
+              width={180} 
+              height={32} 
+              className="h-8 w-auto object-contain"
+              priority
+            />
           </Link>
 
           <nav className="hidden items-center gap-6 text-sm text-white/90 md:flex">
@@ -77,10 +82,13 @@ export function SiteHeader() {
               <SheetContent side="right" className="liquid-glass border-white/10 p-0 w-64 flex flex-col bg-[#0B1E3F]/95 overflow-y-auto">
                 {/* Brand Header */}
                 <div className="flex items-center gap-2 px-4 py-4 border-b border-white/10">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1E90FF]">
-                    <span className="text-sm font-bold text-white">PWB</span>
-                  </div>
-                  <span className="font-bold tracking-tight text-white">PowerWash Bros</span>
+                  <Image 
+                    src="/images/pwb-logo-smaller.png" 
+                    alt="PowerWash Bros" 
+                    width={150} 
+                    height={32} 
+                    className="h-8 w-auto object-contain"
+                  />
                 </div>
 
                 <nav className="flex flex-col gap-1 mt-2 text-gray-200">

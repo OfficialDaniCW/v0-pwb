@@ -1,25 +1,65 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google"
 import Script from "next/script"
 import Plasma from "@/components/plasma"
 import { Suspense } from "react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { CookieBanner } from "@/components/cookie-banner"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+  metadataBase: new URL("https://powerwashbros.co.uk"),
+  title: {
+    default: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    template: "%s | PowerWash Bros",
+  },
   description:
-    "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centered care that lasts.",
+    "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
   generator: "v0.app",
   icons: {
-    icon: '/favicon.webp',
-    shortcut: '/favicon.webp',
-    apple: '/favicon.webp',
+    icon: "/favicon.webp",
+    shortcut: "/favicon.webp",
+    apple: "/favicon.webp",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "https://powerwashbros.co.uk",
+    title: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    description:
+      "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
+    siteName: "PowerWash Bros",
+    images: [
+      {
+        url: "/og-image.jpg", // Assuming this exists or will be created, standard fallback
+        width: 1200,
+        height: 630,
+        alt: "PowerWash Bros Property Maintenance",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    description:
+      "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
@@ -66,15 +106,9 @@ export default function RootLayout({
       </head>
       <body>
         <Suspense fallback={null}>
+          <ScrollToTop />
           <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
-            <Plasma 
-              color="#1E90FF" 
-              speed={0.6} 
-              direction="forward" 
-              scale={1.8} 
-              opacity={0.3} 
-              mouseInteractive={true} 
-            />
+            <Plasma color="#1E90FF" speed={0.6} direction="forward" scale={1.8} opacity={0.3} mouseInteractive={true} />
           </div>
           <div className="relative z-10">{children}</div>
         </Suspense>

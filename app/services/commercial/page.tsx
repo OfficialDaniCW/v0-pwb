@@ -89,7 +89,7 @@ export default function CommercialServicesPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3">Work Around Your Business</h3>
                   <p className="text-white/70">
-                    Flexible scheduling including evenings, weekends, and out-of-hours to minimize disruption to your operations.
+                    Flexible scheduling including evenings, weekends, and out-of-hours to minimise disruption to your operations.
                   </p>
                 </div>
 

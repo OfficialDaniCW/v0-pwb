@@ -23,12 +23,21 @@ export function WhyPropertyCentered() {
   ]
 
   return (
-    <section className="py-24 bg-white/5">
-      <div className="container mx-auto px-4">
+    <section 
+      className="py-24 relative"
+      style={{
+        backgroundImage: 'url(/backgrounds/pwb-dark-white.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'overlay'
+      }}
+    >
+      <div className="absolute inset-0 bg-[#0B1E3F]/80 z-0" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Why Property-Centered Matters
+              Why Property-Centred Matters
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
               We don't believe in one-size-fits-all cleaning. Every property has its own character, challenges, and story.

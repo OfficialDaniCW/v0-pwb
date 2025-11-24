@@ -5,7 +5,7 @@ import { CheckCircle2, Droplet, Home, TreeDeciduous, Shield, Sparkles } from 'lu
 
 export const metadata = {
   title: "PowerUps: Professional Chemical Range | PowerWash Bros",
-  description: "Our professional chemical range designed to tackle the toughest stains on Purbeck properties. Specialized biocide treatments for long-lasting results.",
+  description: "Our professional chemical range designed to tackle the toughest stains on Purbeck properties. Specialised biocide treatments for long-lasting results.",
 }
 
 export default function PowerUpsPage() {
@@ -26,7 +26,7 @@ export default function PowerUpsPage() {
       uses: "Render, painted surfaces, delicate materials",
       surfaces: "Exterior walls, cladding, heritage buildings",
       benefits: "Gentle yet effective cleaning",
-      description: "Specialized approach for surfaces that require gentle treatment while still achieving deep cleaning."
+      description: "Specialised approach for surfaces that require gentle treatment while still achieving deep cleaning."
     },
     {
       name: "PowerUps Driveway Revive",
@@ -34,7 +34,7 @@ export default function PowerUpsPage() {
       icon: Home,
       uses: "Heavy-duty surface cleaning",
       surfaces: "Block paving, concrete, tarmac",
-      benefits: "Removes oil, tire marks, deep stains",
+      benefits: "Removes oil, tyre marks, deep stains",
       description: "Our most powerful formula tackles the toughest driveway stains that regular washing can't touch."
     },
     {
@@ -43,8 +43,8 @@ export default function PowerUpsPage() {
       icon: TreeDeciduous,
       uses: "Decking, garden furniture, fencing",
       surfaces: "All wood types",
-      benefits: "Cleans without bleaching or damaging wood fibers",
-      description: "Specialized wood treatment that restores natural beauty while protecting against future deterioration."
+      benefits: "Cleans without bleaching or damaging wood fibres",
+      description: "Specialised wood treatment that restores natural beauty while protecting against future deterioration."
     }
   ]
 
@@ -67,7 +67,7 @@ export default function PowerUpsPage() {
                 Chemicals Designed to Tackle the Toughest Stains
               </p>
               <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                Our professional chemical range uses specialized biocide treatments and approaches to get the best results for Purbeck properties
+                Our professional chemical range uses specialised biocide treatments and approaches to get the best results for Purbeck properties
               </p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function PowerUpsPage() {
               <div className="space-y-4 text-white/80 leading-relaxed text-lg">
                 <p>
                   PowerUps are our professional-grade chemical treatments designed to tackle the toughest stains and organic growth 
-                  on properties across Swanage and Purbeck. We use a range of different chemicals and specialized approaches to get 
+                  on properties across Swanage and Purbeck. We use a range of different chemicals and specialised approaches to get 
                   the best results for each unique situation.
                 </p>
                 <p>
@@ -161,7 +161,7 @@ export default function PowerUpsPage() {
                   <div className="text-5xl font-bold text-[#1E90FF]/20 mb-4">01</div>
                   <h3 className="text-xl font-bold text-white mb-4">Tackles Tough Stains</h3>
                   <p className="text-white/70">
-                    We use specialized chemicals for different stain types - from oil and algae to moss and lichen. Each 
+                    We use specialised chemicals for different stain types - from oil and algae to moss and lichen. Each 
                     PowerUp formula is designed to penetrate and eliminate specific problems that pressure washing alone can't solve.
                   </p>
                 </div>
