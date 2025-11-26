@@ -4,7 +4,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Link from "next/link"
-import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, Package } from "lucide-react"
+import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, Package, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -40,6 +40,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { href: "/admin/pwb", icon: Home, label: "Dashboard" },
     { href: "/admin/pwb#blog", icon: FileText, label: "Blog Posts" },
     { href: "/admin/pwb#gallery", icon: ImageIcon, label: "Gallery" },
+    { href: "/admin/pwb#works", icon: Layers, label: "Our Works" },
     { href: "/admin/pwb#pricing", icon: Calculator, label: "Pricing" },
     { href: "/admin/newsletter", icon: Mail, label: "Newsletter" },
     { href: "/admin/quotes", icon: Package, label: "Quote Requests" },

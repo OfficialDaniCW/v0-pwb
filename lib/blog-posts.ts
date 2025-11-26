@@ -7,7 +7,7 @@ export const blogPosts = [
     category: "Company News",
     publishedAt: "2025-11-22",
     readTime: 4,
-    image: "/blog/avoca-partnership.png",
+    featuredImage: "/images/portfolio/commercial-patio-after.jpg",
     relatedService: "/services/commercial",
     author: "PowerWash Bros",
     tags: ["partnership", "commercial cleaning", "avoca group", "industry news"],
@@ -47,7 +47,7 @@ For more information about Avoca Group and their services, please visit their we
     category: "Expert Advice",
     publishedAt: "2025-11-20",
     readTime: 6,
-    image: "/blog/pasma-training.png",
+    featuredImage: "/images/portfolio/render-clean-after.jpg",
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["PASMA", "biocide", "roof cleaning", "safety", "BAC50"],
@@ -106,11 +106,11 @@ When you choose PowerWash Bros, you're choosing a team that combines the right a
     category: "Property Maintenance",
     publishedAt: "2025-01-08",
     readTime: 8,
-    image: "/blog/roof-moss.png",
+    featuredImage: "/images/before1.jpeg",
     relatedService: "/services/demossing",
     author: "PowerWash Bros",
     tags: ["moss", "roof care", "biocide", "property damage"],
-    content: `Moss might look harmless, almost charming in that cottage-garden way. But here's the reality: every day moss remains on your roof, it's holding moisture against your tiles, pushing its roots under tiles and into joints, blocking your gutters and drainage, adding weight to your roof structure, and shortening your roof's lifespan by years.
+    content: `Moss might look harmless, almost charming in that cottage-garden way. But here's the reality: every day moss remains on your roof, it's holding moisture against your property surfaces, pushing its roots under tiles and into joints, blocking your gutters and drainage, adding weight to your roof structure, and shortening your roof's lifespan by years.
 
 We've seen it hundreds of times across Dorset properties. A £200 moss treatment today, or a £3000+ roof repair in two years. Let's talk about why this matters and what you can do about it.
 
@@ -178,7 +178,7 @@ If you're concerned about moss on your property, we offer free assessments acros
     category: "Prevention Tips",
     publishedAt: "2025-01-01",
     readTime: 6,
-    image: "/blog/roof-maintenance.jpg",
+    featuredImage: "/images/before2.jpeg",
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["roof maintenance", "cost saving", "prevention"],
@@ -207,7 +207,7 @@ A professional roof clean and biocide treatment might cost a few hundred pounds.
     category: "Industry Insights",
     publishedAt: "2024-12-20",
     readTime: 7,
-    image: "/blog/cleaning-techniques.jpg",
+    featuredImage: "/images/portfolio/patio-cleaning-after.jpg",
     relatedService: "/services/softwash",
     author: "PowerWash Bros",
     tags: ["soft wash", "pressure wash", "cleaning techniques"],

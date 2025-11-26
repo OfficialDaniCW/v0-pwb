@@ -1,133 +1,138 @@
 "use client"
 
-import * as React from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 
 interface Transformation {
-  id: string
+  id: number
   title: string
-  location: string
-  afterImage: string
-  link: string
+  before_image_url: string
+  after_image_url: string
+  service_type: string
 }
 
-const TRANSFORMATIONS: Transformation[] = [
+const fallbackTransformations: Transformation[] = [
   {
-    id: "roof-clean-biocide",
-    title: "Roof Clean & Biocide Treatment",
-    location: "Dorset",
-    afterImage: "/images/after3.png",
-    link: "/portfolio/roof-clean-biocide-treatment",
+    id: 1,
+    before_image_url: "/images/portfolio/commercial-patio-before.jpg",
+    after_image_url: "/images/portfolio/commercial-patio-after.jpg",
+    title: "Commercial Patio",
+    service_type: "Patio Cleaning",
   },
   {
-    id: "vicarage",
-    title: "The Vicarage",
-    location: "Swanage",
-    afterImage: "/images/after.jpg",
-    link: "/portfolio/swanage-vicarage",
+    id: 2,
+    before_image_url: "/images/portfolio/garden-patio-before.jpg",
+    after_image_url: "/images/portfolio/garden-patio-after.jpg",
+    title: "Garden Patio",
+    service_type: "Patio Cleaning",
   },
   {
-    id: "commercial-patio",
-    title: "Commercial Patio Clean",
-    location: "Dorset",
-    afterImage: "/images/portfolio/commercial-patio-after.jpg",
-    link: "/portfolio/commercial-patio",
-  },
-  {
-    id: "swanage-patio",
-    title: "Patio & Wall Refresh",
-    location: "Swanage",
-    afterImage: "/images/portfolio/swanage-patio-after.jpg",
-    link: "/portfolio/swanage-patio-wall-refresh",
-  },
-  {
-    id: "patio-cleaning",
-    title: "Patio Entrance Restoration",
-    location: "Dorset",
-    afterImage: "/images/portfolio/patio-cleaning-after.jpg",
-    link: "/portfolio/patio-cleaning",
-  },
-  {
-    id: "render-clean",
+    id: 3,
+    before_image_url: "/images/portfolio/render-clean-before.jpg",
+    after_image_url: "/images/portfolio/render-clean-after.jpg",
     title: "Render Cleaning",
-    location: "Dorset",
-    afterImage: "/images/portfolio/render-clean-after.jpg",
-    link: "/portfolio/roof-clean-biocide-treatment",
+    service_type: "Render Cleaning",
+  },
+  {
+    id: 4,
+    before_image_url: "/images/portfolio/swanage-patio-before.jpg",
+    after_image_url: "/images/portfolio/swanage-patio-after.jpg",
+    title: "Swanage Patio",
+    service_type: "Patio Cleaning",
+  },
+  {
+    id: 5,
+    before_image_url: "/images/portfolio/patio-cleaning-before.jpg",
+    after_image_url: "/images/portfolio/patio-cleaning-after.jpg",
+    title: "Patio Restoration",
+    service_type: "Patio Cleaning",
   },
 ]
 
 export function ScrollingTransformations() {
-  const [scrollPosition, setScrollPosition] = React.useState(0)
-  const [isPaused, setIsPaused] = React.useState(false)
+  const [transformations, setTransformations] = useState<Transformation[]>(fallbackTransformations)
 
-  React.useEffect(() => {
-    const scrollSpeed = 0.5
-    const itemWidth = 404
-    const singleSetWidth = TRANSFORMATIONS.length * itemWidth
-    let animationFrameId: number
-
-    const animate = () => {
-      if (!isPaused) {
-        setScrollPosition((prev) => {
-          if (prev >= singleSetWidth) {
-            return prev - singleSetWidth
+  useEffect(() => {
+    // Fetch transformations from database
+    async function fetchTransformations() {
+      try {
+        const res = await fetch("/api/transformations")
+        if (res.ok) {
+          const data = await res.json()
+          if (data.length > 0) {
+            setTransformations(data)
           }
-          return prev + scrollSpeed
-        })
+        }
+      } catch (error) {
+        // Use fallback images if fetch fails
+        console.log("Using fallback transformations")
       }
-      animationFrameId = requestAnimationFrame(animate)
     }
+    fetchTransformations()
+  }, [])
 
-    animationFrameId = requestAnimationFrame(animate)
-
-    return () => {
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [isPaused])
-
-  const tripleTransformations = [...TRANSFORMATIONS, ...TRANSFORMATIONS, ...TRANSFORMATIONS]
+  const displayItems = [...transformations, ...transformations]
 
   return (
-    <div
-      className="relative mt-16 overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div
-        className="flex gap-6 transition-transform duration-100 ease-linear"
-        style={{
-          transform: `translateX(-${scrollPosition}px)`,
-        }}
-      >
-        {tripleTransformations.map((transformation, index) => (
-          <Link
-            key={`${transformation.id}-${index}`}
-            href={transformation.link}
-            className="relative flex-shrink-0 w-[380px] h-[500px] group overflow-hidden rounded-xl"
+    <div className="relative w-full overflow-hidden py-8 bg-[#0B1E3F]/50 backdrop-blur-sm">
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0B1E3F] to-transparent z-10" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0B1E3F] to-transparent z-10" />
+
+      <div className="flex animate-scroll gap-6">
+        {displayItems.map((item, index) => (
+          <div
+            key={`${item.id}-${index}`}
+            className="flex-shrink-0 w-[300px] rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm"
           >
-            <Image
-              src={transformation.afterImage || "/placeholder.svg"}
-              alt={transformation.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              sizes="380px"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <div className="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wide text-white uppercase rounded-full bg-[#1E90FF]">
-                After
+            <div className="relative h-[180px] overflow-hidden">
+              <div className="absolute inset-0 flex">
+                <div className="w-1/2 relative">
+                  <Image
+                    src={item.before_image_url || "/placeholder.svg"}
+                    alt={`${item.title} before`}
+                    fill
+                    className="object-cover"
+                  />
+                  <span className="absolute bottom-2 left-2 text-xs font-semibold bg-red-500/80 text-white px-2 py-1 rounded">
+                    Before
+                  </span>
+                </div>
+                <div className="w-1/2 relative">
+                  <Image
+                    src={item.after_image_url || "/placeholder.svg"}
+                    alt={`${item.title} after`}
+                    fill
+                    className="object-cover"
+                  />
+                  <span className="absolute bottom-2 right-2 text-xs font-semibold bg-[#00C853]/80 text-white px-2 py-1 rounded">
+                    After
+                  </span>
+                </div>
               </div>
-              <h3 className="mb-1 text-2xl font-bold text-white text-balance">{transformation.title}</h3>
-              <p className="text-sm text-white/80">{transformation.location}</p>
             </div>
-          </Link>
+            <div className="p-3 text-center">
+              <p className="text-white font-medium text-sm">{item.title}</p>
+            </div>
+          </div>
         ))}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none bg-gradient-to-t from-[#0A1628] to-transparent" />
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   )
 }
