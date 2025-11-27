@@ -1,9 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
-import { Clock, Calendar } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { blogPosts } from "@/lib/blog-posts"
+import { BlogPostsGrid } from "@/components/blog-posts-grid"
 
 export const metadata = {
   title: "Blog | PowerWash Bros | Expert Property Care Advice",
@@ -11,8 +8,29 @@ export const metadata = {
     "Learn from Dorset's biocide-trained specialists. Expert advice on property maintenance, cleaning techniques, and prevention tips.",
 }
 
-export default function BlogPage() {
-  const posts = blogPosts
+async function getBlogPosts() {
+  try {
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+
+    const response = await fetch(`${baseUrl}/api/blog`, {
+      next: { revalidate: 60 }, // Revalidate every 60 seconds
+    })
+
+    if (!response.ok) {
+      return []
+    }
+
+    return response.json()
+  } catch (error) {
+    console.error("Failed to fetch blog posts:", error)
+    return []
+  }
+}
+
+export default async function BlogPage() {
+  const posts = await getBlogPosts()
 
   const categories = [
     "All Posts",
@@ -63,94 +81,7 @@ export default function BlogPage() {
         </section>
 
         {/* Blog Posts Grid */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post) => (
-                  <div
-                    key={post.slug}
-                    className="group glass-border rounded-2xl overflow-hidden hover:border-[#1E90FF] transition-all flex flex-col"
-                  >
-                    {/* Featured Image */}
-                    <div className="relative">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="block aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center relative overflow-hidden"
-                      >
-                        {post.featuredImage ? (
-                          <Image
-                            src={post.featuredImage || "/placeholder.svg"}
-                            alt={post.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="flex items-center justify-center h-full">
-                            <p className="text-white/60 z-10">Featured Image</p>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </Link>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-xs bg-[#1E90FF]/20 text-[#1E90FF] px-3 py-1 rounded-full">
-                          {post.category}
-                        </span>
-                      </div>
-
-                      <Link href={`/blog/${post.slug}`}>
-                        <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#1E90FF] transition-colors line-clamp-2">
-                          {post.title}
-                        </h2>
-                      </Link>
-
-                      <p className="text-white/70 text-sm mb-4 line-clamp-2 flex-grow">{post.excerpt}</p>
-
-                      <div className="flex items-center gap-4 text-xs text-white/50 mb-4">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>
-                            {new Date(post.publishedAt).toLocaleDateString("en-GB", {
-                              day: "numeric",
-                              month: "short",
-                              year: "numeric",
-                            })}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          <span>{post.readTime} min read</span>
-                        </div>
-                      </div>
-
-                      {post.relatedService && (
-                        <div className="pt-4 border-t border-white/10 mt-auto">
-                          <Link
-                            href={post.relatedService}
-                            className="text-xs text-[#1E90FF] hover:text-[#1E90FF]/80 font-medium inline-flex items-center gap-1"
-                          >
-                            Related Service →
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Load More */}
-              <div className="text-center mt-12">
-                <button className="px-8 py-3 border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg font-medium hover:bg-[#1E90FF] hover:text-white transition-all">
-                  Load More Articles
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BlogPostsGrid posts={posts} />
 
         {/* Newsletter Signup */}
         <section className="py-16 bg-white/5">

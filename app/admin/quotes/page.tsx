@@ -168,8 +168,8 @@ export default function QuoteRequestsPage() {
       <AdminLayout>
         <div className="flex items-center justify-center h-full">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-gray-200 border-t-[#1E90FF] rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading quote requests...</p>
+            <div className="w-12 h-12 border-4 border-white/20 border-t-[#1E90FF] rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-white/60">Loading quote requests...</p>
           </div>
         </div>
       </AdminLayout>
@@ -179,86 +179,83 @@ export default function QuoteRequestsPage() {
   return (
     <AdminLayout>
       <div className="p-6 max-w-7xl mx-auto space-y-6">
-        {/* Page Header */}
         <div>
-          <h1 className="text-3xl font-bold text-[#0B1E3F]">Quote Requests</h1>
-          <p className="text-gray-600 mt-1">Manage customer quote requests and enquiries</p>
+          <h1 className="text-3xl font-bold text-white">Quote Requests</h1>
+          <p className="text-white/60 mt-1">Manage customer quote requests and enquiries</p>
         </div>
 
-        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Total Requests</p>
-                  <p className="text-3xl font-bold text-[#0B1E3F] mt-1">{stats.total}</p>
+                  <p className="text-sm text-white/60">Total Requests</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#1E90FF]/20 rounded-xl flex items-center justify-center">
                   <Mail className="h-6 w-6 text-[#1E90FF]" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">New</p>
-                  <p className="text-3xl font-bold text-blue-600 mt-1">{stats.new}</p>
+                  <p className="text-sm text-white/60">New</p>
+                  <p className="text-3xl font-bold text-[#1E90FF] mt-1">{stats.new}</p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Clock className="h-6 w-6 text-blue-600" />
+                <div className="w-12 h-12 bg-[#1E90FF]/20 rounded-xl flex items-center justify-center">
+                  <Clock className="h-6 w-6 text-[#1E90FF]" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Contacted</p>
-                  <p className="text-3xl font-bold text-yellow-600 mt-1">{stats.contacted}</p>
+                  <p className="text-sm text-white/60">Contacted</p>
+                  <p className="text-3xl font-bold text-yellow-400 mt-1">{stats.contacted}</p>
                 </div>
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <Phone className="h-6 w-6 text-yellow-600" />
+                <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center">
+                  <Phone className="h-6 w-6 text-yellow-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Completed</p>
-                  <p className="text-3xl font-bold text-green-600 mt-1">{stats.completed}</p>
+                  <p className="text-sm text-white/60">Completed</p>
+                  <p className="text-3xl font-bold text-[#00C853] mt-1">{stats.completed}</p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-green-600" />
+                <div className="w-12 h-12 bg-[#00C853]/20 rounded-xl flex items-center justify-center">
+                  <CheckCircle2 className="h-6 w-6 text-[#00C853]" />
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Filters */}
-        <Card className="bg-white border-gray-200">
+        <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
                 <Input
                   placeholder="Search by name, email, postcode..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 border-gray-300"
+                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40"
                 />
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-48 border-gray-300">
+                <SelectTrigger className="w-full md:w-48 bg-white/10 border-white/20 text-white">
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
@@ -274,22 +271,21 @@ export default function QuoteRequestsPage() {
           </CardContent>
         </Card>
 
-        {/* Quotes List */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* List */}
           <div className="space-y-4">
             {filteredQuotes.length === 0 ? (
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
                 <CardContent className="p-12 text-center">
-                  <Mail className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-600">No quote requests found</p>
+                  <Mail className="h-12 w-12 text-white/30 mx-auto mb-4" />
+                  <p className="text-white/60">No quote requests found</p>
                 </CardContent>
               </Card>
             ) : (
               filteredQuotes.map((quote) => (
                 <Card
                   key={quote.id}
-                  className={`bg-white border-gray-200 cursor-pointer transition-all hover:shadow-md ${
+                  className={`bg-[#0B1E3F] border-white/10 cursor-pointer transition-all hover:bg-[#0B1E3F]/80 shadow-lg ${
                     selectedQuote?.id === quote.id ? "ring-2 ring-[#1E90FF]" : ""
                   }`}
                   onClick={() => setSelectedQuote(quote)}
@@ -297,25 +293,25 @@ export default function QuoteRequestsPage() {
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
-                        <h3 className="font-semibold text-[#0B1E3F] text-lg">{quote.name}</h3>
-                        <p className="text-sm text-gray-600">{quote.service_needed}</p>
+                        <h3 className="font-semibold text-white text-lg">{quote.name}</h3>
+                        <p className="text-sm text-white/60">{quote.service_needed}</p>
                       </div>
                       {getStatusBadge(quote.status)}
                     </div>
                     <div className="space-y-2 text-sm">
-                      <div className="flex items-center gap-2 text-gray-600">
+                      <div className="flex items-center gap-2 text-white/60">
                         <Mail className="h-4 w-4" />
                         <span>{quote.email}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-600">
+                      <div className="flex items-center gap-2 text-white/60">
                         <Phone className="h-4 w-4" />
                         <span>{quote.phone}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-600">
+                      <div className="flex items-center gap-2 text-white/60">
                         <MapPin className="h-4 w-4" />
                         <span>{quote.postcode}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-600">
+                      <div className="flex items-center gap-2 text-white/60">
                         <Calendar className="h-4 w-4" />
                         <span>{formatDate(quote.created_at)}</span>
                       </div>
@@ -329,12 +325,12 @@ export default function QuoteRequestsPage() {
           {/* Detail View */}
           <div className="lg:sticky lg:top-24 lg:h-fit">
             {selectedQuote ? (
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="border-b border-gray-200">
+              <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+                <CardHeader className="border-b border-white/10">
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="text-[#0B1E3F]">Quote Request Details</CardTitle>
-                      <p className="text-sm text-gray-600 mt-1">ID: {selectedQuote.id}</p>
+                      <CardTitle className="text-white">Quote Request Details</CardTitle>
+                      <p className="text-sm text-white/60 mt-1">ID: {selectedQuote.id}</p>
                     </div>
                     {getStatusBadge(selectedQuote.status)}
                   </div>
@@ -342,79 +338,79 @@ export default function QuoteRequestsPage() {
                 <CardContent className="p-6 space-y-6">
                   {/* Customer Info */}
                   <div>
-                    <h4 className="font-semibold text-[#0B1E3F] mb-3">Customer Information</h4>
+                    <h4 className="font-semibold text-white mb-3">Customer Information</h4>
                     <div className="space-y-3">
                       <div>
-                        <label className="text-sm text-gray-600">Name</label>
-                        <p className="text-[#0B1E3F] font-medium">{selectedQuote.name}</p>
+                        <label className="text-sm text-white/60">Name</label>
+                        <p className="text-white font-medium">{selectedQuote.name}</p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Email</label>
-                        <p className="text-[#0B1E3F]">
+                        <label className="text-sm text-white/60">Email</label>
+                        <p className="text-white">
                           <a href={`mailto:${selectedQuote.email}`} className="text-[#1E90FF] hover:underline">
                             {selectedQuote.email}
                           </a>
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Phone</label>
-                        <p className="text-[#0B1E3F]">
+                        <label className="text-sm text-white/60">Phone</label>
+                        <p className="text-white">
                           <a href={`tel:${selectedQuote.phone}`} className="text-[#1E90FF] hover:underline">
                             {selectedQuote.phone}
                           </a>
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Preferred Contact Method</label>
-                        <p className="text-[#0B1E3F] capitalize">{selectedQuote.preferred_contact}</p>
+                        <label className="text-sm text-white/60">Preferred Contact Method</label>
+                        <p className="text-white capitalize">{selectedQuote.preferred_contact}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Property Info */}
                   <div>
-                    <h4 className="font-semibold text-[#0B1E3F] mb-3">Property Details</h4>
+                    <h4 className="font-semibold text-white mb-3">Property Details</h4>
                     <div className="space-y-3">
                       <div>
-                        <label className="text-sm text-gray-600">Service Needed</label>
-                        <p className="text-[#0B1E3F] font-medium">{selectedQuote.service_needed}</p>
+                        <label className="text-sm text-white/60">Service Needed</label>
+                        <p className="text-white font-medium">{selectedQuote.service_needed}</p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Property Type</label>
-                        <p className="text-[#0B1E3F] capitalize">{selectedQuote.property_type}</p>
+                        <label className="text-sm text-white/60">Property Type</label>
+                        <p className="text-white capitalize">{selectedQuote.property_type}</p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Postcode</label>
-                        <p className="text-[#0B1E3F]">{selectedQuote.postcode}</p>
+                        <label className="text-sm text-white/60">Postcode</label>
+                        <p className="text-white">{selectedQuote.postcode}</p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">Additional Details</label>
-                        <p className="text-[#0B1E3F] whitespace-pre-wrap">
+                        <label className="text-sm text-white/60">Additional Details</label>
+                        <p className="text-white whitespace-pre-wrap">
                           {selectedQuote.property_details || "No additional details provided"}
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600">How They Heard About Us</label>
-                        <p className="text-[#0B1E3F] capitalize">{selectedQuote.heard_from || "Not specified"}</p>
+                        <label className="text-sm text-white/60">How They Heard About Us</label>
+                        <p className="text-white capitalize">{selectedQuote.heard_from || "Not specified"}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Request Info */}
                   <div>
-                    <h4 className="font-semibold text-[#0B1E3F] mb-3">Request Information</h4>
+                    <h4 className="font-semibold text-white mb-3">Request Information</h4>
                     <div className="space-y-3">
                       <div>
-                        <label className="text-sm text-gray-600">Submitted</label>
-                        <p className="text-[#0B1E3F]">{formatDate(selectedQuote.created_at)}</p>
+                        <label className="text-sm text-white/60">Submitted</label>
+                        <p className="text-white">{formatDate(selectedQuote.created_at)}</p>
                       </div>
                       <div>
-                        <label className="text-sm text-gray-600 mb-2 block">Update Status</label>
+                        <label className="text-sm text-white/60 mb-2 block">Update Status</label>
                         <Select
                           value={selectedQuote.status}
                           onValueChange={(value) => updateQuoteStatus(selectedQuote.id, value)}
                         >
-                          <SelectTrigger className="border-gray-300">
+                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -429,7 +425,7 @@ export default function QuoteRequestsPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex gap-3 pt-4 border-t border-gray-200">
+                  <div className="flex gap-3 pt-4 border-t border-white/10">
                     <Button
                       onClick={() => window.open(`mailto:${selectedQuote.email}`, "_blank")}
                       className="flex-1 bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white"
@@ -440,7 +436,7 @@ export default function QuoteRequestsPage() {
                     <Button
                       onClick={() => deleteQuote(selectedQuote.id)}
                       variant="outline"
-                      className="border-red-300 text-red-600 hover:bg-red-50"
+                      className="border-red-400/30 text-red-400 hover:bg-red-500/10"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -448,10 +444,10 @@ export default function QuoteRequestsPage() {
                 </CardContent>
               </Card>
             ) : (
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
                 <CardContent className="p-12 text-center">
-                  <Eye className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-600">Select a quote request to view details</p>
+                  <Eye className="h-12 w-12 text-white/30 mx-auto mb-4" />
+                  <p className="text-white/60">Select a quote request to view details</p>
                 </CardContent>
               </Card>
             )}

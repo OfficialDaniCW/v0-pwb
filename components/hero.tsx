@@ -33,7 +33,7 @@ export function Hero() {
             <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)]">
               Property{" "}
               <span
-                className={`inline-block transition-all duration-300 ${
+                className={`inline-block min-w-[200px] sm:min-w-[280px] md:min-w-[340px] transition-all duration-300 ${
                   isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
                 }`}
               >
@@ -81,6 +81,7 @@ export function Hero() {
               className="bg-[#00C853] text-white font-semibold rounded-lg px-8 py-6 text-lg
                          hover:bg-[#00A843] hover:shadow-lg hover:scale-105
                          transition-all duration-300"
+              aria-label="Chat with PowerWash Bros on WhatsApp"
             >
               <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
                 Chat on WhatsApp
@@ -92,6 +93,7 @@ export function Hero() {
               size="lg"
               className="border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg px-8 py-6 text-lg
                          hover:bg-[#1E90FF] hover:text-white transition-all duration-300"
+              aria-label="View our work transformations gallery"
             >
               <a href="/our-work">View Transformations</a>
             </Button>

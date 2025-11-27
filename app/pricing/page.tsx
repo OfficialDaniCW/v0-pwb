@@ -6,41 +6,68 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
 import { useState, useEffect } from "react"
-import { Calculator, CheckCircle2 } from 'lucide-react'
+import { Calculator, CheckCircle2, Info, Droplets, Zap } from "lucide-react"
 
 export default function PricingPage() {
   const [serviceType, setServiceType] = useState("driveway")
   const [size, setSize] = useState([50])
+  const [gutterLength, setGutterLength] = useState([15])
   const [access, setAccess] = useState("easy")
-  const [water, setWater] = useState("yes")
+  const [surfaceType, setSurfaceType] = useState("standard")
+  const [needsResanding, setNeedsResanding] = useState(false)
   const [estimatedPrice, setEstimatedPrice] = useState(0)
 
-  // Pricing data fetched from backend (simplified for now)
-  const [pricingData, setPricingData] = useState({
-    driveway: { baseRate: 2.5, easyAccess: 1, hardAccess: 1.3, noWater: 1.2 },
-    patio: { baseRate: 2.3, easyAccess: 1, hardAccess: 1.25, noWater: 1.15 },
-    roof: { baseRate: 3.5, easyAccess: 1, hardAccess: 1.4, noWater: 1.1 },
-    walls: { baseRate: 2.0, easyAccess: 1, hardAccess: 1.3, noWater: 1.2 },
+  const [pricingData] = useState({
+    driveway: {
+      baseRate: 3.5,
+      blockPavingResanding: 1.5,
+      easyAccess: 1,
+      hardAccess: 1.3,
+    },
+    patio: { baseRate: 3.0, easyAccess: 1, hardAccess: 1.25 },
+    roof: { baseRate: 4.5, easyAccess: 1, hardAccess: 1.4 },
+    gutter: { baseRate: 8.0, perMetre: true },
+    walls: { baseRate: 2.8, easyAccess: 1, hardAccess: 1.3 },
+    softwash: { baseRate: 3.2, easyAccess: 1, hardAccess: 1.35 },
   })
 
   useEffect(() => {
-    // Calculate price
-    const service = pricingData[serviceType as keyof typeof pricingData]
-    if (!service) return
+    calculatePrice()
+  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding])
 
-    let price = size[0] * service.baseRate
-    price *= access === "hard" ? service.hardAccess : service.easyAccess
-    price *= water === "no" ? service.noWater : 1
+  const calculatePrice = () => {
+    let price = 0
+
+    if (serviceType === "gutter") {
+      // Gutter is priced per linear metre
+      price = gutterLength[0] * pricingData.gutter.baseRate
+    } else {
+      const service = pricingData[serviceType as keyof typeof pricingData]
+      if (!service || !("baseRate" in service)) return
+
+      price = size[0] * service.baseRate
+
+      // Apply access multiplier
+      if ("easyAccess" in service && "hardAccess" in service) {
+        price *= access === "hard" ? service.hardAccess : service.easyAccess
+      }
+
+      // Add block paving resanding for driveways
+      if (serviceType === "driveway" && surfaceType === "block" && needsResanding) {
+        price += size[0] * pricingData.driveway.blockPavingResanding
+      }
+    }
 
     setEstimatedPrice(Math.round(price))
-  }, [serviceType, size, access, water, pricingData])
+  }
 
   return (
     <>
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
-        
+
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -48,78 +75,142 @@ export default function PricingPage() {
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-6 mx-auto">
                   <Calculator className="h-10 w-10 text-[#1E90FF]" />
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                  Instant Pricing Calculator
-                </h1>
-                <p className="text-xl text-white/70">
-                  Get a rough estimate for your property cleaning project
-                </p>
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Instant Pricing Calculator</h1>
+                <p className="text-xl text-white/70">Get a rough estimate for your property cleaning project</p>
               </div>
 
               <div className="glass-border-enhanced rounded-2xl p-8 space-y-8">
                 {/* Service Type */}
                 <div className="space-y-3">
                   <Label className="text-white text-lg">Service Type</Label>
-                  <Select value={serviceType} onValueChange={setServiceType}>
+                  <Select
+                    value={serviceType}
+                    onValueChange={(val) => {
+                      setServiceType(val)
+                      // Reset surface type when changing service
+                      setSurfaceType("standard")
+                      setNeedsResanding(false)
+                    }}
+                  >
                     <SelectTrigger className="bg-white/10 border-white/20 text-white">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="driveway">Driveway Cleaning</SelectItem>
                       <SelectItem value="patio">Patio/Decking</SelectItem>
-                      <SelectItem value="roof">Roof & Gutters</SelectItem>
+                      <SelectItem value="roof">Roof Cleaning</SelectItem>
+                      <SelectItem value="gutter">Gutter Cleaning</SelectItem>
                       <SelectItem value="walls">Exterior Walls</SelectItem>
+                      <SelectItem value="softwash">Softwash Treatment</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                {/* Size */}
-                <div className="space-y-3">
-                  <Label className="text-white text-lg">Approximate Size (m²): {size[0]}m²</Label>
-                  <Slider
-                    value={size}
-                    onValueChange={setSize}
-                    min={10}
-                    max={500}
-                    step={10}
-                    className="w-full"
-                  />
-                  <p className="text-white/60 text-sm">Adjust slider to match your property size</p>
-                </div>
+                {/* Conditional: Driveway Surface Type */}
+                {serviceType === "driveway" && (
+                  <div className="space-y-3">
+                    <Label className="text-white text-lg">Driveway Surface Type</Label>
+                    <Select value={surfaceType} onValueChange={setSurfaceType}>
+                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="standard">Concrete / Tarmac / Resin</SelectItem>
+                        <SelectItem value="block">Block Paving</SelectItem>
+                        <SelectItem value="natural">Natural Stone</SelectItem>
+                      </SelectContent>
+                    </Select>
 
-                {/* Access */}
-                <div className="space-y-3">
-                  <Label className="text-white text-lg">Property Access</Label>
-                  <Select value={access} onValueChange={setAccess}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="easy">Easy (parking nearby, no obstructions)</SelectItem>
-                      <SelectItem value="hard">Difficult (limited access, stairs, etc.)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                    {/* Block Paving Resanding Option */}
+                    {surfaceType === "block" && (
+                      <div className="bg-[#1E90FF]/10 rounded-lg p-4 border border-[#1E90FF]/30 mt-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-start gap-3">
+                            <Info className="h-5 w-5 text-[#1E90FF] mt-0.5 flex-shrink-0" />
+                            <div>
+                              <p className="text-white font-medium">Kiln-Dried Sand Re-Application</p>
+                              <p className="text-white/60 text-sm">
+                                Block paving benefits from re-sanding after cleaning (+£
+                                {pricingData.driveway.blockPavingResanding.toFixed(2)}/sqm)
+                              </p>
+                            </div>
+                          </div>
+                          <Switch checked={needsResanding} onCheckedChange={setNeedsResanding} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-                {/* Water */}
-                <div className="space-y-3">
-                  <Label className="text-white text-lg">Water Supply Available?</Label>
-                  <Select value={water} onValueChange={setWater}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="yes">Yes (water tap on property)</SelectItem>
-                      <SelectItem value="no">No (we'll need to bring water)</SelectItem>
-                    </SelectContent>
-                  </Select>
+                {/* Size - for non-gutter services */}
+                {serviceType !== "gutter" ? (
+                  <div className="space-y-3">
+                    <Label className="text-white text-lg">Approximate Size: {size[0]}m²</Label>
+                    <Slider value={size} onValueChange={setSize} min={10} max={500} step={10} className="w-full" />
+                    <p className="text-white/60 text-sm">Adjust slider to match your property size</p>
+                  </div>
+                ) : (
+                  /* Gutter Length */
+                  <div className="space-y-3">
+                    <Label className="text-white text-lg">Gutter Length: {gutterLength[0]} linear metres</Label>
+                    <Slider
+                      value={gutterLength}
+                      onValueChange={setGutterLength}
+                      min={5}
+                      max={100}
+                      step={5}
+                      className="w-full"
+                    />
+                    <p className="text-white/60 text-sm">Estimate the total length of guttering around your property</p>
+                  </div>
+                )}
+
+                {/* Access - not shown for gutter */}
+                {serviceType !== "gutter" && (
+                  <div className="space-y-3">
+                    <Label className="text-white text-lg">Property Access</Label>
+                    <Select value={access} onValueChange={setAccess}>
+                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="easy">Easy (parking nearby, no obstructions)</SelectItem>
+                        <SelectItem value="hard">Difficult (limited access, stairs, slopes)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {/* Water & Power Notice */}
+                <div className="bg-amber-500/10 rounded-lg p-4 border border-amber-500/30">
+                  <div className="flex items-start gap-3">
+                    <div className="flex gap-2">
+                      <Droplets className="h-5 w-5 text-amber-400" />
+                      <Zap className="h-5 w-5 text-amber-400" />
+                    </div>
+                    <div>
+                      <p className="text-white font-medium">Water & Power Required</p>
+                      <p className="text-white/60 text-sm">
+                        We will need access to an external water tap and power supply on the day of service. Please
+                        ensure these are accessible.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Estimated Price */}
                 <div className="bg-[#1E90FF]/20 rounded-xl p-8 text-center border-2 border-[#1E90FF]">
                   <p className="text-white/80 mb-2">Estimated Price</p>
                   <p className="text-5xl font-bold text-[#1E90FF]">£{estimatedPrice}</p>
-                  <p className="text-white/60 text-sm mt-2">(This is a rough estimate)</p>
+                  <p className="text-white/60 text-sm mt-2">
+                    {serviceType === "gutter"
+                      ? `Based on ${gutterLength[0]} linear metres`
+                      : `Based on ${size[0]}m² area`}
+                    {serviceType === "driveway" && surfaceType === "block" && needsResanding && " (includes resanding)"}
+                  </p>
+                  <p className="text-amber-400 text-xs mt-3">
+                    * Online estimates are indicative. Final quote provided after site assessment.
+                  </p>
                 </div>
 
                 {/* CTA */}
@@ -150,7 +241,7 @@ export default function PricingPage() {
                     "Professional equipment",
                     "Waste disposal",
                     "Before/after photos",
-                    "Satisfaction guarantee"
+                    "Satisfaction guarantee",
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="h-6 w-6 text-[#00C853] flex-shrink-0 mt-0.5" />

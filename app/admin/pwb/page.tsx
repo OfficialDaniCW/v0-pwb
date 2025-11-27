@@ -1,34 +1,28 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
-import AdminLayout from "@/components/admin/admin-layout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import {
-  Trash2,
-  Upload,
   FileText,
   Save,
   Eye,
-  CheckCircle,
-  AlertCircle,
   Sparkles,
   Calculator,
-  Bold,
-  Italic,
-  List,
-  Link2,
-  Heading2,
   TrendingUp,
   ImageIcon,
   Layers,
-  Star,
+  Upload,
+  Trash2,
+  Edit,
+  AlertTriangle,
 } from "lucide-react"
-import { blogPosts as staticBlogPosts } from "@/lib/blog-posts"
+import Image from "next/image"
 
 interface BlogPost {
   id: number
@@ -39,8 +33,10 @@ interface BlogPost {
   category: string
   published_at: string | null
   is_published: boolean
-  featuredImage?: string
-  readTime?: number
+  featured_image_url?: string
+  read_time_minutes?: number
+  author?: string
+  tags?: string[]
 }
 
 interface GalleryImage {
@@ -131,24 +127,12 @@ export default function PWBAdminDashboard() {
   const [uploadingAfter, setUploadingAfter] = useState(false)
   const [uploadingWorksBefore, setUploadingWorksBefore] = useState(false)
   const [uploadingWorksAfter, setUploadingWorksAfter] = useState(false)
+  const [uploadingBlogImage, setUploadingBlogImage] = useState(false)
 
   const [aiGenerating, setAiGenerating] = useState(false)
   const [aiPrompt, setAiPrompt] = useState("")
 
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() =>
-    staticBlogPosts.map((post, index) => ({
-      id: index + 1,
-      title: post.title,
-      slug: post.slug,
-      excerpt: post.excerpt,
-      content: post.content,
-      category: post.category,
-      published_at: post.publishedAt,
-      is_published: true,
-      featuredImage: post.featuredImage,
-      readTime: post.readTime,
-    })),
-  )
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [currentPost, setCurrentPost] = useState<Partial<BlogPost>>({
     title: "",
     slug: "",
@@ -156,27 +140,26 @@ export default function PWBAdminDashboard() {
     content: "",
     category: "Property Maintenance",
     is_published: false,
+    featured_image_url: "",
+    read_time_minutes: 5,
+    author: "PowerWash Bros",
   })
 
   const [pricingData, setPricingData] = useState({
-    driveway: { baseRate: 2.5, easyAccess: 1, hardAccess: 1.3, noWater: 1.2 },
-    patio: { baseRate: 2.3, easyAccess: 1, hardAccess: 1.25, noWater: 1.15 },
-    roof: { baseRate: 3.5, easyAccess: 1, hardAccess: 1.4, noWater: 1.1 },
-    walls: { baseRate: 2.0, easyAccess: 1, hardAccess: 1.3, noWater: 1.2 },
+    driveway: {
+      baseRate: 3.5,
+      blockPavingResanding: 1.5, // per sqm add-on
+      easyAccess: 1,
+      hardAccess: 1.3,
+    },
+    patio: { baseRate: 3.0, easyAccess: 1, hardAccess: 1.25 },
+    roof: { baseRate: 4.5, easyAccess: 1, hardAccess: 1.4 },
+    gutter: { baseRate: 8.0, perMetre: true }, // per linear metre
+    walls: { baseRate: 2.8, easyAccess: 1, hardAccess: 1.3 },
+    softwash: { baseRate: 3.2, easyAccess: 1, hardAccess: 1.35 },
   })
 
-  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(() =>
-    fallbackPortfolio.map((item) => ({
-      id: item.id,
-      title: item.title,
-      location: item.location,
-      service_type: item.service_type,
-      before_image_url: item.before_image_url,
-      after_image_url: item.after_image_url,
-      description: item.description,
-      featured: item.featured,
-    })),
-  )
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(fallbackPortfolio)
   const [currentGallery, setCurrentGallery] = useState<Partial<GalleryImage>>({
     title: "",
     location: "",
@@ -199,12 +182,26 @@ export default function PWBAdminDashboard() {
     display_order: 0,
   })
 
-  // Load data from database (merge with existing)
   useEffect(() => {
     loadBlogPosts()
     loadGalleryImages()
     loadTransformations()
+    // Load pricing data on mount
+    fetchPricingData()
   }, [])
+
+  const fetchPricingData = async () => {
+    try {
+      const response = await fetch("/api/admin/pricing")
+      if (response.ok) {
+        const data = await response.json()
+        setPricingData(data)
+      }
+    } catch (error) {
+      console.error("Failed to fetch pricing data:", error)
+      // Keep default pricing if fetch fails
+    }
+  }
 
   const handleSectionChange = (section: string) => {
     setActiveSection(section || "dashboard")
@@ -213,45 +210,12 @@ export default function PWBAdminDashboard() {
   const loadBlogPosts = async () => {
     try {
       const response = await fetch("/api/admin/blog")
-      const data = await response.json()
-      if (Array.isArray(data) && data.length > 0) {
-        // Merge database posts with static posts (avoid duplicates)
-        const dbSlugs = new Set(data.map((p: BlogPost) => p.slug))
-        const staticNotInDb = staticBlogPosts
-          .filter((p) => !dbSlugs.has(p.slug))
-          .map((post, index) => ({
-            id: 1000 + index, // Assign higher IDs to distinguish from DB entries if needed
-            title: post.title,
-            slug: post.slug,
-            excerpt: post.excerpt,
-            content: post.content,
-            category: post.category,
-            published_at: post.publishedAt,
-            is_published: true,
-            featuredImage: post.featuredImage,
-            readTime: post.readTime,
-          }))
-        setBlogPosts([...data, ...staticNotInDb])
-      } else {
-        // If DB has no posts, use static ones as fallback
-        setBlogPosts(
-          staticBlogPosts.map((post, index) => ({
-            id: index + 1,
-            title: post.title,
-            slug: post.slug,
-            excerpt: post.excerpt,
-            content: post.content,
-            category: post.category,
-            published_at: post.publishedAt,
-            is_published: true,
-            featuredImage: post.featuredImage,
-            readTime: post.readTime,
-          })),
-        )
+      if (response.ok) {
+        const posts = await response.json()
+        setBlogPosts(posts)
       }
     } catch (error) {
-      console.error("Error loading blog posts:", error)
-      // Keep the static posts as fallback
+      console.error("Failed to fetch blog posts:", error)
     }
   }
 
@@ -341,33 +305,71 @@ export default function PWBAdminDashboard() {
     }
   }
 
+  const handleBlogImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploadingBlogImage(true)
+    const formData = new FormData()
+    formData.append("file", file)
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setCurrentPost((prev) => ({ ...prev, featured_image_url: data.url }))
+        setSaveMessage("Image uploaded successfully!")
+      } else {
+        setSaveMessage("Failed to upload image")
+      }
+    } catch (error) {
+      setSaveMessage("Error uploading image")
+    } finally {
+      setUploadingBlogImage(false)
+      setTimeout(() => setSaveMessage(""), 3000)
+    }
+  }
+
   const saveBlogPost = async () => {
     try {
       const method = currentPost.id ? "PUT" : "POST"
       const response = await fetch("/api/admin/blog", {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(currentPost),
+        body: JSON.stringify({
+          ...currentPost,
+          is_published: true,
+        }),
       })
 
       if (response.ok) {
-        setSaveMessage("Blog post saved successfully!")
-        loadBlogPosts()
-        if (!currentPost.id) {
-          setCurrentPost({
-            title: "",
-            slug: "",
-            excerpt: "",
-            content: "",
-            category: "Property Maintenance",
-            is_published: false,
-          })
+        const savedPost = await response.json()
+        if (currentPost.id) {
+          setBlogPosts((prev) => prev.map((p) => (p.id === savedPost.id ? savedPost : p)))
+        } else {
+          setBlogPosts((prev) => [savedPost, ...prev])
         }
+        setCurrentPost({
+          title: "",
+          slug: "",
+          excerpt: "",
+          content: "",
+          category: "Property Maintenance",
+          is_published: false,
+          featured_image_url: "",
+          read_time_minutes: 5,
+          author: "PowerWash Bros",
+        })
+        setSaveMessage("Blog post saved successfully!")
       } else {
-        setSaveMessage("Error saving blog post. Please try again.")
+        setSaveMessage("Failed to save blog post")
       }
     } catch (error) {
-      setSaveMessage("Error saving blog post. Please try again.")
+      setSaveMessage("Error saving blog post")
     }
     setTimeout(() => setSaveMessage(""), 3000)
   }
@@ -376,20 +378,25 @@ export default function PWBAdminDashboard() {
     if (!confirm("Are you sure you want to delete this blog post?")) return
 
     try {
-      const response = await fetch(`/api/admin/blog/${id}`, {
+      const response = await fetch(`/api/admin/blog?id=${id}`, {
         method: "DELETE",
       })
 
       if (response.ok) {
+        setBlogPosts((prev) => prev.filter((p) => p.id !== id))
         setSaveMessage("Blog post deleted successfully!")
-        loadBlogPosts()
       } else {
-        setSaveMessage("Error deleting blog post. Please try again.")
+        setSaveMessage("Failed to delete blog post")
       }
     } catch (error) {
-      setSaveMessage("Error deleting blog post. Please try again.")
+      setSaveMessage("Error deleting blog post")
     }
     setTimeout(() => setSaveMessage(""), 3000)
+  }
+
+  const editBlogPost = (post: BlogPost) => {
+    setCurrentPost(post)
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   const saveGalleryItem = async () => {
@@ -549,7 +556,6 @@ export default function PWBAdminDashboard() {
       content: before + newText + after,
     }))
 
-    // Set cursor position after insertion (optional, for better UX)
     requestAnimationFrame(() => {
       const textareaAfterUpdate = document.querySelector('[data-rich-text="true"]') as HTMLTextAreaElement
       if (textareaAfterUpdate) {
@@ -564,7 +570,6 @@ export default function PWBAdminDashboard() {
 
     setAiGenerating(true)
     try {
-      // Changed API endpoint to match typical blog helper functionality
       const response = await fetch("/api/ai/blog-helper", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -575,7 +580,6 @@ export default function PWBAdminDashboard() {
         const data = await response.json()
         setCurrentPost((prev) => ({
           ...prev,
-          // Append generated content to existing content
           content: (prev.content || "") + "\n\n" + data.content,
         }))
         setAiPrompt("")
@@ -858,41 +862,86 @@ export default function PWBAdminDashboard() {
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="category" className="text-white">
+                Category
+              </Label>
+              <select
+                id="category"
+                value={currentPost.category || "Property Maintenance"}
+                onChange={(e) => setCurrentPost((prev) => ({ ...prev, category: e.target.value }))}
+                className="w-full h-10 px-3 rounded-md bg-white/10 border border-white/20 text-white"
+              >
+                <option value="Property Maintenance">Property Maintenance</option>
+                <option value="Prevention Tips">Prevention Tips</option>
+                <option value="Dorset Properties">Dorset Properties</option>
+                <option value="Industry Insights">Industry Insights</option>
+                <option value="Product Guides">Product Guides</option>
+                <option value="Company News">Company News</option>
+                <option value="Expert Advice">Expert Advice</option>
+              </select>
+            </div>
+            <div>
+              <Label htmlFor="readTime" className="text-white">
+                Read Time (minutes)
+              </Label>
+              <Input
+                id="readTime"
+                type="number"
+                value={currentPost.read_time_minutes || 5}
+                onChange={(e) =>
+                  setCurrentPost((prev) => ({ ...prev, read_time_minutes: Number.parseInt(e.target.value) || 5 }))
+                }
+                className="bg-white/10 border-white/20 text-white"
+              />
+            </div>
+          </div>
+
           <div>
-            <Label htmlFor="category" className="text-white">
-              Category
-            </Label>
-            <select
-              id="category"
-              value={currentPost.category || "Property Maintenance"}
-              onChange={(e) => setCurrentPost((prev) => ({ ...prev, category: e.target.value }))}
-              className="w-full h-10 px-3 rounded-md border border-white/20 bg-white/10 text-white"
-            >
-              <option value="Property Maintenance" className="bg-[#0B1E3F]">
-                Property Maintenance
-              </option>
-              <option value="Cleaning Tips" className="bg-[#0B1E3F]">
-                Cleaning Tips
-              </option>
-              <option value="Business News" className="bg-[#0B1E3F]">
-                Business News
-              </option>
-              <option value="Seasonal Advice" className="bg-[#0B1E3F]">
-                Seasonal Advice
-              </option>
-              <option value="Company News" className="bg-[#0B1E3F]">
-                Company News
-              </option>
-              <option value="Expert Advice" className="bg-[#0B1E3F]">
-                Expert Advice
-              </option>
-              <option value="Prevention Tips" className="bg-[#0B1E3F]">
-                Prevention Tips
-              </option>
-              <option value="Industry Insights" className="bg-[#0B1E3F]">
-                Industry Insights
-              </option>
-            </select>
+            <Label className="text-white mb-2 block">Featured Image</Label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                {currentPost.featured_image_url ? (
+                  <div className="relative aspect-video rounded-lg overflow-hidden border border-white/20">
+                    <Image
+                      src={currentPost.featured_image_url || "/placeholder.svg"}
+                      alt="Featured image preview"
+                      fill
+                      className="object-cover"
+                    />
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      className="absolute top-2 right-2"
+                      onClick={() => setCurrentPost((prev) => ({ ...prev, featured_image_url: "" }))}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center aspect-video border-2 border-dashed border-white/30 rounded-lg cursor-pointer hover:border-[#1E90FF] transition-colors">
+                    <Upload className="h-8 w-8 text-white/50 mb-2" />
+                    <span className="text-white/50 text-sm">
+                      {uploadingBlogImage ? "Uploading..." : "Click to upload featured image"}
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleBlogImageUpload}
+                      disabled={uploadingBlogImage}
+                    />
+                  </label>
+                )}
+              </div>
+              <div className="text-sm text-white/60 space-y-2">
+                <p>Recommended size: 1200 x 630 pixels</p>
+                <p>Max file size: 5MB</p>
+                <p>Supported formats: JPG, PNG, WebP</p>
+                <p className="text-[#1E90FF]">Images are automatically optimised on upload</p>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -903,93 +952,27 @@ export default function PWBAdminDashboard() {
               id="excerpt"
               value={currentPost.excerpt || ""}
               onChange={(e) => setCurrentPost((prev) => ({ ...prev, excerpt: e.target.value }))}
-              placeholder="Brief summary of the post..."
+              placeholder="A brief summary of the blog post (shown in cards)..."
               rows={2}
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <Label htmlFor="content" className="text-white">
-                Content
-              </Label>
-              <div className="flex gap-1">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => insertFormatting("bold")}
-                  className="text-white/70 hover:text-white hover:bg-white/10"
-                >
-                  <Bold className="h-4 w-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => insertFormatting("italic")}
-                  className="text-white/70 hover:text-white hover:bg-white/10"
-                >
-                  <Italic className="h-4 w-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => insertFormatting("heading")}
-                  className="text-white/70 hover:text-white hover:bg-white/10"
-                >
-                  <Heading2 className="h-4 w-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => insertFormatting("list")}
-                  className="text-white/70 hover:text-white hover:bg-white/10"
-                >
-                  <List className="h-4 w-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => insertFormatting("link")}
-                  className="text-white/70 hover:text-white hover:bg-white/10"
-                >
-                  <Link2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+            <Label htmlFor="content" className="text-white">
+              Content (Markdown supported)
+            </Label>
             <Textarea
               id="content"
-              data-rich-text="true"
               value={currentPost.content || ""}
               onChange={(e) => setCurrentPost((prev) => ({ ...prev, content: e.target.value }))}
-              placeholder="Write your blog post content here... (Markdown supported)"
+              placeholder="Write your blog post content here... Markdown is supported."
               rows={12}
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50 font-mono text-sm"
             />
           </div>
 
-          <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={currentPost.is_published || false}
-                onChange={(e) => setCurrentPost((prev) => ({ ...prev, is_published: e.target.checked }))}
-                className="w-4 h-4 rounded border-white/20 bg-white/10"
-              />
-              <span className="text-sm text-white">Publish immediately</span>
-            </label>
-          </div>
-
-          <div className="flex gap-3">
-            <Button onClick={saveBlogPost} className="bg-[#1E90FF] hover:bg-[#1E90FF]/90">
-              <Save className="h-4 w-4 mr-2" />
-              {currentPost.id ? "Update Post" : "Save Post"}
-            </Button>
+          <div className="flex justify-between items-center">
             {currentPost.id && (
               <Button
                 variant="outline"
@@ -1002,62 +985,88 @@ export default function PWBAdminDashboard() {
                     content: "",
                     category: "Property Maintenance",
                     is_published: false,
+                    featured_image_url: "",
+                    read_time_minutes: 5,
+                    author: "PowerWash Bros",
                   })
                 }
               >
-                Create New
+                Cancel Edit
               </Button>
             )}
+            <Button className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white ml-auto" onClick={saveBlogPost}>
+              <Save className="h-4 w-4 mr-2" />
+              {currentPost.id ? "Update Blog Post" : "Save Blog Post"}
+            </Button>
           </div>
         </CardContent>
       </Card>
 
-      {/* Existing Posts - Navy theme */}
+      {/* Existing Blog Posts List */}
       <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
         <CardHeader>
           <CardTitle className="text-white">Existing Blog Posts ({blogPosts.length})</CardTitle>
         </CardHeader>
         <CardContent>
-          {blogPosts.length === 0 ? (
-            <p className="text-white/50 text-center py-8">No blog posts yet. Create your first post above!</p>
-          ) : (
-            <div className="space-y-3">
-              {blogPosts.map((post) => (
-                <div
-                  key={post.id}
-                  className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-colors"
-                >
-                  <div className="flex-1">
-                    <h3 className="font-medium text-white">{post.title}</h3>
-                    <div className="flex items-center gap-3 text-sm text-white/60 mt-1">
-                      <span className="px-2 py-0.5 bg-white/10 rounded">{post.category}</span>
-                      <span className={post.is_published ? "text-[#00C853]" : "text-orange-400"}>
+          <div className="space-y-3">
+            {blogPosts.map((post) => (
+              <div
+                key={post.id}
+                className="flex items-center justify-between p-4 bg-[#1a3a5c] rounded-lg border border-white/10"
+              >
+                <div className="flex items-center gap-4 flex-1">
+                  {post.featured_image_url ? (
+                    <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                      <Image
+                        src={post.featured_image_url || "/placeholder.svg"}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <ImageIcon className="h-6 w-6 text-white/30" />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-white truncate">{post.title}</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-xs bg-white/10 text-white/70 px-2 py-0.5 rounded">{post.category}</span>
+                      <span className={`text-xs ${post.is_published ? "text-[#00C853]" : "text-yellow-500"}`}>
                         {post.is_published ? "Published" : "Draft"}
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-                      onClick={() => setCurrentPost(post)}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => deleteBlogPost(post.id)}
-                      className="text-red-400 border-red-400/30 hover:bg-red-500/10"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
-              ))}
-            </div>
-          )}
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white"
+                    onClick={() => editBlogPost(post)}
+                  >
+                    <Edit className="h-4 w-4 mr-1" />
+                    Edit
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-red-500/30 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white"
+                    onClick={() => deleteBlogPost(post.id)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            ))}
+            {blogPosts.length === 0 && (
+              <div className="text-center py-8 text-white/50">
+                <FileText className="h-12 w-12 mx-auto mb-3 opacity-50" />
+                <p>No blog posts yet. Create your first post above!</p>
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     </div>
@@ -1068,66 +1077,50 @@ export default function PWBAdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">Gallery Management</h1>
-          <p className="text-white/60 mt-1">Manage before/after images for your portfolio</p>
+          <p className="text-white/60 mt-1">Create and manage gallery items</p>
         </div>
-        <Button
-          variant="outline"
-          className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white hover:text-white"
-          onClick={() => window.open("/our-work", "_blank")}
-        >
-          <Eye className="h-4 w-4 mr-2" />
-          Preview Gallery
-        </Button>
       </div>
-
-      {/* Gallery Form - Navy theme */}
       <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-white">
-            {currentGallery.id ? "Edit Gallery Item" : "Add New Gallery Item"}
-          </CardTitle>
+          <CardTitle className="text-white">Add New Gallery Item</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="gallery-title" className="text-white">
-                Title
-              </Label>
-              <Input
-                id="gallery-title"
-                value={currentGallery.title || ""}
-                onChange={(e) => setCurrentGallery((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder="e.g., Victorian Driveway Restoration"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-            <div>
-              <Label htmlFor="gallery-location" className="text-white">
-                Location
-              </Label>
-              <Input
-                id="gallery-location"
-                value={currentGallery.location || ""}
-                onChange={(e) => setCurrentGallery((prev) => ({ ...prev, location: e.target.value }))}
-                placeholder="e.g., Swanage, Purbeck"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-          </div>
-
           <div>
-            <Label htmlFor="gallery-service" className="text-white">
-              Service Type
+            <Label htmlFor="gallery-title" className="text-white">
+              Title
             </Label>
             <Input
-              id="gallery-service"
-              value={currentGallery.service_type || ""}
-              onChange={(e) => setCurrentGallery((prev) => ({ ...prev, service_type: e.target.value }))}
-              placeholder="e.g., Driveway Cleaning"
+              id="gallery-title"
+              value={currentGallery.title || ""}
+              onChange={(e) => setCurrentGallery((prev) => ({ ...prev, title: e.target.value }))}
+              placeholder="Enter gallery item title..."
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
-
+          <div>
+            <Label htmlFor="gallery-location" className="text-white">
+              Location
+            </Label>
+            <Input
+              id="gallery-location"
+              value={currentGallery.location || ""}
+              onChange={(e) => setCurrentGallery((prev) => ({ ...prev, location: e.target.value }))}
+              placeholder="Enter gallery item location..."
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            />
+          </div>
+          <div>
+            <Label htmlFor="gallery-service-type" className="text-white">
+              Service Type
+            </Label>
+            <Input
+              id="gallery-service-type"
+              value={currentGallery.service_type || ""}
+              onChange={(e) => setCurrentGallery((prev) => ({ ...prev, service_type: e.target.value }))}
+              placeholder="Enter gallery item service type..."
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            />
+          </div>
           <div>
             <Label htmlFor="gallery-description" className="text-white">
               Description
@@ -1136,192 +1129,20 @@ export default function PWBAdminDashboard() {
               id="gallery-description"
               value={currentGallery.description || ""}
               onChange={(e) => setCurrentGallery((prev) => ({ ...prev, description: e.target.value }))}
-              placeholder="Describe the transformation..."
-              rows={3}
+              placeholder="Enter gallery item description..."
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label className="text-white">Before Image</Label>
-              <div className="mt-2 border-2 border-dashed border-white/20 rounded-lg p-4 text-center hover:border-[#1E90FF] transition-colors bg-white/5">
-                {currentGallery.before_image_url ? (
-                  <div className="relative">
-                    <img
-                      src={currentGallery.before_image_url || "/placeholder.svg"}
-                      alt="Before"
-                      className="w-full h-32 object-cover rounded"
-                    />
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      className="absolute top-2 right-2"
-                      onClick={() => setCurrentGallery((prev) => ({ ...prev, before_image_url: "" }))}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ) : (
-                  <label className="cursor-pointer">
-                    <Upload className="h-8 w-8 mx-auto text-white/40 mb-2" />
-                    <span className="text-sm text-white/60">
-                      {uploadingBefore ? "Uploading..." : "Click to upload before image"}
-                    </span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => e.target.files?.[0] && handleImageUpload(e.target.files[0], "before")}
-                      disabled={uploadingBefore}
-                    />
-                  </label>
-                )}
-              </div>
-            </div>
-            <div>
-              <Label className="text-white">After Image</Label>
-              <div className="mt-2 border-2 border-dashed border-white/20 rounded-lg p-4 text-center hover:border-[#1E90FF] transition-colors bg-white/5">
-                {currentGallery.after_image_url ? (
-                  <div className="relative">
-                    <img
-                      src={currentGallery.after_image_url || "/placeholder.svg"}
-                      alt="After"
-                      className="w-full h-32 object-cover rounded"
-                    />
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      className="absolute top-2 right-2"
-                      onClick={() => setCurrentGallery((prev) => ({ ...prev, after_image_url: "" }))}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ) : (
-                  <label className="cursor-pointer">
-                    <Upload className="h-8 w-8 mx-auto text-white/40 mb-2" />
-                    <span className="text-sm text-white/60">
-                      {uploadingAfter ? "Uploading..." : "Click to upload after image"}
-                    </span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => e.target.files?.[0] && handleImageUpload(e.target.files[0], "after")}
-                      disabled={uploadingAfter}
-                    />
-                  </label>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={currentGallery.featured || false}
-                onChange={(e) => setCurrentGallery((prev) => ({ ...prev, featured: e.target.checked }))}
-                className="w-4 h-4 rounded border-white/20 bg-white/10"
-              />
-              <span className="text-sm text-white">Featured item</span>
-            </label>
-          </div>
-
-          <div className="flex gap-3">
-            <Button onClick={saveGalleryItem} className="bg-[#1E90FF] hover:bg-[#1E90FF]/90">
+          <div className="flex justify-end">
+            <Button
+              variant="outline"
+              className="bg-[#00C853] hover:bg-[#00C853]/90 text-white"
+              onClick={saveGalleryItem}
+            >
               <Save className="h-4 w-4 mr-2" />
-              {currentGallery.id ? "Update Item" : "Save Item"}
+              Save Gallery Item
             </Button>
-            {currentGallery.id && (
-              <Button
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-                onClick={() =>
-                  setCurrentGallery({
-                    title: "",
-                    location: "",
-                    service_type: "",
-                    before_image_url: "",
-                    after_image_url: "",
-                    description: "",
-                    featured: false,
-                  })
-                }
-              >
-                Create New
-              </Button>
-            )}
           </div>
-        </CardContent>
-      </Card>
-
-      {/* Existing Gallery Items - Navy theme */}
-      <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-white">Existing Gallery Items ({galleryImages.length})</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {galleryImages.length === 0 ? (
-            <p className="text-white/50 text-center py-8">No gallery items yet. Add your first item above!</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {galleryImages.map((item) => (
-                <div
-                  key={item.id}
-                  className="border border-white/10 rounded-lg overflow-hidden hover:border-[#1E90FF]/50 transition-colors bg-white/5"
-                >
-                  <div className="relative h-32 bg-[#0B1E3F]">
-                    <div className="absolute inset-0 flex">
-                      <div className="w-1/2 relative">
-                        <img
-                          src={item.before_image_url || "/placeholder.svg?height=128&width=150&query=before cleaning"}
-                          alt="Before"
-                          className="w-full h-full object-cover"
-                        />
-                        <span className="absolute bottom-1 left-1 text-xs bg-red-500 text-white px-1.5 py-0.5 rounded">
-                          Before
-                        </span>
-                      </div>
-                      <div className="w-1/2 relative">
-                        <img
-                          src={item.after_image_url || "/placeholder.svg?height=128&width=150&query=after cleaning"}
-                          alt="After"
-                          className="w-full h-full object-cover"
-                        />
-                        <span className="absolute bottom-1 right-1 text-xs bg-[#00C853] text-white px-1.5 py-0.5 rounded">
-                          After
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="font-medium text-white text-sm">{item.title}</h3>
-                    <p className="text-white/60 text-xs mt-1">{item.location}</p>
-                    <div className="flex gap-2 mt-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 border-white/20 text-white hover:bg-white/10 text-xs bg-transparent"
-                        onClick={() => setCurrentGallery(item)}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => deleteGalleryItem(item.id)}
-                        className="text-red-400 border-red-400/30 hover:bg-red-500/10"
-                      >
-                        <Trash2 className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </CardContent>
       </Card>
     </div>
@@ -1332,64 +1153,50 @@ export default function PWBAdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">Our Works Management</h1>
-          <p className="text-white/60 mt-1">Manage transformation showcases</p>
+          <p className="text-white/60 mt-1">Create and manage our works items</p>
         </div>
-        <Button
-          variant="outline"
-          className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white hover:text-white"
-          onClick={() => window.open("/our-work", "_blank")}
-        >
-          <Eye className="h-4 w-4 mr-2" />
-          Preview Works
-        </Button>
       </div>
-
-      {/* Works Form - Navy theme */}
       <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-white">{currentTransformation.id ? "Edit Work" : "Add New Work"}</CardTitle>
+          <CardTitle className="text-white">Add New Work Item</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="works-title" className="text-white">
-                Title
-              </Label>
-              <Input
-                id="works-title"
-                value={currentTransformation.title || ""}
-                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, title: e.target.value }))}
-                placeholder="e.g., Victorian Terrace Transformation"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-            <div>
-              <Label htmlFor="works-location" className="text-white">
-                Location
-              </Label>
-              <Input
-                id="works-location"
-                value={currentTransformation.location || ""}
-                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, location: e.target.value }))}
-                placeholder="e.g., Swanage, Purbeck"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-          </div>
-
           <div>
-            <Label htmlFor="works-service" className="text-white">
-              Service Type
+            <Label htmlFor="works-title" className="text-white">
+              Title
             </Label>
             <Input
-              id="works-service"
-              value={currentTransformation.service_type || ""}
-              onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, service_type: e.target.value }))}
-              placeholder="e.g., Driveway Cleaning"
+              id="works-title"
+              value={currentTransformation.title || ""}
+              onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, title: e.target.value }))}
+              placeholder="Enter work item title..."
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
-
+          <div>
+            <Label htmlFor="works-location" className="text-white">
+              Location
+            </Label>
+            <Input
+              id="works-location"
+              value={currentTransformation.location || ""}
+              onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, location: e.target.value }))}
+              placeholder="Enter work item location..."
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            />
+          </div>
+          <div>
+            <Label htmlFor="works-service-type" className="text-white">
+              Service Type
+            </Label>
+            <Input
+              id="works-service-type"
+              value={currentTransformation.service_type || ""}
+              onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, service_type: e.target.value }))}
+              placeholder="Enter work item service type..."
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            />
+          </div>
           <div>
             <Label htmlFor="works-description" className="text-white">
               Description
@@ -1398,199 +1205,20 @@ export default function PWBAdminDashboard() {
               id="works-description"
               value={currentTransformation.description || ""}
               onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, description: e.target.value }))}
-              placeholder="Describe the transformation..."
-              rows={3}
+              placeholder="Enter work item description..."
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label className="text-white">Before Image</Label>
-              <div className="mt-2 border-2 border-dashed border-white/20 rounded-lg p-4 text-center hover:border-[#1E90FF] transition-colors bg-white/5">
-                {currentTransformation.before_image_url ? (
-                  <div className="relative">
-                    <img
-                      src={currentTransformation.before_image_url || "/placeholder.svg"}
-                      alt="Before"
-                      className="w-full h-32 object-cover rounded"
-                    />
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      className="absolute top-2 right-2"
-                      onClick={() => setCurrentTransformation((prev) => ({ ...prev, before_image_url: "" }))}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ) : (
-                  <label className="cursor-pointer">
-                    <Upload className="h-8 w-8 mx-auto text-white/40 mb-2" />
-                    <span className="text-sm text-white/60">
-                      {uploadingWorksBefore ? "Uploading..." : "Click to upload before image"}
-                    </span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => e.target.files?.[0] && handleWorksImageUpload(e.target.files[0], "before")}
-                      disabled={uploadingWorksBefore}
-                    />
-                  </label>
-                )}
-              </div>
-            </div>
-            <div>
-              <Label className="text-white">After Image</Label>
-              <div className="mt-2 border-2 border-dashed border-white/20 rounded-lg p-4 text-center hover:border-[#1E90FF] transition-colors bg-white/5">
-                {currentTransformation.after_image_url ? (
-                  <div className="relative">
-                    <img
-                      src={currentTransformation.after_image_url || "/placeholder.svg"}
-                      alt="After"
-                      className="w-full h-32 object-cover rounded"
-                    />
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      className="absolute top-2 right-2"
-                      onClick={() => setCurrentTransformation((prev) => ({ ...prev, after_image_url: "" }))}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ) : (
-                  <label className="cursor-pointer">
-                    <Upload className="h-8 w-8 mx-auto text-white/40 mb-2" />
-                    <span className="text-sm text-white/60">
-                      {uploadingWorksAfter ? "Uploading..." : "Click to upload after image"}
-                    </span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => e.target.files?.[0] && handleWorksImageUpload(e.target.files[0], "after")}
-                      disabled={uploadingWorksAfter}
-                    />
-                  </label>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={currentTransformation.featured || false}
-                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, featured: e.target.checked }))}
-                className="w-4 h-4 rounded border-white/20 bg-white/10"
-              />
-              <span className="text-sm text-white">Featured work</span>
-            </label>
-          </div>
-
-          <div className="flex gap-3">
-            <Button onClick={saveTransformation} className="bg-[#1E90FF] hover:bg-[#1E90FF]/90">
+          <div className="flex justify-end">
+            <Button
+              variant="outline"
+              className="bg-purple-500 hover:bg-purple-500/90 text-white"
+              onClick={saveTransformation}
+            >
               <Save className="h-4 w-4 mr-2" />
-              {currentTransformation.id ? "Update Work" : "Save Work"}
+              Save Work Item
             </Button>
-            {currentTransformation.id && (
-              <Button
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-                onClick={() =>
-                  setCurrentTransformation({
-                    title: "",
-                    before_image_url: "",
-                    after_image_url: "",
-                    service_type: "",
-                    location: "",
-                    description: "",
-                    featured: true,
-                    display_order: 0,
-                  })
-                }
-              >
-                Create New
-              </Button>
-            )}
           </div>
-        </CardContent>
-      </Card>
-
-      {/* Existing Works - Navy theme */}
-      <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-white">Existing Works ({transformations.length})</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {transformations.length === 0 ? (
-            <p className="text-white/50 text-center py-8">No works yet. Add your first work above!</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {transformations.map((item) => (
-                <div
-                  key={item.id}
-                  className="border border-white/10 rounded-lg overflow-hidden hover:border-[#1E90FF]/50 transition-colors bg-white/5"
-                >
-                  <div className="relative h-32 bg-[#0B1E3F]">
-                    {item.featured && (
-                      <div className="absolute top-2 right-2 z-10">
-                        <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 flex">
-                      <div className="w-1/2 relative">
-                        <img
-                          src={item.before_image_url || "/placeholder.svg?height=128&width=150&query=before cleaning"}
-                          alt="Before"
-                          className="w-full h-full object-cover"
-                        />
-                        <span className="absolute bottom-1 left-1 text-xs bg-red-500 text-white px-1.5 py-0.5 rounded">
-                          Before
-                        </span>
-                      </div>
-                      <div className="w-1/2 relative">
-                        <img
-                          src={item.after_image_url || "/placeholder.svg?height=128&width=150&query=after cleaning"}
-                          alt="After"
-                          className="w-full h-full object-cover"
-                        />
-                        <span className="absolute bottom-1 right-1 text-xs bg-[#00C853] text-white px-1.5 py-0.5 rounded">
-                          After
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="font-medium text-white text-sm">{item.title}</h3>
-                    <p className="text-[#1E90FF] text-xs mt-0.5">{item.service_type}</p>
-                    <p className="text-white/60 text-xs">{item.location}</p>
-                    <div className="flex gap-2 mt-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex-1 border-white/20 text-white hover:bg-white/10 text-xs bg-transparent"
-                        onClick={() => setCurrentTransformation(item)}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => deleteTransformation(item.id)}
-                        className="text-red-400 border-red-400/30 hover:bg-red-500/10"
-                      >
-                        <Trash2 className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </CardContent>
       </Card>
     </div>
@@ -1598,137 +1226,343 @@ export default function PWBAdminDashboard() {
 
   const renderPricingSection = () => (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-[#0B1E3F]">Pricing Management</h1>
-        <p className="text-[#0B1E3F]/70 mt-1">Configure pricing rates and multipliers</p>
-      </div>
-
-      <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-white flex items-center gap-2">
-            <Calculator className="h-5 w-5 text-[#1E90FF]" />
-            Base Rates & Multipliers
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {Object.entries(pricingData).map(([service, rates]) => (
-            <div key={service} className="p-4 border border-white/10 rounded-lg bg-white/5">
-              <h3 className="font-semibold text-[#1E90FF] capitalize mb-4">{service} Cleaning</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
-                  <Label className="text-white/70 text-xs">Base Rate (£/sqm)</Label>
-                  <Input
-                    type="number"
-                    step="0.1"
-                    value={rates.baseRate}
-                    onChange={(e) =>
-                      setPricingData((prev) => ({
-                        ...prev,
-                        [service]: {
-                          ...prev[service as keyof typeof prev],
-                          baseRate: Number.parseFloat(e.target.value),
-                        },
-                      }))
-                    }
-                    className="mt-1 bg-white/10 border-white/20 text-white"
-                  />
-                </div>
-                <div>
-                  <Label className="text-white/70 text-xs">Easy Access (x)</Label>
-                  <Input
-                    type="number"
-                    step="0.05"
-                    value={rates.easyAccess}
-                    onChange={(e) =>
-                      setPricingData((prev) => ({
-                        ...prev,
-                        [service]: {
-                          ...prev[service as keyof typeof prev],
-                          easyAccess: Number.parseFloat(e.target.value),
-                        },
-                      }))
-                    }
-                    className="mt-1 bg-white/10 border-white/20 text-white"
-                  />
-                </div>
-                <div>
-                  <Label className="text-white/70 text-xs">Hard Access (x)</Label>
-                  <Input
-                    type="number"
-                    step="0.05"
-                    value={rates.hardAccess}
-                    onChange={(e) =>
-                      setPricingData((prev) => ({
-                        ...prev,
-                        [service]: {
-                          ...prev[service as keyof typeof prev],
-                          hardAccess: Number.parseFloat(e.target.value),
-                        },
-                      }))
-                    }
-                    className="mt-1 bg-white/10 border-white/20 text-white"
-                  />
-                </div>
-                <div>
-                  <Label className="text-white/70 text-xs">No Water (x)</Label>
-                  <Input
-                    type="number"
-                    step="0.05"
-                    value={rates.noWater}
-                    onChange={(e) =>
-                      setPricingData((prev) => ({
-                        ...prev,
-                        [service]: {
-                          ...prev[service as keyof typeof prev],
-                          noWater: Number.parseFloat(e.target.value),
-                        },
-                      }))
-                    }
-                    className="mt-1 bg-white/10 border-white/20 text-white"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-
-          <Button
-            onClick={() => {
-              updatePricing() // Call the actual updatePricing function
-            }}
-            className="bg-[#1E90FF] hover:bg-[#1E90FF]/90"
-          >
-            <Save className="h-4 w-4 mr-2" />
-            Save Pricing
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
-  )
-
-  return (
-    <AdminLayout onSectionChange={handleSectionChange}>
-      <div className="min-h-screen">
-        <div className="p-6">
-          {saveMessage && (
-            <Alert
-              className={`mb-4 ${
-                saveMessage.includes("Error")
-                  ? "border-red-500 bg-red-500/10 text-red-600"
-                  : "border-[#00C853] bg-[#00C853]/10 text-[#00C853]"
-              }`}
-            >
-              {saveMessage.includes("Error") ? (
-                <AlertCircle className="h-4 w-4" />
-              ) : (
-                <CheckCircle className="h-4 w-4" />
-              )}
-              <AlertDescription>{saveMessage}</AlertDescription>
-            </Alert>
-          )}
-
-          {renderContent()}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Pricing Management</h1>
+          <p className="text-white/60 mt-1">Configure pricing rates and multipliers</p>
         </div>
       </div>
-    </AdminLayout>
+
+      {/* Base Rates & Multipliers */}
+      <div className="rounded-xl border border-white/10 bg-[#0B1E3F] p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-10 w-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
+            <Calculator className="h-5 w-5 text-orange-400" />
+          </div>
+          <h2 className="text-xl font-semibold text-white">Base Rates & Multipliers</h2>
+        </div>
+
+        {/* Driveway Cleaning */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Driveway Cleaning</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.driveway.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    driveway: { ...prev.driveway, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.driveway.easyAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    driveway: { ...prev.driveway, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.driveway.hardAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    driveway: { ...prev.driveway, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Block Paving Resanding (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.driveway.blockPavingResanding}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    driveway: { ...prev.driveway, blockPavingResanding: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Patio Cleaning */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Patio Cleaning</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.patio.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    patio: { ...prev.patio, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.patio.easyAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    patio: { ...prev.patio, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.patio.hardAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    patio: { ...prev.patio, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Roof Cleaning - Separate from Gutters */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Roof Cleaning</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.roof.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    roof: { ...prev.roof, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.roof.easyAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    roof: { ...prev.roof, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.roof.hardAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    roof: { ...prev.roof, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Gutter Cleaning - Now Separate */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-[#00C853] mb-4">Gutter Cleaning</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/linear metre)</Label>
+              <Input
+                type="number"
+                step="0.5"
+                value={pricingData.gutter.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    gutter: { ...prev.gutter, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div className="flex items-end">
+              <p className="text-white/60 text-sm pb-2">Priced per linear metre of guttering</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Exterior Walls */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Exterior Walls</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.walls.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    walls: { ...prev.walls, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.walls.easyAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    walls: { ...prev.walls, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.walls.hardAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    walls: { ...prev.walls, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Softwash */}
+        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+          <h3 className="text-lg font-semibold text-purple-400 mb-4">Softwash Treatment</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+              <Input
+                type="number"
+                step="0.1"
+                value={pricingData.softwash.baseRate}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    softwash: { ...prev.softwash, baseRate: Number.parseFloat(e.target.value) || 0 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.softwash.easyAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    softwash: { ...prev.softwash, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+            <div>
+              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+              <Input
+                type="number"
+                step="0.05"
+                value={pricingData.softwash.hardAccess}
+                onChange={(e) =>
+                  setPricingData((prev) => ({
+                    ...prev,
+                    softwash: { ...prev.softwash, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                  }))
+                }
+                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-end pt-4">
+          <Button onClick={updatePricing} className="bg-orange-500 hover:bg-orange-600 text-white">
+            <Save className="h-4 w-4 mr-2" />
+            Save Pricing Changes
+          </Button>
+        </div>
+      </div>
+
+      {/* Important Note */}
+      <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+          <div>
+            <h3 className="text-white font-medium mb-1">Pricing Note</h3>
+            <p className="text-white/70 text-sm">
+              These prices are set slightly above average to allow room for delivering competitive quotes on-site. The
+              online calculator provides estimates only - final quotes are provided after property assessment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

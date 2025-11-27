@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Users, Mail, Download } from "lucide-react"
+import { Users, Mail, Download, MailOpen } from "lucide-react"
 import AdminLayout from "@/components/admin/admin-layout"
 
 interface Subscriber {
@@ -67,7 +67,7 @@ export default function NewsletterAdmin() {
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-[#1E90FF] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-gray-600">Loading subscribers...</p>
+            <p className="text-white/60">Loading subscribers...</p>
           </div>
         </div>
       </AdminLayout>
@@ -78,85 +78,104 @@ export default function NewsletterAdmin() {
     <AdminLayout>
       <div className="p-6 md:p-8 space-y-6">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Newsletter Subscribers</h1>
-          <p className="text-gray-600">Manage your email list</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Newsletter Subscribers</h1>
+          <p className="text-white/60">Manage your email list</p>
         </div>
 
-        {/* Stats Cards with navy accent styling */}
         <div className="grid gap-4 md:grid-cols-3">
-          <Card className="bg-[#0F2851] border-none shadow-lg">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Total Subscribers</CardTitle>
-              <Users className="h-4 w-4 text-[#1E90FF]" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-white">{stats.total}</div>
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-white/60">Total Subscribers</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
+                </div>
+                <div className="w-12 h-12 bg-[#1E90FF]/20 rounded-xl flex items-center justify-center">
+                  <Users className="h-6 w-6 text-[#1E90FF]" />
+                </div>
+              </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-[#0F2851] border-none shadow-lg">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Active</CardTitle>
-              <Mail className="h-4 w-4 text-green-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-white">{stats.active}</div>
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-white/60">Active</p>
+                  <p className="text-3xl font-bold text-[#00C853] mt-1">{stats.active}</p>
+                </div>
+                <div className="w-12 h-12 bg-[#00C853]/20 rounded-xl flex items-center justify-center">
+                  <MailOpen className="h-6 w-6 text-[#00C853]" />
+                </div>
+              </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-[#0F2851] border-none shadow-lg">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Unsubscribed</CardTitle>
-              <Mail className="h-4 w-4 text-gray-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-white">{stats.inactive}</div>
+          <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-white/60">Unsubscribed</p>
+                  <p className="text-3xl font-bold text-white/50 mt-1">{stats.inactive}</p>
+                </div>
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                  <Mail className="h-6 w-6 text-white/50" />
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Input
-            placeholder="Search by email..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-sm bg-white border-gray-200"
-          />
-          <Button onClick={exportSubscribers} variant="outline" className="bg-white hover:bg-gray-50">
-            <Download className="mr-2 h-4 w-4" />
-            Export Active Subscribers
-          </Button>
-        </div>
+        <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+          <CardContent className="p-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Input
+                placeholder="Search by email..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="max-w-sm bg-white/10 border-white/20 text-white placeholder:text-white/40"
+              />
+              <Button
+                onClick={exportSubscribers}
+                className="bg-[#0B1E3F] border border-white/20 text-white hover:bg-white/10"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Export Active Subscribers
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
-        {/* Subscribers List */}
-        <Card className="bg-white border-gray-200 shadow-sm">
-          <CardHeader className="border-b border-gray-100">
-            <CardTitle className="text-gray-900">Subscribers ({filteredSubscribers.length})</CardTitle>
+        <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
+          <CardHeader className="border-b border-white/10">
+            <CardTitle className="text-white">Subscribers ({filteredSubscribers.length})</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
             <div className="space-y-2">
               {filteredSubscribers.length === 0 ? (
-                <p className="text-center text-gray-500 py-8">
+                <p className="text-center text-white/50 py-8">
                   {searchTerm ? "No subscribers found" : "No subscribers yet"}
                 </p>
               ) : (
                 <div className="space-y-2">
                   {filteredSubscribers.map((subscriber) => (
-                    <div key={subscriber.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div
+                      key={subscriber.id}
+                      className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-lg"
+                    >
                       <div>
-                        <div className="font-medium text-gray-900">{subscriber.email}</div>
-                        <div className="text-sm text-gray-500">
+                        <div className="font-medium text-white">{subscriber.email}</div>
+                        <div className="text-sm text-white/50">
                           Subscribed: {new Date(subscriber.subscribed_at).toLocaleDateString()}
                         </div>
                       </div>
                       <div>
                         {subscriber.is_active ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#00C853]/20 text-[#00C853]">
                             Active
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/10 text-white/50">
                             Unsubscribed
                           </span>
                         )}

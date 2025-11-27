@@ -95,7 +95,9 @@ export function ScrollingTransformations() {
                     src={item.beforeImage || "/placeholder.svg"}
                     alt={`${item.title} before`}
                     fill
+                    sizes="150px"
                     className="object-cover"
+                    loading="lazy"
                   />
                   <span className="absolute bottom-2 left-2 text-xs font-semibold bg-red-500/80 text-white px-2 py-1 rounded">
                     Before
@@ -106,7 +108,9 @@ export function ScrollingTransformations() {
                     src={item.afterImage || "/placeholder.svg"}
                     alt={`${item.title} after`}
                     fill
+                    sizes="150px"
                     className="object-cover"
+                    loading="lazy"
                   />
                   <span className="absolute bottom-2 right-2 text-xs font-semibold bg-[#00C853]/80 text-white px-2 py-1 rounded">
                     After

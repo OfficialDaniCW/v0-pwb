@@ -1,67 +1,67 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
+import { useEffect, useRef, useState } from "react"
+import { CheckCircle2 } from "lucide-react"
 
 // Service area data with real Dorset coordinates
 const serviceAreas = [
   {
-    id: 'swanage',
-    name: 'Swanage & Purbeck',
-    postcode: 'BH19',
-    description: 'Our home base - coastal properties, heritage buildings, and residential care',
-    features: ['Heritage properties', 'Coastal maintenance', 'Listed buildings'],
+    id: "swanage",
+    name: "Swanage & Purbeck",
+    postcode: "BH19",
+    description: "Our home base - coastal properties, heritage buildings, and residential care",
+    features: ["Heritage properties", "Coastal maintenance", "Listed buildings"],
     coordinates: [50.6082, -1.9593] as [number, number], // Swanage
-    isHomeBase: true
+    isHomeBase: true,
   },
   {
-    id: 'bournemouth',
-    name: 'Bournemouth',
-    postcode: 'BH1-BH11',
-    description: 'Full coverage across all Bournemouth postcodes',
-    features: ['Residential properties', 'Commercial buildings', 'Coastal properties'],
-    coordinates: [50.7192, -1.8795] as [number, number]
+    id: "bournemouth",
+    name: "Bournemouth",
+    postcode: "BH1-BH11",
+    description: "Full coverage across all Bournemouth postcodes",
+    features: ["Residential properties", "Commercial buildings", "Coastal properties"],
+    coordinates: [50.7192, -1.8795] as [number, number],
   },
   {
-    id: 'poole',
-    name: 'Poole',
-    postcode: 'BH12-BH17',
-    description: 'Complete coverage including harbor and residential areas',
-    features: ['Harbor properties', 'Residential areas', 'Business districts'],
-    coordinates: [50.7150, -1.9872] as [number, number]
+    id: "poole",
+    name: "Poole",
+    postcode: "BH12-BH17",
+    description: "Complete coverage including harbor and residential areas",
+    features: ["Harbor properties", "Residential areas", "Business districts"],
+    coordinates: [50.715, -1.9872] as [number, number],
   },
   {
-    id: 'christchurch',
-    name: 'Christchurch',
-    postcode: 'BH23',
-    description: 'Coastal and residential property care',
-    features: ['Coastal properties', 'Residential areas', 'Heritage buildings'],
-    coordinates: [50.7357, -1.7783] as [number, number]
+    id: "christchurch",
+    name: "Christchurch",
+    postcode: "BH23",
+    description: "Coastal and residential property care",
+    features: ["Coastal properties", "Residential areas", "Heritage buildings"],
+    coordinates: [50.7357, -1.7783] as [number, number],
   },
   {
-    id: 'wimborne',
-    name: 'Wimborne',
-    postcode: 'BH21',
-    description: 'Historic town and surrounding areas',
-    features: ['Historic buildings', 'Residential properties', 'Commercial areas'],
-    coordinates: [50.7999, -1.9970] as [number, number]
+    id: "wimborne",
+    name: "Wimborne",
+    postcode: "BH21",
+    description: "Historic town and surrounding areas",
+    features: ["Historic buildings", "Residential properties", "Commercial areas"],
+    coordinates: [50.7999, -1.997] as [number, number],
   },
   {
-    id: 'wareham',
-    name: 'Wareham',
-    postcode: 'BH20',
-    description: 'Listed buildings and rural properties',
-    features: ['Listed buildings', 'Rural properties', 'Historic town centre'],
-    coordinates: [50.6869, -2.1105] as [number, number]
+    id: "wareham",
+    name: "Wareham",
+    postcode: "BH20",
+    description: "Listed buildings and rural properties",
+    features: ["Listed buildings", "Rural properties", "Historic town centre"],
+    coordinates: [50.6869, -2.1105] as [number, number],
   },
   {
-    id: 'ferndown',
-    name: 'Ferndown',
-    postcode: 'BH22',
-    description: 'Modern residential and commercial developments',
-    features: ['Residential properties', 'Commercial areas', 'Modern developments'],
-    coordinates: [50.8006, -1.8973] as [number, number]
-  }
+    id: "ferndown",
+    name: "Ferndown",
+    postcode: "BH22",
+    description: "Modern residential and commercial developments",
+    features: ["Residential properties", "Commercial areas", "Modern developments"],
+    coordinates: [50.8006, -1.8973] as [number, number],
+  },
 ]
 
 export function InteractiveServiceMap() {
@@ -74,8 +74,21 @@ export function InteractiveServiceMap() {
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return
 
+    const loadLeafletCSS = () => {
+      if (!document.querySelector('link[href*="leaflet.css"]')) {
+        const link = document.createElement("link")
+        link.rel = "stylesheet"
+        link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        link.integrity = "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        link.crossOrigin = ""
+        document.head.appendChild(link)
+      }
+    }
+
+    loadLeafletCSS()
+
     // Dynamically import Leaflet
-    import('leaflet').then((L) => {
+    import("leaflet").then((L) => {
       // Initialize map centered on Dorset
       const map = L.map(mapContainer.current!, {
         center: [50.75, -2.0],
@@ -83,13 +96,13 @@ export function InteractiveServiceMap() {
         zoomControl: true,
         scrollWheelZoom: true,
         dragging: true,
-        touchZoom: true
+        touchZoom: true,
       })
 
       mapRef.current = map
 
       // Add OpenStreetMap tiles (free, no API key required)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19,
       }).addTo(map)
@@ -97,12 +110,12 @@ export function InteractiveServiceMap() {
       // Create custom icons
       const createCustomIcon = (isHomeBase: boolean) => {
         return L.divIcon({
-          className: 'custom-marker',
+          className: "custom-marker",
           html: `
             <div style="
               width: 40px;
               height: 40px;
-              background: ${isHomeBase ? '#00C853' : '#1E90FF'};
+              background: ${isHomeBase ? "#00C853" : "#1E90FF"};
               border: 3px solid white;
               border-radius: 50%;
               box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -113,18 +126,18 @@ export function InteractiveServiceMap() {
               cursor: pointer;
               transition: transform 0.2s ease;
             ">
-              ${isHomeBase ? '★' : '📍'}
+              ${isHomeBase ? "★" : "📍"}
             </div>
           `,
           iconSize: [40, 40],
-          iconAnchor: [20, 20]
+          iconAnchor: [20, 20],
         })
       }
 
       // Add markers for each service area
       serviceAreas.forEach((area) => {
         const marker = L.marker(area.coordinates, {
-          icon: createCustomIcon(area.isHomeBase)
+          icon: createCustomIcon(area.isHomeBase),
         }).addTo(map)
 
         // Add popup
@@ -136,10 +149,10 @@ export function InteractiveServiceMap() {
         `)
 
         // Click handler
-        marker.on('click', () => {
+        marker.on("click", () => {
           setSelectedArea(area.id)
           map.flyTo(area.coordinates, 12, {
-            duration: 1.5
+            duration: 1.5,
           })
         })
 
@@ -159,7 +172,7 @@ export function InteractiveServiceMap() {
     }
   }, [])
 
-  const selectedAreaData = serviceAreas.find(area => area.id === selectedArea)
+  const selectedAreaData = serviceAreas.find((area) => area.id === selectedArea)
 
   return (
     <div className="glass-border rounded-2xl overflow-hidden">
@@ -167,7 +180,7 @@ export function InteractiveServiceMap() {
         {/* Map Section */}
         <div className="relative aspect-square lg:aspect-auto min-h-[500px]">
           <div ref={mapContainer} className="absolute inset-0 z-0" />
-          
+
           {/* Map overlay info */}
           <div className="absolute top-4 left-4 z-[1000] glass-border rounded-lg px-4 py-3 bg-[#0B1E3F]/95 backdrop-blur-sm">
             <h3 className="text-white font-bold text-lg mb-1">Comprehensive Dorset Coverage</h3>
@@ -205,9 +218,7 @@ export function InteractiveServiceMap() {
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-1">
                       {selectedAreaData.name}
-                      {selectedAreaData.isHomeBase && (
-                        <span className="ml-2 text-[#00C853]">★</span>
-                      )}
+                      {selectedAreaData.isHomeBase && <span className="ml-2 text-[#00C853]">★</span>}
                     </h3>
                     <p className="text-sm text-[#1E90FF]">{selectedAreaData.postcode}</p>
                   </div>
@@ -216,7 +227,7 @@ export function InteractiveServiceMap() {
                       setSelectedArea(null)
                       if (mapRef.current) {
                         mapRef.current.flyTo([50.75, -2.0], 10, {
-                          duration: 1.5
+                          duration: 1.5,
                         })
                       }
                     }}
@@ -225,9 +236,7 @@ export function InteractiveServiceMap() {
                     ✕
                   </button>
                 </div>
-                <p className="text-white/70 leading-relaxed">
-                  {selectedAreaData.description}
-                </p>
+                <p className="text-white/70 leading-relaxed">{selectedAreaData.description}</p>
               </div>
 
               <div>
@@ -259,14 +268,12 @@ export function InteractiveServiceMap() {
             <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
               <div className="text-6xl mb-2">📍</div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Explore Our Service Areas
-                </h3>
+                <h3 className="text-xl font-bold text-white mb-2">Explore Our Service Areas</h3>
                 <p className="text-white/60 text-sm max-w-xs">
                   Click on any marker on the map to view coverage details and available services
                 </p>
               </div>
-              
+
               <div className="pt-6 space-y-2">
                 <p className="text-xs text-white/40">★ marks our Swanage home base</p>
                 <p className="text-xs text-white/40 mb-3">Not seeing your area?</p>

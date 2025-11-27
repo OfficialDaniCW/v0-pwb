@@ -111,7 +111,10 @@ export default function OurWorkPage() {
                         src={image.url || "/placeholder.svg"}
                         alt={image.alt}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        quality={75}
                       />
                     </div>
                     <div className="p-4">
@@ -139,7 +142,10 @@ export default function OurWorkPage() {
                             src={project.image || "/placeholder.svg"}
                             alt={project.title}
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                            quality={75}
                           />
                           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
                         </Link>
@@ -210,7 +216,12 @@ export default function OurWorkPage() {
                 className="bg-[#1E90FF] text-white font-semibold rounded-lg px-8
                            hover:bg-[#1E90FF]/90 transition-all"
               >
-                <a href="https://www.instagram.com/powerwashbrosltd/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.instagram.com/powerwashbrosltd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow PowerWash Bros on Instagram"
+                >
                   @powerwashbrosltd
                 </a>
               </Button>
@@ -231,7 +242,12 @@ export default function OurWorkPage() {
                   className="bg-white text-[#1E90FF] font-bold rounded-lg px-8 py-6
                              hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
                 >
-                  <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://wa.me/447418610731"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat with PowerWash Bros on WhatsApp"
+                  >
                     Chat on WhatsApp
                   </a>
                 </Button>
@@ -242,7 +258,9 @@ export default function OurWorkPage() {
                   className="border-2 border-white bg-transparent text-white rounded-lg px-8 py-6
                              hover:bg-white hover:text-[#1E90FF] transition-all"
                 >
-                  <a href="/quote">Request Free Quote</a>
+                  <a href="/quote" aria-label="Request a free quote from PowerWash Bros">
+                    Request Free Quote
+                  </a>
                 </Button>
               </div>
             </div>

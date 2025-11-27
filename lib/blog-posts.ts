@@ -1,3 +1,4 @@
+// Images should be uploaded via admin portal
 export const blogPosts = [
   {
     title: "PowerWash Bros Partners with Avoca Group",
@@ -7,7 +8,7 @@ export const blogPosts = [
     category: "Company News",
     publishedAt: "2025-11-22",
     readTime: 4,
-    featuredImage: "/images/portfolio/commercial-patio-after.jpg",
+    featuredImage: "", // Removed hardcoded image - upload via admin
     relatedService: "/services/commercial",
     author: "PowerWash Bros",
     tags: ["partnership", "commercial cleaning", "avoca group", "industry news"],
@@ -47,7 +48,7 @@ For more information about Avoca Group and their services, please visit their we
     category: "Expert Advice",
     publishedAt: "2025-11-20",
     readTime: 6,
-    featuredImage: "/images/portfolio/render-clean-after.jpg",
+    featuredImage: "", // Removed hardcoded image - upload via admin
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["PASMA", "biocide", "roof cleaning", "safety", "BAC50"],
@@ -106,7 +107,7 @@ When you choose PowerWash Bros, you're choosing a team that combines the right a
     category: "Property Maintenance",
     publishedAt: "2025-01-08",
     readTime: 8,
-    featuredImage: "/images/before1.jpeg",
+    featuredImage: "", // Removed hardcoded image - upload via admin
     relatedService: "/services/demossing",
     author: "PowerWash Bros",
     tags: ["moss", "roof care", "biocide", "property damage"],
@@ -178,7 +179,7 @@ If you're concerned about moss on your property, we offer free assessments acros
     category: "Prevention Tips",
     publishedAt: "2025-01-01",
     readTime: 6,
-    featuredImage: "/images/before2.jpeg",
+    featuredImage: "", // Removed hardcoded image - upload via admin
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["roof maintenance", "cost saving", "prevention"],
@@ -207,7 +208,7 @@ A professional roof clean and biocide treatment might cost a few hundred pounds.
     category: "Industry Insights",
     publishedAt: "2024-12-20",
     readTime: 7,
-    featuredImage: "/images/portfolio/patio-cleaning-after.jpg",
+    featuredImage: "", // Removed hardcoded image - upload via admin
     relatedService: "/services/softwash",
     author: "PowerWash Bros",
     tags: ["soft wash", "pressure wash", "cleaning techniques"],

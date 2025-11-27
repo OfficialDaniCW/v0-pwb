@@ -226,6 +226,10 @@ export default function RootLayout({
         <meta name="geo.position" content="50.6083;-1.9575" />
         <meta name="ICBM" content="50.6083, -1.9575" />
 
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://unpkg.com" />
+
         <link
           rel="preload"
           href="/fonts/Inter.woff2"
@@ -235,15 +239,10 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossOrigin=""
-        />
+        {/* Leaflet CSS is removed from here */}
 
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XT0PL3MJH0" strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XT0PL3MJH0" strategy="lazyOnload" />
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
