@@ -1,18 +1,19 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | PowerWash Bros Swanage",
-  description: "Terms and conditions for PowerWash Bros Ltd services. Read our service terms, payment policies, and cancellation terms.",
+  description:
+    "Terms and conditions for PowerWash Bros Ltd services. Read our service terms, payment policies, and cancellation terms.",
 }
 
 export default function TermsAndConditions() {
   return (
     <>
       <SiteHeader />
-      
+
       <div className="min-h-screen bg-white">
         <div className="max-w-4xl mx-auto px-6 py-16 space-y-8">
           <div className="space-y-4">
@@ -20,24 +21,22 @@ export default function TermsAndConditions() {
               ← Back to Home
             </Link>
             <h1 className="text-4xl font-bold text-[#0B1E3F]">Terms & Conditions</h1>
-            <p className="text-gray-600">
-              Last updated: January 2025
-            </p>
+            <p className="text-gray-600">Last updated: January 2025</p>
           </div>
 
           <div className="prose prose-neutral max-w-none space-y-6 text-gray-700">
             <section className="space-y-4">
               <h2 className="text-2xl font-semibold">1. About These Terms</h2>
               <p>
-                These Terms and Conditions ("Terms") govern your use of services provided by PowerWash Bros Ltd ("we", "our", "us"), a company registered in England and Wales (Company No. 16100439).
+                These Terms and Conditions ("Terms") govern your use of services provided by PowerWash Bros Ltd ("we",
+                "our", "us"), a company registered in England and Wales (Company No. 16100439).
               </p>
               <p className="font-semibold">
-                Registered Address: Hardingredmans, Bridge House, Court Road, Swanage, Dorset, BH19 1DX<br />
+                Registered Address: Hardingredmans, Bridge House, Court Road, Swanage, Dorset, BH19 1DX
+                <br />
                 Contact: info@powerwashbros.co.uk | 07418 610731
               </p>
-              <p>
-                By booking our services, you agree to these Terms. Please read them carefully before proceeding.
-              </p>
+              <p>By booking our services, you agree to these Terms. Please read them carefully before proceeding.</p>
             </section>
 
             <section className="space-y-4">
@@ -64,12 +63,15 @@ export default function TermsAndConditions() {
 
               <h3 className="text-xl font-semibold">3.2 Acceptance</h3>
               <p>
-                A binding contract is formed when you accept our quote in writing (email, WhatsApp, or signed quote form) and pay any required deposit.
+                A binding contract is formed when you accept our quote in writing (email, WhatsApp, or signed quote
+                form) and pay any required deposit.
               </p>
 
               <h3 className="text-xl font-semibold">3.3 Accuracy of Information</h3>
               <p>
-                You must provide accurate information about your property, including access restrictions, surface materials, and any known damage. Incorrect information may result in revised quotes or additional charges.
+                You must provide accurate information about your property, including access restrictions, surface
+                materials, and any known damage. Incorrect information may result in revised quotes or additional
+                charges.
               </p>
             </section>
 
@@ -83,17 +85,19 @@ export default function TermsAndConditions() {
               </ul>
 
               <h3 className="text-xl font-semibold">4.2 Payment Methods</h3>
-              <p>We accept payment by bank transfer, card payment, or cash. Payment details will be provided in your quote.</p>
+              <p>
+                We accept payment by bank transfer, card payment, or cash. Payment details will be provided in your
+                quote.
+              </p>
 
               <h3 className="text-xl font-semibold">4.3 Late Payment</h3>
               <p>
-                Invoices are due within 7 days of completion. Late payments may incur interest charges of 8% per annum above the Bank of England base rate.
+                Invoices are due within 7 days of completion. Late payments may incur interest charges of 8% per annum
+                above the Bank of England base rate.
               </p>
 
               <h3 className="text-xl font-semibold">4.4 Additional Work</h3>
-              <p>
-                Any work beyond the original quote requires your approval and will be charged separately.
-              </p>
+              <p>Any work beyond the original quote requires your approval and will be charged separately.</p>
             </section>
 
             <section className="space-y-4">
@@ -107,7 +111,8 @@ export default function TermsAndConditions() {
 
               <h3 className="text-xl font-semibold">5.2 Weather Cancellations</h3>
               <p>
-                We reserve the right to reschedule work due to adverse weather conditions (heavy rain, frost, high winds) that would compromise quality or safety. No cancellation fees apply.
+                We reserve the right to reschedule work due to adverse weather conditions (heavy rain, frost, high
+                winds) that would compromise quality or safety. No cancellation fees apply.
               </p>
 
               <h3 className="text-xl font-semibold">5.3 Rescheduling</h3>
@@ -129,12 +134,14 @@ export default function TermsAndConditions() {
 
               <h3 className="text-xl font-semibold">6.2 Access Failures</h3>
               <p>
-                If access cannot be provided on the scheduled date, you will be charged a £50 call-out fee. Repeat access failures may result in contract termination.
+                If access cannot be provided on the scheduled date, you will be charged a £50 call-out fee. Repeat
+                access failures may result in contract termination.
               </p>
 
               <h3 className="text-xl font-semibold">6.3 Keys and Codes</h3>
               <p>
-                If you provide keys or access codes, we will treat them with utmost security. We are not liable for third-party access issues.
+                If you provide keys or access codes, we will treat them with utmost security. We are not liable for
+                third-party access issues.
               </p>
             </section>
 
@@ -152,12 +159,14 @@ export default function TermsAndConditions() {
 
               <h3 className="text-xl font-semibold">7.2 Insurance</h3>
               <p>
-                We maintain public liability insurance covering up to £5,000,000. Proof of insurance available on request.
+                We maintain public liability insurance covering up to £5,000,000. Proof of insurance available on
+                request.
               </p>
 
               <h3 className="text-xl font-semibold">7.3 Biocide Use</h3>
               <p>
-                Our team is fully trained and registered in the safe use of biocidal products. We follow all safety protocols and manufacturer guidelines.
+                Our team is fully trained and registered in the safe use of biocidal products. We follow all safety
+                protocols and manufacturer guidelines.
               </p>
             </section>
 
@@ -165,27 +174,32 @@ export default function TermsAndConditions() {
               <h2 className="text-2xl font-semibold">8. Limitations of Liability</h2>
               <h3 className="text-xl font-semibold">8.1 Existing Damage</h3>
               <p>
-                We are not liable for pre-existing damage or defects that become visible after cleaning. We will conduct a pre-work inspection and photograph any concerns.
+                We are not liable for pre-existing damage or defects that become visible after cleaning. We will conduct
+                a pre-work inspection and photograph any concerns.
               </p>
 
               <h3 className="text-xl font-semibold">8.2 Natural Variations</h3>
               <p>
-                Natural stone, aged surfaces, and heritage materials may show color variations after cleaning. This is a natural result of removing dirt layers and is not considered damage.
+                Natural stone, aged surfaces, and heritage materials may show colour variations after cleaning. This is
+                a natural result of removing dirt layers and is not considered damage.
               </p>
 
               <h3 className="text-xl font-semibold">8.3 Organic Regrowth</h3>
               <p>
-                While our biocide treatments provide long-term protection, we cannot guarantee permanent prevention of moss, algae, or lichen growth due to environmental factors.
+                While our biocide treatments provide long-term protection, we cannot guarantee permanent prevention of
+                moss, algae, or lichen growth due to environmental factors.
               </p>
 
               <h3 className="text-xl font-semibold">8.4 Force Majeure</h3>
               <p>
-                We are not liable for delays or failures caused by events beyond our reasonable control (extreme weather, pandemics, civil unrest, etc.).
+                We are not liable for delays or failures caused by events beyond our reasonable control (extreme
+                weather, pandemics, civil unrest, etc.).
               </p>
 
               <h3 className="text-xl font-semibold">8.5 Liability Cap</h3>
               <p>
-                Our total liability for any claim shall not exceed the value of the specific service contract or £5,000,000 (whichever is lower), subject to insurance coverage.
+                Our total liability for any claim shall not exceed the value of the specific service contract or
+                £5,000,000 (whichever is lower), subject to insurance coverage.
               </p>
             </section>
 
@@ -207,17 +221,20 @@ export default function TermsAndConditions() {
               <h2 className="text-2xl font-semibold">10. Complaints and Quality Guarantee</h2>
               <h3 className="text-xl font-semibold">10.1 Quality Standards</h3>
               <p>
-                We strive for excellence. If you're not satisfied with our work, please contact us within 7 days of completion.
+                We strive for excellence. If you're not satisfied with our work, please contact us within 7 days of
+                completion.
               </p>
 
               <h3 className="text-xl font-semibold">10.2 Rectification</h3>
               <p>
-                We will investigate any legitimate complaints and, if necessary, return to remedy any issues at no extra charge.
+                We will investigate any legitimate complaints and, if necessary, return to remedy any issues at no extra
+                charge.
               </p>
 
               <h3 className="text-xl font-semibold">10.3 Dispute Resolution</h3>
               <p>
-                If we cannot resolve a complaint directly, you may refer the matter to a relevant trade association or ombudsman.
+                If we cannot resolve a complaint directly, you may refer the matter to a relevant trade association or
+                ombudsman.
               </p>
             </section>
 
@@ -225,7 +242,8 @@ export default function TermsAndConditions() {
               <h2 className="text-2xl font-semibold">11. Intellectual Property</h2>
               <h3 className="text-xl font-semibold">11.1 Before/After Photos</h3>
               <p>
-                We may photograph your property before and after cleaning for quality control, training, and marketing purposes. By accepting our services, you consent to this unless you specifically opt out in writing.
+                We may photograph your property before and after cleaning for quality control, training, and marketing
+                purposes. By accepting our services, you consent to this unless you specifically opt out in writing.
               </p>
 
               <h3 className="text-xl font-semibold">11.2 PowerUps Brand</h3>
@@ -237,7 +255,12 @@ export default function TermsAndConditions() {
             <section className="space-y-4">
               <h2 className="text-2xl font-semibold">12. Data Protection</h2>
               <p>
-                We process your personal data in accordance with UK GDPR and our Privacy Policy. For full details, see our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
+                We process your personal data in accordance with UK GDPR and our Privacy Policy. For full details, see
+                our{" "}
+                <Link href="/privacy" className="text-primary hover:underline">
+                  Privacy Policy
+                </Link>
+                .
               </p>
             </section>
 
@@ -245,7 +268,8 @@ export default function TermsAndConditions() {
               <h2 className="text-2xl font-semibold">13. General Terms</h2>
               <h3 className="text-xl font-semibold">13.1 Entire Agreement</h3>
               <p>
-                These Terms, together with our quote, constitute the entire agreement between you and PowerWash Bros Ltd.
+                These Terms, together with our quote, constitute the entire agreement between you and PowerWash Bros
+                Ltd.
               </p>
 
               <h3 className="text-xl font-semibold">13.2 Amendments</h3>
@@ -255,12 +279,14 @@ export default function TermsAndConditions() {
 
               <h3 className="text-xl font-semibold">13.3 Severability</h3>
               <p>
-                If any part of these Terms is found to be unenforceable, the remaining provisions shall continue in full effect.
+                If any part of these Terms is found to be unenforceable, the remaining provisions shall continue in full
+                effect.
               </p>
 
               <h3 className="text-xl font-semibold">13.4 Governing Law</h3>
               <p>
-                These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the English courts.
+                These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the
+                exclusive jurisdiction of the English courts.
               </p>
             </section>
 
@@ -268,11 +294,16 @@ export default function TermsAndConditions() {
               <h2 className="text-2xl font-semibold">14. Contact Information</h2>
               <p>For questions about these Terms:</p>
               <p className="font-semibold">
-                PowerWash Bros Ltd<br />
-                Company No. 16100439<br />
-                Email: info@powerwashbros.co.uk<br />
-                Phone: 07418 610731<br />
-                WhatsApp: 07418 610731<br />
+                PowerWash Bros Ltd
+                <br />
+                Company No. 16100439
+                <br />
+                Email: info@powerwashbros.co.uk
+                <br />
+                Phone: 07418 610731
+                <br />
+                WhatsApp: 07418 610731
+                <br />
                 Address: Hardingredmans, Bridge House, Court Road, Swanage, Dorset, BH19 1DX
               </p>
             </section>
@@ -285,7 +316,7 @@ export default function TermsAndConditions() {
           </div>
         </div>
       </div>
-      
+
       <PWBFooter />
     </>
   )

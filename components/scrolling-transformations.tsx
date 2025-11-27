@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-data"
 
 interface Transformation {
   id: number
@@ -50,28 +52,29 @@ const fallbackTransformations: Transformation[] = [
 ]
 
 export function ScrollingTransformations() {
-  const [transformations, setTransformations] = useState<Transformation[]>(fallbackTransformations)
+  const [projects, setProjects] = useState<PortfolioProject[]>(portfolioProjects)
 
   useEffect(() => {
-    // Fetch transformations from database
-    async function fetchTransformations() {
+    // Fetch from database if available, fall back to static data
+    async function fetchProjects() {
       try {
-        const res = await fetch("/api/transformations")
+        const res = await fetch("/api/portfolio")
         if (res.ok) {
           const data = await res.json()
           if (data.length > 0) {
-            setTransformations(data)
+            setProjects(data)
           }
         }
       } catch (error) {
-        // Use fallback images if fetch fails
-        console.log("Using fallback transformations")
+        // Use shared portfolio data if fetch fails
+        console.log("Using static portfolio data")
       }
     }
-    fetchTransformations()
+    fetchProjects()
   }, [])
 
-  const displayItems = [...transformations, ...transformations]
+  // Duplicate for infinite scroll effect
+  const displayItems = [...projects, ...projects]
 
   return (
     <div className="relative w-full overflow-hidden py-8 bg-[#0B1E3F]/50 backdrop-blur-sm">
@@ -80,15 +83,16 @@ export function ScrollingTransformations() {
 
       <div className="flex animate-scroll gap-6">
         {displayItems.map((item, index) => (
-          <div
+          <Link
             key={`${item.id}-${index}`}
-            className="flex-shrink-0 w-[300px] rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm"
+            href={item.link}
+            className="flex-shrink-0 w-[300px] rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#1E90FF]/50 transition-colors group"
           >
             <div className="relative h-[180px] overflow-hidden">
               <div className="absolute inset-0 flex">
                 <div className="w-1/2 relative">
                   <Image
-                    src={item.before_image_url || "/placeholder.svg"}
+                    src={item.beforeImage || "/placeholder.svg"}
                     alt={`${item.title} before`}
                     fill
                     className="object-cover"
@@ -99,7 +103,7 @@ export function ScrollingTransformations() {
                 </div>
                 <div className="w-1/2 relative">
                   <Image
-                    src={item.after_image_url || "/placeholder.svg"}
+                    src={item.afterImage || "/placeholder.svg"}
                     alt={`${item.title} after`}
                     fill
                     className="object-cover"
@@ -111,9 +115,12 @@ export function ScrollingTransformations() {
               </div>
             </div>
             <div className="p-3 text-center">
-              <p className="text-white font-medium text-sm">{item.title}</p>
+              <p className="text-white font-medium text-sm group-hover:text-[#1E90FF] transition-colors">
+                {item.title}
+              </p>
+              <p className="text-white/50 text-xs mt-1">{item.location}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

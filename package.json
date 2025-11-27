@@ -40,7 +40,7 @@
     "@radix-ui/react-tooltip": "latest",
     "@vercel/analytics": "latest",
     "@vercel/blob": "latest",
-    "@vercel/speed-insights": "latest",
+    "@vercel/speed-insights": "1.2.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -62,12 +62,12 @@
     "react-leaflet": "^4.2.1",
     "react-resizable-panels": "latest",
     "recharts": "latest",
+    "sharp": "latest",
     "sonner": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "latest",
     "vaul": "latest",
-    "vue-router": "latest",
     "zod": "3.25.67"
   },
   "devDependencies": {

@@ -19,9 +19,9 @@ export default function PatioCleaningPage() {
     location: "Dorset",
     date: "February 2025",
     description:
-      "Complete transformation of a heavily moss and algae-covered patio entrance. The gray paving slabs were dangerously slippery and stained with years of organic growth. Our team used specialized pressure washing techniques combined with biocide treatment to safely remove all contaminants while protecting the surrounding plants and stonework. The result is a pristine, safe surface that enhances the property's entrance.",
+      "Complete transformation of a heavily moss and algae-covered patio entrance. The grey paving slabs were dangerously slippery and stained with years of organic growth. Our team used specialised pressure washing techniques combined with biocide treatment to safely remove all contaminants while protecting the surrounding plants and stonework. The result is a pristine, safe surface that enhances the property's entrance.",
     details: [
-      "Surface: Gray concrete paving slabs",
+      "Surface: Grey concrete paving slabs",
       "Size: 45m² entrance patio",
       "Treatment: Pressure washing with moss removal and biocide application",
       "Challenges: Heavy moss growth, algae staining, plant pot proximity",

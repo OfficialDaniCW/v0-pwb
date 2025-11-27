@@ -121,7 +121,7 @@ export default function CommercialPatioPage() {
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#00C853] mr-3 text-xl">✓</span>
-                      <span className="text-white/80">Specialized cleaning solutions for heavy traffic staining</span>
+                      <span className="text-white/80">Specialised cleaning solutions for heavy traffic staining</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#00C853] mr-3 text-xl">✓</span>

@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef } from "react"
-import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { useEffect, useRef, useState } from "react"
 import "./Plasma.css"
 
 interface PlasmaProps {
@@ -106,9 +105,10 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
-    if (!containerRef.current) return
+    if (!containerRef.current || hasError) return
 
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
     const isMobile = window.innerWidth < 768
@@ -120,128 +120,157 @@ export const Plasma: React.FC<PlasmaProps> = ({
       return
     }
 
-    const useCustomColor = color ? 1.0 : 0.0
-    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
-    const directionMultiplier = direction === "reverse" ? -1.0 : 1.0
+    let cleanup: (() => void) | undefined
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      // Reduce DPR more aggressively on mobile for big win
-      dpr: Math.max(0.5, Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 2) * (isIOS || isMobile ? 0.5 : 1)),
-    })
-    const gl = renderer.gl
-    const canvas = gl.canvas as HTMLCanvasElement
-    canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block;"
-    containerRef.current.appendChild(canvas)
+    const initPlasma = async () => {
+      try {
+        const ogl = await import("ogl")
+        const { Renderer, Program, Mesh, Triangle } = ogl
 
-    const geometry = new Triangle(gl)
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uCustomColor: { value: new Float32Array(customColorRgb) },
-        uUseCustomColor: { value: useCustomColor },
-        // Slightly slow down by default to reduce work
-        uSpeed: { value: speed * (isMobile ? 0.3 : 0.4) },
-        uDirection: { value: directionMultiplier },
-        // Scale down a touch on mobile for reduced fragment work
-        uScale: { value: isMobile ? scale * 1.2 : scale },
-        // Lower opacity a bit for blend cost and visual subtlety
-        uOpacity: { value: Math.min(0.8, opacity) },
-        uMouse: { value: new Float32Array([0, 0]) },
-        uMouseInteractive: { value: isIOS ? 0.0 : mouseInteractive ? 1.0 : 0.0 },
-      },
-    })
-    const mesh = new Mesh(gl, { geometry, program })
+        if (!containerRef.current) return
 
-    // Mouse interaction
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isIOS || !mouseInteractive) return
-      const rect = containerRef.current!.getBoundingClientRect()
-      mousePos.current.x = e.clientX - rect.left
-      mousePos.current.y = e.clientY - rect.top
-      const mouseUniform = program.uniforms.uMouse.value as Float32Array
-      mouseUniform[0] = mousePos.current.x
-      mouseUniform[1] = mousePos.current.y
-    }
-    if (!isIOS && mouseInteractive) {
-      containerRef.current.addEventListener("mousemove", handleMouseMove)
-    }
+        const useCustomColor = color ? 1.0 : 0.0
+        const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
+        const directionMultiplier = direction === "reverse" ? -1.0 : 1.0
 
-    // Resize handling with debounce
-    let resizeTimer: number
-    const setSize = () => {
-      clearTimeout(resizeTimer)
-      resizeTimer = window.setTimeout(() => {
-        const rect = containerRef.current!.getBoundingClientRect()
-        const width = Math.max(1, Math.floor(rect.width))
-        const height = Math.max(1, Math.floor(rect.height))
-        renderer.setSize(width, height)
-        const res = program.uniforms.iResolution.value as Float32Array
-        res[0] = gl.drawingBufferWidth
-        res[1] = gl.drawingBufferHeight
-      }, 50)
-    }
-    const ro = new ResizeObserver(setSize)
-    ro.observe(containerRef.current)
-    setSize()
+        const renderer = new Renderer({
+          webgl: 2,
+          alpha: true,
+          antialias: false,
+          dpr: Math.max(0.5, Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 2) * (isIOS || isMobile ? 0.5 : 1)),
+        })
+        const gl = renderer.gl
+        const canvas = gl.canvas as HTMLCanvasElement
+        canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block;"
+        containerRef.current.appendChild(canvas)
 
-    // Animation loop with FPS throttle and visibility pause
-    let raf = 0
-    let lastTime = 0
-    let running = true
-    const targetDelta = isMobile ? 50 : 33 // ~20fps mobile, ~30fps desktop
-    const t0 = performance.now()
+        const geometry = new Triangle(gl)
+        const program = new Program(gl, {
+          vertex,
+          fragment,
+          uniforms: {
+            iTime: { value: 0 },
+            iResolution: { value: new Float32Array([1, 1]) },
+            uCustomColor: { value: new Float32Array(customColorRgb) },
+            uUseCustomColor: { value: useCustomColor },
+            uSpeed: { value: speed * (isMobile ? 0.3 : 0.4) },
+            uDirection: { value: directionMultiplier },
+            uScale: { value: isMobile ? scale * 1.2 : scale },
+            uOpacity: { value: Math.min(0.8, opacity) },
+            uMouse: { value: new Float32Array([0, 0]) },
+            uMouseInteractive: { value: isIOS ? 0.0 : mouseInteractive ? 1.0 : 0.0 },
+          },
+        })
+        const mesh = new Mesh(gl, { geometry, program })
 
-    const loop = (t: number) => {
-      if (!running) return
-      const delta = t - lastTime
-      if (delta >= targetDelta) {
-        const timeValue = (t - t0) * 0.001
-        if (direction === "pingpong") {
-          const cycle = Math.sin(timeValue * 0.5) * directionMultiplier
-          ;(program.uniforms.uDirection as any).value = cycle
+        // Mouse interaction
+        const handleMouseMove = (e: MouseEvent) => {
+          if (isIOS || !mouseInteractive) return
+          const rect = containerRef.current!.getBoundingClientRect()
+          mousePos.current.x = e.clientX - rect.left
+          mousePos.current.y = e.clientY - rect.top
+          const mouseUniform = program.uniforms.uMouse.value as Float32Array
+          mouseUniform[0] = mousePos.current.x
+          mouseUniform[1] = mousePos.current.y
         }
-        ;(program.uniforms.iTime as any).value = timeValue
-        renderer.render({ scene: mesh })
-        lastTime = t
-      }
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
+        if (!isIOS && mouseInteractive) {
+          containerRef.current.addEventListener("mousemove", handleMouseMove)
+        }
 
-    const onVisibility = () => {
-      const hidden = document.visibilityState === "hidden"
-      // Pause rendering entirely while hidden
-      if (hidden && running) {
-        running = false
-        cancelAnimationFrame(raf)
-      } else if (!hidden && !running) {
-        running = true
-        lastTime = 0
+        // Resize handling with debounce
+        let resizeTimer: number
+        const setSize = () => {
+          clearTimeout(resizeTimer)
+          resizeTimer = window.setTimeout(() => {
+            if (!containerRef.current) return
+            const rect = containerRef.current.getBoundingClientRect()
+            const width = Math.max(1, Math.floor(rect.width))
+            const height = Math.max(1, Math.floor(rect.height))
+            renderer.setSize(width, height)
+            const res = program.uniforms.iResolution.value as Float32Array
+            res[0] = gl.drawingBufferWidth
+            res[1] = gl.drawingBufferHeight
+          }, 50)
+        }
+        const ro = new ResizeObserver(setSize)
+        ro.observe(containerRef.current)
+        setSize()
+
+        // Animation loop with FPS throttle and visibility pause
+        let raf = 0
+        let lastTime = 0
+        let running = true
+        const targetDelta = isMobile ? 50 : 33
+        const t0 = performance.now()
+
+        const loop = (t: number) => {
+          if (!running) return
+          const delta = t - lastTime
+          if (delta >= targetDelta) {
+            const timeValue = (t - t0) * 0.001
+            if (direction === "pingpong") {
+              const cycle = Math.sin(timeValue * 0.5) * directionMultiplier
+              ;(program.uniforms.uDirection as any).value = cycle
+            }
+            ;(program.uniforms.iTime as any).value = timeValue
+            renderer.render({ scene: mesh })
+            lastTime = t
+          }
+          raf = requestAnimationFrame(loop)
+        }
         raf = requestAnimationFrame(loop)
+
+        const onVisibility = () => {
+          const hidden = document.visibilityState === "hidden"
+          if (hidden && running) {
+            running = false
+            cancelAnimationFrame(raf)
+          } else if (!hidden && !running) {
+            running = true
+            lastTime = 0
+            raf = requestAnimationFrame(loop)
+          }
+        }
+        document.addEventListener("visibilitychange", onVisibility)
+
+        cleanup = () => {
+          document.removeEventListener("visibilitychange", onVisibility)
+          running = false
+          cancelAnimationFrame(raf)
+          ro.disconnect()
+          clearTimeout(resizeTimer)
+          if (!isIOS && mouseInteractive && containerRef.current) {
+            containerRef.current.removeEventListener("mousemove", handleMouseMove)
+          }
+          try {
+            containerRef.current?.removeChild(canvas)
+          } catch {}
+        }
+      } catch (error) {
+        console.error("[v0] Plasma initialization failed:", error)
+        setHasError(true)
       }
     }
-    document.addEventListener("visibilitychange", onVisibility)
+
+    initPlasma()
 
     return () => {
-      document.removeEventListener("visibilitychange", onVisibility)
-      running = false
-      cancelAnimationFrame(raf)
-      ro.disconnect()
-      clearTimeout(resizeTimer)
-      if (!isIOS && mouseInteractive && containerRef.current) {
-        containerRef.current.removeEventListener("mousemove", handleMouseMove)
-      }
-      try {
-        containerRef.current?.removeChild(canvas)
-      } catch {}
+      if (cleanup) cleanup()
     }
-  }, [color, speed, direction, scale, opacity, mouseInteractive])
+  }, [color, speed, direction, scale, opacity, mouseInteractive, hasError])
+
+  if (hasError) {
+    return (
+      <div
+        className="plasma-container relative w-full h-full pointer-events-none"
+        style={{
+          background: `radial-gradient(ellipse at 30% 20%, ${color}20 0%, transparent 50%),
+                       radial-gradient(ellipse at 70% 80%, ${color}15 0%, transparent 50%),
+                       radial-gradient(ellipse at 50% 50%, ${color}10 0%, transparent 70%)`,
+        }}
+      />
+    )
+  }
 
   return <div ref={containerRef} className="plasma-container relative w-full h-full pointer-events-none" />
 }

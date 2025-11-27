@@ -21,20 +21,22 @@ export function PWBFooter() {
       />
 
       {/* Main Footer Content */}
-      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+      <div className="relative z-10 container mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {/* Column 1: Brand */}
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="relative h-16 w-16">
+          <div className="col-span-2 md:col-span-1 space-y-4 sm:space-y-6">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="relative h-12 w-12 sm:h-16 sm:w-16">
                 <Image src="/images/pwb-logo-circle.png" alt="PowerWash Bros Logo" fill className="object-contain" />
               </div>
-              <p className="text-sm text-white/70 leading-relaxed">Dorsets leading pressure washing company.</p>
+              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                Dorsets leading pressure washing company.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <h4 className="text-sm font-bold text-white">Open Hours:</h4>
-              <div className="text-sm text-white/70 space-y-1">
+            <div className="space-y-1 sm:space-y-2">
+              <h4 className="text-xs sm:text-sm font-bold text-white">Open Hours:</h4>
+              <div className="text-xs sm:text-sm text-white/70 space-y-0.5 sm:space-y-1">
                 <p>Mon – Fri: 8 am – 5 pm</p>
                 <p>Saturday: 8am – 6pm</p>
                 <p>Sunday: 9am – 3pm</p>
@@ -43,34 +45,31 @@ export function PWBFooter() {
           </div>
 
           {/* Column 2: Official info */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold">Official info</h3>
-            <ul className="space-y-4 text-sm text-white/70">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+          <div className="col-span-2 md:col-span-1 space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-bold">Official info</h3>
+            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-white/70">
+              <li className="flex items-start gap-2 sm:gap-3">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0 mt-0.5" />
                 <span>Hardingredmans, Bridge House, Court Road, Swanage, BH19 1DX</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-[#1E90FF] shrink-0" />
+              <li className="flex items-center gap-2 sm:gap-3">
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0" />
                 <a href="tel:07418610731" className="hover:text-white transition-colors">
                   07418610731
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+              <li className="flex items-start gap-2 sm:gap-3">
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0 mt-0.5" />
                 <div className="flex flex-col">
-                  <a href="mailto:info@powerwashbros.co.uk" className="hover:text-white transition-colors">
+                  <a href="mailto:info@powerwashbros.co.uk" className="hover:text-white transition-colors break-all">
                     info@powerwashbros.co.uk
-                  </a>
-                  <a href="mailto:bookings@powerwashbros.co.uk" className="hover:text-white transition-colors">
-                    bookings@powerwashbros.co.uk
                   </a>
                 </div>
               </li>
             </ul>
 
             {/* Social Icons */}
-            <div className="flex gap-4 pt-2 flex-wrap">
+            <div className="flex gap-3 sm:gap-4 pt-2 flex-wrap">
               <a
                 href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6119,-1.9598,17z"
                 target="_blank"
@@ -139,9 +138,9 @@ export function PWBFooter() {
           </div>
 
           {/* Column 3: Quick Links */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold">Quick Links</h3>
-            <ul className="space-y-3 text-sm text-white/70">
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-bold">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-white/70">
               <li>
                 <Link href="/about" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
@@ -188,9 +187,9 @@ export function PWBFooter() {
           </div>
 
           {/* Column 4: Services */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold">Services</h3>
-            <ul className="space-y-2 text-sm text-white/70">
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-bold">Services</h3>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-white/70">
               <li>
                 <Link href="/services/driveway-cleaning" className="hover:text-[#1E90FF] transition-colors">
                   Driveway Cleaning
@@ -250,24 +249,24 @@ export function PWBFooter() {
           </div>
 
           {/* Column 5: Newsletter */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold">Newsletter</h3>
-            <p className="text-sm text-white/70 leading-relaxed">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-bold">Newsletter</h3>
+            <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
               Subscribe to our newsletter to get our latest updates & news
             </p>
-            <form className="flex gap-0">
+            <form className="flex gap-0 max-w-sm">
               <div className="relative flex-1">
                 <Input
                   type="email"
                   placeholder="Your mail address"
-                  className="bg-[#1A2C4E] border-none text-white placeholder:text-white/40 h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="bg-[#1A2C4E] border-none text-white placeholder:text-white/40 h-10 sm:h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0 text-sm"
                 />
               </div>
               <Button
                 type="submit"
-                className="h-12 w-12 rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
+                className="h-10 sm:h-12 w-10 sm:w-12 rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
               >
-                <Send className="h-5 w-5" />
+                <Send className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </form>
           </div>
@@ -275,32 +274,50 @@ export function PWBFooter() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 bg-[#0033CC] py-6">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <p className="text-sm text-white/90 text-center md:text-left">
-              2025 © All rights reserved by <span className="font-bold">PowerwashBros Ltd</span> | Company no. 16100439
-            </p>
-            <div className="flex items-center gap-6 text-sm text-white/80">
-              <Link href="/privacy" className="hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/cookies" className="hover:text-white transition-colors">
-                Cookies Policy
-              </Link>
-            </div>
-          </div>
+      <div className="relative z-10 bg-[#0033CC] py-4 sm:py-6">
+        <div className="container mx-auto px-4 flex flex-col items-center gap-4">
+          <p className="text-xs sm:text-sm text-white/90 text-center">
+            2025 © All rights reserved by <span className="font-bold">PowerwashBros Ltd</span>
+            <span className="hidden sm:inline"> | Company no. 16100439</span>
+          </p>
+          <p className="text-xs text-white/70 sm:hidden">Company no. 16100439</p>
 
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="h-10 w-10 bg-[#1E90FF] rounded flex items-center justify-center hover:bg-white hover:text-[#1E90FF] transition-all shadow-lg"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="h-5 w-5" />
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/80">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
+            <Link href="/cookies" className="hover:text-white transition-colors">
+              Cookies
+            </Link>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="h-8 w-8 sm:h-10 sm:w-10 bg-[#1E90FF] rounded flex items-center justify-center hover:bg-white hover:text-[#1E90FF] transition-all shadow-lg"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="h-4 w-4 sm:h-5 sm:w-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* TrueNorthTech credit bar */}
+      <div className="relative z-10 bg-black py-2 sm:py-3">
+        <div className="container mx-auto px-4 flex items-center justify-center">
+          <p className="text-xs text-white/80 text-center">
+            created by{" "}
+            <a
+              href="https://www.truenorthtech.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white hover:text-[#1E90FF] transition-colors"
+            >
+              TrueNorthTech
+            </a>{" "}
+            &lt;3
+          </p>
         </div>
       </div>
     </footer>

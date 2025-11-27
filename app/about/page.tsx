@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Shield, Award, Heart, Users, CheckCircle2, Target, Eye, Leaf, Linkedin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { DorsetMap } from "@/components/dorset-map"
 
 export const metadata = {
   title: "About Us | PowerWash Bros | Dorset's Property Care Brothers",
@@ -165,7 +166,7 @@ export default function AboutPage() {
                 <p>We knew there was a better way.</p>
                 <p>
                   As Dorset locals, we've seen firsthand how the coastal climate, tree coverage, and historic
-                  architecture create unique challenges for property owners. We realized that effective property care
+                  architecture create unique challenges for property owners. We realised that effective property care
                   requires understanding - understanding your specific property, your specific surfaces, and your
                   specific needs.
                 </p>
@@ -347,7 +348,7 @@ export default function AboutPage() {
         {/* Serving Dorset */}
         <section className="py-16 bg-gradient-to-br from-[#0B1E3F] to-[#0B1E3F]/80">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-5xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-white mb-6">Proud to Serve Dorset's Properties</h2>
               <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
                 As Dorset locals, we understand our region's unique challenges - coastal salt buildup in Swanage, heavy
@@ -355,59 +356,50 @@ export default function AboutPage() {
                 Dorset's properties beautiful and protected.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 text-white/70">
-                <span>Bournemouth</span>
-                <span>•</span>
-                <span>Poole</span>
-                <span>•</span>
-                <span>Swanage</span>
-                <span>•</span>
-                <span>Wimborne</span>
-                <span>•</span>
-                <span>Christchurch</span>
-                <span>•</span>
-                <span>Wareham</span>
-                <span>•</span>
-                <span>Ferndown</span>
+              {/* Comprehensive town grid */}
+              <div className="flex flex-wrap items-center justify-center gap-3 text-sm mb-8">
+                {[
+                  "Swanage",
+                  "Corfe Castle",
+                  "Wareham",
+                  "Wool",
+                  "Dorchester",
+                  "Weymouth",
+                  "Portland",
+                  "Poole",
+                  "Bournemouth",
+                  "Wimborne",
+                  "Studland",
+                  "Lulworth",
+                  "Kimmeridge",
+                  "Langton Matravers",
+                  "Worth Matravers",
+                  "Bere Regis",
+                  "Stoborough",
+                  "Bovington",
+                  "Warmwell",
+                  "Winfrith",
+                  "Lytchett Matravers",
+                  "Blandford Forum",
+                  "Ringwood",
+                  "Kingston Maurward",
+                ].map((town, i) => (
+                  <span
+                    key={town}
+                    className={`px-3 py-1 rounded-full ${
+                      town === "Swanage"
+                        ? "bg-[#00C853]/20 text-[#00C853] border border-[#00C853]/50 font-semibold"
+                        : "bg-[#1E90FF]/10 text-white/80 border border-[#1E90FF]/30"
+                    }`}
+                  >
+                    {town}
+                  </span>
+                ))}
               </div>
 
-              <div className="mt-12 glass-border rounded-2xl overflow-hidden bg-gradient-to-br from-[#1E90FF]/10 to-transparent p-8">
-                <div className="relative aspect-[4/3] flex items-center justify-center text-[#1E90FF]/20">
-                  <svg viewBox="0 0 800 600" className="w-full h-full">
-                    {/* Dorset outline */}
-                    <path
-                      d="M 100,300 L 150,250 L 200,200 L 280,180 L 350,170 L 420,180 L 500,200 L 580,230 L 650,270 L 700,320 L 720,380 L 700,440 L 650,480 L 580,500 L 500,510 L 420,500 L 350,480 L 280,460 L 220,430 L 170,390 L 130,350 L 100,300 Z"
-                      fill="currentColor"
-                      opacity="0.15"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-
-                    {/* Service area pins */}
-                    <circle cx="200" cy="320" r="8" fill="#1E90FF" opacity="0.8" />
-                    <circle cx="300" cy="300" r="8" fill="#1E90FF" opacity="0.8" />
-                    <circle cx="380" cy="285" r="8" fill="#1E90FF" opacity="0.8" />
-                    <circle cx="420" cy="350" r="8" fill="#1E90FF" opacity="0.8" />
-                    <circle cx="290" cy="360" r="8" fill="#1E90FF" opacity="0.8" />
-                    <circle cx="520" cy="380" r="10" fill="#00C853" opacity="0.9" />
-                    <circle cx="450" cy="320" r="8" fill="#1E90FF" opacity="0.8" />
-
-                    {/* Coastline */}
-                    <path
-                      d="M 100,300 Q 120,320 150,310 T 200,320 T 250,340 L 280,360 L 320,390 L 350,410 L 400,430 L 450,450 L 500,460 L 550,465 L 600,460 L 650,450 L 700,420"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      opacity="0.3"
-                      fill="none"
-                    />
-                  </svg>
-
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-white font-semibold text-lg bg-[#0B1E3F]/80 backdrop-blur-sm px-6 py-3 rounded-lg border border-[#1E90FF]/30">
-                      Comprehensive Dorset Coverage
-                    </p>
-                  </div>
-                </div>
+              {/* DorsetMap component */}
+              <div className="mt-8 glass-border rounded-2xl overflow-hidden">
+                <DorsetMap />
               </div>
             </div>
           </div>

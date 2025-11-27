@@ -1,8 +1,28 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Star, Shield, CheckCircle2, Award } from "lucide-react"
 import { ScrollingTransformations } from "@/components/scrolling-transformations"
+import { useState, useEffect } from "react"
+
+const rotatingWords = ["Maintenance", "Cleaning", "Care", "Pressure Washing", "Restoration", "Protection"]
 
 export function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % rotatingWords.length)
+        setIsAnimating(false)
+      }, 300) // Half of animation duration
+    }, 3000) // Change word every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="relative isolate overflow-hidden">
       <div className="container mx-auto px-4">
@@ -11,7 +31,14 @@ export function Hero() {
           <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl">
             <span className="block">Dorset's Leading</span>
             <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)]">
-              Property Maintenance
+              Property{" "}
+              <span
+                className={`inline-block transition-all duration-300 ${
+                  isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                }`}
+              >
+                {rotatingWords[currentIndex]}
+              </span>
             </span>
             <span className="block">Experts</span>
           </h1>

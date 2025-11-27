@@ -1,12 +1,13 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
+import { CheckCircle2 } from "lucide-react"
+import Link from "next/link"
 
 export const metadata = {
   title: "Driveway Cleaning & Restoration | PowerWash Bros | Swanage, Purbeck",
-  description: "Professional driveway cleaning services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
+  description:
+    "Professional driveway cleaning services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
   openGraph: {
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
     description: "Transform tired driveways with professional biocide treatments in Swanage and Purbeck",
@@ -35,66 +36,66 @@ export default function DrivewayCleaningPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Driveway Cleaning and Restoration",
-    "provider": {
+    serviceType: "Driveway Cleaning and Restoration",
+    provider: {
       "@type": "LocalBusiness",
-      "name": "PowerWash Bros",
-      "image": "https://powerwashbros.co.uk/logo.png",
-      "telephone": "+447418610731",
-      "address": {
+      name: "PowerWash Bros",
+      image: "https://powerwashbros.co.uk/logo.png",
+      telephone: "+447418610731",
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "Swanage",
-        "addressRegion": "Dorset",
-        "postalCode": "BH19",
-        "addressCountry": "GB"
-      }
+        addressLocality: "Swanage",
+        addressRegion: "Dorset",
+        postalCode: "BH19",
+        addressCountry: "GB",
+      },
     },
-    "areaServed": [
+    areaServed: [
       {
         "@type": "City",
-        "name": "Swanage"
+        name: "Swanage",
       },
       {
         "@type": "AdministrativeArea",
-        "name": "Purbeck"
+        name: "Purbeck",
       },
       {
         "@type": "AdministrativeArea",
-        "name": "Dorset"
-      }
+        name: "Dorset",
+      },
     ],
-    "description": "Professional driveway cleaning and restoration services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
-    "offers": {
+    description:
+      "Professional driveway cleaning and restoration services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
+    offers: {
       "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "priceCurrency": "GBP"
-    }
+      availability: "https://schema.org/InStock",
+      priceCurrency: "GBP",
+    },
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
-        
+
         {/* Hero Section */}
         <section className="py-20 sm:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <nav className="text-sm text-white/60 mb-6">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {' > '}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {' > '}
+                <Link href="/" className="hover:text-[#1E90FF]">
+                  Home
+                </Link>
+                {" > "}
+                <Link href="/services" className="hover:text-[#1E90FF]">
+                  Services
+                </Link>
+                {" > "}
                 <span className="text-white">Driveway Cleaning</span>
               </nav>
-              
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Driveway Restoration
-              </h1>
+
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Driveway Restoration</h1>
               <p className="text-xl text-white/80 mb-8">
                 Transform tired driveways back to pristine condition with professional biocide treatments
               </p>
@@ -138,14 +139,14 @@ export default function DrivewayCleaningPage() {
               <h2 className="text-3xl font-bold text-white mb-6">Why Driveway Maintenance Matters</h2>
               <div className="space-y-4 text-white/80 leading-relaxed">
                 <p>
-                  Your driveway is the first thing people see. Over time, dirt, algae, tire marks, and moss transform 
-                  that pristine surface into something you'd rather hide. But it's not just about appearance - that 
+                  Your driveway is the first thing people see. Over time, dirt, algae, tire marks, and moss transform
+                  that pristine surface into something you'd rather hide. But it's not just about appearance - that
                   organic growth is actively damaging your driveway.
                 </p>
                 <p>
-                  At PowerWash Bros, we don't just blast water at your driveway and hope for the best. Our biocide-trained 
-                  team understands different surface materials, drainage patterns, and the most effective cleaning methods 
-                  for YOUR specific situation.
+                  At PowerWash Bros, we don't just blast water at your driveway and hope for the best. Our
+                  biocide-trained team understands different surface materials, drainage patterns, and the most
+                  effective cleaning methods for YOUR specific situation.
                 </p>
               </div>
             </div>
@@ -158,7 +159,7 @@ export default function DrivewayCleaningPage() {
             <div className="max-w-4xl mx-auto glass-border rounded-2xl p-8">
               <h2 className="text-3xl font-bold text-white mb-6">Property-Centered Driveway Care</h2>
               <p className="text-white/80 leading-relaxed mb-6">
-                Every driveway has different materials, drainage, and conditions. We assess YOUR driveway and deliver 
+                Every driveway has different materials, drainage, and conditions. We assess YOUR driveway and deliver
                 bespoke solutions using our PowerUps range for results that last.
               </p>
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
@@ -193,7 +194,7 @@ export default function DrivewayCleaningPage() {
                   "Joint re-sanding (block paving)",
                   "Post-clean biocide protection",
                   "Before/after documentation",
-                  "Maintenance advice"
+                  "Maintenance advice",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-[#00C853] flex-shrink-0 mt-0.5" />
@@ -215,28 +216,28 @@ export default function DrivewayCleaningPage() {
                   {
                     number: "01",
                     title: "WhatsApp Consultation",
-                    description: "Send us photos and details about your driveway"
+                    description: "Send us photos and details about your driveway",
                   },
                   {
                     number: "02",
                     title: "Property Assessment",
-                    description: "We visit to evaluate surface type, drainage, and specific challenges"
+                    description: "We visit to evaluate surface type, drainage, and specific challenges",
                   },
                   {
                     number: "03",
                     title: "Preparation & Protection",
-                    description: "We protect surrounding areas and pre-treat stubborn stains"
+                    description: "We protect surrounding areas and pre-treat stubborn stains",
                   },
                   {
                     number: "04",
                     title: "Professional Cleaning with PowerUps",
-                    description: "Thorough cleaning using appropriate pressure and our biocide treatments"
+                    description: "Thorough cleaning using appropriate pressure and our biocide treatments",
                   },
                   {
                     number: "05",
                     title: "Quality Check & Maintenance Advice",
-                    description: "Final inspection and guidance on keeping your driveway pristine"
-                  }
+                    description: "Final inspection and guidance on keeping your driveway pristine",
+                  },
                 ].map((step) => (
                   <div key={step.number} className="glass-border rounded-xl p-6 flex gap-6">
                     <div className="text-4xl font-bold text-[#1E90FF]/30">{step.number}</div>
@@ -278,7 +279,7 @@ export default function DrivewayCleaningPage() {
                 <div className="glass-border rounded-xl p-6">
                   <h3 className="text-xl font-bold text-white mb-3">Faded Appearance</h3>
                   <p className="text-white/70">
-                    Restore original color and vibrancy to block paving and concrete surfaces.
+                    Restore original colour and vibrancy to block paving and concrete surfaces.
                   </p>
                 </div>
               </div>
@@ -290,12 +291,8 @@ export default function DrivewayCleaningPage() {
         <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold text-white mb-6">
-                Ready to Transform Your Driveway?
-              </h2>
-              <p className="text-xl text-white/90 mb-8">
-                Serving Swanage, Purbeck, and surrounding areas
-              </p>
+              <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Driveway?</h2>
+              <p className="text-xl text-white/90 mb-8">Serving Swanage, Purbeck, and surrounding areas</p>
               <Button
                 asChild
                 size="lg"

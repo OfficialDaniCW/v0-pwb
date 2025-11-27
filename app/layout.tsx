@@ -5,7 +5,6 @@ import { Inter } from "next/font/google"
 import Script from "next/script"
 import Plasma from "@/components/plasma"
 import { Suspense } from "react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { CookieBanner } from "@/components/cookie-banner"
 import { ScrollToTop } from "@/components/scroll-to-top"
@@ -15,11 +14,28 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 export const metadata: Metadata = {
   metadataBase: new URL("https://powerwashbros.co.uk"),
   title: {
-    default: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    default: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage, Purbeck & Dorset",
     template: "%s | PowerWash Bros",
   },
   description:
-    "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
+    "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes. Call 07418 610731.",
+  keywords: [
+    "pressure washing swanage",
+    "gutter cleaning swanage",
+    "roof cleaning swanage",
+    "driveway cleaning swanage",
+    "pressure washing purbeck",
+    "gutter cleaning purbeck",
+    "roof cleaning purbeck",
+    "exterior cleaning dorset",
+    "property maintenance dorset",
+    "soft wash dorset",
+    "render cleaning dorset",
+    "patio cleaning swanage",
+    "moss removal swanage",
+    "PowerWash Bros",
+    "pressure washing near me",
+  ],
   generator: "v0.app",
   icons: {
     icon: "/favicon.webp",
@@ -30,25 +46,31 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: "https://powerwashbros.co.uk",
-    title: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    title: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage, Purbeck & Dorset",
     description:
-      "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
+      "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes.",
     siteName: "PowerWash Bros",
     images: [
       {
-        url: "/og-image.jpg", // Assuming this exists or will be created, standard fallback
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PowerWash Bros Property Maintenance",
+        alt: "PowerWash Bros - Professional Exterior Cleaning in Dorset",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PowerWash Bros | Dorset's Leading Property Maintenance Experts",
+    title: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage & Dorset",
     description:
-      "Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across Dorset. Property-centred care that lasts.",
+      "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Free quotes.",
     images: ["/og-image.jpg"],
+  },
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification
+  },
+  alternates: {
+    canonical: "https://powerwashbros.co.uk",
   },
   robots: {
     index: true,
@@ -68,15 +90,142 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const siteSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://powerwashbros.co.uk/#organization",
+    name: "PowerWash Bros Ltd",
+    alternateName: "PowerWash Bros",
+    description:
+      "Professional pressure washing, gutter cleaning, roof cleaning and exterior property maintenance services in Swanage, Purbeck and Dorset.",
+    url: "https://powerwashbros.co.uk",
+    logo: "https://powerwashbros.co.uk/images/pwb-logo-full.png",
+    image: "https://powerwashbros.co.uk/og-image.jpg",
+    telephone: "+447418610731",
+    email: "info@powerwashbros.co.uk",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Swanage",
+      addressLocality: "Swanage",
+      addressRegion: "Dorset",
+      postalCode: "BH19",
+      addressCountry: "GB",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 50.6083,
+      longitude: -1.9575,
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Swanage",
+        containedIn: "Dorset",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Purbeck",
+        containedIn: "Dorset",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Dorset",
+        containedIn: "England",
+      },
+      {
+        "@type": "City",
+        name: "Wareham",
+      },
+      {
+        "@type": "City",
+        name: "Bournemouth",
+      },
+      {
+        "@type": "City",
+        name: "Poole",
+      },
+    ],
+    priceRange: "££",
+    currenciesAccepted: "GBP",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "16:00",
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "47",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Exterior Cleaning Services",
+      itemListElement: [
+        {
+          "@type": "OfferCatalog",
+          name: "Pressure Washing",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Driveway Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Patio Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Decking Cleaning" } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Roof & Gutter Services",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gutter Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Roof Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Moss Removal" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Soffit Cleaning" } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Soft Washing",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Render Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cladding Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "External Wall Cleaning" } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Specialist Services",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Solar Panel Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Window Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heritage Building Cleaning" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graffiti Removal" } },
+          ],
+        },
+      ],
+    },
+    sameAs: ["https://www.facebook.com/powerwashbros", "https://www.instagram.com/powerwashbros"],
+  }
+
   return (
     <html lang="en-GB" className={inter.className}>
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+        <meta name="geo.region" content="GB-DOR" />
+        <meta name="geo.placename" content="Swanage, Dorset" />
+        <meta name="geo.position" content="50.6083;-1.9575" />
+        <meta name="ICBM" content="50.6083, -1.9575" />
 
-        {/* Font Preload */}
         <link
           rel="preload"
           href="/fonts/Inter.woff2"
@@ -86,7 +235,6 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
-        {/* Leaflet CSS */}
         <link
           rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -115,7 +263,6 @@ export default function RootLayout({
 
         <CookieBanner />
 
-        <SpeedInsights />
         <Analytics />
       </body>
     </html>

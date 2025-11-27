@@ -5,6 +5,7 @@ import { Instagram, MapPin, Calendar } from "lucide-react"
 import { BeforeAfterSlider } from "@/components/before-after-slider"
 import Link from "next/link"
 import Image from "next/image"
+import { portfolioProjects, featuredProject, additionalImages } from "@/lib/portfolio-data"
 
 export const metadata = {
   title: "Our Work | PowerWash Bros | Before & After Transformations",
@@ -13,92 +14,7 @@ export const metadata = {
 }
 
 export default function OurWorkPage() {
-  const featuredProject = {
-    title: "The Vicarage",
-    service: "Garden Patio Pressure Washing",
-    serviceLink: "/services/patio-decking",
-    location: "Swanage, Purbeck",
-    date: "November 2024",
-    description:
-      "Complete garden patio transformation removing years of moss, algae, and organic growth from Purbeck stone paving. This project required a chemical-free approach to protect the surrounding landscape and wildlife. Our team carefully removed debris and used precision pressure washing techniques to ensure the area was safe for visitors whilst achieving stunning results.",
-    details: [
-      "Surface: Purbeck stone paving",
-      "Size: 120m² garden patio",
-      "Treatment: Chemical-free pressure washing with careful debris removal",
-      "Duration: 1 day",
-      "Result: Pristine restoration whilst protecting the surrounding landscape and wildlife",
-    ],
-    beforeImage: "/images/before4.jpg",
-    afterImage: "/images/after.jpg",
-  }
-
-  const additionalImages = [
-    {
-      url: "/images/vicarage-scaled.jpg",
-      alt: "The Vicarage - Complete property view after cleaning",
-      caption: "Beautiful Purbeck stone property restored to its former glory",
-    },
-  ]
-
-  const otherProjects = [
-    {
-      title: "Commercial Patio Clean",
-      service: "Commercial",
-      serviceLink: "/services/pressure-washing",
-      location: "Dorset",
-      description:
-        "Professional commercial cleaning for high-traffic public space. Complete transformation of train station patio area.",
-      image: "/images/portfolio/commercial-patio-after.jpg",
-      link: "/portfolio/commercial-patio",
-    },
-    {
-      title: "Roof Clean & Biocide Treatment",
-      service: "Roof Cleaning",
-      serviceLink: "/services/roof-cleaning",
-      location: "Dorset",
-      description:
-        "Professional roof cleaning with PowerUp biocide treatment. Complete removal of moss, lichen, and algae with long-lasting protection.",
-      image: "/images/after1.jpeg",
-      link: "/portfolio/roof-clean-biocide-treatment",
-    },
-    {
-      title: "Patio & Wall Refresh",
-      service: "Patio Cleaning",
-      serviceLink: "/services/patio-decking",
-      location: "Swanage",
-      description:
-        "Dramatic transformation revealing stunning natural stone colours. Customer didn't think it could look this good!",
-      image: "/images/portfolio/swanage-patio-after.jpg",
-      link: "/portfolio/swanage-patio-wall-refresh",
-    },
-    {
-      title: "Garden Patio Restoration",
-      service: "Patio Cleaning",
-      serviceLink: "/services/patio-decking",
-      location: "Dorset",
-      description: "Complete restoration of garden paving stones, removing grime and algae.",
-      image: "/images/portfolio/garden-patio-after.jpg",
-      link: "/portfolio/garden-patio",
-    },
-    {
-      title: "Patio Entrance Restoration",
-      service: "Patio Cleaning",
-      serviceLink: "/services/patio-decking",
-      location: "Dorset",
-      description: "Dangerous moss-covered entrance completely restored to safe, pristine condition.",
-      image: "/images/portfolio/patio-cleaning-after.jpg",
-      link: "/portfolio/patio-cleaning",
-    },
-    {
-      title: "Render Clean",
-      service: "Softwash",
-      serviceLink: "/services/render-cleaning",
-      location: "Dorset",
-      description: "Specialist softwash render cleaning removing years of dirt and algae staining.",
-      image: "/images/portfolio/render-clean-after.jpg",
-      link: "/portfolio/render-clean",
-    },
-  ]
+  const otherProjects = portfolioProjects
 
   return (
     <>
@@ -217,11 +133,9 @@ export default function OurWorkPage() {
                   <div key={index} className="glass-border rounded-2xl overflow-hidden group flex flex-col h-full">
                     {/* Before/After Placeholder or Image */}
                     <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center relative overflow-hidden">
-                      {/* @ts-ignore - image property might not exist on all items yet */}
                       {project.image ? (
                         <Link href={project.link || "#"} className="w-full h-full relative block">
                           <Image
-                            // @ts-ignore
                             src={project.image || "/placeholder.svg"}
                             alt={project.title}
                             fill
@@ -242,9 +156,7 @@ export default function OurWorkPage() {
                       <div className="flex items-start justify-between mb-3">
                         <div>
                           <h3 className="text-xl font-bold text-white mb-1">
-                            {/* @ts-ignore */}
                             {project.link ? (
-                              // @ts-ignore
                               <Link href={project.link} className="hover:text-[#1E90FF] transition-colors">
                                 {project.title}
                               </Link>
@@ -262,9 +174,7 @@ export default function OurWorkPage() {
                         </Link>
                       </div>
                       <p className="text-white/70 text-sm mb-4 flex-grow">{project.description}</p>
-                      {/* @ts-ignore */}
                       {project.link ? (
-                        // @ts-ignore
                         <Link
                           href={project.link}
                           className="text-[#1E90FF] hover:underline text-sm font-semibold mt-auto inline-flex items-center"
