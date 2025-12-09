@@ -52,7 +52,7 @@ const LOCATIONS = [
   { slug: "lychett-matravers", name: "Lychett Matravers", postcode: "BH16" },
   { slug: "blandford-forum", name: "Blandford Forum", postcode: "DT11" },
   { slug: "ringwood", name: "Ringwood", postcode: "BH24" },
-  { slug: "kingston-maurward", name: "Kingston Maurward", postcode: "DT2" },
+  { slug: "verwood", name: "Verwood", postcode: "BH31" },
   { slug: "isle-of-purbeck", name: "Isle of Purbeck", postcode: "BH19-BH20" },
   { slug: "dorset", name: "Dorset", postcode: "All Areas" },
 ]

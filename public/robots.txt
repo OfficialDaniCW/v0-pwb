@@ -1,0 +1,26 @@
+# PowerWash Bros Robots.txt
+# https://powerwashbros.co.uk
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://powerwashbros.co.uk/sitemap.xml
+
+# Speed up crawling
+Crawl-delay: 0
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/admin/
+
+# Allow search engines to crawl all public content
+Allow: /services/
+Allow: /service-areas/
+Allow: /blog/
+Allow: /portfolio/
+Allow: /about
+Allow: /contact
+Allow: /quote
+Allow: /pricing
+Allow: /faq

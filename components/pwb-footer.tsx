@@ -264,7 +264,8 @@ export function PWBFooter() {
               </div>
               <Button
                 type="submit"
-                className="h-10 sm:h-12 w-10 sm:w-12 rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
+                aria-label="Subscribe to newsletter"
+                className="h-10 sm:h-12 w-10 sm:w-12 min-w-[48px] min-h-[48px] rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
               >
                 <Send className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>

@@ -15,7 +15,7 @@ export const metadata = {
     siteName: "PowerWash Bros",
     images: [
       {
-        url: "/driveway-transformation-before-after.jpg",
+        url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-3.jpeg",
         width: 1200,
         height: 630,
         alt: "Driveway cleaning transformation in Purbeck",
@@ -28,7 +28,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
     description: "Transform tired driveways with professional biocide treatments in Swanage and Purbeck",
-    images: ["/driveway-transformation-before-after.jpg"],
+    images: ["https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-3.jpeg"],
   },
 }
 

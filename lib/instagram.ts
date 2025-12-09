@@ -10,8 +10,8 @@ export interface InstagramPost {
 export async function getInstagramPosts(): Promise<InstagramPost[]> {
   const token = process.env.INSTAGRAM_ACCESS_TOKEN
 
+  // If no token is configured, return empty array to use static fallback images
   if (!token) {
-    console.warn("INSTAGRAM_ACCESS_TOKEN is not set. Using static fallback data.")
     return []
   }
 
@@ -23,7 +23,8 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
     })
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch Instagram posts: ${response.statusText}`)
+      console.error(`Failed to fetch Instagram posts: ${response.statusText}`)
+      return []
     }
 
     const data = await response.json()
