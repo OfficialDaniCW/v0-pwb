@@ -88,41 +88,26 @@ export function ScrollingTransformations() {
             href={item.link}
             className="flex-shrink-0 w-[300px] rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#1E90FF]/50 transition-colors group"
           >
-            <div className="relative h-[180px] overflow-hidden">
-              <div className="absolute inset-0 flex">
-                <div className="w-1/2 relative">
-                  <Image
-                    src={item.beforeImage || "/placeholder.svg"}
-                    alt={`${item.title} before`}
-                    fill
-                    sizes="150px"
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                  <span className="absolute bottom-2 left-2 text-xs font-semibold bg-red-500/80 text-white px-2 py-1 rounded">
-                    Before
-                  </span>
-                </div>
-                <div className="w-1/2 relative">
-                  <Image
-                    src={item.afterImage || "/placeholder.svg"}
-                    alt={`${item.title} after`}
-                    fill
-                    sizes="150px"
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                  <span className="absolute bottom-2 right-2 text-xs font-semibold bg-[#00C853]/80 text-white px-2 py-1 rounded">
-                    After
-                  </span>
-                </div>
-              </div>
+            <div className="relative h-[220px] overflow-hidden">
+              <Image
+                src={item.afterImage || "/placeholder.svg"}
+                alt={`${item.title} - Professional ${item.serviceType}`}
+                fill
+                sizes="300px"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute top-3 right-3 text-xs font-semibold bg-[#00C853] text-white px-3 py-1.5 rounded-full shadow-lg">
+                Transformed
+              </span>
             </div>
-            <div className="p-3 text-center">
-              <p className="text-white font-medium text-sm group-hover:text-[#1E90FF] transition-colors">
+            <div className="p-4 text-center">
+              <p className="text-white font-semibold text-base group-hover:text-[#1E90FF] transition-colors">
                 {item.title}
               </p>
-              <p className="text-white/50 text-xs mt-1">{item.location}</p>
+              <p className="text-white/60 text-sm mt-1">{item.location}</p>
+              <p className="text-white/40 text-xs mt-1">{item.serviceType}</p>
             </div>
           </Link>
         ))}

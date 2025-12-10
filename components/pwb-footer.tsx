@@ -293,6 +293,9 @@ export function PWBFooter() {
             <Link href="/cookies" className="hover:text-white transition-colors">
               Cookies
             </Link>
+            <Link href="/data-deletion" className="hover:text-white transition-colors">
+              Data Deletion
+            </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="h-8 w-8 sm:h-10 sm:w-10 bg-[#1E90FF] rounded flex items-center justify-center hover:bg-white hover:text-[#1E90FF] transition-all shadow-lg"
