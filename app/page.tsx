@@ -1,5 +1,7 @@
 import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
+import { SeasonalCTA } from "@/components/seasonal-cta"
+import { PricingPreview } from "@/components/pricing-preview"
 import { WhyPropertyCentered } from "@/components/why-property-centered"
 import { CoreServices } from "@/components/core-services"
 import { HowItWorks } from "@/components/how-it-works"
@@ -58,6 +60,8 @@ export default function Page() {
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         <Hero />
+        <SeasonalCTA />
+        <PricingPreview />
         <WhyPropertyCentered />
         <CoreServices />
         <HowItWorks />

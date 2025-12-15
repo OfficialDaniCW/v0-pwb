@@ -5,7 +5,7 @@ import { Star, Shield, CheckCircle2, Award } from "lucide-react"
 import { ScrollingTransformations } from "@/components/scrolling-transformations"
 import { useState, useEffect } from "react"
 
-const rotatingWords = ["Maintenance", "Cleaning", "Care", "Pressure Washing", "Restoration", "Protection"]
+const rotatingWords = ["Cleaning", "Washing", "Restoring", "Protecting"]
 
 export function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,8 +17,8 @@ export function Hero() {
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % rotatingWords.length)
         setIsAnimating(false)
-      }, 300) // Half of animation duration
-    }, 3000) // Change word every 3 seconds
+      }, 300)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [])
@@ -28,19 +28,23 @@ export function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center py-20 sm:py-28">
           {/* Headline */}
-          <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl">
+          <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl leading-tight">
             <span className="block">Dorset's Leading</span>
-            <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)]">
-              Property{" "}
-              <span
-                className={`inline-block min-w-[200px] sm:min-w-[280px] md:min-w-[340px] transition-all duration-300 ${
-                  isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-                }`}
-              >
-                {rotatingWords[currentIndex]}
+            <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)] mt-2">
+              <span className="inline-block relative h-[1.2em]">
+                <span className="inline-block">Property </span>
+                <span className="inline-block relative w-[180px] sm:w-[220px] md:w-[260px]">
+                  <span
+                    className={`absolute left-0 top-0 w-full text-left transition-all duration-300 ${
+                      isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                    }`}
+                  >
+                    {rotatingWords[currentIndex]}
+                  </span>
+                </span>
               </span>
             </span>
-            <span className="block">Experts</span>
+            <span className="block mt-2">Experts</span>
           </h1>
 
           {/* Subheadline */}
