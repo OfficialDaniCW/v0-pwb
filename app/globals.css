@@ -43,6 +43,8 @@
   --muted-foreground: #b0b8c0;
   --accent: #1e90ff;
   --accent-foreground: #ffffff;
+  --success: #00c853;
+  --success-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #f5f5f5;
   --border: #1a3a52;
@@ -79,6 +81,8 @@
   --muted-foreground: #b0b8c0;
   --accent: #1e90ff;
   --accent-foreground: #ffffff;
+  --success: #00c853;
+  --success-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #f5f5f5;
   --border: #1a3a52;
