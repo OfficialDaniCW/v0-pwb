@@ -22,9 +22,9 @@ export function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center py-12">
-            <ImageIcon className="h-16 w-16 mx-auto mb-4 text-white/30" />
-            <h3 className="text-xl font-semibold text-white mb-2">No blog posts yet</h3>
-            <p className="text-white/60">Check back soon for expert property care advice!</p>
+            <ImageIcon className="h-16 w-16 mx-auto mb-4 text-foreground/30" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">No blog posts yet</h3>
+            <p className="text-foreground/60">Check back soon for expert property care advice!</p>
           </div>
         </div>
       </section>
@@ -39,13 +39,13 @@ export function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
             {posts.map((post) => (
               <div
                 key={post.slug}
-                className="group glass-border rounded-2xl overflow-hidden hover:border-[#1E90FF] transition-all flex flex-col"
+                className="group glass-border rounded-2xl overflow-hidden hover:border-accent transition-all flex flex-col"
               >
                 {/* Featured Image */}
                 <div className="relative">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="block aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 relative overflow-hidden"
+                    className="block aspect-video bg-gradient-to-br from-primary to-accent/20 relative overflow-hidden"
                   >
                     {post.featured_image_url ? (
                       <Image
@@ -67,13 +67,13 @@ export function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs bg-[#1E90FF]/20 text-[#1E90FF] px-3 py-1 rounded-full">
+                    <span className="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">
                       {post.category}
                     </span>
                   </div>
 
                   <Link href={`/blog/${post.slug}`}>
-                    <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#1E90FF] transition-colors line-clamp-2">
+                    <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
                       {post.title}
                     </h2>
                   </Link>
@@ -117,7 +117,7 @@ export function BlogPostsGrid({ posts }: { posts: BlogPost[] }) {
           {/* Load More */}
           {posts.length >= 6 && (
             <div className="text-center mt-12">
-              <button className="px-8 py-3 border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg font-medium hover:bg-[#1E90FF] hover:text-white transition-all">
+              <button className="px-8 py-3 border-2 border-accent bg-transparent text-accent rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-all">
                 Load More Articles
               </button>
             </div>
