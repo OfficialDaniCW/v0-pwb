@@ -50,14 +50,14 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1E3F] flex flex-col md:flex-row relative overflow-hidden">
+    <div className="min-h-screen bg-primary flex flex-col md:flex-row relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#1E90FF] rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0F2851] rounded-full filter blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full filter blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl" />
       </div>
 
       {/* Left side - only visible on desktop */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-[#1E90FF]/20 to-[#0F2851]/30 backdrop-blur-sm p-12 flex-col justify-between relative z-10">
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-accent/20 to-secondary/30 backdrop-blur-sm p-12 flex-col justify-between relative z-10">
         <div>
           <div className="flex items-center gap-3">
             <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center overflow-hidden">
@@ -69,16 +69,16 @@ export default function AdminLogin() {
                 className="object-contain"
               />
             </div>
-            <span className="text-2xl font-semibold text-white">PowerWash Bros</span>
+            <span className="text-2xl font-semibold text-foreground">PowerWash Bros</span>
           </div>
-          <h1 className="text-4xl font-bold text-white mt-12">Admin Portal</h1>
-          <p className="text-blue-200 mt-4 max-w-md">
+          <h1 className="text-4xl font-bold text-foreground mt-12">Admin Portal</h1>
+          <p className="text-accent mt-4 max-w-md">
             Manage your website content, bookings, gallery, and business settings from one central dashboard.
           </p>
         </div>
         <div className="mt-auto">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-            <p className="text-white/90 text-sm">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-border">
+            <p className="text-foreground/90 text-sm">
               Property-centred pressure washing services across Purbeck and Dorset
             </p>
           </div>
@@ -104,19 +104,19 @@ export default function AdminLogin() {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-white">Sign in to your account</h2>
-            <p className="text-gray-400 mt-2">Enter your credentials to access the admin panel</p>
+            <p className="text-muted-foreground mt-2">Enter your credentials to access the admin panel</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
             {error && (
-              <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg flex items-center gap-3">
+              <div className="bg-destructive/10 border border-destructive/30 text-destructive/80 px-4 py-3 rounded-lg flex items-center gap-3">
                 <AlertCircle className="h-5 w-5" />
                 <span>{error}</span>
               </div>
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-200">
+              <Label htmlFor="email" className="text-foreground/80">
                 Email
               </Label>
               <Input
@@ -132,7 +132,7 @@ export default function AdminLogin() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-gray-200">
+                <Label htmlFor="password" className="text-foreground/80">
                   Password
                 </Label>
               </div>
@@ -147,7 +147,12 @@ export default function AdminLogin() {
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full bg-[#1E90FF] text-white hover:bg-[#1E90FF]/90">
+            <Button type="submit" disabled={isLoading} className="w-full"
+        style={{
+          backgroundColor: 'var(--accent)',
+          color: 'var(--accent-foreground)',
+        }}
+      >
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
@@ -160,9 +165,9 @@ export default function AdminLogin() {
           </form>
 
           <div className="mt-8 text-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-muted-foreground text-sm">
               Need help? Contact{" "}
-              <a href="mailto:info@powerwashbros.co.uk" className="text-[#1E90FF] hover:underline">
+              <a href="mailto:info@powerwashbros.co.uk" className="text-accent hover:underline">
                 info@powerwashbros.co.uk
               </a>
             </p>
