@@ -11,6 +11,8 @@
   --color-pwb-light-gray: #f5f7fa;
   --color-pwb-dark-gray: #37474f;
   --color-pwb-accent-green: #00c853;
+  --color-success: #00c853;
+  --color-success-foreground: #ffffff;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.625rem;
@@ -113,6 +115,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);

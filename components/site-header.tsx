@@ -56,8 +56,8 @@ export function SiteHeader() {
           <div className="hidden md:flex gap-2">
             <Button
               asChild
-              className="bg-green-500 text-white font-medium rounded-lg px-6 py-2
-                         hover:bg-green-600 hover:shadow-md hover:scale-[1.02]
+              className="bg-success text-success-foreground font-medium rounded-lg px-6 py-2
+                         hover:opacity-90 hover:shadow-md hover:scale-[1.02]
                          transition-all"
             >
               <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -107,11 +107,11 @@ export function SiteHeader() {
                   })}
                 </nav>
 
-                <div className="mt-auto border-t border-white/10 p-4">
+                <div className="mt-auto border-t border-border p-4">
             <Button
               asChild
-              className="w-full bg-green-500 text-white font-medium rounded-lg
-                         hover:bg-green-600 hover:shadow-md"
+              className="w-full bg-success text-success-foreground font-medium rounded-lg
+                         hover:opacity-90 hover:shadow-md"
             >
                     <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
                       Chat on WhatsApp

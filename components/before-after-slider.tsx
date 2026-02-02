@@ -54,7 +54,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
           priority={false}
           quality={75}
         />
-        <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+        <div className="absolute top-4 right-4 bg-success text-success-foreground px-4 py-2 rounded-full text-sm font-bold">
           AFTER
         </div>
       </div>
