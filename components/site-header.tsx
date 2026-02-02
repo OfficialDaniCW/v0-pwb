@@ -56,11 +56,13 @@ export function SiteHeader() {
           <div className="hidden md:flex gap-2">
             <Button
               asChild
-              className="bg-success text-success-foreground font-medium rounded-lg px-6 py-2
-                         hover:opacity-90 hover:shadow-md hover:scale-[1.02]
-                         transition-all"
+              className="font-medium rounded-lg px-6 py-2 transition-all"
+              style={{
+                backgroundColor: 'var(--success)',
+                color: 'var(--success-foreground)',
+              }}
             >
-              <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer" className="hover:opacity-90">
                 Chat on WhatsApp
               </a>
             </Button>
@@ -108,12 +110,15 @@ export function SiteHeader() {
                 </nav>
 
                 <div className="mt-auto border-t border-border p-4">
-            <Button
-              asChild
-              className="w-full bg-success text-success-foreground font-medium rounded-lg
-                         hover:opacity-90 hover:shadow-md"
-            >
-                    <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    asChild
+                    className="w-full font-medium rounded-lg transition-all"
+                    style={{
+                      backgroundColor: 'var(--success)',
+                      color: 'var(--success-foreground)',
+                    }}
+                  >
+                    <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer" className="hover:opacity-90">
                       Chat on WhatsApp
                     </a>
                   </Button>

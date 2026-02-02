@@ -80,9 +80,11 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-success text-success-foreground font-semibold rounded-lg px-8 py-6 text-lg
-                         hover:opacity-90 hover:shadow-lg hover:scale-105
-                         transition-all duration-300"
+              className="font-semibold rounded-lg px-8 py-6 text-lg transition-all duration-300 hover:opacity-90 hover:shadow-lg hover:scale-105"
+              style={{
+                backgroundColor: 'var(--success)',
+                color: 'var(--success-foreground)',
+              }}
               aria-label="Chat with PowerWash Bros on WhatsApp"
             >
               <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
