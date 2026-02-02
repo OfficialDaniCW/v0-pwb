@@ -162,7 +162,6 @@
   html {
     min-height: 100%;
     overflow-x: hidden;
-    overscroll-behavior: none;
     background: #000000;
   }
 
@@ -171,7 +170,6 @@
     min-height: 100vh;
     min-height: 100dvh;
     overflow-x: hidden;
-    overscroll-behavior: none;
     background: #000000;
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
