@@ -17,6 +17,7 @@ export default function PricingPage() {
   const [access, setAccess] = useState("easy")
   const [surfaceType, setSurfaceType] = useState("standard")
   const [needsResanding, setNeedsResanding] = useState(false)
+  const [distanceFromSwanage, setDistanceFromSwanage] = useState([0]) // distance in miles from Swanage
   const [estimatedPrice, setEstimatedPrice] = useState(0)
 
   const [pricingData] = useState({
@@ -26,16 +27,19 @@ export default function PricingPage() {
       easyAccess: 1,
       hardAccess: 1.3,
     },
-    patio: { baseRate: 3, easyAccess: 1, hardAccess: 1.25 },
-    roof: { baseRate: 9, easyAccess: 1, hardAccess: 1.4 },
+    patio: { baseRate: 5, easyAccess: 1, hardAccess: 1.25 },
+    roof: { baseRate: 11.5, easyAccess: 1, hardAccess: 1.4 },
     gutter: { baseRate: 6, perMetre: true },
     walls: { baseRate: 3, easyAccess: 1, hardAccess: 1.3 },
     softwash: { baseRate: 5, easyAccess: 1, hardAccess: 1.35 },
   })
 
+  const DISTANCE_RATE_PER_MILE = 0.5 // £0.50 per mile
+  const FUEL_SURCHARGE = 15 // £15 flat fuel surcharge
+
   useEffect(() => {
     calculatePrice()
-  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding])
+  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding, distanceFromSwanage])
 
   const calculatePrice = () => {
     let price = 0
@@ -59,6 +63,11 @@ export default function PricingPage() {
         price += size[0] * pricingData.driveway.blockPavingResanding
       }
     }
+
+    // Add distance-based surcharge (hidden from user but added to price)
+    // £0.50 per mile there and back + £15 fuel surcharge
+    const distanceSurcharge = (distanceFromSwanage[0] * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE
+    price += distanceSurcharge
 
     setEstimatedPrice(Math.round(price))
   }
@@ -164,6 +173,20 @@ export default function PricingPage() {
                     <p className="text-white/60 text-sm">Estimate the total length of guttering around your property</p>
                   </div>
                 )}
+
+                {/* Distance from Swanage */}
+                <div className="space-y-3">
+                  <Label className="text-white text-lg">Distance from Swanage: {distanceFromSwanage[0]} miles</Label>
+                  <Slider
+                    value={distanceFromSwanage}
+                    onValueChange={setDistanceFromSwanage}
+                    min={0}
+                    max={50}
+                    step={1}
+                    className="w-full"
+                  />
+                  <p className="text-white/60 text-sm">Approximate distance from Swanage town centre</p>
+                </div>
 
                 {/* Access - not shown for gutter */}
                 {serviceType !== "gutter" && (

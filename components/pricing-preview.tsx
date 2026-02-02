@@ -19,9 +19,9 @@ export function PricingPreview() {
     {
       name: "Roof Cleaning",
       description: "Per square metre",
-      price: "£9",
+      price: "£11.50",
       unit: "/m²",
-      typical: "Average 3-bed semi: £900-£1,350",
+      typical: "Average 3-bed semi: £1,150-£1,725",
       features: ["Moss & algae removal", "Soft washing method", "Ridge & valley clean", "Biocide treatment extra"],
       icon: Home,
       color: "#F59E0B",
@@ -29,9 +29,9 @@ export function PricingPreview() {
     {
       name: "Patio Cleaning",
       description: "Per square metre",
-      price: "£3",
+      price: "£5",
       unit: "/m²",
-      typical: "Average patio 20m²: £60-£90",
+      typical: "Average patio 20m²: £100-£150",
       features: ["Deep pressure clean", "Weed removal", "Stain treatment", "Re-sanding available"],
       icon: Square,
       color: "#34D399",
