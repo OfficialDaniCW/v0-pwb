@@ -40,23 +40,23 @@ export function LatestBlogPosts() {
 
   if (loading) {
     return (
-      <section className="relative py-20 bg-gradient-to-b from-[#0A1525] to-[#0F1F35]">
+      <section className="relative py-20 bg-gradient-to-b from-secondary to-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Latest Insights</h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Latest Insights</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Expert advice, industry updates, and property care tips from our team
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[1, 2, 3].map((i) => (
               <div key={i} className="animate-pulse">
-                <div className="bg-[#0F1F35] rounded-2xl overflow-hidden border border-blue-500/20">
-                  <div className="h-56 bg-white/10" />
+                <div className="bg-card rounded-2xl overflow-hidden border border-accent/20">
+                  <div className="h-56 bg-foreground/10" />
                   <div className="p-6 space-y-3">
-                    <div className="h-4 bg-white/10 rounded w-3/4" />
-                    <div className="h-6 bg-white/10 rounded" />
-                    <div className="h-4 bg-white/10 rounded w-5/6" />
+                    <div className="h-4 bg-foreground/10 rounded w-3/4" />
+                    <div className="h-6 bg-foreground/10 rounded" />
+                    <div className="h-4 bg-foreground/10 rounded w-5/6" />
                   </div>
                 </div>
               </div>
@@ -72,12 +72,12 @@ export function LatestBlogPosts() {
   }
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-[#0A1525] to-[#0F1F35]">
+    <section className="relative py-20 bg-gradient-to-b from-secondary to-card">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Latest Insights</h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Latest Insights</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Expert advice, industry updates, and property care tips from our team
           </p>
         </div>
@@ -92,7 +92,7 @@ export function LatestBlogPosts() {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <article className="relative h-full bg-[#0F1F35] rounded-2xl overflow-hidden border border-blue-500/20 transition-all duration-300 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+              <article className="relative h-full bg-card rounded-2xl overflow-hidden border border-accent/20 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(30,144,255,0.3)]">
                 {/* Image Container */}
                 <div className="relative h-56 overflow-hidden">
                   {post.featured_image_url ? (
@@ -106,12 +106,11 @@ export function LatestBlogPosts() {
                       }`}
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
-                      <ImageIcon className="h-12 w-12 text-white/20" />
+                    <div className="w-full h-full bg-gradient-to-br from-primary to-accent/20 flex items-center justify-center">
+                      <ImageIcon className="h-12 w-12 text-accent/50" />
                     </div>
                   )}
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F35] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
@@ -168,7 +167,7 @@ export function LatestBlogPosts() {
                     hoveredIndex === index ? "opacity-100" : "opacity-0"
                   }`}
                   style={{
-                    background: "linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)",
+                    background: "linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.3), transparent)",
                     animation: hoveredIndex === index ? "shimmer 2s infinite" : "none",
                   }}
                 />
@@ -181,7 +180,10 @@ export function LatestBlogPosts() {
         <div className="text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105"
+              style={{
+                backgroundColor: 'var(--accent)',
+              }}
           >
             View All Articles
             <ArrowRight className="w-5 h-5" />

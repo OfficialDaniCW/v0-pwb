@@ -46,10 +46,10 @@ export function CoreServices() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
               Complete Property Care Across Purbeck & Dorset
             </h2>
-            <p className="text-xl text-white/70">
+            <p className="text-xl text-muted-foreground">
               Expert exterior cleaning backed by biocide training and PASMA certification
             </p>
           </div>
@@ -61,18 +61,18 @@ export function CoreServices() {
                 <Link
                   key={service.href}
                   href={service.href}
-                  className="group glass-border rounded-xl p-6 hover:border-[#1E90FF] transition-all duration-300"
+                  className="group glass-border rounded-xl p-6 hover:border-accent transition-all duration-300"
                 >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-4">
-                    <IconComponent className="h-8 w-8 text-[#1E90FF]" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 mb-4">
+                    <IconComponent className="h-8 w-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#1E90FF] transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-white/70 mb-4 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  <div className="flex items-center text-[#1E90FF] font-medium group-hover:gap-2 transition-all">
+                  <div className="flex items-center text-accent font-medium group-hover:gap-2 transition-all">
                     <span>Learn More</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -84,7 +84,7 @@ export function CoreServices() {
           <div className="text-center mt-12">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-[#1E90FF] font-semibold text-lg hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-accent font-semibold text-lg hover:gap-3 transition-all"
             >
               <span>View All Services</span>
               <ArrowRight className="h-5 w-5" />
