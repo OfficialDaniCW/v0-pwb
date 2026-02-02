@@ -54,7 +54,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
           priority={false}
           quality={75}
         />
-        <div className="absolute top-4 right-4 bg-[#00C853] text-white px-4 py-2 rounded-full text-sm font-bold">
+        <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
           AFTER
         </div>
       </div>
@@ -70,17 +70,17 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
           priority={false}
           quality={75}
         />
-        <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+        <div className="absolute top-4 left-4 bg-destructive text-white px-4 py-2 rounded-full text-sm font-bold">
           BEFORE
         </div>
       </div>
 
       {/* Slider Handle */}
-      <div className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl" style={{ left: `${sliderPosition}%` }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-2xl">
+      <div className="absolute top-0 bottom-0 w-1 bg-foreground shadow-2xl" style={{ left: `${sliderPosition}%` }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground rounded-full p-2 shadow-2xl">
           <div className="flex items-center gap-0.5">
-            <ChevronLeft className="h-4 w-4 text-[#0B1E3F]" />
-            <ChevronRight className="h-4 w-4 text-[#0B1E3F]" />
+            <ChevronLeft className="h-4 w-4 text-primary" />
+            <ChevronRight className="h-4 w-4 text-primary" />
           </div>
         </div>
       </div>
