@@ -90,8 +90,8 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1E3F] flex flex-col">
-      <header className="bg-[#061429] sticky top-0 z-50 shadow-lg border-b border-white/10">
+    <div className="min-h-screen bg-primary flex flex-col">
+      <header className="bg-secondary sticky top-0 z-50 shadow-lg border-b border-border">
         <div className="px-4 md:px-6 py-3">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
@@ -105,27 +105,27 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
                 />
               </div>
               <div className="hidden md:block">
-                <span className="text-lg font-bold text-white">PowerWash Bros</span>
-                <p className="text-xs text-[#1E90FF]">Admin Portal</p>
+                <span className="text-lg font-bold text-foreground">PowerWash Bros</span>
+                <p className="text-xs text-accent">Admin Portal</p>
               </div>
             </Link>
 
             <div className="flex items-center gap-4">
               {currentUser && (
                 <div className="hidden md:block text-right">
-                  <p className="text-sm font-medium text-white">{currentUser}</p>
-                  <p className="text-xs text-[#1E90FF]">Administrator</p>
+                  <p className="text-sm font-medium text-foreground">{currentUser}</p>
+                  <p className="text-xs text-accent">Administrator</p>
                 </div>
               )}
               <Button
                 onClick={handleLogout}
                 variant="ghost"
-                className="text-white hover:text-red-400 hover:bg-white/10"
+                className="text-foreground hover:text-destructive hover:bg-accent/10"
               >
                 <LogOut className="h-5 w-5" />
                 <span className="hidden md:inline ml-2">Logout</span>
               </Button>
-              <Button onClick={() => setSidebarOpen(!sidebarOpen)} variant="ghost" className="md:hidden text-white">
+              <Button onClick={() => setSidebarOpen(!sidebarOpen)} variant="ghost" className="md:hidden text-foreground">
                 {sidebarOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
@@ -134,7 +134,7 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
       </header>
 
       <div className="flex flex-1">
-        <aside className="hidden md:block w-16 bg-[#061429] border-r border-white/10">
+        <aside className="hidden md:block w-16 bg-secondary border-r border-border">
           <TooltipProvider delayDuration={0}>
             <nav className="p-2 space-y-2">
               {navItems.map((item) => {
@@ -149,14 +149,14 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
                         onClick={() => handleNavClick(item)}
                         className={`flex items-center justify-center w-12 h-12 rounded-xl transition-all ${
                           isActive
-                            ? "bg-[#1E90FF] text-white shadow-lg shadow-[#1E90FF]/30"
-                            : "text-white/60 hover:bg-white/10 hover:text-white"
+                            ? "bg-accent text-accent-foreground shadow-lg shadow-accent/30"
+                            : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                         }`}
                       >
                         <Icon className="h-5 w-5" />
                       </Link>
                     </TooltipTrigger>
-                    <TooltipContent side="right" className="bg-[#0B1E3F] text-white border-white/20">
+                    <TooltipContent side="right" className="bg-primary text-foreground border-border">
                       {item.label}
                     </TooltipContent>
                   </Tooltip>
@@ -170,8 +170,8 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
         {sidebarOpen && (
           <div className="fixed inset-0 z-40 md:hidden">
             <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
-            <aside className="absolute left-0 top-0 bottom-0 w-64 bg-[#061429] shadow-xl">
-              <div className="p-4 bg-[#0B1E3F] flex items-center gap-3 border-b border-white/10">
+            <aside className="absolute left-0 top-0 bottom-0 w-64 bg-secondary shadow-xl">
+              <div className="p-4 bg-primary flex items-center gap-3 border-b border-border">
                 <div className="relative w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
                   <Image
                     src="/images/pwb-logo-circle.png"
@@ -182,8 +182,8 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
                   />
                 </div>
                 <div>
-                  <span className="text-lg font-bold text-white">PowerWash Bros</span>
-                  <p className="text-xs text-[#1E90FF]">Admin Portal</p>
+                  <span className="text-lg font-bold text-foreground">PowerWash Bros</span>
+                  <p className="text-xs text-accent">Admin Portal</p>
                 </div>
               </div>
               <nav className="p-4 space-y-2">
@@ -198,8 +198,8 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
                       onClick={() => handleNavClick(item)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                         isActive
-                          ? "bg-[#1E90FF] text-white shadow-md"
-                          : "text-white/70 hover:bg-white/10 hover:text-white"
+                          ? "bg-accent text-accent-foreground shadow-md"
+                          : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
@@ -212,11 +212,11 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
           </div>
         )}
 
-        <main className="flex-1 overflow-auto bg-[#0F2851] p-6">{children}</main>
+        <main className="flex-1 overflow-auto bg-card p-6">{children}</main>
       </div>
 
-      <footer className="bg-[#061429] py-4 px-6 border-t border-white/10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-white/50">
+      <footer className="bg-secondary py-4 px-6 border-t border-border">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-muted-foreground">
           <p>© 2025 PowerWash Bros. All rights reserved.</p>
           <p>Property-centred pressure washing services across Purbeck and Dorset</p>
         </div>

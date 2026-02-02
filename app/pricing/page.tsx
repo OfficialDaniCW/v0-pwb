@@ -21,16 +21,16 @@ export default function PricingPage() {
 
   const [pricingData] = useState({
     driveway: {
-      baseRate: 3.5,
-      blockPavingResanding: 1.5,
+      baseRate: 3,
+      blockPavingResanding: 2,
       easyAccess: 1,
       hardAccess: 1.3,
     },
-    patio: { baseRate: 3.0, easyAccess: 1, hardAccess: 1.25 },
-    roof: { baseRate: 4.5, easyAccess: 1, hardAccess: 1.4 },
-    gutter: { baseRate: 8.0, perMetre: true },
-    walls: { baseRate: 2.8, easyAccess: 1, hardAccess: 1.3 },
-    softwash: { baseRate: 3.2, easyAccess: 1, hardAccess: 1.35 },
+    patio: { baseRate: 3, easyAccess: 1, hardAccess: 1.25 },
+    roof: { baseRate: 9, easyAccess: 1, hardAccess: 1.4 },
+    gutter: { baseRate: 6, perMetre: true },
+    walls: { baseRate: 3, easyAccess: 1, hardAccess: 1.3 },
+    softwash: { baseRate: 5, easyAccess: 1, hardAccess: 1.35 },
   })
 
   useEffect(() => {

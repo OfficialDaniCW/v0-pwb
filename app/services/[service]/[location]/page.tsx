@@ -3,12 +3,12 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Phone, MapPin, Star, Clock, Shield } from "lucide-react"
+import { CheckCircle2, MapPin, Phone, Mail } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 
 // Service definitions with SEO content
-const SERVICES: Record<
+const servicesData: Record<
   string,
   {
     name: string
@@ -36,141 +36,147 @@ const SERVICES: Record<
       "Water flow test",
       "Before/after photos",
     ],
-    priceRange: "£100-400",
+    priceRange: "£90-£150", // £6/m for typical 15-25m gutter
   },
   "roof-cleaning": {
     name: "Roof Cleaning",
     description:
-      "Expert roof moss removal and biocide treatment. We're PASMA qualified and biocide trained, using professional BAC50 treatment for long-lasting results.",
+      "Expert roof moss removal and soft washing. We're PASMA qualified and biocide trained, using professional methods for long-lasting results.",
     benefits: [
-      "Extends roof lifespan by years",
-      "Prevents tile damage from moss roots",
-      "Professional biocide treatment included",
-      "PASMA qualified for safe access",
-      "12-24 month protection",
+      "Professional soft washing method",
+      "PASMA qualified team",
+      "Moss & algae removal",
+      "Long-lasting results",
+      "Fully insured service",
     ],
     process: [
-      "Roof condition assessment",
-      "Safe access setup (PASMA qualified)",
-      "Gentle moss removal",
-      "PowerUps Bio-Clean treatment",
-      "Gutter clearance included",
+      "Roof inspection & assessment",
+      "Soft washing application",
+      "Moss & algae removal",
+      "Optional biocide treatment",
+      "Final inspection & photos",
     ],
-    priceRange: "£200-600",
+    priceRange: "£900-£1,350", // £9/m² for typical 100-150m² roof (excludes scaffolding/biocide)
+  },
+  "patio-cleaning": {
+    name: "Patio & Decking Cleaning",
+    description:
+      "Transform your outdoor space with our professional patio and decking cleaning service. We remove dirt, algae, moss, and stubborn stains.",
+    benefits: [
+      "Deep pressure cleaning",
+      "Removes algae & moss",
+      "Slip hazard elimination",
+      "Restores original colour",
+      "Optional re-sanding for block paving",
+    ],
+    process: [
+      "Pre-treatment application",
+      "High-pressure cleaning",
+      "Weed & moss removal",
+      "Final rinse & inspection",
+      "Optional sand re-application",
+    ],
+    priceRange: "£60-£120", // £3/m² for typical 20-40m² patio (excludes sealing)
   },
   "driveway-cleaning": {
     name: "Driveway Cleaning",
     description:
-      "Transform your driveway with professional pressure washing and optional re-sanding. We remove oil stains, moss, algae, and years of grime.",
+      "Professional driveway cleaning service for all surface types including block paving, concrete, tarmac, and natural stone.",
     benefits: [
-      "Removes stubborn stains and moss",
-      "Restores original appearance",
-      "Optional re-sanding available",
-      "Increases kerb appeal",
-      "Prevents slip hazards",
-    ],
-    process: [
-      "Surface assessment",
-      "Pre-treatment of stains",
-      "Professional pressure washing",
-      "Weed removal from joints",
-      "Optional sealing available",
-    ],
-    priceRange: "£150-500",
-  },
-  "pressure-washing": {
-    name: "Pressure Washing",
-    description:
-      "High-powered pressure washing for driveways, patios, paths, and commercial surfaces. We use the right pressure for each surface type.",
-    benefits: [
-      "Removes deep-set dirt and grime",
-      "Suitable for hard surfaces",
-      "Commercial-grade equipment",
-      "Trained operators",
-      "Quick, effective results",
+      "Removes oil stains & dirt",
+      "Improves kerb appeal",
+      "Prevents surface degradation",
+      "All surface types cleaned",
+      "Optional re-sanding for block paving",
     ],
     process: [
       "Surface type assessment",
-      "Correct pressure selection",
-      "Systematic cleaning pattern",
-      "Edge detailing",
-      "Final rinse",
+      "Pre-treatment of stains",
+      "Professional pressure washing",
+      "Detailed edge & corner cleaning",
+      "Optional kiln-dried sand re-application",
     ],
-    priceRange: "£100-400",
+    priceRange: "£90-£150", // £3/m² for typical 30-50m² driveway
   },
-  softwash: {
-    name: "Soft Washing",
+  "walls-cleaning": {
+    name: "Exterior Wall Cleaning",
     description:
-      "Gentle soft wash cleaning for render, cladding, and delicate surfaces. Low pressure with professional cleaning solutions for safe, effective results.",
+      "Gentle yet effective exterior wall cleaning for render, brick, stone, and painted surfaces. Remove years of dirt, algae, and pollution.",
     benefits: [
-      "Safe for render and cladding",
-      "No risk of surface damage",
-      "Kills algae and mould at the source",
-      "Long-lasting results",
-      "Biocide treatment included",
+      "Gentle soft wash method",
+      "Safe for all surface types",
+      "Removes algae & pollution",
+      "Restores property appearance",
+      "Long-lasting clean",
     ],
     process: [
       "Surface assessment",
-      "Plant protection",
-      "Solution application",
-      "Dwell time for effectiveness",
-      "Low-pressure rinse",
-    ],
-    priceRange: "£200-800",
-  },
-  "patio-cleaning": {
-    name: "Patio Cleaning",
-    description:
-      "Expert patio cleaning for all surfaces including natural stone, concrete, and porcelain. We restore patios to their original beauty.",
-    benefits: [
-      "Works on all patio types",
-      "Removes moss and algae",
-      "Restores natural colour",
-      "Re-pointing available",
-      "Sealing options",
-    ],
-    process: [
-      "Patio assessment",
-      "Weed and moss removal",
-      "Pressure or soft wash as appropriate",
-      "Joint cleaning",
-      "Optional sealing",
-    ],
-    priceRange: "£150-600",
-  },
-  "render-cleaning": {
-    name: "Render Cleaning",
-    description:
-      "Specialist render and K-Rend cleaning using soft wash techniques. We remove algae, red/green staining, and restore your render safely.",
-    benefits: [
-      "Safe for all render types",
-      "Removes stubborn algae staining",
-      "No damage to surface",
-      "Biocide prevents regrowth",
-      "Restores curb appeal",
-    ],
-    process: [
-      "Render type assessment",
-      "Protection of windows/doors",
       "Soft wash application",
-      "Biocide treatment",
+      "Gentle cleaning process",
+      "Full property rinse",
       "Final inspection",
     ],
-    priceRange: "£300-1200",
+    priceRange: "£240-£600", // £3/m² for typical 80-200m² wall area
   },
-  "window-cleaning": {
-    name: "Window Cleaning",
+  "decking-cleaning": {
+    name: "Decking Cleaning",
     description:
-      "Professional window cleaning for residential and commercial properties. Interior, exterior, and conservatory cleaning available.",
+      "Specialist decking cleaning to restore and protect your outdoor timber. We use wood-safe cleaning methods to prevent damage.",
     benefits: [
-      "Streak-free finish",
-      "Frame cleaning included",
-      "Regular service plans",
-      "Commercial capabilities",
-      "High-level access available",
+      "Wood-safe cleaning methods",
+      "Removes algae & mould",
+      "Prevents wood rot",
+      "Restores natural colour",
+      "Optional re-oiling service",
     ],
-    process: ["Frame and sill cleaning", "Glass cleaning with pure water", "Detail work", "Final polish", "Inspection"],
-    priceRange: "£50-300",
+    process: [
+      "Wood condition assessment",
+      "Gentle cleaning application",
+      "Low-pressure washing",
+      "Wood fibre restoration",
+      "Optional protective treatment",
+    ],
+    priceRange: "£60-£180", // £3/m² for typical 20-60m² deck
+  },
+  "commercial-property-cleaning": {
+    name: "Commercial Property Cleaning",
+    description:
+      "Professional exterior cleaning services for commercial properties, retail units, offices, and industrial buildings.",
+    benefits: [
+      "Minimal business disruption",
+      "Flexible scheduling",
+      "Health & safety compliant",
+      "Regular maintenance contracts",
+      "Fully insured service",
+    ],
+    process: [
+      "Site survey & risk assessment",
+      "Scheduled service delivery",
+      "Professional equipment",
+      "Waste disposal included",
+      "Service completion report",
+    ],
+    priceRange: "£300-£2,000", // Commercial rates vary significantly
+  },
+  softwash: {
+    name: "Softwash Treatment",
+    description:
+      "Advanced softwash biocide treatment for render, roofs, and exterior surfaces. Long-lasting protection against algae and organic growth.",
+    benefits: [
+      "Long-lasting protection",
+      "Safe for delicate surfaces",
+      "Kills algae & bacteria",
+      "Prevents regrowth",
+      "Eco-friendly solutions",
+    ],
+    process: [
+      "Surface preparation",
+      "Professional biocide application",
+      "Dwell time for effectiveness",
+      "Gentle rinse process",
+      "Follow-up care advice",
+    ],
+    priceRange: "£150-£400", // £5/m² for typical 30-80m² softwash treatment
   },
 }
 
@@ -425,7 +431,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { service, location } = await params
-  const serviceData = SERVICES[service]
+  const serviceData = servicesData[service]
   const locationData = LOCATIONS[location]
 
   if (!serviceData || !locationData) {
@@ -459,7 +465,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
   const params: { service: string; location: string }[] = []
 
-  Object.keys(SERVICES).forEach((service) => {
+  Object.keys(servicesData).forEach((service) => {
     Object.keys(LOCATIONS).forEach((location) => {
       params.push({ service, location })
     })
@@ -470,7 +476,7 @@ export async function generateStaticParams() {
 
 export default async function LocationServicePage({ params }: Props) {
   const { service, location } = await params
-  const serviceData = SERVICES[service]
+  const serviceData = servicesData[service]
   const locationData = LOCATIONS[location]
 
   if (!serviceData || !locationData) {
@@ -640,15 +646,15 @@ export default async function LocationServicePage({ params }: Props) {
               {/* Trust badges - improved mobile layout */}
               <div className="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8 text-xs sm:text-sm">
                 <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
-                  <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-yellow-400" />
+                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-yellow-400" />
                   <span>4.9★ (47 reviews)</span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
-                  <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-[#00C853]" />
+                  <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-[#00C853]" />
                   <span>Fully Insured</span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
-                  <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-[#1E90FF]" />
+                  <Phone className="h-3 w-3 sm:h-4 sm:w-4 text-[#1E90FF]" />
                   <span>Same Week</span>
                 </div>
               </div>
@@ -707,7 +713,7 @@ export default async function LocationServicePage({ params }: Props) {
                   <ul className="space-y-2 sm:space-y-3">
                     {serviceData.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-white/80">
-                        <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-[#00C853] mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-[#00C853] mt-0.5 flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -813,7 +819,7 @@ export default async function LocationServicePage({ params }: Props) {
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl font-bold mb-8 text-white">Other Services in {locationData.name}</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {Object.entries(SERVICES)
+              {Object.entries(servicesData)
                 .filter(([key]) => key !== service)
                 .slice(0, 4)
                 .map(([key, svc]) => (
