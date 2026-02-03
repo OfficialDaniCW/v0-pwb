@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import AdminLayout from "@/components/admin/admin-layout"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -773,6 +774,12 @@ export default function PWBAdminDashboard() {
                 <span className="text-xs px-2 py-1 bg-[#00C853]/20 text-[#00C853] rounded-full">Published</span>
               </div>
             ))}
+            {blogPosts.length === 0 && (
+              <div className="text-center py-8 text-white/50">
+                <FileText className="h-12 w-12 mx-auto mb-3 opacity-50" />
+                <p>No blog posts yet. Create your first post above!</p>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -1564,5 +1571,16 @@ export default function PWBAdminDashboard() {
         </div>
       </div>
     </div>
+  )
+
+  return (
+    <AdminLayout activeSection={activeSection} onSectionChange={handleSectionChange}>
+      {saveMessage && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50">
+          {saveMessage}
+        </div>
+      )}
+      {renderContent()}
+    </AdminLayout>
   )
 }
