@@ -48,6 +48,7 @@ const ACCESS_EXAMPLES = {
 }
 
 export default function PricingPage() {
+  const [quoteType, setQuoteType] = useState<"residential" | "commercial">("residential")
   const [selectedServices, setSelectedServices] = useState<string[]>(["driveway"])
   const [houseSize, setHouseSize] = useState<"small" | "medium" | "large" | "xlarge">("medium")
   const [sizes, setSizes] = useState<{ [key: string]: number }>({
@@ -202,9 +203,34 @@ export default function PricingPage() {
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Instant Pricing Calculator</h1>
               <p className="text-xl text-white/70">Select services, enter your postcode, and get your total price instantly</p>
+              
+              {/* Quote Type Toggle */}
+              <div className="flex justify-center gap-4 mt-8">
+                <button
+                  onClick={() => setQuoteType("residential")}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                    quoteType === "residential"
+                      ? "bg-[#1E90FF] text-white"
+                      : "bg-white/10 text-white/70 hover:bg-white/20"
+                  }`}
+                >
+                  Residential Quote
+                </button>
+                <button
+                  onClick={() => setQuoteType("commercial")}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                    quoteType === "commercial"
+                      ? "bg-red-600 text-white"
+                      : "bg-white/10 text-white/70 hover:bg-white/20"
+                  }`}
+                >
+                  Commercial / Industrial
+                </button>
+              </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {quoteType === "residential" ? (
+              <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {/* Left Column: Services & Calculator */}
               <div className="lg:col-span-2 space-y-8">
                   {/* Bundle/Multiple Services Selection */}
@@ -481,7 +507,35 @@ export default function PricingPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            ) : (
+              /* Commercial Mode */
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/10 rounded-2xl p-12 border-2 border-red-500/30 text-center space-y-6">
+                  <h2 className="text-3xl font-bold text-white">Commercial & Industrial Cleaning</h2>
+                  <p className="text-white/70 text-lg">
+                    For large-scale commercial, industrial, or specialized projects, our dedicated contracts team provides custom solutions tailored to your specific requirements.
+                  </p>
+                  <div className="space-y-2 py-6">
+                    <p className="text-white/60">We handle:</p>
+                    <ul className="inline-flex flex-col gap-2 text-white/80 text-sm">
+                      <li>• Large building facades</li>
+                      <li>• Multi-property portfolios</li>
+                      <li>• Industrial site cleaning</li>
+                      <li>• Ongoing maintenance contracts</li>
+                      <li>• Specialized access requirements</li>
+                      <li>• Custom scheduling</li>
+                    </ul>
+                  </div>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full bg-red-600 text-white font-semibold py-6 hover:bg-red-700 transition-all"
+                  >
+                    <a href="/contracts">Get In Contact</a>
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
