@@ -139,12 +139,12 @@ export default function ResetPasswordPage() {
               className="object-contain"
             />
           </div>
-          <span className="text-2xl font-semibold text-white">PowerWash Bros</span>
+          <span className="text-2xl font-semibold text-foreground">PowerWash Bros</span>
         </div>
 
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-white">Reset your password</h2>
+            <h2 className="text-2xl font-bold text-foreground">Reset your password</h2>
             <p className="text-muted-foreground mt-2">Enter your new password below</p>
           </div>
 
