@@ -19,6 +19,13 @@ const SERVICES = [
   { id: "softwash", name: "Softwash Treatment", icon: "✨" },
 ]
 
+const HOUSE_SIZES = {
+  small: { label: "Small", gutterLength: 25 },
+  medium: { label: "Medium", gutterLength: 45 },
+  large: { label: "Large", gutterLength: 65 },
+  xlarge: { label: "Extra Large", gutterLength: 85 },
+}
+
 const ACCESS_EXAMPLES = {
   easy: {
     title: "Easy Access",
@@ -42,11 +49,12 @@ const ACCESS_EXAMPLES = {
 
 export default function PricingPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>(["driveway"])
+  const [houseSize, setHouseSize] = useState<"small" | "medium" | "large" | "xlarge">("medium")
   const [sizes, setSizes] = useState<{ [key: string]: number }>({
     driveway: 50,
     patio: 50,
     roof: 50,
-    gutter: 15,
+    gutter: 45,
     walls: 50,
     softwash: 50,
   })
@@ -231,6 +239,17 @@ export default function PricingPage() {
                   </div>
                 </div>
 
+                {/* Commercial & Industrial */}
+                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/10 rounded-lg p-6 border-2 border-red-500/30">
+                  <p className="text-white/60 text-sm mb-4">Looking for commercial or industrial cleaning?</p>
+                  <Button
+                    asChild
+                    className="w-full bg-red-600 text-white font-semibold hover:bg-red-700 transition-all"
+                  >
+                    <a href="/contracts">Get Commercial Quote</a>
+                  </Button>
+                </div>
+
                 {/* Postcode Input */}
                 <div className="glass-border rounded-lg p-6 space-y-3">
                   <Label className="text-white text-lg font-semibold flex items-center gap-2">
@@ -267,23 +286,44 @@ export default function PricingPage() {
                       
                       <div>
                         <Label className="text-white/80 text-sm mb-2 block">
-                          {serviceId === "gutter" ? "Gutter Length" : "Area Size"}
+                          {serviceId === "gutter" ? "House Size" : "Area Size"}
                         </Label>
-                        <div className="flex items-center gap-4">
-                          <Slider
-                            value={[sizes[serviceId]]}
-                            onValueChange={(val) =>
-                              setSizes({ ...sizes, [serviceId]: val[0] })
-                            }
-                            min={serviceId === "gutter" ? 5 : 10}
-                            max={serviceId === "gutter" ? 100 : 500}
-                            step={serviceId === "gutter" ? 5 : 10}
-                            className="flex-1"
-                          />
-                          <span className="text-white font-semibold w-20 text-right">
-                            {serviceId === "gutter" ? `${sizes[serviceId]}m` : `${sizes[serviceId]}m²`}
-                          </span>
-                        </div>
+                        {serviceId === "gutter" ? (
+                          <div className="grid grid-cols-2 gap-2">
+                            {Object.entries(HOUSE_SIZES).map(([key, data]) => (
+                              <button
+                                key={key}
+                                onClick={() => {
+                                  setHouseSize(key as "small" | "medium" | "large" | "xlarge")
+                                  setSizes({ ...sizes, gutter: data.gutterLength })
+                                }}
+                                className={`p-3 rounded border-2 transition-all text-sm font-medium ${
+                                  houseSize === key
+                                    ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
+                                    : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
+                                }`}
+                              >
+                                {data.label}
+                              </button>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-4">
+                            <Slider
+                              value={[sizes[serviceId]]}
+                              onValueChange={(val) =>
+                                setSizes({ ...sizes, [serviceId]: val[0] })
+                              }
+                              min={10}
+                              max={500}
+                              step={10}
+                              className="flex-1"
+                            />
+                            <span className="text-white font-semibold w-20 text-right">
+                              {sizes[serviceId]}m²
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Driveway Surface Type */}
