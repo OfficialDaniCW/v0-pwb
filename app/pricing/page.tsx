@@ -8,29 +8,59 @@ import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { useState, useEffect } from "react"
-import { Calculator, CheckCircle2, Info, Droplets, Zap, MapPin, AlertCircle } from "lucide-react"
+import { Calculator, CheckCircle2, Info, Droplets, Zap, MapPin, AlertCircle, Package } from "lucide-react"
 
 const SERVICES = [
-  { id: "driveway", name: "Driveway Cleaning", icon: "🚗", color: "from-blue-500 to-blue-600" },
-  { id: "patio", name: "Patio/Decking", icon: "🏡", color: "from-green-500 to-green-600" },
-  { id: "roof", name: "Roof Cleaning", icon: "🏠", color: "from-orange-500 to-orange-600" },
-  { id: "gutter", name: "Gutter Cleaning", icon: "💧", color: "from-cyan-500 to-cyan-600" },
-  { id: "walls", name: "Exterior Walls", icon: "🧱", color: "from-purple-500 to-purple-600" },
-  { id: "softwash", name: "Softwash Treatment", icon: "✨", color: "from-pink-500 to-pink-600" },
+  { id: "driveway", name: "Driveway Cleaning", icon: "🚗" },
+  { id: "patio", name: "Patio/Decking", icon: "🏡" },
+  { id: "roof", name: "Roof Cleaning", icon: "🏠" },
+  { id: "gutter", name: "Gutter Cleaning", icon: "💧" },
+  { id: "walls", name: "Exterior Walls", icon: "🧱" },
+  { id: "softwash", name: "Softwash Treatment", icon: "✨" },
 ]
 
+const ACCESS_EXAMPLES = {
+  easy: {
+    title: "Easy Access",
+    examples: [
+      "Driveway front of property with parking nearby",
+      "Ground floor patio with side gate access",
+      "Flat roof with safe ladder access",
+      "Gutters easily reachable from ground/low ladder",
+    ],
+  },
+  difficult: {
+    title: "Difficult Access",
+    examples: [
+      "Driveway on steep slope or requires multiple trips",
+      "Elevated patio requiring extensive equipment setup",
+      "Steep roof pitch or complex angles",
+      "Gutters requiring high scaffolding or crane access",
+    ],
+  },
+}
+
 export default function PricingPage() {
-  const [serviceType, setServiceType] = useState("driveway")
-  const [size, setSize] = useState([50])
-  const [gutterLength, setGutterLength] = useState([15])
+  const [selectedServices, setSelectedServices] = useState<string[]>(["driveway"])
+  const [sizes, setSizes] = useState<{ [key: string]: number }>({
+    driveway: 50,
+    patio: 50,
+    roof: 50,
+    gutter: 15,
+    walls: 50,
+    softwash: 50,
+  })
   const [access, setAccess] = useState("easy")
-  const [surfaceType, setSurfaceType] = useState("standard")
+  const [surfaceTypes, setSurfaceTypes] = useState<{ [key: string]: string }>({
+    driveway: "standard",
+  })
   const [needsResanding, setNeedsResanding] = useState(false)
   const [postcode, setPostcode] = useState("")
-  const [distanceFromSwanage, setDistanceFromSwanage] = useState([0])
+  const [distanceFromSwanage, setDistanceFromSwanage] = useState(0)
   const [estimatedPrice, setEstimatedPrice] = useState(0)
   const [postcodeError, setPostcodeError] = useState("")
   const [isLoadingPostcode, setIsLoadingPostcode] = useState(false)
+  const [showAccessHelp, setShowAccessHelp] = useState(false)
 
   const [pricingData] = useState({
     driveway: {
@@ -48,6 +78,7 @@ export default function PricingPage() {
 
   const DISTANCE_RATE_PER_MILE = 0.5
   const FUEL_SURCHARGE = 15
+  const BIOCIDE_TREATMENT = 25
 
   // Calculate distance from postcode using UK postcode geocoding API
   const handlePostcodeChange = async (value: string) => {
@@ -63,7 +94,6 @@ export default function PricingPage() {
 
     setIsLoadingPostcode(true)
     try {
-      // Using UK Postcode API (free tier available)
       const response = await fetch(
         `https://api.postcodes.io/postcodes/${encodeURIComponent(value.trim())}`
       )
@@ -77,12 +107,10 @@ export default function PricingPage() {
       const data = await response.json()
       const { latitude, longitude } = data.result
 
-      // Swanage coordinates (approximate centre)
       const swanageLatitude = 50.6154
       const swanageLongitude = -1.9410
 
-      // Calculate distance using Haversine formula
-      const R = 3959 // Earth's radius in miles
+      const R = 3959
       const lat1 = (swanageLatitude * Math.PI) / 180
       const lat2 = (latitude * Math.PI) / 180
       const deltaLat = ((latitude - swanageLatitude) * Math.PI) / 180
@@ -94,47 +122,64 @@ export default function PricingPage() {
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
       const distance = R * c
 
-      setDistanceFromSwanage([Math.round(distance)])
+      setDistanceFromSwanage(Math.round(distance))
       setPostcodeError("")
     } catch (error) {
-      setPostcodeError("Unable to calculate distance. Please enter manually.")
+      setPostcodeError("Unable to calculate distance.")
       console.error("[v0] Postcode lookup error:", error)
     } finally {
       setIsLoadingPostcode(false)
     }
   }
 
-  useEffect(() => {
-    calculatePrice()
-  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding, distanceFromSwanage])
-
-  const calculatePrice = () => {
-    let price = 0
-
-    if (serviceType === "gutter") {
-      price = gutterLength[0] * pricingData.gutter.baseRate
-    } else {
-      const service = pricingData[serviceType as keyof typeof pricingData]
-      if (!service || !("baseRate" in service)) return
-
-      price = size[0] * service.baseRate
-
-      if ("easyAccess" in service && "hardAccess" in service) {
-        price *= access === "hard" ? service.hardAccess : service.easyAccess
-      }
-
-      if (serviceType === "driveway" && surfaceType === "block" && needsResanding) {
-        price += size[0] * pricingData.driveway.blockPavingResanding
-      }
-    }
-
-    const distanceSurcharge = (distanceFromSwanage[0] * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE
-    price += distanceSurcharge
-
-    setEstimatedPrice(Math.round(price))
+  const toggleService = (serviceId: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(serviceId)
+        ? prev.filter((s) => s !== serviceId)
+        : [...prev, serviceId]
+    )
   }
 
-  const selectedService = SERVICES.find(s => s.id === serviceType)
+  useEffect(() => {
+    calculatePrice()
+  }, [selectedServices, sizes, access, surfaceTypes, needsResanding, distanceFromSwanage])
+
+  const calculatePrice = () => {
+    let basePrice = 0
+
+    // Calculate service costs
+    selectedServices.forEach((serviceId) => {
+      const service = pricingData[serviceId as keyof typeof pricingData]
+      if (!service) return
+
+      let servicePrice = 0
+      if (serviceId === "gutter") {
+        servicePrice = sizes[serviceId] * service.baseRate
+      } else {
+        servicePrice = sizes[serviceId] * service.baseRate
+        
+        // Apply access multiplier
+        if ("easyAccess" in service && "hardAccess" in service) {
+          servicePrice *= access === "hard" ? service.hardAccess : service.easyAccess
+        }
+
+        // Add resanding for block paving driveways
+        if (serviceId === "driveway" && surfaceTypes[serviceId] === "block" && needsResanding) {
+          servicePrice += sizes[serviceId] * service.blockPavingResanding
+        }
+      }
+
+      basePrice += servicePrice
+    })
+
+    // Add distance surcharge and fuel
+    const distanceSurcharge = (distanceFromSwanage * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE
+    const biocideCost = BIOCIDE_TREATMENT * selectedServices.length // Biocide for each service
+
+    const totalPrice = basePrice + distanceSurcharge + biocideCost
+
+    setEstimatedPrice(Math.round(totalPrice))
+  }
 
   return (
     <>
@@ -148,33 +193,38 @@ export default function PricingPage() {
                 <Calculator className="h-10 w-10 text-[#1E90FF]" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Instant Pricing Calculator</h1>
-              <p className="text-xl text-white/70">Select a service, enter your location, and get an estimate instantly</p>
+              <p className="text-xl text-white/70">Select services, enter your postcode, and get your total price instantly</p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {/* Left Column: Services & Calculator */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Service Cards */}
+                {/* Bundle/Multiple Services Selection */}
                 <div className="space-y-4">
-                  <Label className="text-white text-lg font-semibold">Choose Your Service</Label>
+                  <div className="flex items-center gap-2">
+                    <Package className="h-5 w-5 text-[#1E90FF]" />
+                    <Label className="text-white text-lg font-semibold">Select Services (Bundle & Save)</Label>
+                  </div>
+                  <p className="text-white/60 text-sm">Choose multiple services to bundle them together</p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {SERVICES.map((service) => (
                       <button
                         key={service.id}
-                        onClick={() => {
-                          setServiceType(service.id)
-                          setSurfaceType("standard")
-                          setNeedsResanding(false)
-                        }}
+                        onClick={() => toggleService(service.id)}
                         className={`p-4 rounded-lg border-2 transition-all text-left ${
-                          serviceType === service.id
+                          selectedServices.includes(service.id)
                             ? "border-[#1E90FF] bg-[#1E90FF]/20"
                             : "border-white/20 bg-white/5 hover:border-white/40 hover:bg-white/10"
                         }`}
                       >
-                        <div className="flex items-start gap-3">
-                          <span className="text-3xl">{service.icon}</span>
-                          <span className="font-semibold text-white">{service.name}</span>
+                        <div className="flex items-start gap-3 justify-between">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{service.icon}</span>
+                            <span className="font-semibold text-white">{service.name}</span>
+                          </div>
+                          {selectedServices.includes(service.id) && (
+                            <CheckCircle2 className="h-6 w-6 text-[#1E90FF]" />
+                          )}
                         </div>
                       </button>
                     ))}
@@ -203,8 +253,8 @@ export default function PricingPage() {
                         {postcodeError}
                       </p>
                     )}
-                    {postcode && !postcodeError && !isLoadingPostcode && (
-                      <p className="text-sm text-green-400">✓ Distance calculated</p>
+                    {postcode && !postcodeError && !isLoadingPostcode && distanceFromSwanage > 0 && (
+                      <p className="text-sm text-green-400">✓ {distanceFromSwanage} miles from Swanage</p>
                     )}
                   </div>
                   
@@ -213,101 +263,136 @@ export default function PricingPage() {
                     <p className="text-white/60 text-sm mb-2">Or adjust distance manually:</p>
                     <div className="flex items-center gap-4">
                       <Slider
-                        value={distanceFromSwanage}
-                        onValueChange={setDistanceFromSwanage}
+                        value={[distanceFromSwanage]}
+                        onValueChange={(val) =>
+                          setDistanceFromSwanage(val[0])
+                        }
                         min={0}
                         max={50}
                         step={1}
                         className="flex-1"
                       />
-                      <span className="text-white font-semibold w-16 text-right">{distanceFromSwanage[0]} mi</span>
+                      <span className="text-white font-semibold w-16 text-right">{distanceFromSwanage} mi</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Service-Specific Options */}
                 <div className="glass-border rounded-lg p-6 space-y-6">
-                  <div>
-                    <Label className="text-white text-lg font-semibold mb-3 block">
-                      {serviceType === "gutter" ? "Gutter Length" : "Area Size"}
-                    </Label>
-                    <div className="flex items-center gap-4">
-                      <Slider
-                        value={serviceType === "gutter" ? gutterLength : size}
-                        onValueChange={serviceType === "gutter" ? setGutterLength : setSize}
-                        min={serviceType === "gutter" ? 5 : 10}
-                        max={serviceType === "gutter" ? 100 : 500}
-                        step={serviceType === "gutter" ? 5 : 10}
-                        className="flex-1"
-                      />
-                      <span className="text-white font-semibold w-20 text-right">
-                        {serviceType === "gutter" ? `${gutterLength[0]}m` : `${size[0]}m²`}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Driveway-Specific Options */}
-                  {serviceType === "driveway" && (
-                    <div className="space-y-4 pt-4 border-t border-white/20">
+                  {selectedServices.map((serviceId) => (
+                    <div key={serviceId} className="space-y-4 pb-4 border-b border-white/20 last:border-0 last:pb-0">
+                      <h3 className="text-white font-semibold">{SERVICES.find(s => s.id === serviceId)?.name}</h3>
+                      
                       <div>
-                        <Label className="text-white text-lg font-semibold mb-3 block">Surface Type</Label>
-                        <div className="grid grid-cols-3 gap-2">
-                          {["standard", "block", "natural"].map((type) => (
-                            <button
-                              key={type}
-                              onClick={() => setSurfaceType(type)}
-                              className={`p-3 rounded border-2 transition-all text-sm font-medium ${
-                                surfaceType === type
-                                  ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
-                                  : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
-                              }`}
-                            >
-                              {type === "standard" && "Concrete/Tarmac"}
-                              {type === "block" && "Block Paving"}
-                              {type === "natural" && "Natural Stone"}
-                            </button>
-                          ))}
+                        <Label className="text-white/80 text-sm mb-2 block">
+                          {serviceId === "gutter" ? "Gutter Length" : "Area Size"}
+                        </Label>
+                        <div className="flex items-center gap-4">
+                          <Slider
+                            value={[sizes[serviceId]]}
+                            onValueChange={(val) =>
+                              setSizes({ ...sizes, [serviceId]: val[0] })
+                            }
+                            min={serviceId === "gutter" ? 5 : 10}
+                            max={serviceId === "gutter" ? 100 : 500}
+                            step={serviceId === "gutter" ? 5 : 10}
+                            className="flex-1"
+                          />
+                          <span className="text-white font-semibold w-20 text-right">
+                            {serviceId === "gutter" ? `${sizes[serviceId]}m` : `${sizes[serviceId]}m²`}
+                          </span>
                         </div>
                       </div>
 
-                      {surfaceType === "block" && (
-                        <div className="bg-[#1E90FF]/10 rounded-lg p-4 border border-[#1E90FF]/30">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-start gap-3">
-                              <Info className="h-5 w-5 text-[#1E90FF] mt-0.5 flex-shrink-0" />
-                              <div>
-                                <p className="text-white font-medium">Re-Sand Joints?</p>
-                                <p className="text-white/60 text-sm">+£{pricingData.driveway.blockPavingResanding.toFixed(2)}/m²</p>
+                      {/* Driveway Surface Type */}
+                      {serviceId === "driveway" && (
+                        <div className="space-y-3 pt-2">
+                          <Label className="text-white/80 text-sm">Surface Type</Label>
+                          <div className="grid grid-cols-3 gap-2">
+                            {["standard", "block", "natural"].map((type) => (
+                              <button
+                                key={type}
+                                onClick={() =>
+                                  setSurfaceTypes({ ...surfaceTypes, driveway: type })
+                                }
+                                className={`p-2 rounded border-2 transition-all text-xs font-medium ${
+                                  surfaceTypes[serviceId] === type
+                                    ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
+                                    : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
+                                }`}
+                              >
+                                {type === "standard" && "Concrete"}
+                                {type === "block" && "Block"}
+                                {type === "natural" && "Stone"}
+                              </button>
+                            ))}
+                          </div>
+
+                          {surfaceTypes[serviceId] === "block" && (
+                            <div className="bg-[#1E90FF]/10 rounded-lg p-3 border border-[#1E90FF]/30 mt-2">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-start gap-2">
+                                  <Info className="h-4 w-4 text-[#1E90FF] mt-0.5 flex-shrink-0" />
+                                  <div className="text-sm">
+                                    <p className="text-white font-medium">Re-Sand Joints?</p>
+                                    <p className="text-white/60 text-xs">+£2/m²</p>
+                                  </div>
+                                </div>
+                                <Switch
+                                  checked={needsResanding}
+                                  onCheckedChange={setNeedsResanding}
+                                />
                               </div>
                             </div>
-                            <Switch checked={needsResanding} onCheckedChange={setNeedsResanding} />
-                          </div>
+                          )}
                         </div>
                       )}
                     </div>
-                  )}
+                  ))}
+                </div>
 
-                  {/* Access Level */}
-                  {serviceType !== "gutter" && (
-                    <div className="space-y-3 pt-4 border-t border-white/20">
-                      <Label className="text-white text-lg font-semibold">Property Access</Label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {["easy", "hard"].map((accessType) => (
-                          <button
-                            key={accessType}
-                            onClick={() => setAccess(accessType)}
-                            className={`p-3 rounded border-2 transition-all font-medium ${
-                              access === accessType
-                                ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
-                                : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
-                            }`}
-                          >
-                            {accessType === "easy" ? "Easy Access" : "Difficult Access"}
-                          </button>
-                        ))}
-                      </div>
+                {/* Access Level with Examples */}
+                <div className="glass-border rounded-lg p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-white text-lg font-semibold">Property Access</Label>
+                    <button
+                      onClick={() => setShowAccessHelp(!showAccessHelp)}
+                      className="text-[#1E90FF] hover:text-[#1E90FF]/80 text-sm font-medium"
+                    >
+                      {showAccessHelp ? "Hide Examples" : "See Examples"}
+                    </button>
+                  </div>
+
+                  {showAccessHelp && (
+                    <div className="grid md:grid-cols-2 gap-4 mb-4">
+                      {Object.entries(ACCESS_EXAMPLES).map(([key, data]) => (
+                        <div key={key} className="bg-white/5 rounded-lg p-3 border border-white/20">
+                          <h4 className="text-white font-semibold text-sm mb-2">{data.title}</h4>
+                          <ul className="space-y-1">
+                            {data.examples.map((example, idx) => (
+                              <li key={idx} className="text-white/70 text-xs">• {example}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
                   )}
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {["easy", "difficult"].map((accessType) => (
+                      <button
+                        key={accessType}
+                        onClick={() => setAccess(accessType)}
+                        className={`p-3 rounded border-2 transition-all font-medium ${
+                          access === accessType
+                            ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
+                            : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
+                        }`}
+                      >
+                        {accessType === "easy" ? "Easy Access" : "Difficult Access"}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Important Note */}
@@ -332,25 +417,43 @@ export default function PricingPage() {
                 <div className="sticky top-24 space-y-4">
                   {/* Price Display */}
                   <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-8 text-center">
-                    <p className="text-white/80 mb-2 text-sm font-medium">Estimated Price</p>
-                    <p className="text-5xl font-bold text-white mb-1">£{estimatedPrice}</p>
+                    <p className="text-white/80 mb-2 text-sm font-medium">Total Estimated Price</p>
+                    <p className="text-6xl font-bold text-white mb-1">£{estimatedPrice}</p>
                     <p className="text-white/70 text-xs mb-4">
-                      {serviceType === "gutter"
-                        ? `${gutterLength[0]} linear metres`
-                        : `${size[0]}m² area`}
-                      {distanceFromSwanage[0] > 0 && ` • ${distanceFromSwanage[0]} mi away`}
+                      {selectedServices.length} {selectedServices.length === 1 ? "service" : "services"}
+                      {postcode && ` • ${distanceFromSwanage} mi away`}
                     </p>
                     <div className="w-full h-px bg-white/20 my-4" />
-                    <div className="space-y-2 text-left text-sm">
+                    <div className="space-y-2 text-left text-xs">
                       <div className="flex justify-between text-white/90">
-                        <span>Service cost:</span>
-                        <span>£{Math.round(serviceType === "gutter" 
-                          ? gutterLength[0] * pricingData.gutter.baseRate 
-                          : size[0] * pricingData[serviceType as keyof typeof pricingData].baseRate * (access === "hard" && "hardAccess" in pricingData[serviceType as keyof typeof pricingData] ? pricingData[serviceType as keyof typeof pricingData].hardAccess : 1))}</span>
+                        <span>Services:</span>
+                        <span>£{Math.round(
+                          selectedServices.reduce((sum, serviceId) => {
+                            const service = pricingData[serviceId as keyof typeof pricingData]
+                            if (!service) return sum
+                            let servicePrice = 0
+                            if (serviceId === "gutter") {
+                              servicePrice = sizes[serviceId] * service.baseRate
+                            } else {
+                              servicePrice = sizes[serviceId] * service.baseRate
+                              if ("easyAccess" in service && "hardAccess" in service) {
+                                servicePrice *= access === "hard" ? service.hardAccess : service.easyAccess
+                              }
+                              if (serviceId === "driveway" && surfaceTypes[serviceId] === "block" && needsResanding) {
+                                servicePrice += sizes[serviceId] * service.blockPavingResanding
+                              }
+                            }
+                            return sum + servicePrice
+                          }, 0)
+                        )}</span>
                       </div>
                       <div className="flex justify-between text-white/90">
-                        <span>Distance surcharge:</span>
-                        <span>£{Math.round((distanceFromSwanage[0] * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE)}</span>
+                        <span>Travel & Fuel:</span>
+                        <span>£{Math.round((distanceFromSwanage * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE)}</span>
+                      </div>
+                      <div className="flex justify-between text-white/90">
+                        <span>Treatments:</span>
+                        <span>£{BIOCIDE_TREATMENT * selectedServices.length}</span>
                       </div>
                     </div>
                   </div>
