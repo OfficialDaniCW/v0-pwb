@@ -1250,347 +1250,342 @@ export default function PWBAdminDashboard() {
     </div>
   )
 
-  const renderPricingSection = () => (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Pricing Management</h1>
-          <p className="text-white/60 mt-1">Configure pricing rates and multipliers</p>
+  const renderPricingSection = () => {
+    if (!pricingData || !pricingData.driveway) {
+      return (
+        <div className="text-center py-12">
+          <p className="text-white/70">Loading pricing data...</p>
         </div>
-      </div>
+      )
+    }
 
-      {/* Base Rates & Multipliers */}
-      <div className="rounded-xl border border-white/10 bg-[#0B1E3F] p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-10 w-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
-            <Calculator className="h-5 w-5 text-orange-400" />
-          </div>
-          <h2 className="text-xl font-semibold text-white">Base Rates & Multipliers</h2>
-        </div>
-
-        {/* Driveway Cleaning */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Driveway Cleaning</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.driveway.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    driveway: { ...prev.driveway, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.driveway.easyAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    driveway: { ...prev.driveway, easyAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.driveway.hardAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    driveway: { ...prev.driveway, hardAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Block Paving Resanding (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.driveway.blockPavingResanding}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    driveway: { ...prev.driveway, blockPavingResanding: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Patio Cleaning */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Patio Cleaning</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.patio.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    patio: { ...prev.patio, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.patio.easyAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    patio: { ...prev.patio, easyAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.patio.hardAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    patio: { ...prev.patio, hardAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Roof Cleaning - Separate from Gutters */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Roof Cleaning</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.roof.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    roof: { ...prev.roof, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.roof.easyAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    roof: { ...prev.roof, easyAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.roof.hardAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    roof: { ...prev.roof, hardAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Gutter Cleaning - Now Separate */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-[#00C853] mb-4">Gutter Cleaning</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/linear metre)</Label>
-              <Input
-                type="number"
-                step="0.5"
-                value={pricingData.gutter.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    gutter: { ...prev.gutter, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div className="flex items-end">
-              <p className="text-white/60 text-sm pb-2">Priced per linear metre of guttering</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Exterior Walls */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Exterior Walls</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.walls.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    walls: { ...prev.walls, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.walls.easyAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    walls: { ...prev.walls, easyAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.walls.hardAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    walls: { ...prev.walls, hardAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Softwash */}
-        <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">Softwash Treatment</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
-              <Input
-                type="number"
-                step="0.1"
-                value={pricingData.softwash.baseRate}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    softwash: { ...prev.softwash, baseRate: Number.parseFloat(e.target.value) || 0 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Easy Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.softwash.easyAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    softwash: { ...prev.softwash, easyAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-            <div>
-              <Label className="text-white/80 text-sm">Hard Access (x)</Label>
-              <Input
-                type="number"
-                step="0.05"
-                value={pricingData.softwash.hardAccess}
-                onChange={(e) =>
-                  setPricingData((prev) => ({
-                    ...prev,
-                    softwash: { ...prev.softwash, hardAccess: Number.parseFloat(e.target.value) || 1 },
-                  }))
-                }
-                className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-end pt-4">
-          <Button onClick={updatePricing} className="bg-orange-500 hover:bg-orange-600 text-white">
-            <Save className="h-4 w-4 mr-2" />
-            Save Pricing Changes
-          </Button>
-        </div>
-      </div>
-
-      {/* Important Note */}
-      <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5">
-        <div className="flex items-start gap-3">
-          <AlertTriangle className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-white font-medium mb-1">Pricing Note</h3>
-            <p className="text-white/70 text-sm">
-              These prices are set slightly above average to allow room for delivering competitive quotes on-site. The
-              online calculator provides estimates only - final quotes are provided after property assessment.
-            </p>
+            <h1 className="text-2xl md:text-3xl font-bold text-white">Pricing Management</h1>
+            <p className="text-white/60 mt-1">Configure pricing rates and multipliers</p>
+          </div>
+        </div>
+
+        {/* Base Rates & Multipliers */}
+        <div className="rounded-xl border border-white/10 bg-[#0B1E3F] p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-10 w-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
+              <Calculator className="h-5 w-5 text-orange-400" />
+            </div>
+            <h2 className="text-xl font-semibold text-white">Base Rates & Multipliers</h2>
+          </div>
+
+          {/* Driveway Cleaning */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Driveway Cleaning</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.driveway.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      driveway: { ...prev.driveway, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.driveway.easyAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      driveway: { ...prev.driveway, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.driveway.hardAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      driveway: { ...prev.driveway, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Block Paving Resanding (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.driveway.blockPavingResanding}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      driveway: { ...prev.driveway, blockPavingResanding: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Patio Cleaning */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Patio Cleaning</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.patio.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      patio: { ...prev.patio, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.patio.easyAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      patio: { ...prev.patio, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.patio.hardAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      patio: { ...prev.patio, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Roof Cleaning - Separate from Gutters */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Roof Cleaning</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.roof.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      roof: { ...prev.roof, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.roof.easyAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      roof: { ...prev.roof, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.roof.hardAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      roof: { ...prev.roof, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Gutter Cleaning - Now Separate */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-[#00C853] mb-4">Gutter Cleaning</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/linear metre)</Label>
+                <Input
+                  type="number"
+                  step="0.5"
+                  value={pricingData.gutter.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      gutter: { ...prev.gutter, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div className="flex items-end">
+                <p className="text-white/60 text-sm pb-2">Priced per linear metre of guttering</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Exterior Walls */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-[#1E90FF] mb-4">Exterior Walls</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.walls.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      walls: { ...prev.walls, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.walls.easyAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      walls: { ...prev.walls, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.walls.hardAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      walls: { ...prev.walls, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Softwash */}
+          <div className="rounded-lg border border-white/10 bg-[#162D50] p-5 mb-4">
+            <h3 className="text-lg font-semibold text-purple-400 mb-4">Softwash Treatment</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label className="text-white/80 text-sm">Base Rate (£/sqm)</Label>
+                <Input
+                  type="number"
+                  step="0.1"
+                  value={pricingData.softwash.baseRate}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      softwash: { ...prev.softwash, baseRate: Number.parseFloat(e.target.value) || 0 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Easy Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.softwash.easyAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      softwash: { ...prev.softwash, easyAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+              <div>
+                <Label className="text-white/80 text-sm">Hard Access (x)</Label>
+                <Input
+                  type="number"
+                  step="0.05"
+                  value={pricingData.softwash.hardAccess}
+                  onChange={(e) =>
+                    setPricingData((prev) => ({
+                      ...prev,
+                      softwash: { ...prev.softwash, hardAccess: Number.parseFloat(e.target.value) || 1 },
+                    }))
+                  }
+                  className="mt-1 bg-[#0B1E3F] border-white/20 text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-end pt-4">
+            <Button onClick={updatePricing} className="bg-orange-500 hover:bg-orange-600 text-white">
+              Update Pricing
+            </Button>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   return (
     <AdminLayout activeSection={activeSection} onSectionChange={handleSectionChange}>
