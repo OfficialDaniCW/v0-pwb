@@ -507,6 +507,7 @@ export default function PricingPage() {
                   </p>
                 </div>
               </div>
+            </div>
             ) : (
               /* Commercial Mode */
               <div className="max-w-2xl mx-auto">
