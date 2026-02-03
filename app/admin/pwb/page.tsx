@@ -206,22 +206,8 @@ export default function PWBAdminDashboard() {
     loadBlogPosts()
     loadGalleryImages()
     loadTransformations()
-    // Load pricing data on mount
-    fetchPricingData()
+    // Pricing data is initialized with default values above
   }, [])
-
-  const fetchPricingData = async () => {
-    try {
-      const response = await fetch("/api/admin/pricing")
-      if (response.ok) {
-        const data = await response.json()
-        setPricingData(data)
-      }
-    } catch (error) {
-      console.error("Failed to fetch pricing data:", error)
-      // Keep default pricing if fetch fails
-    }
-  }
 
   const handleSectionChange = (section: string) => {
     setActiveSection(section || "dashboard")
