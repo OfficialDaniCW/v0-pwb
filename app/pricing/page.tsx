@@ -8,15 +8,15 @@ import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { useState, useEffect } from "react"
-import { Calculator, CheckCircle2, Info, Droplets, Zap, MapPin, AlertCircle, Package } from "lucide-react"
+import { Calculator, CheckCircle2, Info, Droplets, Zap, MapPin, AlertCircle, Package, Car, Home, Book as Roof, Pipette, Waves, Wind } from "lucide-react"
 
 const SERVICES = [
-  { id: "driveway", name: "Driveway Cleaning", icon: "🚗" },
-  { id: "patio", name: "Patio/Decking", icon: "🏡" },
-  { id: "roof", name: "Roof Cleaning", icon: "🏠" },
-  { id: "gutter", name: "Gutter Cleaning", icon: "💧" },
-  { id: "walls", name: "Exterior Walls", icon: "🧱" },
-  { id: "softwash", name: "Softwash Treatment", icon: "✨" },
+  { id: "driveway", name: "Driveway Cleaning", icon: Car },
+  { id: "patio", name: "Patio/Decking", icon: Home },
+  { id: "roof", name: "Roof Cleaning", icon: Roof },
+  { id: "gutter", name: "Gutter Cleaning", icon: Droplets },
+  { id: "walls", name: "Exterior Walls", icon: Wind },
+  { id: "softwash", name: "Softwash Treatment", icon: Pipette },
 ]
 
 const HOUSE_SIZES = {
@@ -70,6 +70,8 @@ export default function PricingPage() {
   const [postcodeError, setPostcodeError] = useState("")
   const [isLoadingPostcode, setIsLoadingPostcode] = useState(false)
   const [showAccessHelp, setShowAccessHelp] = useState(false)
+  const [hasExternalWaterTap, setHasExternalWaterTap] = useState(true)
+  const [hasAccessibleElectricity, setHasAccessibleElectricity] = useState(true)
 
   const [pricingData] = useState({
     driveway: {
@@ -88,6 +90,7 @@ export default function PricingPage() {
   const DISTANCE_RATE_PER_MILE = 0.5
   const FUEL_SURCHARGE = 15
   const BIOCIDE_TREATMENT = 25
+  const NO_ELECTRICITY_SURCHARGE = 20
 
   // Calculate distance from postcode using UK postcode geocoding API
   const handlePostcodeChange = async (value: string) => {
@@ -151,7 +154,7 @@ export default function PricingPage() {
 
   useEffect(() => {
     calculatePrice()
-  }, [selectedServices, sizes, access, surfaceTypes, needsResanding, distanceFromSwanage])
+  }, [selectedServices, sizes, access, surfaceTypes, needsResanding, distanceFromSwanage, hasAccessibleElectricity])
 
   const calculatePrice = () => {
     let basePrice = 0
@@ -184,8 +187,9 @@ export default function PricingPage() {
     // Add distance surcharge and fuel
     const distanceSurcharge = (distanceFromSwanage * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE
     const biocideCost = BIOCIDE_TREATMENT * selectedServices.length // Biocide for each service
+    const electricitySurcharge = !hasAccessibleElectricity ? NO_ELECTRICITY_SURCHARGE : 0
 
-    const totalPrice = basePrice + distanceSurcharge + biocideCost
+    const totalPrice = basePrice + distanceSurcharge + biocideCost + electricitySurcharge
 
     setEstimatedPrice(Math.round(totalPrice))
   }
@@ -253,7 +257,7 @@ export default function PricingPage() {
                       >
                         <div className="flex items-start gap-3 justify-between">
                           <div className="flex items-center gap-3">
-                            <span className="text-2xl">{service.icon}</span>
+                            <service.icon className="h-6 w-6 text-[#1E90FF]" />
                             <span className="font-semibold text-white">{service.name}</span>
                           </div>
                           {selectedServices.includes(service.id) && (
@@ -432,19 +436,81 @@ export default function PricingPage() {
                   </div>
                 </div>
 
-                {/* Important Note */}
-                <div className="bg-amber-500/10 rounded-lg p-4 border border-amber-500/30">
-                  <div className="flex items-start gap-3">
-                    <div className="flex gap-2 mt-0.5">
-                      <Droplets className="h-5 w-5 text-amber-400 flex-shrink-0" />
-                      <Zap className="h-5 w-5 text-amber-400 flex-shrink-0" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium">Water & Power Required</p>
-                      <p className="text-white/60 text-sm">
-                        We will need access to an external water tap and power supply on the day of service.
-                      </p>
-                    </div>
+                {/* Water & Power Options */}
+                <div className="glass-border rounded-lg p-6 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Droplets className="h-5 w-5 text-[#1E90FF]" />
+                    <Label className="text-white text-lg font-semibold">Water Access</Label>
+                  </div>
+                  <p className="text-white/60 text-sm">Do you have an external water tap available?</p>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setHasExternalWaterTap(true)}
+                      className={`w-full p-3 rounded border-2 transition-all text-left flex items-center gap-3 ${
+                        hasExternalWaterTap
+                          ? "border-green-500 bg-green-500/20"
+                          : "border-white/20 bg-white/5 hover:border-white/40"
+                      }`}
+                    >
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-medium">Yes, external water tap</p>
+                        <p className="text-white/60 text-xs">Available outside property</p>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => setHasExternalWaterTap(false)}
+                      className={`w-full p-3 rounded border-2 transition-all text-left flex items-center gap-3 ${
+                        !hasExternalWaterTap
+                          ? "border-amber-500 bg-amber-500/20"
+                          : "border-white/20 bg-white/5 hover:border-white/40"
+                      }`}
+                    >
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-medium">No external tap</p>
+                        <p className="text-white/60 text-xs">We can connect to internal kitchen/bathroom taps</p>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Electricity Options */}
+                <div className="glass-border rounded-lg p-6 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-5 w-5 text-[#1E90FF]" />
+                    <Label className="text-white text-lg font-semibold">Power Supply</Label>
+                  </div>
+                  <p className="text-white/60 text-sm">Do you have accessible external electricity available?</p>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setHasAccessibleElectricity(true)}
+                      className={`w-full p-3 rounded border-2 transition-all text-left flex items-center gap-3 ${
+                        hasAccessibleElectricity
+                          ? "border-green-500 bg-green-500/20"
+                          : "border-white/20 bg-white/5 hover:border-white/40"
+                      }`}
+                    >
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-medium">Yes, external power available</p>
+                        <p className="text-white/60 text-xs">Outdoor socket or easily accessible supply</p>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => setHasAccessibleElectricity(false)}
+                      className={`w-full p-3 rounded border-2 transition-all text-left flex items-center gap-3 ${
+                        !hasAccessibleElectricity
+                          ? "border-red-500 bg-red-500/20"
+                          : "border-white/20 bg-white/5 hover:border-white/40"
+                      }`}
+                    >
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-medium">No accessible power (£{NO_ELECTRICITY_SURCHARGE} surcharge)</p>
+                        <p className="text-white/60 text-xs">We'll use our generator</p>
+                      </div>
+                    </button>
                   </div>
                 </div>
               </div>
