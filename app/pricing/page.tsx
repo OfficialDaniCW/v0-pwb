@@ -265,17 +265,6 @@ export default function PricingPage() {
                   </div>
                 </div>
 
-                {/* Commercial & Industrial */}
-                <div className="bg-gradient-to-r from-red-500/20 to-orange-500/10 rounded-lg p-6 border-2 border-red-500/30">
-                  <p className="text-white/60 text-sm mb-4">Looking for commercial or industrial cleaning?</p>
-                  <Button
-                    asChild
-                    className="w-full bg-red-600 text-white font-semibold hover:bg-red-700 transition-all"
-                  >
-                    <a href="/contracts">Get Commercial Quote</a>
-                  </Button>
-                </div>
-
                 {/* Postcode Input */}
                 <div className="glass-border rounded-lg p-6 space-y-3">
                   <Label className="text-white text-lg font-semibold flex items-center gap-2">
