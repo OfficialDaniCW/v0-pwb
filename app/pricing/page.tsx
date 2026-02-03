@@ -199,13 +199,13 @@ export default function PricingPage() {
             <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {/* Left Column: Services & Calculator */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Bundle/Multiple Services Selection */}
-                <div className="space-y-4">
+                  {/* Bundle/Multiple Services Selection */}
+                <div className="space-y-4 bg-gradient-to-r from-[#1E90FF]/20 to-[#1E90FF]/10 rounded-lg p-6 border-2 border-[#1E90FF]/30">
                   <div className="flex items-center gap-2">
                     <Package className="h-5 w-5 text-[#1E90FF]" />
                     <Label className="text-white text-lg font-semibold">Select Services (Bundle & Save)</Label>
                   </div>
-                  <p className="text-white/60 text-sm">Choose multiple services to bundle them together</p>
+                  <p className="text-white/60 text-sm">Select multiple services to bundle them together and save money</p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {SERVICES.map((service) => (
                       <button
@@ -256,24 +256,6 @@ export default function PricingPage() {
                     {postcode && !postcodeError && !isLoadingPostcode && distanceFromSwanage > 0 && (
                       <p className="text-sm text-green-400">✓ {distanceFromSwanage} miles from Swanage</p>
                     )}
-                  </div>
-                  
-                  {/* Manual Distance Slider */}
-                  <div className="pt-2 border-t border-white/20">
-                    <p className="text-white/60 text-sm mb-2">Or adjust distance manually:</p>
-                    <div className="flex items-center gap-4">
-                      <Slider
-                        value={[distanceFromSwanage]}
-                        onValueChange={(val) =>
-                          setDistanceFromSwanage(val[0])
-                        }
-                        min={0}
-                        max={50}
-                        step={1}
-                        className="flex-1"
-                      />
-                      <span className="text-white font-semibold w-16 text-right">{distanceFromSwanage} mi</span>
-                    </div>
                   </div>
                 </div>
 
@@ -418,44 +400,11 @@ export default function PricingPage() {
                   {/* Price Display */}
                   <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-8 text-center">
                     <p className="text-white/80 mb-2 text-sm font-medium">Total Estimated Price</p>
-                    <p className="text-6xl font-bold text-white mb-1">£{estimatedPrice}</p>
-                    <p className="text-white/70 text-xs mb-4">
+                    <p className="text-6xl font-bold text-white mb-4">£{estimatedPrice}</p>
+                    <p className="text-white/70 text-xs">
                       {selectedServices.length} {selectedServices.length === 1 ? "service" : "services"}
                       {postcode && ` • ${distanceFromSwanage} mi away`}
                     </p>
-                    <div className="w-full h-px bg-white/20 my-4" />
-                    <div className="space-y-2 text-left text-xs">
-                      <div className="flex justify-between text-white/90">
-                        <span>Services:</span>
-                        <span>£{Math.round(
-                          selectedServices.reduce((sum, serviceId) => {
-                            const service = pricingData[serviceId as keyof typeof pricingData]
-                            if (!service) return sum
-                            let servicePrice = 0
-                            if (serviceId === "gutter") {
-                              servicePrice = sizes[serviceId] * service.baseRate
-                            } else {
-                              servicePrice = sizes[serviceId] * service.baseRate
-                              if ("easyAccess" in service && "hardAccess" in service) {
-                                servicePrice *= access === "hard" ? service.hardAccess : service.easyAccess
-                              }
-                              if (serviceId === "driveway" && surfaceTypes[serviceId] === "block" && needsResanding) {
-                                servicePrice += sizes[serviceId] * service.blockPavingResanding
-                              }
-                            }
-                            return sum + servicePrice
-                          }, 0)
-                        )}</span>
-                      </div>
-                      <div className="flex justify-between text-white/90">
-                        <span>Travel & Fuel:</span>
-                        <span>£{Math.round((distanceFromSwanage * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE)}</span>
-                      </div>
-                      <div className="flex justify-between text-white/90">
-                        <span>Treatments:</span>
-                        <span>£{BIOCIDE_TREATMENT * selectedServices.length}</span>
-                      </div>
-                    </div>
                   </div>
 
                   {/* What's Included */}
