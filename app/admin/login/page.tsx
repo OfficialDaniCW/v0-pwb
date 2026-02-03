@@ -135,6 +135,9 @@ export default function AdminLogin() {
                 <Label htmlFor="password" className="text-foreground/80">
                   Password
                 </Label>
+                <a href="/admin/forgot-password" className="text-accent hover:text-accent/80 text-sm font-medium">
+                  Forgot password?
+                </a>
               </div>
               <Input
                 id="password"
