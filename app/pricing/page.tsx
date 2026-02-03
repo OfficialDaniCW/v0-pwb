@@ -20,10 +20,43 @@ const SERVICES = [
 ]
 
 const HOUSE_SIZES = {
-  small: { label: "Small", gutterLength: 25 },
-  medium: { label: "Medium", gutterLength: 45 },
-  large: { label: "Large", gutterLength: 65 },
-  xlarge: { label: "Extra Large", gutterLength: 85 },
+  small: { label: "Small", description: "Terraced / End of terrace / 2 bed bungalow", gutterLength: 25 },
+  medium: { label: "Medium", description: "Semi-detached / 3 bed bungalow / Mid-terrace", gutterLength: 45 },
+  large: { label: "Large", description: "3 bed detached / Large bungalow", gutterLength: 65 },
+  xlarge: { label: "Extra Large", description: "4+ bed detached / Large family home", gutterLength: 85 },
+}
+
+const SERVICE_SIZES = {
+  driveway: [
+    { size: 10, description: "Small single driveway (compact parking)" },
+    { size: 40, description: "Standard driveway (1-2 car spaces)" },
+    { size: 80, description: "Large driveway (2-3 car spaces / small turning circle)" },
+    { size: 150, description: "Extra large driveway (multiple spaces / large turning area)" },
+  ],
+  patio: [
+    { size: 15, description: "Small patio (2-4 person seating)" },
+    { size: 40, description: "Medium patio (4-6 person seating)" },
+    { size: 80, description: "Large patio (6-8 person seating / entertaining)" },
+    { size: 150, description: "Extra large patio (8+ person / garden room area)" },
+  ],
+  roof: [
+    { size: 50, description: "Small/compact roof (terraced or bungalow)" },
+    { size: 100, description: "Medium roof (semi-detached property)" },
+    { size: 180, description: "Large roof (detached 3-4 bed home)" },
+    { size: 250, description: "Extra large roof (large detached / complex roof)" },
+  ],
+  walls: [
+    { size: 100, description: "Small property (terraced / compact bungalow)" },
+    { size: 200, description: "Medium property (semi-detached / larger bungalow)" },
+    { size: 350, description: "Large property (detached 3-4 bed)" },
+    { size: 500, description: "Extra large property (large detached / multiple storeys)" },
+  ],
+  softwash: [
+    { size: 100, description: "Small property (terraced / compact bungalow)" },
+    { size: 200, description: "Medium property (semi-detached / larger bungalow)" },
+    { size: 350, description: "Large property (detached 3-4 bed)" },
+    { size: 500, description: "Extra large property (large detached / multiple storeys)" },
+  ],
 }
 
 const ACCESS_EXAMPLES = {
@@ -316,31 +349,46 @@ export default function PricingPage() {
                                   setHouseSize(key as "small" | "medium" | "large" | "xlarge")
                                   setSizes({ ...sizes, gutter: data.gutterLength })
                                 }}
-                                className={`p-3 rounded border-2 transition-all text-sm font-medium ${
+                                className={`p-3 rounded border-2 transition-all text-sm font-medium text-left ${
                                   houseSize === key
                                     ? "border-[#1E90FF] bg-[#1E90FF]/20 text-white"
                                     : "border-white/20 bg-white/5 text-white/70 hover:border-white/40"
                                 }`}
                               >
-                                {data.label}
+                                <div className="font-semibold">{data.label}</div>
+                                <div className="text-xs text-white/60 mt-1">{data.description}</div>
                               </button>
                             ))}
                           </div>
                         ) : (
-                          <div className="flex items-center gap-4">
-                            <Slider
-                              value={[sizes[serviceId]]}
-                              onValueChange={(val) =>
-                                setSizes({ ...sizes, [serviceId]: val[0] })
-                              }
-                              min={10}
-                              max={500}
-                              step={10}
-                              className="flex-1"
-                            />
-                            <span className="text-white font-semibold w-20 text-right">
-                              {sizes[serviceId]}m²
-                            </span>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-4">
+                              <Slider
+                                value={[sizes[serviceId]]}
+                                onValueChange={(val) =>
+                                  setSizes({ ...sizes, [serviceId]: val[0] })
+                                }
+                                min={10}
+                                max={500}
+                                step={10}
+                                className="flex-1"
+                              />
+                              <span className="text-white font-semibold w-20 text-right">
+                                {sizes[serviceId]}m²
+                              </span>
+                            </div>
+                            {SERVICE_SIZES[serviceId as keyof typeof SERVICE_SIZES] && (
+                              <div className="bg-white/5 rounded-lg p-3 border border-white/20">
+                                <p className="text-white/60 text-xs font-medium mb-2">Quick size guide:</p>
+                                <div className="space-y-1">
+                                  {SERVICE_SIZES[serviceId as keyof typeof SERVICE_SIZES].map((guide) => (
+                                    <div key={guide.size} className="text-xs text-white/70">
+                                      <span className="font-medium">{guide.size}m²:</span> {guide.description}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
