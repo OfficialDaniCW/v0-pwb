@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 
-export const dynamic = "force-dynamic"
-
 const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url)
-    const limit = searchParams.get("limit")
-    const slug = searchParams.get("slug")
+    const url = new URL(request.url)
+    const limit = url.searchParams.get("limit")
+    const slug = url.searchParams.get("slug")
 
     // If slug provided, fetch single post
     if (slug) {
