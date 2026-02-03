@@ -148,16 +148,35 @@ export default function PWBAdminDashboard() {
 
   const [pricingData, setPricingData] = useState({
     driveway: {
-      baseRate: 3, // £3/m² (standard pressure washing)
-      blockPavingResanding: 2, // £2/m² add-on for kiln-dried sand
+      baseRate: 3,
+      blockPavingResanding: 2,
       easyAccess: 1,
       hardAccess: 1.3,
     },
-    patio: { baseRate: 3, easyAccess: 1, hardAccess: 1.25 }, // £3/m² (standard cleaning, excluding sealing)
-    roof: { baseRate: 9, easyAccess: 1, hardAccess: 1.4 }, // £9/m² (excludes biocide treatment & scaffolding)
-    gutter: { baseRate: 6, perMetre: true }, // £6 per linear metre (South England average)
-    walls: { baseRate: 3, easyAccess: 1, hardAccess: 1.3 }, // £3/m²
-    softwash: { baseRate: 5, easyAccess: 1, hardAccess: 1.35 }, // £5/m² (specialist treatment)
+    patio: {
+      baseRate: 5,
+      easyAccess: 1,
+      hardAccess: 1.25,
+    },
+    roof: {
+      baseRate: 11.5,
+      easyAccess: 1,
+      hardAccess: 1.4,
+    },
+    gutter: {
+      baseRate: 6,
+      perMetre: true,
+    },
+    walls: {
+      baseRate: 3,
+      easyAccess: 1,
+      hardAccess: 1.3,
+    },
+    softwash: {
+      baseRate: 5,
+      easyAccess: 1,
+      hardAccess: 1.35,
+    },
   })
 
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(fallbackPortfolio)
