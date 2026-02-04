@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
+import bcrypt from "bcrypt"
 
 const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
 
@@ -9,6 +10,12 @@ export async function POST(request: Request) {
 
     if (!email || !password) {
       return NextResponse.json({ error: "Email and password are required" }, { status: 400 })
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
 
     // Query admin user from database
@@ -27,12 +34,12 @@ export async function POST(request: Request) {
 
     // Check if account is active
     if (!admin.is_active) {
-      return NextResponse.json({ error: "Account is disabled" }, { status: 401 })
+      return NextResponse.json({ error: "Account is disabled. Please contact support." }, { status: 401 })
     }
 
-    // Simple password comparison (in production, use bcrypt)
-    // For now, comparing plain text as stored in database
-    if (password !== admin.password_hash) {
+    // Compare password using bcrypt
+    const passwordMatch = await bcrypt.compare(password, admin.password_hash)
+    if (!passwordMatch) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 })
     }
 
@@ -43,9 +50,9 @@ export async function POST(request: Request) {
       WHERE id = ${admin.id}
     `
 
-    return NextResponse.json({ success: true, email: admin.email })
+    return NextResponse.json({ success: true, email: admin.email, id: admin.id })
   } catch (error) {
-    console.error("Admin auth error:", error)
+    console.error("[v0] Admin auth error:", error)
     return NextResponse.json({ error: "Authentication failed" }, { status: 500 })
   }
 }

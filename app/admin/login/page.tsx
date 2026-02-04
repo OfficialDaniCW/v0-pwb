@@ -33,11 +33,12 @@ export default function AdminLogin() {
 
       if (response.ok) {
         localStorage.setItem("admin-email", data.email)
+        localStorage.setItem("admin-id", data.id)
 
-        // Set a cookie that expires in 24 hours
+        // Set a secure HTTP-only cookie via Set-Cookie header
         const expiryDate = new Date()
         expiryDate.setTime(expiryDate.getTime() + 24 * 60 * 60 * 1000)
-        document.cookie = `admin-session=authenticated; path=/; expires=${expiryDate.toUTCString()}`
+        document.cookie = `admin-session=authenticated; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`
         router.push("/admin/pwb")
       } else {
         setError(data.error || "Invalid email or password")

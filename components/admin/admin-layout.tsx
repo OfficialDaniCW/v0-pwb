@@ -4,7 +4,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Link from "next/link"
-import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, Package, Layers } from "lucide-react"
+import { Home, FileText, ImageIcon, Calculator, Mail, LogOut, Menu, X, Package, Layers, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -62,6 +62,7 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
     { href: "/admin/pwb#pricing", icon: Calculator, label: "Pricing", section: "pricing" },
     { href: "/admin/newsletter", icon: Mail, label: "Newsletter", section: "newsletter" },
     { href: "/admin/quotes", icon: Package, label: "Quote Requests", section: "quotes" },
+    { href: "/admin/settings", icon: Settings, label: "Settings", section: "settings" },
   ]
 
   const isItemActive = (item: (typeof navItems)[0]) => {
@@ -70,6 +71,9 @@ export default function AdminLayout({ children, activeSection, onSectionChange }
     }
     if (item.href === "/admin/quotes") {
       return pathname === "/admin/quotes"
+    }
+    if (item.href === "/admin/settings") {
+      return pathname === "/admin/settings"
     }
 
     if (pathname === "/admin/pwb" || pathname?.startsWith("/admin/pwb")) {
