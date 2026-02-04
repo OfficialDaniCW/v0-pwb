@@ -1,7 +1,20 @@
 import { NextResponse } from "next/server"
-import { neon } from "@neondatabase/serverless"
+import { blogPosts } from "@/lib/blog-posts"
 
-const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
+// Transform blog posts to match API schema expected by components
+function transformBlogPost(post: (typeof blogPosts)[0]) {
+  return {
+    id: Math.random(), // Generate a simple ID
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt,
+    category: post.category,
+    published_at: post.publishedAt,
+    read_time_minutes: post.readTime,
+    featured_image_url: post.featuredImage || undefined,
+    related_service: post.relatedService,
+  }
+}
 
 export async function GET(request: Request) {
   try {
@@ -11,34 +24,25 @@ export async function GET(request: Request) {
 
     // If slug provided, fetch single post
     if (slug) {
-      const posts = await sql`
-        SELECT * FROM blog_posts 
-        WHERE slug = ${slug} AND is_published = true
-        LIMIT 1
-      `
-      if (posts.length === 0) {
+      const post = blogPosts.find((p) => p.slug === slug)
+      if (!post) {
         return NextResponse.json({ error: "Post not found" }, { status: 404 })
       }
-      return NextResponse.json(posts[0])
+      return NextResponse.json(transformBlogPost(post))
     }
 
-    // Otherwise fetch all published posts
+    // Sort posts by published date (newest first)
+    const sortedPosts = [...blogPosts].sort((a, b) => {
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    })
+
+    // Apply limit if provided
     if (limit) {
-      const posts = await sql`
-        SELECT * FROM blog_posts 
-        WHERE is_published = true
-        ORDER BY published_at DESC NULLS LAST
-        LIMIT ${Number.parseInt(limit)}
-      `
-      return NextResponse.json(posts)
+      const limitedPosts = sortedPosts.slice(0, Number.parseInt(limit))
+      return NextResponse.json(limitedPosts.map(transformBlogPost))
     }
 
-    const posts = await sql`
-      SELECT * FROM blog_posts 
-      WHERE is_published = true
-      ORDER BY published_at DESC NULLS LAST
-    `
-    return NextResponse.json(posts)
+    return NextResponse.json(sortedPosts.map(transformBlogPost))
   } catch (error) {
     console.error("Failed to fetch posts:", error)
     return NextResponse.json({ error: "Failed to fetch posts" }, { status: 500 })
