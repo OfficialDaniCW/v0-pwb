@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { DiscountSignupModal } from "@/components/discount-signup-modal"
 
 export function PowerUpsIntro() {
   const features = [
@@ -45,6 +46,18 @@ export function PowerUpsIntro() {
               >
                 <Link href="/powerups">Learn About PowerUps</Link>
               </Button>
+
+              {/* CTA for Online Discounts */}
+              <div className="mt-12 pt-8 border-t border-foreground/10">
+                <p className="text-sm font-medium text-foreground/70 mb-3 uppercase tracking-wide">Exclusive Offer</p>
+                <div className="bg-gradient-to-r from-accent/20 to-success/20 rounded-xl p-6 border border-accent/30">
+                  <h3 className="text-xl font-bold text-foreground mb-2">Unlock Online Discounts on PowerUps</h3>
+                  <p className="text-foreground/80 mb-4">
+                    Join our mailing list and receive exclusive discounts on professional-grade cleaning solutions delivered direct to your door.
+                  </p>
+                  <DiscountSignupModal />
+                </div>
+              </div>
             </div>
 
             {/* Right Side - Visual */}
