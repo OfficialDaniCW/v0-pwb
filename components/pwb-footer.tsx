@@ -3,6 +3,7 @@ import { Instagram, Facebook, Mail, Phone, MapPin, Send, ArrowUp } from "lucide-
 import { FaTiktok } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { NewsletterForm } from "@/components/newsletter-form"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -254,22 +255,7 @@ export function PWBFooter() {
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
               Subscribe to our newsletter to get our latest updates & news
             </p>
-            <form className="flex gap-0 max-w-sm">
-              <div className="relative flex-1">
-                <Input
-                  type="email"
-                  placeholder="Your mail address"
-                  className="bg-secondary border-none text-foreground placeholder:text-foreground/40 h-10 sm:h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0 text-sm"
-                />
-              </div>
-              <Button
-                type="submit"
-                aria-label="Subscribe to newsletter"
-                className="h-10 sm:h-12 w-10 sm:w-12 min-w-[48px] min-h-[48px] rounded-l-none bg-accent hover:bg-accent/90 p-0 flex items-center justify-center"
-              >
-                <Send className="h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
