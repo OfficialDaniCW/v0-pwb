@@ -22,7 +22,7 @@ export const blogPosts: BlogPostData[] = [
     slug: "professional-gutter-cleaning-equipment-skyvac-commercial-75-plus-dorset",
     excerpt: "Discover why PowerWash Bros uses professional Skyvac Commercial 75 Plus gutter cleaning systems. Learn about the equipment that keeps your gutters clean and damage-free.",
     category: "Equipment & Technology",
-    publishedAt: "2026-02-10",
+    publishedAt: "2026-02-04",
     readTime: 7,
     featuredImage: "",
     relatedService: "/services/gutter-cleaning",
