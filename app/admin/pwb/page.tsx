@@ -24,6 +24,7 @@ import {
   AlertTriangle,
 } from "lucide-react"
 import Image from "next/image"
+import { ScheduledPostsManager } from "@/components/admin/scheduled-posts-manager"
 
 interface BlogPost {
   id: number
