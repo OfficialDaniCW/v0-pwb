@@ -972,7 +972,7 @@ For honest assessment of whether guards make sense for your Purbeck property, co
     tags: ["roof maintenance", "moss removal", "algae", "lichen", "identification", "Dorset"],
     content: `# Lichen vs Moss vs Algae: Learn to Identify What's Growing on Your Roof
 
-Many property owners see growth on their roof and assume it's moss. But the green or gray coating covering your tiles might actually be algae, lichen, or a combination - and the distinction matters significantly for treatment.
+Many property owners see growth on their roof and assume it's moss. But the green or grey coating covering your tiles might actually be algae, lichen, or a combination - and the distinction matters significantly for treatment.
 
 Different organisms require different approaches. Misidentifying your roof growth means choosing the wrong treatment, wasting money, and seeing the problem return quickly.
 
@@ -1034,7 +1034,7 @@ Let's learn to identify what's actually growing on your Purbeck property.
 **What it looks like**:
 - Crusty, scaly appearance (not fuzzy like moss)
 - Raised from roof surface, visible as individual discrete growths
-- Various colours: gray, white, orange, green, or combinations
+- Various colours: grey, white, orange, green, or combinations
 - Appears as discrete patches or colonies rather than continuous coverage
 - Crumbly or flaking appearance when disturbed
 
@@ -1059,7 +1059,7 @@ The best starting point is looking carefully at the actual growth. Consider:
 - **Texture**: Fuzzy = moss; smooth/thin = algae; crusty = lichen
 - **Coverage**: Clumpy visible height = moss; smooth coating = algae; individual patches = lichen
 - **Location**: North-facing shade = likely moss; south-facing sun = algae or lichen; mixed = potentially all three
-- **Color**: Bright green = moss or algae; gray/white = lichen; dark black/green streaks = algae
+- **Color**: Bright green = moss or algae; grey/white = lichen; dark black/green streaks = algae
 
 ### Simple Testing Methods
 
@@ -2036,7 +2036,7 @@ UV rays break down paint and render chemical bonds, causing:
 Intense sun causes wood damage through:
 - UV breakdown of wood fibers
 - Moisture loss causing warping and cracking
-- Color fading to gray
+- Color fading to grey
 - Surface splintering
 
 ### Plastic Deterioration

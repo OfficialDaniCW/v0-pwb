@@ -103,7 +103,7 @@ export default function DataDeletion() {
 
               <h3 className="text-xl font-semibold mt-4">Active Services</h3>
               <p>
-                If you have active bookings or ongoing services, we may need to retain certain data to fulfill our
+                If you have active bookings or ongoing services, we may need to retain certain data to fulfil our
                 contractual obligations. We can discuss your options in such cases.
               </p>
 
