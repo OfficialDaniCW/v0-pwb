@@ -28,112 +28,122 @@ export const blogPosts: BlogPostData[] = [
     relatedService: "/services/gutter-cleaning",
     author: "PowerWash Bros",
     tags: ["gutter cleaning", "professional equipment", "skyvac", "high reach cleaning", "Dorset", "commercial cleaning"],
-    content: `Professional Gutter Cleaning Equipment - Why We Use Skyvac Systems
+    content: `<h1>Professional Gutter Cleaning Equipment: Why We Use Skyvac Systems</h1>
 
-When it comes to gutter cleaning in Dorset, using the right equipment makes all the difference. At PowerWash Bros, we invest in professional-grade systems like the Skyvac Commercial 75 Plus because your property deserves nothing but the best.
+<p>When it comes to gutter cleaning in Dorset, using the right equipment makes all the difference. At <strong>PowerWash Bros</strong>, we invest in professional-grade systems like the <strong>Skyvac Commercial 75 Plus</strong> because your property deserves nothing but the best. Our commitment to quality equipment ensures thorough, safe gutter maintenance across Swanage, Purbeck, and all of Dorset.</p>
 
-Why Professional Gutter Cleaning Equipment Matters
+<h2>Why Professional Gutter Cleaning Equipment Matters</h2>
 
-Many homeowners think gutter cleaning is a simple task that anyone can do. The reality is far different. Professional gutter cleaning requires specialized equipment that can safely access high areas while removing debris effectively without causing damage to your roof or gutters.
+<p>Many homeowners think <strong>gutter cleaning is a simple task</strong> that anyone can do. The reality is far different. Professional gutter cleaning requires specialised equipment that can safely access high areas whilst removing debris effectively without causing damage to your roof or gutters.</p>
 
-When we use DIY approaches or outdated equipment, several problems occur:
+<p>When DIY approaches or outdated equipment are used, several costly problems can occur:</p>
 
-Your gutters collect water instead of draining properly, leading to foundation damage
-Blockages cause overflow that damages walls and landscaping
-Accumulated debris can lead to pest infestations
-Ice dams form in winter, causing roof damage
+<ul>
+<li>Your gutters collect water instead of draining properly, leading to foundation damage</li>
+<li>Blockages cause overflow that damages walls and landscaping</li>
+<li>Accumulated debris can lead to pest infestations</li>
+<li>Ice dams form in winter, causing roof damage</li>
+</ul>
 
-Professional equipment prevents these costly issues by ensuring complete, effective cleaning every time.
+<p>Professional equipment prevents these costly issues by ensuring complete, effective cleaning every time. This is why we've invested in the industry-leading Skyvac system for all our <a href="/services/gutter-cleaning">gutter cleaning services</a>.</p>
 
-The Skyvac Commercial 75 Plus: Industry-Leading Performance
+<h2>The Skyvac Commercial 75 Plus: Industry-Leading Performance</h2>
 
-The Skyvac Commercial 75 Plus is engineered specifically for demanding gutter cleaning work. Here's what makes it the gold standard in our industry.
+<p>The Skyvac Commercial 75 Plus is engineered specifically for demanding gutter cleaning work. Here's what makes it the gold standard in our industry:</p>
 
-Powerful 3300W Motor System
+<h3>Powerful 3300W Motor System</h3>
 
-The Commercial 75 Plus features three double-stage motors generating 3300 watts of cleaning power. This isn't overkill - it's essential for reliable gutter cleaning across large commercial and residential properties.
+<p>The Commercial 75 Plus features three double-stage motors generating <strong>3300 watts of cleaning power</strong>. This isn't overkill—it's essential for reliable gutter cleaning across large commercial and residential properties. The 11,750 LPM airflow ensures complete debris removal in a single pass.</p>
 
-The 11,750 LPM airflow ensures complete debris removal in a single pass. Heavy wet leaves, decomposed matter, and stubborn moss can all be removed safely and efficiently. This power means we work faster and more thoroughly than traditional methods.
+<p>Heavy wet leaves, decomposed matter, and stubborn moss can all be removed safely and efficiently. This power means we work faster and more thoroughly than traditional methods, completing most jobs in a single visit.</p>
 
-Lightweight Carbon Fibre Elite Poles
+<h3>Lightweight Carbon Fibre Elite Poles</h3>
 
-Reaching gutters at height requires poles that are strong yet manageable. The Skyvac system includes ultra-lightweight Elite Poles made from high-grade carbon fibre, weighing just 316g per 1.5m section.
+<p>Reaching gutters at height requires poles that are strong yet manageable. The Skyvac system includes <strong>ultra-lightweight Elite Poles made from high-grade carbon fibre</strong>, weighing just 316g per 1.5m section. These poles are featherweight yet incredibly durable.</p>
 
-These poles are featherweight yet incredibly durable. Your gutter cleaning team can work throughout the day without fatigue, which means better accuracy and safer operation. Fatigued operators make mistakes - our equipment allows us to maintain precision on every job.
+<p>Your gutter cleaning team can work throughout the day without fatigue, which means better accuracy and safer operation. Fatigued operators make mistakes—our equipment allows us to maintain precision on every job. The poles extend to 40 feet, reaching gutters on four-storey properties. Most homes and small commercial buildings are completed efficiently without complex scaffolding setup.</p>
 
-The poles extend to 40 feet, reaching gutters on four-storey properties. Most homes and small commercial buildings are completed efficiently without complex scaffolding setup.
+<h3>Smart Vacuum Design for Maximum Capacity</h3>
 
-Smart Vacuum Design for Maximum Capacity
+<p>The Commercial 75 Plus features a clever vacuum head design that <strong>maximises drum capacity whilst protecting the motor</strong>. The filter sits behind a protective steel plate that directs debris away from delicate components. This design means we can clean longer without stopping to empty the tank.</p>
 
-The Commercial 75 Plus features a clever vacuum head design that maximizes drum capacity while protecting the motor. The filter sits behind a protective steel plate that directs debris away from delicate components.
+<p>For larger properties, this efficiency translates to faster job completion and lower costs for you.</p>
 
-This design means we can clean longer without stopping to empty the tank. For larger properties, this efficiency translates to faster job completion and lower costs for you.
+<h3>Advanced Filtration System</h3>
 
-Advanced Filtration System
+<p>The system includes a removable, easy-clean filter cartridge with HEPA options available for sensitive applications. Clean filters mean consistent suction throughout the job—no power loss as the tank fills.</p>
 
-The system includes a removable, easy-clean filter cartridge with HEPA options available for sensitive applications. Clean filters mean consistent suction throughout the job - no power loss as the tank fills.
+<h3>Safe and Stable Operation</h3>
 
-Safe and Stable Operation
+<p>All-terrain rear wheels and multi-directional front castors keep the equipment stable on uneven ground. This matters because gutters run along properties with varying terrain. <strong>Stability means our operators maintain control and work safely</strong>. Lockable front castors allow us to secure equipment on slopes or in vehicles, preventing accidents on site.</p>
 
-All-terrain rear wheels and multi-directional front castors keep the equipment stable on uneven ground. This matters because gutters run along properties with varying terrain. Stability means our operators maintain control and work safely.
+<h2>Real-World Benefits for Your Property</h2>
 
-Lockable front castors allow us to secure equipment on slopes or in vehicles, preventing accidents on site.
+<p>Professional gutter cleaning with Skyvac equipment delivers tangible results:</p>
 
-Real-World Benefits for Your Property
+<ul>
+<li>Complete debris removal from all gutter sections</li>
+<li>No damage to roof tiles or gutter systems</li>
+<li>Proper water flow restoration preventing future damage</li>
+<li>Identification of damaged gutters before they fail</li>
+<li>Cost savings by preventing expensive water damage repairs</li>
+</ul>
 
-Professional gutter cleaning with Skyvac equipment delivers tangible results:
+<p>When you invest in professional <a href="/services/gutter-cleaning">gutter cleaning</a>, you're protecting your property from thousands of pounds in potential damage.</p>
 
-Complete debris removal from all gutter sections
-No damage to roof tiles or gutter systems
-Proper water flow restoration preventing future damage
-Identification of damaged gutters before they fail
-Cost savings by preventing expensive water damage repairs
+<h2>How Often Should You Use Professional Gutter Cleaning?</h2>
 
-How Often Should You Use Professional Gutter Cleaning?
+<p>Most residential properties benefit from professional gutter cleaning <strong>twice yearly</strong>—spring and autumn. This prevents the worst debris buildup and ensures gutters handle heavy rain and winter weather properly.</p>
 
-Most residential properties benefit from professional gutter cleaning twice yearly - spring and autumn. This prevents the worst debris buildup and ensures gutters handle heavy rain and winter weather.
+<p>Commercial properties should be evaluated individually, but quarterly cleaning is often recommended for buildings with high roof debris accumulation. We can provide a tailored maintenance plan during your free assessment.</p>
 
-Commercial properties should be evaluated individually, but quarterly cleaning is often recommended for buildings with high roof debris accumulation.
+<h2>The Cost of Skipping Professional Gutter Cleaning</h2>
 
-The Cost of Skipping Professional Gutter Cleaning
+<p>Attempting DIY gutter cleaning or using budget services with poor equipment often costs more in the long run:</p>
 
-Attempting DIY gutter cleaning or using budget services with poor equipment often costs more in the long run:
+<ul>
+<li>Water damage to foundations requires expensive repairs</li>
+<li>Roof damage from improper cleaning costs thousands</li>
+<li>Pest infestations develop in blocked gutters</li>
+<li>Gutter replacement becomes necessary due to neglect</li>
+<li>Interior water damage affects walls and ceilings</li>
+</ul>
 
-Water damage to foundations requires expensive repairs
-Roof damage from improper cleaning costs thousands
-Pest infestations develop in blocked gutters
-Gutter replacement becomes necessary due to neglect
-Interior water damage affects walls and ceilings
+<p>Professional equipment investment prevents all these issues. The cost of professional cleaning is minimal compared to water damage repairs.</p>
 
-Professional equipment investment prevents all these issues.
+<h2>Why We Chose Skyvac for Our Clients</h2>
 
-Why We Chose Skyvac for Our Clients
+<p>We evaluated numerous gutter cleaning systems before committing to Skyvac technology. Our decision was based on:</p>
 
-We evaluated numerous gutter cleaning systems before committing to Skyvac technology. Our decision was based on:
+<ul>
+<li><strong>Reliability</strong> – Skyvac equipment rarely breaks down during jobs</li>
+<li><strong>Safety</strong> – Lightweight poles reduce operator fatigue and accident risk</li>
+<li><strong>Speed</strong> – Powerful motors complete jobs faster</li>
+<li><strong>Professionalism</strong> – Clients immediately recognise quality equipment</li>
+<li><strong>Long-term value</strong> – The investment protects your property comprehensively</li>
+</ul>
 
-Reliability - Skyvac equipment rarely breaks down during jobs
-Safety - Lightweight poles reduce operator fatigue and accident risk
-Speed - Powerful motors complete jobs faster
-Professionalism - Clients immediately recognize quality equipment
-Long-term value - The investment protects your property comprehensively
+<p>This commitment to quality equipment reflects our overall service philosophy—we don't cut corners.</p>
 
-Professional Standards in Gutter Cleaning
+<h2>Professional Standards in Gutter Cleaning</h2>
 
-Using professional-grade equipment like the Skyvac Commercial 75 Plus reflects our commitment to quality. It's the difference between a basic service and professional gutter cleaning.
+<p>Using professional-grade equipment like the Skyvac Commercial 75 Plus reflects our commitment to quality. It's the difference between a basic service and <strong>true professional gutter cleaning</strong>.</p>
 
-When you hire PowerWash Bros, you're not just getting someone with a ladder and a hose. You're getting a team with industry-leading equipment designed specifically for safe, effective, thorough gutter cleaning.
+<p>When you hire PowerWash Bros, you're not just getting someone with a ladder and a hose. You're getting a team with industry-leading equipment designed specifically for safe, effective, thorough gutter cleaning. We also offer <a href="/services/roof-cleaning">roof cleaning</a> and <a href="/services/softwash">soft washing</a> services using similarly professional equipment.</p>
 
-Book Your Professional Gutter Cleaning Today
+<h2>Book Your Professional Gutter Cleaning Today</h2>
 
-Don't risk your property with DIY attempts or budget services. Let our team use professional equipment to keep your gutters in perfect condition.
+<p>Don't risk your property with DIY attempts or budget services. Let our team use professional equipment to keep your gutters in perfect condition. We provide <strong>free quotes</strong> for all gutter cleaning work across Swanage, Purbeck, and Dorset.</p>
 
-Contact PowerWash Bros for gutter cleaning across Swanage, Purbeck, and all of Dorset:
+<p><strong>Contact PowerWash Bros for professional gutter cleaning:</strong></p>
 
-WhatsApp: +44 7418 610731
-Email: info@powerwashbros.co.uk
-Free quotes on all gutter cleaning work
+<ul>
+<li>WhatsApp: +44 7418 610731</li>
+<li>Email: info@powerwashbros.co.uk</li>
+<li>Free quotes on all gutter cleaning work</li>
+</ul>
 
-Your gutters deserve professional care. We deliver exactly that.`,
+<p>Your gutters deserve professional care. We deliver exactly that.</p>`,
   },
   {
     title: "Best Time to Pressure Wash Your Driveway - Expert Guide",
@@ -146,65 +156,82 @@ Your gutters deserve professional care. We deliver exactly that.`,
     relatedService: "/services/pressure-washing",
     author: "PowerWash Bros",
     tags: ["driveway cleaning", "pressure washing", "jet washing", "maintenance", "Dorset", "timing guide"],
-    content: `# Best Time to Pressure Wash Your Driveway - Expert Dorset Guide
+    content: `<h1>Best Time to Pressure Wash Your Driveway: Expert Dorset Guide</h1>
 
-Knowing **when to pressure wash your driveway** is just as important as knowing how. In this comprehensive guide, we'll share expert timing advice for homeowners across Swanage, Purbeck, and all of Dorset.
+<p>Knowing <strong>when to pressure wash your driveway</strong> is just as important as knowing how. In this comprehensive guide, we'll share expert timing advice for homeowners across Swanage, Purbeck, and all of Dorset.</p>
 
-## The Ideal Season for Jet Washing Driveways
+<h2>The Ideal Season for Jet Washing Driveways</h2>
 
-**Spring (March-May)** is the optimal time for pressure washing your driveway across Dorset:
+<p><strong>Spring (March-May)</strong> is the optimal time for pressure washing your driveway across Dorset:</p>
 
-- Temperatures are mild but above freezing (10-15°C+)
-- Surfaces dry quickly after jet washing
-- Rain patterns allow concrete to settle properly
-- You remove winter grime before summer use
-- Biocide treatments have maximum effectiveness
+<ul>
+<li>Temperatures are mild but above freezing (10-15°C+)</li>
+<li>Surfaces dry quickly after jet washing</li>
+<li>Rain patterns allow concrete to settle properly</li>
+<li>You remove winter grime before summer use</li>
+<li>Biocide treatments have maximum effectiveness</li>
+</ul>
 
-**Summer (June-August)** is also suitable:
-- Fastest drying times
-- Best weather conditions for outdoor work
-- Your driveway looks pristine all summer
-- Easier to spot remaining stains
+<p><strong>Summer (June-August)</strong> is also suitable:</p>
 
-## When NOT to Pressure Wash
+<ul>
+<li>Fastest drying times</li>
+<li>Best weather conditions for outdoor work</li>
+<li>Your driveway looks pristine all summer</li>
+<li>Easier to spot remaining stains</li>
+</ul>
 
-**Avoid winter driveway cleaning (November-February):**
-- Cold temperatures prevent proper drying
-- Moisture can freeze and damage concrete
-- Biocide treatments don't work as effectively
-- Slippery surfaces create safety hazards
+<h2>When NOT to Pressure Wash</h2>
 
-**Avoid immediately before rain:**
-- Rain can wash away biocide treatments
-- Surfaces won't dry properly
-- Treatment effectiveness is compromised
+<p><strong>Avoid winter driveway cleaning (November-February):</strong></p>
 
-## Frequency - How Often Should You Jet Wash?
+<ul>
+<li>Cold temperatures prevent proper drying</li>
+<li>Moisture can freeze and damage concrete</li>
+<li>Biocide treatments don't work as effectively</li>
+<li>Slippery surfaces create safety hazards</li>
+</ul>
 
-For best results with professional pressure washing in Dorset:
+<p><strong>Avoid immediately before rain:</strong></p>
 
-- **Residential driveways**: Once yearly (spring) = 1 deep clean
-- **High-traffic commercial**: Quarterly maintenance
-- **After winter**: Once in spring to remove moss and algae
+<ul>
+<li>Rain can wash away biocide treatments</li>
+<li>Surfaces won't dry properly</li>
+<li>Treatment effectiveness is compromised</li>
+</ul>
 
-## Why Timing Matters for Biocide Treatment
+<h2>Frequency: How Often Should You Jet Wash?</h2>
 
-Professional jet washing isn't just about pressure - it's about **biocide application timing**:
+<p>For best results with professional pressure washing in Dorset, we recommend:</p>
 
-- Biocide needs 48 hours of dry weather to cure
-- Spring and early summer provide ideal conditions
-- The treatment then lasts 12-18 months
-- Pressure washing in autumn means winter destroys the treatment
+<ul>
+<li><strong>Residential driveways:</strong> Once yearly (spring) for deep cleaning</li>
+<li><strong>High-traffic commercial:</strong> Quarterly maintenance</li>
+<li><strong>After winter:</strong> Once in spring to remove moss and algae</li>
+</ul>
 
-## Book Your Spring Driveway Cleaning
+<h2>Why Timing Matters for Biocide Treatment</h2>
 
-Ready for a professional pressure wash? **Contact PowerWash Bros** for the best jet washing in Dorset.
+<p>Professional <a href="/services/pressure-washing">jet washing</a> isn't just about pressure—it's about <strong>biocide application timing</strong>:</p>
 
-- WhatsApp: +44 7418 610731
-- Email: info@powerwashbros.co.uk
-- Get your spring driveway cleaning scheduled today
+<ul>
+<li>Biocide needs 48 hours of dry weather to cure</li>
+<li>Spring and early summer provide ideal conditions</li>
+<li>The treatment then lasts 12-18 months</li>
+<li>Pressure washing in autumn means winter destroys the treatment</li>
+</ul>
 
-Your driveway deserves professional pressure washing at the right time of year.`,
+<h2>Book Your Spring Driveway Cleaning</h2>
+
+<p>Ready for a professional pressure wash? <strong>Contact PowerWash Bros</strong> for the best jet washing in Dorset.</p>
+
+<ul>
+<li>WhatsApp: +44 7418 610731</li>
+<li>Email: info@powerwashbros.co.uk</li>
+<li>Get your spring driveway cleaning scheduled today</li>
+</ul>
+
+<p>Your driveway deserves professional pressure washing at the right time of year. Learn more about our <a href="/services/driveway-cleaning">driveway cleaning services</a> today.</p>`,
   },
   {
     title: "Why Biocide Treatment is Essential for Roof Cleaning - Science Explained",
@@ -217,80 +244,102 @@ Your driveway deserves professional pressure washing at the right time of year.`
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["roof cleaning", "moss removal", "biocide", "algae treatment", "Dorset", "property care"],
-    content: `# Why Biocide Treatment is Essential for Roof Cleaning - Explained
+    content: `<h1>Why Biocide Treatment is Essential for Roof Cleaning</h1>
 
-When it comes to **professional roof cleaning** in Dorset, one term keeps coming up: **biocide treatment**. But what exactly is it, and why is it so important?
+<p>When it comes to <strong>professional roof cleaning</strong> in Dorset, one term keeps coming up: <strong>biocide treatment</strong>. But what exactly is it, and why is it so important?</p>
 
-## What is Biocide in Roof Cleaning?
+<h2>What is Biocide in Roof Cleaning?</h2>
 
-**Biocide** is a specialized chemical treatment designed to:
+<p><strong>Biocide</strong> is a specialised chemical treatment designed to:</p>
 
-- Kill moss spores at the root
-- Eliminate algae growth permanently
-- Prevent regrowth for 12-18 months
-- Protect your roof long-term
+<ul>
+<li>Kill moss spores at the root</li>
+<li>Eliminate algae growth permanently</li>
+<li>Prevent regrowth for 12-18 months</li>
+<li>Protect your roof long-term</li>
+</ul>
 
-Without biocide, moss and algae return within weeks of pressure washing.
+<p>Without biocide, moss and algae return within weeks of pressure washing. This is why we include biocide treatment in all our <a href="/services/roof-cleaning">roof cleaning services</a>.</p>
 
-## The Problem with Pressure Washing Alone
+<h2>The Problem with Pressure Washing Alone</h2>
 
-Many DIY roof cleaners or budget cleaners use only pressure washing - a critical mistake:
+<p>Many DIY roof cleaners or budget cleaners use only pressure washing—a critical mistake:</p>
 
-**Pressure washing only:**
-- Removes visible moss/algae
-- Doesn't kill the spores
-- Regrowth happens in 2-4 weeks
-- Can damage roof tiles
-- Waste of time and money
+<p><strong>Pressure washing only:</strong></p>
 
-**Professional biocide treatment:**
-- Kills spores at root
-- Prevents regrowth for months
-- Safe for all roof types
-- Protects your investment
+<ul>
+<li>Removes visible moss and algae</li>
+<li>Doesn't kill the spores</li>
+<li>Regrowth happens in 2-4 weeks</li>
+<li>Can damage roof tiles</li>
+<li>Waste of time and money</li>
+</ul>
 
-## Why Biocide Works for Roof Cleaning
+<p><strong>Professional biocide treatment:</strong></p>
 
-The science is simple:
+<ul>
+<li>Kills spores at root</li>
+<li>Prevents regrowth for months</li>
+<li>Safe for all roof types</li>
+<li>Protects your investment</li>
+</ul>
 
-1. Biocide penetrates porous roof surfaces
-2. Kills microscopic moss and algae spores
-3. Creates a hostile environment for regrowth
-4. Effect lasts 12-18 months in Dorset climate
+<h2>Why Biocide Works for Roof Cleaning</h2>
 
-## Biocide Treatment Benefits in Dorset's Climate
+<p>The science is straightforward:</p>
 
-Dorset's wet, mild climate is perfect for moss and algae growth - but ideal for biocide effectiveness:
+<ol>
+<li>Biocide penetrates porous roof surfaces</li>
+<li>Kills microscopic moss and algae spores</li>
+<li>Creates a hostile environment for regrowth</li>
+<li>Effect lasts 12-18 months in Dorset climate</li>
+</ol>
 
-- Rain distributes treatment evenly
-- Mild temperatures optimize biocide activity
-- Long-term protection through winter months
-- Prevents water damage from blockages
+<h2>Biocide Treatment Benefits in Dorset's Climate</h2>
 
-## Professional vs. DIY Biocide Application
+<p>Dorset's wet, mild climate is perfect for moss and algae growth—but ideal for biocide effectiveness:</p>
 
-**Professional moss removal and biocide treatment:**
-- Correct concentration of biocide
-- Expert application techniques
-- Safe handling of chemicals
-- Guaranteed results
-- Insurance-backed work
+<ul>
+<li>Rain distributes treatment evenly</li>
+<li>Mild temperatures optimise biocide activity</li>
+<li>Long-term protection through winter months</li>
+<li>Prevents water damage from blockages</li>
+</ul>
 
-**DIY risks:**
-- Wrong biocide concentration
-- Ineffective application
-- Safety hazards
-- Potential damage to property
+<h2>Professional vs. DIY Biocide Application</h2>
 
-## Book Professional Roof Cleaning with Biocide
+<p><strong>Professional moss removal and biocide treatment:</strong></p>
 
-Stop replacing your roof cleaning every month. Get professional moss removal and biocide treatment from **PowerWash Bros** today.
+<ul>
+<li>Correct concentration of biocide</li>
+<li>Expert application techniques</li>
+<li>Safe handling of chemicals</li>
+<li>Guaranteed results</li>
+<li>Insurance-backed work</li>
+</ul>
 
-- WhatsApp: +44 7418 610731
-- Email: info@powerwashbros.co.uk
-- Serving: Swanage, Purbeck, Bournemouth, and all Dorset
+<p><strong>DIY risks:</strong></p>
 
-Professional roof cleaning means years of protection, not weeks.`,
+<ul>
+<li>Wrong biocide concentration</li>
+<li>Ineffective application</li>
+<li>Safety hazards</li>
+<li>Potential damage to property</li>
+</ul>
+
+<h2>Book Professional Roof Cleaning with Biocide</h2>
+
+<p>Stop replacing your roof cleaning every month. Get professional moss removal and biocide treatment from <strong>PowerWash Bros</strong> today. We serve Swanage, Purbeck, and across Dorset with certified expertise.</p>
+
+<p><strong>Contact PowerWash Bros for professional roof cleaning:</strong></p>
+
+<ul>
+<li>WhatsApp: +44 7418 610731</li>
+<li>Email: info@powerwashbros.co.uk</li>
+<li>Free roof cleaning assessment and quote</li>
+</ul>
+
+<p>Explore more of our services: <a href="/services/softwash">soft washing</a> and <a href="/services/gutter-cleaning">gutter cleaning</a> also benefit from professional biocide treatments.</p>`,
   },
   {
     title: "Jet Washing vs Pressure Washing - What's the Difference?",
@@ -303,75 +352,85 @@ Professional roof cleaning means years of protection, not weeks.`,
     relatedService: "/services/pressure-washing",
     author: "PowerWash Bros",
     tags: ["jet washing", "pressure washing", "cleaning methods", "Dorset", "guide", "property maintenance"],
-    content: `# Jet Washing vs Pressure Washing - Expert Guide for Dorset Properties
+    content: `<h1>Jet Washing vs Pressure Washing: Expert Guide for Dorset Properties</h1>
 
-One of the most common questions we hear: **"What's the difference between jet washing and pressure washing?"**
+<p>One of the most common questions we hear: <strong>"What's the difference between jet washing and pressure washing?"</strong> The short answer: they're essentially the same service. Here's the complete breakdown.</p>
 
-The short answer: They're essentially the same service. Here's the complete breakdown.
+<h2>Jet Washing vs Pressure Washing: The Truth</h2>
 
-## Jet Washing vs Pressure Washing - The Truth
+<p>Both terms describe the same technology:</p>
 
-Both terms describe the same technology:
+<ul>
+<li><strong>Jet washing</strong> = British term for pressure washing</li>
+<li><strong>Pressure washing</strong> = American term for jet washing</li>
+<li>Both use high-pressure water jets</li>
+<li>Both achieve identical results</li>
+</ul>
 
-- **Jet washing** = British term for pressure washing
-- **Pressure washing** = American term for jet washing
-- Both use high-pressure water jets
-- Both achieve identical results
+<p>In Dorset, you'll hear both terms used interchangeably. At PowerWash Bros, we use professional-grade equipment for all our <a href="/services/pressure-washing">jet washing and pressure washing services</a>.</p>
 
-In Dorset, you'll hear both terms used interchangeably.
+<h2>How Pressure Washing (Jet Washing) Works</h2>
 
-## How Pressure Washing (Jet Washing) Works
+<p>High-pressure water jets at 150+ bar pressure:</p>
 
-High-pressure water jets at 150+ bar pressure:
+<ol>
+<li>Blast surfaces with concentrated water streams</li>
+<li>Remove dirt, algae, moss, and stains</li>
+<li>Clean with or without chemical biocide treatments</li>
+<li>Leave surfaces pristine and protected</li>
+</ol>
 
-1. Blast surface with concentrated water stream
-2. Remove dirt, algae, moss, and stains
-3. Clean without chemicals (or with biocide treatment)
-4. Leave surface pristine and protected
+<h2>When Professional Jet Washing is Essential</h2>
 
-## When Professional Jet Washing is Essential
+<p><strong>Professional pressure washing is needed for:</strong></p>
 
-**Professional pressure washing needed for:**
+<ul>
+<li><a href="/services/driveway-cleaning">Driveways</a> (removing years of grime)</li>
+<li>Patios and decking</li>
+<li><a href="/services/roof-cleaning">Roof cleaning</a> and moss removal</li>
+<li><a href="/services/gutter-cleaning">Gutter cleaning</a> and maintenance</li>
+<li><a href="/services/commercial">Commercial property cleaning</a></li>
+<li>Window cleaning preparation</li>
+</ul>
 
-- Driveways (removing years of grime)
-- Patios and decking
-- Roof cleaning and moss removal
-- Gutter cleaning and maintenance
-- Commercial property cleaning
-- Window cleaning preparation
+<h2>DIY vs Professional Pressure Washing</h2>
 
-## DIY vs Professional Pressure Washing
+<p><strong>Why professional jet washing beats DIY:</strong></p>
 
-**Why professional jet washing beats DIY:**
+<ul>
+<li>Proper equipment (150+ bar commercial pressure)</li>
+<li>Biocide treatment expertise</li>
+<li>Risk management (don't damage surfaces)</li>
+<li>Guaranteed results</li>
+<li>Insurance-backed work</li>
+<li>Trained specialists in Dorset</li>
+</ul>
 
-- Proper equipment (150+ bar commercial pressure)
-- Biocide treatment expertise
-- Risk management (don't damage surfaces)
-- Guaranteed results
-- Insurance-backed work
-- Trained specialists in Dorset
+<p><strong>DIY pressure washing risks:</strong></p>
 
-**DIY pressure washing risks:**
+<ul>
+<li>Wrong pressure settings damage surfaces</li>
+<li>No biocide expertise</li>
+<li>Can miss underlying issues</li>
+<li>Expensive equipment rental</li>
+<li>Safety hazards</li>
+</ul>
 
-- Wrong pressure settings damage surfaces
-- No biocide expertise
-- Can miss underlying issues
-- Expensive equipment rental
-- Safety hazards
+<h2>The Bottom Line</h2>
 
-## The Bottom Line
+<p>Whether you call it <strong>jet washing</strong> or <strong>pressure washing</strong>, professional results require expertise. Don't trust your property to DIY attempts or untrained cleaners.</p>
 
-Whether you call it **jet washing** or **pressure washing**, professional results require expertise. Don't trust your property to DIY attempts or untrained cleaners.
+<h2>Get Professional Pressure Washing in Dorset</h2>
 
-## Get Professional Pressure Washing in Dorset
+<p>Looking for expert <strong>jet washing and pressure washing</strong> across Swanage, Purbeck, and Dorset? PowerWash Bros delivers outstanding results backed by years of professional experience.</p>
 
-Looking for expert **jet washing and pressure washing** across Swanage, Purbeck, and Dorset?
+<ul>
+<li>WhatsApp: +44 7418 610731</li>
+<li>Email: info@powerwashbros.co.uk</li>
+<li>Free quotes for all your cleaning needs</li>
+</ul>
 
-- WhatsApp: +44 7418 610731
-- Email: info@powerwashbros.co.uk
-- Free quotes for all your cleaning needs
-
-Let the professionals handle your pressure washing.`,
+<p>Let the professionals handle your pressure washing. You'll see the difference that quality equipment and expertise make.</p>`,
   },
   {
     title: "PowerWash Bros Partners with Evoca Group as Preferred Contractors",
@@ -384,97 +443,117 @@ Let the professionals handle your pressure washing.`,
     relatedService: "/services/commercial",
     author: "PowerWash Bros",
     tags: ["partnership", "commercial cleaning", "Evoca Group", "Santos&Co", "Dorset contractors"],
-    content: `# PowerWash Bros Partners with Evoca Group - Preferred External Maintenance Contractors
+    content: `<h1>PowerWash Bros Partners with Evoca Group as Preferred Contractors</h1>
 
-We're delighted to announce a strategic partnership with **Evoca Group**, establishing PowerWash Bros as preferred contractors for external property maintenance across their portfolio of premium venues. This partnership reflects our commitment to delivering exceptional commercial cleaning services to Dorset's most discerning hospitality businesses.
+<p>We're delighted to announce a strategic partnership with <strong>Evoca Group</strong>, establishing PowerWash Bros as preferred contractors for external property maintenance across their portfolio of premium venues. This partnership reflects our commitment to delivering exceptional commercial cleaning services to Dorset's most discerning hospitality businesses.</p>
 
-## About the Partnership
+<h2>About the Partnership</h2>
 
-Evoca Group operates a collection of premium dining establishments across the UK, and we've been selected to provide professional cleaning services that match their exacting standards. Our first project together was cleaning the stunning outdoor patio at their new restaurant venture, **Santos&Co** - a premium dining destination showcasing contemporary cuisine and exceptional hospitality.
+<p>Evoca Group operates a collection of premium dining establishments across the UK, and we've been selected to provide professional cleaning services that match their exacting standards. Our first project together was cleaning the stunning outdoor patio at their new restaurant venture, <strong>Santos&Co</strong>—a premium dining destination showcasing contemporary cuisine and exceptional hospitality.</p>
 
-This partnership represents the confidence that high-end hospitality venues place in our expertise, professionalism, and quality standards.
+<p>This partnership represents the confidence that high-end hospitality venues place in our expertise, professionalism, and quality standards.</p>
 
-## What This Means for Our Clients
+<h2>What This Means for Our Clients</h2>
 
-Our partnership with Evoca Group reinforces our position as the preferred choice for commercial property maintenance in Dorset:
+<p>Our partnership with Evoca Group reinforces our position as the preferred choice for commercial property maintenance in Dorset:</p>
 
-- **Commercial Expertise**: We now bring established experience from premium hospitality venues to all our commercial contracts
-- **Quality Standards**: Every project meets the exacting standards required for high-end dining establishments
-- **Reliability**: Our proven track record with Evoca Group demonstrates our consistency and professionalism
-- **Portfolio Success**: Each project we complete adds to our portfolio of premium commercial work
+<ul>
+<li><strong>Commercial Expertise</strong> – We bring established experience from premium hospitality venues to all our commercial contracts</li>
+<li><strong>Quality Standards</strong> – Every project meets the exacting standards required for high-end dining establishments</li>
+<li><strong>Reliability</strong> – Our proven track record with Evoca Group demonstrates our consistency and professionalism</li>
+<li><strong>Portfolio Success</strong> – Each project completed adds to our portfolio of premium commercial work</li>
+</ul>
 
-## Santos&Co: Our First Evoca Group Project
+<h2>Santos&Co: Our First Evoca Group Project</h2>
 
-The Santos&Co patio cleaning project showcased exactly why Evoca Group chose PowerWash Bros. This premium outdoor dining space required:
+<p>The Santos&Co patio cleaning project showcased exactly why Evoca Group chose PowerWash Bros. This premium outdoor dining space required:</p>
 
-- **Specialist soft-washing techniques** to protect high-end furniture and decor
-- **Precision scheduling** to work around service hours without disrupting restaurant operations
-- **Restaurant-grade cleanliness standards** befitting a luxury dining venue
-- **Attention to detail** that only professional contractors can deliver
+<ul>
+<li><strong>Specialist soft-washing techniques</strong> to protect high-end furniture and décor</li>
+<li><strong>Precision scheduling</strong> to work around service hours without disrupting restaurant operations</li>
+<li><strong>Restaurant-grade cleanliness standards</strong> befitting a luxury dining venue</li>
+<li><strong>Attention to detail</strong> that only professional contractors can deliver</li>
+</ul>
 
-The transformation was remarkable - from weather-stained and algae-affected surfaces to an immaculate dining space that meets Evoca Group's premium standards.
+<p>The transformation was remarkable—from weather-stained and algae-affected surfaces to an immaculate dining space that meets Evoca Group's premium standards.</p>
 
-## Our Commercial Cleaning Services
+<h2>Our Commercial Cleaning Services</h2>
 
-Through this partnership, we've expanded our commercial cleaning portfolio to include:
+<p>Through this partnership, we've expanded our <a href="/services/commercial">commercial cleaning portfolio</a> to include:</p>
 
-**Hospitality & Retail Venues**
-- Restaurant patios, terraces, and outdoor dining areas
-- Bar and café external spaces
-- Retail frontages and window cleaning
-- Common areas and courtyard spaces
+<p><strong>Hospitality & Retail Venues</strong></p>
 
-**Specialist Solutions**
-- Soft-washing systems for delicate surfaces and furniture protection
-- Pressure washing for heavy-duty commercial requirements
-- Moss, algae, and organic growth treatment
-- Regular maintenance contracts tailored to venue requirements
+<ul>
+<li>Restaurant patios, terraces, and outdoor dining areas</li>
+<li>Bar and café external spaces</li>
+<li>Retail frontages and window cleaning</li>
+<li>Common areas and courtyard spaces</li>
+</ul>
 
-**Professional Standards**
-- Work scheduled around business operations
-- Safety-focused methodologies
-- Insurance-backed professional services
-- References from premium UK hospitality venues
+<p><strong>Specialist Solutions</strong></p>
 
-## Why Choose PowerWash Bros for Commercial Work?
+<ul>
+<li><a href="/services/softwash">Soft-washing systems</a> for delicate surfaces and furniture protection</li>
+<li>Pressure washing for heavy-duty commercial requirements</li>
+<li>Moss, algae, and organic growth treatment</li>
+<li>Regular maintenance contracts tailored to venue requirements</li>
+</ul>
 
-When Evoca Group evaluated contractors, they chose PowerWash Bros because we offer:
+<p><strong>Professional Standards</strong></p>
 
-1. **Proven Track Record** - Years of successful projects across Dorset's most demanding properties
-2. **Professional Team** - Trained staff who understand the unique requirements of commercial venues
-3. **Quality Assurance** - Every project meets exacting standards and brand requirements
-4. **Reliability** - Consistent delivery, professional conduct, and attention to detail
-5. **Bespoke Solutions** - Customised cleaning approaches for each unique venue
+<ul>
+<li>Work scheduled around business operations</li>
+<li>Safety-focused methodologies</li>
+<li>Insurance-backed professional services</li>
+<li>References from premium UK hospitality venues</li>
+</ul>
 
-## Expanding Services Across Dorset
+<h2>Why Choose PowerWash Bros for Commercial Work?</h2>
 
-This partnership isn't just good news for us - it's excellent news for Dorset businesses looking for premium cleaning contractors. Our availability for commercial projects means:
+<p>When Evoca Group evaluated contractors, they chose PowerWash Bros because we offer:</p>
 
-- **Premium hospitality venues** now have access to contractor-level expertise
-- **Retail businesses** can maintain pristine external appearances
-- **Commercial properties** can rely on consistent, professional maintenance
-- **Restaurant and café owners** can trust specialists in hospitality cleaning
+<ol>
+<li><strong>Proven Track Record</strong> – Years of successful projects across Dorset's most demanding properties</li>
+<li><strong>Professional Team</strong> – Trained staff who understand the unique requirements of commercial venues</li>
+<li><strong>Quality Assurance</strong> – Every project meets exacting standards and brand requirements</li>
+<li><strong>Reliability</strong> – Consistent delivery, professional conduct, and attention to detail</li>
+<li><strong>Bespoke Solutions</strong> – Customised cleaning approaches for each unique venue</li>
+</ol>
 
-## Looking Forward
+<h2>Expanding Services Across Dorset</h2>
 
-We're excited about what this partnership represents - recognition of PowerWash Bros' commitment to excellence and professionalism. The success of the Santos&Co project demonstrates our ability to deliver at the highest standards, and we're proud to continue working with Evoca Group on their existing and future venues.
+<p>This partnership isn't just good news for us—it's excellent news for Dorset businesses looking for premium cleaning contractors. Our availability for commercial projects means:</p>
 
-For other hospitality businesses, retail venues, or commercial property managers in Dorset looking for professional external cleaning contractors, **our partnership with Evoca Group is your guarantee of quality and reliability.**
+<ul>
+<li><strong>Premium hospitality venues</strong> now have access to contractor-level expertise</li>
+<li><strong>Retail businesses</strong> can maintain pristine external appearances</li>
+<li><strong>Commercial properties</strong> can rely on consistent, professional maintenance</li>
+<li><strong>Restaurant and café owners</strong> can trust specialists in hospitality cleaning</li>
+</ul>
 
-## Interested in Our Commercial Services?
+<h2>Looking Forward</h2>
 
-Whether you operate a premium hospitality venue, retail business, or commercial property in Dorset, PowerWash Bros is ready to transform your external spaces.
+<p>We're excited about what this partnership represents—recognition of PowerWash Bros' commitment to excellence and professionalism. The success of the Santos&Co project demonstrates our ability to deliver at the highest standards, and we're proud to continue working with Evoca Group on their existing and future venues.</p>
 
-**Contact us today for a free consultation:**
-- WhatsApp: +44 7418 610731
-- Email: [info@powerwashbros.co.uk](mailto:info@powerwashbros.co.uk)
-- Visit: [Get a Quote](/get-quote)
+<p>For other hospitality businesses, retail venues, or commercial property managers in Dorset looking for professional external cleaning contractors, <strong>our partnership with Evoca Group is your guarantee of quality and reliability.</strong></p>
 
-Let's discuss how we can help maintain your property to the same standards we bring to Evoca Group venues.
+<h2>Interested in Our Commercial Services?</h2>
 
----
+<p>Whether you operate a premium hospitality venue, retail business, or commercial property in Dorset, PowerWash Bros is ready to transform your external spaces.</p>
 
-*PowerWash Bros - Professional Property Cleaning Services Across Dorset. Trusted by premium venues, chosen by businesses that demand excellence.*`,
+<p><strong>Contact us today for a free consultation:</strong></p>
+
+<ul>
+<li>WhatsApp: +44 7418 610731</li>
+<li>Email: info@powerwashbros.co.uk</li>
+<li><a href="/get-quote">Get a Quote</a></li>
+</ul>
+
+<p>Let's discuss how we can help maintain your property to the same standards we bring to Evoca Group venues.</p>
+
+<hr>
+
+<p><em>PowerWash Bros—Professional Property Cleaning Services Across Dorset. Trusted by premium venues, chosen by businesses that demand excellence.</em></p>`,
   },
   {
     title: "Spring Roof Maintenance Checklist: Prepare Now for Summer",
