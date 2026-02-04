@@ -56,9 +56,6 @@ export default async function BlogPage() {
           </div>
         </section>
 
-        {/* Blog Posts Grid */}
-        <BlogPostsGrid posts={posts} />
-
         {/* Newsletter Signup */}
         <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
