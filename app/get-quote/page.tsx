@@ -19,6 +19,7 @@ export default function GetQuotePage() {
   const [surfaceType, setSurfaceType] = useState("standard")
   const [needsResanding, setNeedsResanding] = useState(false)
   const [distanceFromSwanage, setDistanceFromSwanage] = useState([0])
+  const [hasExternalPower, setHasExternalPower] = useState(true)
   const [estimatedPrice, setEstimatedPrice] = useState(0)
 
   const [pricingData] = useState({
@@ -40,7 +41,7 @@ export default function GetQuotePage() {
 
   useEffect(() => {
     calculatePrice()
-  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding, distanceFromSwanage])
+  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding, distanceFromSwanage, hasExternalPower])
 
   const calculatePrice = () => {
     let price = 0
@@ -64,6 +65,11 @@ export default function GetQuotePage() {
 
     const distanceSurcharge = (distanceFromSwanage[0] * 2) * DISTANCE_RATE_PER_MILE + FUEL_SURCHARGE
     price += distanceSurcharge
+
+    // Add generator surcharge if no external power available
+    if (!hasExternalPower) {
+      price += 20
+    }
 
     setEstimatedPrice(Math.round(price))
   }
@@ -201,6 +207,53 @@ export default function GetQuotePage() {
                         </button>
                       </div>
                     )}
+
+                    {/* Power Supply Section */}
+                    <div>
+                      <Label className="text-foreground text-lg flex items-center gap-2 mb-3">
+                        <Zap className="h-5 w-5 text-accent" />
+                        Power Supply
+                      </Label>
+                      <p className="text-sm text-muted-foreground mb-3">Do you have accessible external electricity available?</p>
+                      <div className="flex gap-3 flex-col">
+                        <button
+                          onClick={() => setHasExternalPower(true)}
+                          className={`text-left p-4 rounded-lg font-semibold transition-all border-2 ${
+                            hasExternalPower
+                              ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                              : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${hasExternalPower ? "bg-white" : "border-white/20"}`}>
+                              {hasExternalPower && <div className="h-2 w-2 bg-[#00C853] rounded-full"></div>}
+                            </div>
+                            <div>
+                              <p className="font-semibold">Yes, external power available</p>
+                              <p className="text-xs opacity-75 mt-0.5">Outdoor socket or easily accessible supply</p>
+                            </div>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => setHasExternalPower(false)}
+                          className={`text-left p-4 rounded-lg font-semibold transition-all border-2 ${
+                            !hasExternalPower
+                              ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                              : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${!hasExternalPower ? "bg-white" : "border-white/20"}`}>
+                              {!hasExternalPower && <div className="h-2 w-2 bg-[#00C853] rounded-full"></div>}
+                            </div>
+                            <div>
+                              <p className="font-semibold">No accessible power</p>
+                              <p className="text-xs opacity-75 mt-0.5">We'll use our generator</p>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
 
                     {/* Distance from Swanage */}
                     <div className="space-y-3">
