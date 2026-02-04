@@ -141,7 +141,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                       )
                     } else {
                       // Basic link parser for markdown-style links [text](url)
-                      const linkRegex = /\[([^\]]+)\]$$([^)]+)$$/g
+                      const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
                       if (paragraph.match(linkRegex)) {
                         const parts = []
                         let lastIndex = 0
