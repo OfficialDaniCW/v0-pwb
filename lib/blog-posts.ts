@@ -32,7 +32,7 @@ export const blogPosts: BlogPostData[] = [
 
 Spring is finally here across Dorset, and with longer days and warming temperatures comes an important opportunity: preparing your roof for the summer months ahead. Winter in Purbeck and surrounding areas can be brutal on roofs, with snow, ice, heavy rain, and wind all taking their toll.
 
-As property owners in Swanage, Wareham, and throughout Dorset know, spring maintenance isn't just about aesthetics—it's about protecting your investment from costly water damage and structural problems.
+As property owners in Swanage, Wareham, and throughout Dorset know, spring maintenance isn't just about aesthetics - it's about protecting your investment from costly water damage and structural problems.
 
 ## What Happens to Roofs During Winter?
 
@@ -68,7 +68,7 @@ If you notice moss during inspection, [professional moss removal](/services/demo
 
 ### 4. Soffit and Fascia Inspection
 
-These wooden elements are vulnerable to moisture and rot. Spring is ideal for inspection—use [our softwash service](/services/softwash) to clean these areas safely without pressure washing damage.
+These wooden elements are vulnerable to moisture and rot. Spring is ideal for inspection - use [our softwash service](/services/softwash) to clean these areas safely without pressure washing damage.
 
 ### 5. Check Your Loft Space
 
@@ -122,7 +122,7 @@ Don't wait for summer storms to reveal problems. Contact PowerWash Bros today fo
     tags: ["gutter maintenance", "summer storms", "water damage prevention", "Dorset"],
     content: `# Summer Storms & Your Gutters: Professional Maintenance Prevents Thousands in Damage
 
-Summer in Dorset brings longer days and warmer weather—but it also brings occasional severe storms. One of the most overlooked aspects of property protection is [gutter maintenance](/services/gutter-cleaning), yet properly functioning gutters are absolutely critical during storm season.
+Summer in Dorset brings longer days and warmer weather - but it also brings occasional severe storms. One of the most overlooked aspects of property protection is [gutter maintenance](/services/gutter-cleaning), yet properly functioning gutters are absolutely critical during storm season.
 
 We've seen countless properties across Purbeck, Swanage, and Wareham suffer unnecessary water damage simply because gutters were clogged or malfunctioning. This preventable damage costs homeowners thousands of pounds in emergency repairs, water damage restoration, and structural remediation.
 
@@ -151,13 +151,13 @@ Regular inspection throughout summer identifies developing problems before storm
 - Check gutter brackets and fixings for loosening or damage
 - Verify that water flows freely from gutters and downpipes without pooling
 
-Monthly inspection during summer catches problems early—a small gap in a downpipe might seem minor until storm season when it becomes a major source of water ingress.
+Monthly inspection during summer catches problems early - a small gap in a downpipe might seem minor until storm season when it becomes a major source of water ingress.
 
 ### Professional Inspection & Cleaning
 
 Our [gutter cleaning service](/services/gutter-cleaning) provides comprehensive assessment of gutter condition, including internal debris, sediment buildup, and potential leaks. We've identified critical problems during inspections that would have caused major damage during the first significant storm.
 
-Professional cleaning removes all accumulated debris and sediment that DIY approaches commonly miss. Gutters often have buildup beneath debris layers—this internal debris creates blockages that aren't visible from ground level. Professional equipment reaches all areas of guttering systems, downpipes, and valleys.
+Professional cleaning removes all accumulated debris and sediment that DIY approaches commonly miss. Gutters often have buildup beneath debris layers - this internal debris creates blockages that aren't visible from ground level. Professional equipment reaches all areas of guttering systems, downpipes, and valleys.
 
 ### Gutter Repair or Replacement
 
@@ -190,7 +190,7 @@ PowerWash Bros provides comprehensive gutter solutions tailored to local conditi
 - **Emergency response**: Rapid response to storm damage and urgent gutter failures
 - **Downpipe cleaning**: Professional internal cleaning of downpipes and drainage systems
 
-With storms becoming more intense and unpredictable due to climate variability, professional [gutter maintenance](/services/gutter-cleaning) isn't a luxury—it's essential property protection that pays for itself through damage prevention.
+With storms becoming more intense and unpredictable due to climate variability, professional [gutter maintenance](/services/gutter-cleaning) isn't a luxury - it's essential property protection that pays for itself through damage prevention.
 
 ## Why Professional Gutters Matter More Than DIY
 
@@ -222,7 +222,7 @@ Don't wait for the next weather warning to check your gutters. Summer storms can
     tags: ["autumn maintenance", "winter preparation", "property protection", "Purbeck"],
     content: `# Autumn Alert: Your Complete Property Preparation Guide for Winter
 
-Autumn in Purbeck and Dorset is beautiful, but it's also a critical time for property preparation. Winter brings harsh weather—wind, rain, snow, and freezing temperatures—that can damage properties unprepared for the season.
+Autumn in Purbeck and Dorset is beautiful, but it's also a critical time for property preparation. Winter brings harsh weather - wind, rain, snow, and freezing temperatures - that can damage properties unprepared for the season.
 
 Now is the time to take action. Waiting until November means you're behind schedule. Properties need preparation starting in September and October, before professional services book up completely and winter weather arrives unexpectedly.
 
@@ -296,7 +296,7 @@ A structured timeline ensures all preparation tasks are completed before winter:
 - **October**: Final [gutter clearing](/services/gutter-clearing), [drain cleaning](/services/driveway-cleaning), soffit/fascia repairs completed
 - **Early November**: Ready for winter with all systems functional
 
-Starting early ensures work can be completed in reasonable weather and professional availability is maximized.
+Starting early ensures work can be completed in reasonable weather and professional availability is maximised.
 
 ## The Benefits of Professional Autumn Preparation
 
@@ -338,17 +338,17 @@ Winter in Dorset presents unique challenges for property owners. The freeze-thaw
 
 One of the most damaging winter phenomena is the freeze-thaw cycle. Water that penetrates tiles during autumn rains freezes in winter, expanding as ice and causing cracks in roofing tiles, mortar joints, and flashing. When temperatures rise during warmer winter days, this ice melts and water seeps deeper into roofing materials and structural elements. This expansion and contraction cycle repeats throughout the season, causing cumulative damage that often requires costly repairs by spring.
 
-The damage from freeze-thaw cycles isn't just aesthetic—it creates pathways for water ingress that can lead to internal water damage, mold growth, and structural deterioration. Properties across Purbeck with older roofs or existing water damage are particularly vulnerable to these winter damage patterns.
+The damage from freeze-thaw cycles isn't just aesthetic - it creates pathways for water ingress that can lead to internal water damage, mold growth, and structural deterioration. Properties across Purbeck with older roofs or existing water damage are particularly vulnerable to these winter damage patterns.
 
 ### Ice Dams Create Water Problems
 
 Ice dams form when gutters become blocked with debris, preventing proper water drainage from roofs. Autumn leaves, moss, and other debris accumulate in gutters and valleys during fall, creating blockages that trap water. When this water freezes, it creates ice dams that prevent melt water from flowing properly. Backed-up water has nowhere to go except to seek gaps and cracks in your roof, leading to interior leaks and serious structural damage.
 
-Ice dams are one of the most expensive winter roof problems because they often cause damage before homeowners even realize there's a problem. Water can damage interior ceiling materials, insulation, and wall structures before becoming visible as stains or leaks. In Wareham, Swanage, and surrounding areas, ice dam damage accounts for thousands of pounds in winter property damage claims annually.
+Ice dams are one of the most expensive winter roof problems because they often cause damage before homeowners even realise there's a problem. Water can damage interior ceiling materials, insulation, and wall structures before becoming visible as stains or leaks. In Wareham, Swanage, and surrounding areas, ice dam damage accounts for thousands of pounds in winter property damage claims annually.
 
 ### Snow Weight Stresses Your Roof
 
-Heavy snow accumulation adds significant weight to roofs, creating stress on structural components. A single foot of wet snow can weigh up to 20 pounds per square foot—a typical 2,000 square foot roof could be supporting 40,000 pounds of additional weight. This stress is particularly problematic on roofs already weakened by moss, algae growth, or previous water damage from poor maintenance.
+Heavy snow accumulation adds significant weight to roofs, creating stress on structural components. A single foot of wet snow can weigh up to 20 pounds per square foot - a typical 2,000 square foot roof could be supporting 40,000 pounds of additional weight. This stress is particularly problematic on roofs already weakened by moss, algae growth, or previous water damage from poor maintenance.
 
 Older roofs, roofs with sagging components, or roofs with existing water damage are at greater risk of structural failure under snow load. Properties in elevated areas of Purbeck or those exposed to prevailing winter weather patterns experience greater snow accumulation than sheltered properties.
 
@@ -364,7 +364,7 @@ Taking action in autumn to prepare your roof for winter can prevent the majority
 
 Gutters, downpipes, and roof valleys must be completely clear before winter. Autumn leaves and moss create blockages that trap water and cause ice formation. Our [professional gutter clearing service](/services/gutter-cleaning) removes all debris, ensures proper water flow, and identifies any gutter damage requiring repair.
 
-Complete debris clearance is critical—partially cleared gutters still trap water and freeze during cold snaps. Professional clearing reaches areas that DIY approaches miss, including valleys, downpipe interiors, and bracket areas where debris commonly accumulates.
+Complete debris clearance is critical - partially cleared gutters still trap water and freeze during cold snaps. Professional clearing reaches areas that DIY approaches miss, including valleys, downpipe interiors, and bracket areas where debris commonly accumulates.
 
 ### 2. Remove Moss Before Winter
 
@@ -402,7 +402,7 @@ Certain winter roof activities create serious hazards and should always be avoid
 
 If you notice water stains appearing inside during winter rain or snow melt, contact us immediately. Winter damage often indicates serious water ingress that requires professional assessment and rapid remediation. Our emergency response team across Purbeck is available for urgent winter roof issues from ice dam removal to temporary leak repairs while permanent solutions are arranged.
 
-Rapid response to winter water damage prevents secondary damage from occurring—mold growth, insulation deterioration, and structural damage accelerate quickly when water damage goes unaddressed.
+Rapid response to winter water damage prevents secondary damage from occurring - mold growth, insulation deterioration, and structural damage accelerate quickly when water damage goes unaddressed.
 
 ## Post-Winter Assessment & Inspection
 
@@ -445,7 +445,7 @@ Block paving seems tough, but it's actually vulnerable to:
 
 - **Weed growth**: Seeds germinate in joints between blocks
 - **Moss & algae**: Thrive in damp UK climate
-- **Staining**: Oil, tar, and organic discoloration
+- **Staining**: Oil, tar, and organic discolouration
 - **Joint erosion**: Loss of pointing causes movement and instability
 - **Frost damage**: Water in joints freezes, pushing blocks apart
 
@@ -455,7 +455,7 @@ Different seasons bring different maintenance needs. A year-round approach with 
 
 ### Spring Pressure Washing
 
-After winter accumulation of dirt and debris, [spring pressure washing](/services/driveway-cleaning) removes built-up grime, revealing the blocks' true color. Professional cleaning is more effective than DIY approaches—we adjust pressure to remove contamination without damaging pointing.
+After winter accumulation of dirt and debris, [spring pressure washing](/services/driveway-cleaning) removes built-up grime, revealing the blocks' true colour. Professional cleaning is more effective than DIY approaches - we adjust pressure to remove contamination without damaging pointing.
 
 ### Weed Treatment
 
@@ -483,7 +483,7 @@ If joints have been re-pointed, professional sealing locks in the pointing and p
 
 ### Final Deep Clean
 
-Autumn debris—leaves, twigs, moss—accumulates on paving. [Professional cleaning](/services/driveway-cleaning) removes this debris, which would otherwise decompose and stain surfaces through winter.
+Autumn debris - leaves, twigs, moss - accumulates on paving. [Professional cleaning](/services/driveway-cleaning) removes this debris, which would otherwise decompose and stain surfaces through winter.
 
 ### Drainage Check
 
@@ -501,7 +501,7 @@ Winter salt and grit damage block paving. Where possible, use alternative paths 
 
 ### Drainage Maintenance
 
-Blocked gutters and poor drainage route water onto paving. Ensure [gutters and drains are clear](/services/gutter-cleaning)—a responsibility that extends beyond the driveway to your entire property's water management.
+Blocked gutters and poor drainage route water onto paving. Ensure [gutters and drains are clear](/services/gutter-cleaning) - a responsibility that extends beyond the driveway to your entire property's water management.
 
 ### Early Spring Inspection
 
@@ -516,7 +516,7 @@ Watch for frost damage over winter. Report any movement or damage immediately, a
 
 ## DIY vs Professional Block Paving Care
 
-You can perform basic maintenance—regular sweeping, removing visible weeds, basic pressure washing with domestic equipment. However, professional services provide:
+You can perform basic maintenance - regular sweeping, removing visible weeds, basic pressure washing with domestic equipment. However, professional services provide:
 
 - **Proper equipment**: Professional-grade pressure washers and treatment chemicals
 - **Expertise**: Knowing when pressure is appropriate versus when [softwash](/services/softwash) is needed
@@ -529,7 +529,7 @@ A block paved driveway costs £3,000-£8,000+ to install. Professional maintenan
 
 - **Weed-infested paving**: Unsightly and unsafe
 - **Joint failure**: Blocks shift and move, creating trip hazards
-- **Permanent staining**: Discoloration impossible to remove later
+- **Permanent staining**: Discolouration impossible to remove later
 - **Replacement needed**: £3,000-£8,000+ to reinstall everything
 
 Your investment is protected through seasonal professional maintenance.
@@ -563,7 +563,7 @@ Contact PowerWash Bros for your [block paving seasonal maintenance plan](/servic
     tags: ["render cleaning", "softwash", "K-Rend", "property damage prevention", "Dorset"],
     content: `# Render Cleaning vs Damage: Why Softwash is the Only Safe Method
 
-Modern properties across Purbeck and Dorset feature rendered facades—K-Rend, silicone render, mineral render, and other specialist finishes. These attractive surfaces are vulnerable to algae and moss growth in our damp maritime climate.
+Modern properties across Purbeck and Dorset feature rendered facades - K-Rend, silicone render, mineral render, and other specialist finishes. These attractive surfaces are vulnerable to algae and moss growth in our damp maritime climate.
 
 But here's the critical mistake many property owners make: using pressure washing to clean render.
 
@@ -604,11 +604,11 @@ Cracks and damage created by pressure washing become entry points for:
 
 ### 1. Kills Organic Growth at the Cellular Level
 
-Specialist biocides eliminate moss, algae, and lichen at the cellular level. The organisms don't just get washed away—they're killed, preventing regrowth for months or even years.
+Specialist biocides eliminate moss, algae, and lichen at the cellular level. The organisms don't just get washed away - they're killed, preventing regrowth for months or even years.
 
 ### 2. Respects Material Integrity
 
-Low pressure maintains render surface integrity. There's no erosion, no color washing, no surface damage—just effective cleaning.
+Low pressure maintains render surface integrity. There's no erosion, no colour washing, no surface damage - just effective cleaning.
 
 ### 3. Allows Deep Cleaning
 
@@ -644,13 +644,13 @@ Swanage, Wareham, and surrounding areas face accelerated render soiling because 
 - **Shade**: Tree coverage in villages creates ideal conditions for growth
 - **Exposure**: Coastal properties face more weathering
 
-These factors make proper cleaning methods—and [professional softwash](/services/softwash) specifically—essential for Purbeck render.
+These factors make proper cleaning methods - and [professional softwash](/services/softwash) specifically - essential for Purbeck render.
 
 ## Common Questions About Render Softwashing
 
 ### Isn't Softwash Just Cleaning Rather Than Fixing?
 
-[Softwash cleaning](/services/softwash) cleans the surface of render, removing organic growth and staining. It doesn't repair underlying damage (cracks, erosion from previous pressure washing, etc.). However, it does prevent ongoing damage from moisture retention caused by algae and moss—the primary cause of render deterioration.
+[Softwash cleaning](/services/softwash) cleans the surface of render, removing organic growth and staining. It doesn't repair underlying damage (cracks, erosion from previous pressure washing, etc.). However, it does prevent ongoing damage from moisture retention caused by algae and moss - the primary cause of render deterioration.
 
 ### How Often Is Softwash Needed?
 
@@ -698,7 +698,7 @@ Contact PowerWash Bros for [professional render softwash cleaning](/services/sof
     tags: ["patio cleaning", "spring entertaining", "outdoor spaces", "Purbeck", "Dorset"],
     content: `# Patio Deep Clean: Transform Your Outdoor Space for Spring Entertaining
 
-Spring in Purbeck is glorious. Longer days, warming temperatures, and—finally—the opportunity to spend time outdoors. Your garden and patio will become central to your social life as entertaining season begins.
+Spring in Purbeck is glorious. Longer days, warming temperatures, and - finally - the opportunity to spend time outdoors. Your garden and patio will become central to your social life as entertaining season begins.
 
 But patios that have sat unused through winter often look uninviting. Algae, moss, staining, and weather-accumulated dirt transform beautiful outdoor spaces into something you'd rather hide from guests.
 
@@ -731,7 +731,7 @@ Should you ever sell, a well-maintained patio contributes to perceived property 
 - **Algae**: Green coating from winter dampness
 - **Moss**: Fuzzy growth in shaded areas
 - **Dirt & grime**: Winter-accumulated debris
-- **Staining**: Organic discoloration from leaves and weathering
+- **Staining**: Organic discolouration from leaves and weathering
 
 ### Weed Removal
 
@@ -743,7 +743,7 @@ We inspect pointing between paving blocks. Erosion is identified and can be addr
 
 ### Stubborn Stain Treatment
 
-Stubborn stains—oil, rust, organic discoloration—require specialist treatment. Professional-grade stain removers address marks that regular cleaning leaves behind.
+Stubborn stains - oil, rust, organic discolouration - require specialist treatment. Professional-grade stain removers address marks that regular cleaning leaves behind.
 
 ### Optional Polymeric Sand Re-Sanding
 
@@ -780,7 +780,7 @@ After [professional cleaning](/services/patio-cleaning), consider:
 
 - **Furniture refresh**: Deep clean furniture and refresh cushions
 - **Lighting installation**: Solar lighting for evening entertaining
-- **Planters**: Fresh flowers and shrubs for color
+- **Planters**: Fresh flowers and shrubs for colour
 - **Dining setup**: Quality outdoor furniture arranged for entertaining
 
 A professionally cleaned patio provides the perfect foundation for your spring entertaining transformation.
@@ -828,7 +828,7 @@ Contact PowerWash Bros now to schedule your [patio deep clean](/services/patio-c
     tags: ["gutter guards", "gutter maintenance", "product review", "Purbeck", "Dorset"],
     content: `# Gutter Guards: Do They Work? A Realistic Assessment for Dorset Properties
 
-Gutter guards are marketed as the solution to gutter maintenance. "Never clean your gutters again" they promise. Property owners across Purbeck and Dorset are interested—[gutter cleaning](/services/gutter-cleaning) feels like a never-ending chore.
+Gutter guards are marketed as the solution to gutter maintenance. "Never clean your gutters again" they promise. Property owners across Purbeck and Dorset are interested - [gutter cleaning](/services/gutter-cleaning) feels like a never-ending chore.
 
 But do gutter guards actually work? And are they worth the investment? The honest answer is: it depends.
 
@@ -847,7 +847,7 @@ In theory, all prevent leaves and debris from entering gutters while allowing wa
 
 ### What Gutter Guards Do Well
 
-**Reduce debris entry**: Large debris (leaves, twigs, branches) is partially blocked. Some debris will still get in—particularly small debris, moss, and algae—but the volume is significantly reduced.
+**Reduce debris entry**: Large debris (leaves, twigs, branches) is partially blocked. Some debris will still get in - particularly small debris, moss, and algae - but the volume is significantly reduced.
 
 **Extend cleaning intervals**: Even with guards, [gutters need occasional clearing](/services/gutter-cleaning). But the interval between cleanings increases from monthly to potentially 2-3 times yearly.
 
@@ -919,7 +919,7 @@ Heavy autumn and winter rainfall tests guard water-flow capacity. Guards that pe
 
 **If you have tree coverage**: Guards help less significantly. You'll still need [regular cleaning](/services/gutter-cleaning), as organic growth bypasses most guards.
 
-**In Purbeck's maritime climate**: Algae growth on guard surfaces is a significant factor. You're trading traditional gutter debris for algae-compromised guards—neither is ideal.
+**In Purbeck's maritime climate**: Algae growth on guard surfaces is a significant factor. You're trading traditional gutter debris for algae-compromised guards - neither is ideal.
 
 ## The Cost-Benefit Analysis
 
@@ -949,7 +949,7 @@ We don't sell gutter guards, so we have no financial incentive in either directi
 
 ## The Best Gutter "Guard"
 
-The most effective gutter "guard" isn't a product—it's [professional maintenance](/services/gutter-cleaning). Regular clearing and inspection, combined with proper drainage, prevents the damage that guards are marketed to prevent.
+The most effective gutter "guard" isn't a product - it's [professional maintenance](/services/gutter-cleaning). Regular clearing and inspection, combined with proper drainage, prevents the damage that guards are marketed to prevent.
 
 [Professional gutter cleaning](/services/gutter-cleaning) combined with drainage assessment often costs less than guard installation and delivers more reliable results.
 
@@ -972,7 +972,7 @@ For honest assessment of whether guards make sense for your Purbeck property, co
     tags: ["roof maintenance", "moss removal", "algae", "lichen", "identification", "Dorset"],
     content: `# Lichen vs Moss vs Algae: Learn to Identify What's Growing on Your Roof
 
-Many property owners see growth on their roof and assume it's moss. But the green or gray coating covering your tiles might actually be algae, lichen, or a combination—and the distinction matters significantly for treatment.
+Many property owners see growth on their roof and assume it's moss. But the green or gray coating covering your tiles might actually be algae, lichen, or a combination - and the distinction matters significantly for treatment.
 
 Different organisms require different approaches. Misidentifying your roof growth means choosing the wrong treatment, wasting money, and seeing the problem return quickly.
 
@@ -987,7 +987,7 @@ Let's learn to identify what's actually growing on your Purbeck property.
 **What it looks like**:
 - Dense, cushion-like growth
 - Fuzzy, almost velvety texture
-- Green to dark green color (sometimes brownish when dry)
+- Green to dark green colour (sometimes brownish when dry)
 - Clumpy appearance with distinct height variation
 - Often thick enough to hide the roof surface beneath
 
@@ -1029,12 +1029,12 @@ Let's learn to identify what's actually growing on your Purbeck property.
 
 ### Lichen: The Crusty, Colorful Growth
 
-**What it is**: A composite organism—a fungus combined with algae or cyanobacteria. The two organisms form a mutually beneficial partnership.
+**What it is**: A composite organism - a fungus combined with algae or cyanobacteria. The two organisms form a mutually beneficial partnership.
 
 **What it looks like**:
 - Crusty, scaly appearance (not fuzzy like moss)
 - Raised from roof surface, visible as individual discrete growths
-- Various colors: gray, white, orange, green, or combinations
+- Various colours: gray, white, orange, green, or combinations
 - Appears as discrete patches or colonies rather than continuous coverage
 - Crumbly or flaking appearance when disturbed
 
@@ -1120,7 +1120,7 @@ Properties across Swanage, Wareham, and surrounding Purbeck areas commonly exper
 - Historic properties with slate tiles
 - Areas with good air circulation
 
-Many Purbeck properties experience all three growth types—moss in shaded gutters, algae across main slopes, and lichen on sunny ridges.
+Many Purbeck properties experience all three growth types - moss in shaded gutters, algae across main slopes, and lichen on sunny ridges.
 
 ## Get Your Roof Professionally Assessed
 
@@ -1145,7 +1145,7 @@ Don't guess. Incorrect identification leads to wasted money and repeated problem
 
 Purbeck is rich in history. Properties across Corfe Castle, Wareham, Swanage, and surrounding villages feature stone, slate, and unique materials that are hundreds of years old.
 
-These heritage materials are beautiful and irreplaceable. Cleaning them requires specialist knowledge—apply the wrong technique, and you'll cause damage that can't be undone.
+These heritage materials are beautiful and irreplaceable. Cleaning them requires specialist knowledge - apply the wrong technique, and you'll cause damage that can't be undone.
 
 We've seen historic properties damaged by pressure washing that removes centuries-old patina, destroys delicate stone, and strips irreplaceable finishes. Once damaged, the loss is permanent.
 
@@ -1157,7 +1157,7 @@ Historic surfaces are vulnerable because:
 - **Mortar joints**: Historic lime mortar is weaker than modern cement and easily eroded
 - **Render finishes**: Historic lime render and plaster are delicate and irreplaceable
 - **Slates**: Historic slate can be fractured or split by pressure
-- **Patina**: The weathered appearance of historic surfaces is part of their character—aggressive cleaning destroys this permanently
+- **Patina**: The weathered appearance of historic surfaces is part of their character - aggressive cleaning destroys this permanently
 
 ## Common Heritage Property Surfaces Across Purbeck
 
@@ -1195,7 +1195,7 @@ Historic surfaces are vulnerable because:
 
 ## The Right Way to Clean Heritage Properties
 
-### Assessment First—Never Assume
+### Assessment First - Never Assume
 
 Before any cleaning, [professional assessment](/services/softwash) determines:
 
@@ -1283,7 +1283,7 @@ We recommended:
 
 Result: Significantly improved appearance without damage. The property looks better, and the historic integrity is preserved.
 
-Had pressure washing been applied, irreversible damage would have occurred—likely costing thousands in stone repair or replacement (often impossible without destroying historic character).
+Had pressure washing been applied, irreversible damage would have occurred - likely costing thousands in stone repair or replacement (often impossible without destroying historic character).
 
 ## Moving Forward with Heritage Properties
 
@@ -1311,13 +1311,13 @@ Contact PowerWash Bros for [professional heritage property assessment and cleani
     tags: ["moss removal", "roof maintenance", "demossing", "property care", "Purbeck", "Dorset"],
     content: `# What is Moss? Understanding Your Property's Problem
 
-Many property owners see dark green, fuzzy growth on their roofs, walls, or patios and think it's simply dirt or mold. In reality, moss is a living plant organism—and understanding what moss is helps explain why it's problematic and why professional removal is essential.
+Many property owners see dark green, fuzzy growth on their roofs, walls, or patios and think it's simply dirt or mold. In reality, moss is a living plant organism - and understanding what moss is helps explain why it's problematic and why professional removal is essential.
 
 Moss isn't just cosmetic; it's actively damaging your property while it grows. Let's explore what moss actually is, why it thrives on Purbeck properties, and what you need to know for effective removal.
 
 ## What Exactly is Moss?
 
-Moss is a non-vascular plant—meaning it lacks the root systems and internal water-transport structures that typical plants use. Instead, moss uses rhizoids (tiny hair-like structures) to anchor itself to surfaces and directly absorb moisture from rain and humidity.
+Moss is a non-vascular plant - meaning it lacks the root systems and internal water-transport structures that typical plants use. Instead, moss uses rhizoids (tiny hair-like structures) to anchor itself to surfaces and directly absorb moisture from rain and humidity.
 
 ### How Moss Differs from Other Plants
 
@@ -1329,7 +1329,7 @@ Unlike trees, shrubs, and flowers, moss:
 - **Reproduces via spores**: Not seeds like flowering plants
 - **Grows in layers**: Building up in dense cushions over time
 
-This simple structure makes moss incredibly effective at colonizing surfaces—roofs, walls, patios, and any outdoor surface where moisture persists.
+This simple structure makes moss incredibly effective at colonizing surfaces - roofs, walls, patios, and any outdoor surface where moisture persists.
 
 ### Where Moss Grows
 
@@ -1339,7 +1339,7 @@ Moss thrives anywhere that combines:
 - **Acidic surfaces**: Moss prefers acidic materials (tiles, stone, concrete)
 - **Organic matter**: Debris providing nutrients for growth
 
-This is why Purbeck properties—with our maritime climate, frequent rain, and many tree-covered properties—are moss magnets.
+This is why Purbeck properties - with our maritime climate, frequent rain, and many tree-covered properties - are moss magnets.
 
 ## Why Moss Grows on Purbeck Properties
 
@@ -1351,7 +1351,7 @@ Coastal location means constant moisture in the air. Properties within 2-3 miles
 
 ### 2. Frequent Rainfall
 
-Dorset receives consistent rainfall throughout the year—significantly more than southern England averages. Moss thrives with this moisture supply.
+Dorset receives consistent rainfall throughout the year - significantly more than southern England averages. Moss thrives with this moisture supply.
 
 ### 3. Mild Winters
 
@@ -1363,11 +1363,11 @@ Many Purbeck properties feature tree coverage that creates permanent shade. Shad
 
 ### 5. Aging Surfaces
 
-Purbeck has many older properties with worn roof tiles, deteriorated render, and porous stone—all surfaces where moss establishes easily.
+Purbeck has many older properties with worn roof tiles, deteriorated render, and porous stone - all surfaces where moss establishes easily.
 
 ## How Moss Damages Your Property
 
-Most property owners don't realize moss actively damages structures. The problems include:
+Most property owners don't realise moss actively damages structures. The problems include:
 
 ### 1. Water Retention & Accelerated Deterioration
 
@@ -1403,7 +1403,7 @@ Many gutter blockages are caused by moss debris rather than leaves.
 
 ### 4. Increased Weight on Structures
 
-Thick moss buildup adds significant weight to roofs. A roof covered in thick moss might support an additional 20-30 pounds per square foot—potentially dangerous on already-stressed roofs.
+Thick moss buildup adds significant weight to roofs. A roof covered in thick moss might support an additional 20-30 pounds per square foot - potentially dangerous on already-stressed roofs.
 
 ### 5. Slippery, Unsafe Surfaces
 
@@ -1421,11 +1421,11 @@ False. A common misconception is that moss provides insulation or protection. Re
 
 ### "Moss Means My Roof is Old"
 
-While old roofs often have moss, moss isn't a sign your roof is old—it's a sign your roof is damp. New roofs with poor drainage develop moss quickly.
+While old roofs often have moss, moss isn't a sign your roof is old - it's a sign your roof is damp. New roofs with poor drainage develop moss quickly.
 
 ### "Pressure Washing Solves Moss"
 
-Pressure washing removes surface moss but leaves rhizoids—the anchoring structures that quickly regenerate new moss. True moss removal requires killing the organism at the cellular level, not just removing the visible growth.
+Pressure washing removes surface moss but leaves rhizoids - the anchoring structures that quickly regenerate new moss. True moss removal requires killing the organism at the cellular level, not just removing the visible growth.
 
 ### "My Roof Has Always Had Moss"
 
@@ -1436,7 +1436,7 @@ Accepting moss as inevitable is a mistake. Professional treatment prevents moss 
 ### Moss
 - Fuzzy, cushion-like texture
 - Clearly visible height and structure
-- Green to dark green color
+- Green to dark green colour
 - Velvety appearance
 - Individual plants visible with close inspection
 - Primarily on shaded, damp areas
@@ -1450,7 +1450,7 @@ Accepting moss as inevitable is a mistake. Professional treatment prevents moss 
 
 ### Lichen
 - Crusty, scaly appearance
-- Gray, white, orange, or colorful patches
+- Gray, white, orange, or colourful patches
 - Individual colony clusters
 - Primarily on sunny areas
 
@@ -1478,7 +1478,7 @@ Most property owners attempt pressure washing for moss removal. This fails becau
 - **Reach difficult areas**: Professional equipment accesses all spaces
 - **Long-term results**: Far more cost-effective than repeated pressure washing
 
-Biocide-treated surfaces can remain moss-free for 18+ months—compared to pressure-washed surfaces where moss returns within weeks.
+Biocide-treated surfaces can remain moss-free for 18+ months - compared to pressure-washed surfaces where moss returns within weeks.
 
 ## Preventing Moss Growth
 
@@ -1502,7 +1502,7 @@ If moss indicates underlying moisture problems (poor ventilation, drainage issue
 
 ## Moss Control for Purbeck Properties
 
-Understanding moss—what it is, why it grows, and how to effectively remove it—helps you make informed maintenance decisions for your property.
+Understanding moss - what it is, why it grows, and how to effectively remove it - helps you make informed maintenance decisions for your property.
 
 [Professional moss removal](/services/demossing) isn't a luxury; it's essential maintenance protecting your property investment from moss-related water damage.
 
@@ -1523,7 +1523,7 @@ Contact PowerWash Bros for [professional moss assessment and removal](/services/
 
 We're thrilled to announce that PowerWash Bros is now officially biocide trained and registered with Biocide Training UK! This significant milestone represents our commitment to delivering safe, effective, and environmentally responsible exterior cleaning services across Purbeck, Swanage, Wareham, and the wider Dorset region.
 
-This certification isn't just another credential on our wall—it fundamentally changes how we protect your property and the environment. Let's explore what biocide training means, why it matters, and how our new certification benefits you as a property owner.
+This certification isn't just another credential on our wall - it fundamentally changes how we protect your property and the environment. Let's explore what biocide training means, why it matters, and how our new certification benefits you as a property owner.
 
 ## What Exactly is Biocide?
 
@@ -1531,11 +1531,11 @@ Biocide is a specialized chemical solution designed to control and eliminate har
 
 - **Moss**: The green, fuzzy growth commonly seen on roofs, walls, and patios
 - **Algae**: The black or green staining on render, fascias, and other surfaces
-- **Lichen**: The crusty, colorful patches often found on older roofing materials
+- **Lichen**: The crusty, colourful patches often found on older roofing materials
 - **Fungi**: Various fungal growths that thrive in damp conditions
 - **Bacteria**: Bacterial colonization contributing to surface deterioration
 
-Unlike simple pressure washing that only removes surface growth, biocide treatments work at a cellular level to eliminate these organisms and prevent regrowth for extended periods—often 12-18 months or longer.
+Unlike simple pressure washing that only removes surface growth, biocide treatments work at a cellular level to eliminate these organisms and prevent regrowth for extended periods - often 12-18 months or longer.
 
 ### Biocide Regulations in the UK
 
@@ -1546,7 +1546,7 @@ Biocides are regulated under the Biocidal Products Regulation (BPR), a strict UK
 - **Product efficacy**: Confirming products actually deliver the promised results
 - **Consumer safety**: Protecting customers from ineffective or dangerous treatments
 
-Not all biocide products meet BPR standards—genuine compliance requires professional knowledge and proper application techniques.
+Not all biocide products meet BPR standards - genuine compliance requires professional knowledge and proper application techniques.
 
 ## Why PowerWash Bros' Biocide Training Matters
 
@@ -1588,7 +1588,7 @@ Why choose professional biocide application over DIY pressure washing?
 
 ### Long-Lasting Results
 
-Pressure washing removes visible growth but leaves rhizoids—the cellular anchoring structures—that quickly regenerate new moss. Our biocide treatments kill organisms at the cellular level, with results lasting:
+Pressure washing removes visible growth but leaves rhizoids - the cellular anchoring structures - that quickly regenerate new moss. Our biocide treatments kill organisms at the cellular level, with results lasting:
 - **Standard treatment**: 12-18 months of protection
 - **Extended treatment**: Up to 24 months on some surfaces
 - **Cost efficiency**: One professional treatment often lasts as long as 3-4 pressure washing cycles
@@ -1618,7 +1618,7 @@ While professional biocide treatment costs more initially than DIY pressure wash
 - **Prevents expensive repairs**: Regular biocide maintenance prevents moss-related roof leaks and water damage
 - **Property value protection**: Well-maintained properties with biocide-treated surfaces retain and increase value better
 
-A single moss-related roof leak can cost £2,000-5,000+ to repair—professional biocide treatment preventing one leak typically pays for itself several times over.
+A single moss-related roof leak can cost £2,000-5,000+ to repair - professional biocide treatment preventing one leak typically pays for itself several times over.
 
 ## Our BAC50 Pro Biocide Solution
 
@@ -1698,7 +1698,7 @@ Our biocide certification is just one of many qualifications our team maintains:
 - **Eco-friendly commitment**: Environmental responsibility embedded in every treatment
 - **Customer focus**: Our success measured by your satisfaction and property protection
 
-We're registered with Biocide Training UK—you can verify our credentials on their registered companies list.
+We're registered with Biocide Training UK - you can verify our credentials on their registered companies list.
 
 ## Protection Across Purbeck and Dorset
 
@@ -1783,7 +1783,7 @@ Contact PowerWash Bros for comprehensive spring outdoor cleaning across Purbeck 
     tags: ["block paving", "sealing", "pavement maintenance", "long-term care", "Swanage"],
     content: `# Block Paving Sealing: Long-Term Protection & Maintenance
 
-Block paving's popularity in Dorset results from its attractive appearance and functionality. However, many property owners don't realize that unsealed block paving deteriorates rapidly in our maritime climate, with weeds growing between blocks and surface degradation accelerating over time. Professional sealing protects your investment and dramatically extends block paving lifespan.
+Block paving's popularity in Dorset results from its attractive appearance and functionality. However, many property owners don't realise that unsealed block paving deteriorates rapidly in our maritime climate, with weeds growing between blocks and surface degradation accelerating over time. Professional sealing protects your investment and dramatically extends block paving lifespan.
 
 ## Why Block Paving Needs Sealing
 
@@ -1803,7 +1803,7 @@ UV exposure, salt spray (in coastal areas), and weathering break down unsealed b
 
 ### Loss of Color & Appearance
 
-Unsealed blocks fade and lose their original color as weathering affects surfaces. Sealing maintains color vibrancy and appearance for years longer.
+Unsealed blocks fade and lose their original colour as weathering affects surfaces. Sealing maintains colour vibrancy and appearance for years longer.
 
 ### Algae & Organic Growth
 
@@ -2001,7 +2001,7 @@ Experienced professionals assess surfaces and recommend appropriate techniques:
 - **Protective measures**: Protecting surrounding areas and vulnerable elements
 - **Results**: Achieving excellent cleaning while protecting property
 
-Contact PowerWash Bros for professional assessment of your cleaning needs. We'll recommend the appropriate technique—pressure washing or softwashing—based on your specific situation.`,
+Contact PowerWash Bros for professional assessment of your cleaning needs. We'll recommend the appropriate technique - pressure washing or softwashing - based on your specific situation.`,
     status: "scheduled",
   },
   {
@@ -2049,7 +2049,7 @@ Garden structures, gutters, and downpipes degrade under UV:
 ### Roof Material Aging
 
 Roofing materials age faster under summer sun:
-- Tile color fading
+- Tile colour fading
 - Seal degradation on flat roofs
 - Flashing material becoming brittle
 
@@ -2105,7 +2105,7 @@ Apply protective coatings:
 - UV-resistant paint products
 - Clear protective sealers
 - Regular repainting before failure begins
-- Light-colored finishes reflect UV better than dark colors
+- Light-coloured finishes reflect UV better than dark colours
 
 ### 2. Preventive Algae Treatment
 
@@ -2224,7 +2224,7 @@ Driveway stains accumulate over time, creating an unwelcoming appearance. Differ
 
 ### Rust Stains
 
-**Appearance**: Orange, red, or brown discoloration, sometimes streaking
+**Appearance**: Orange, red, or brown discolouration, sometimes streaking
 
 **Causes**:
 - Metal railings or furniture rusting
@@ -2243,7 +2243,7 @@ Driveway stains accumulate over time, creating an unwelcoming appearance. Differ
 
 ### Algae & Black Spot (Mold Stains)
 
-**Appearance**: Green, black, or dark discoloration, often in patterns
+**Appearance**: Green, black, or dark discolouration, often in patterns
 
 **Causes**:
 - Moisture retention
@@ -2407,7 +2407,7 @@ Regular vehicle maintenance prevents fluid stains:
 Purbeck's maritime location creates unique staining challenges:
 - Salt spray causes efflorescence
 - Salt accelerates organic growth
-- Salt-laden runoff creates discoloration
+- Salt-laden runoff creates discolouration
 - Regular rinsing helps prevent salt accumulation
 
 ### High Moisture Environment
@@ -2444,7 +2444,7 @@ Contact PowerWash Bros for professional driveway stain removal and prevention ac
     tags: ["commercial cleaning", "business property", "professional appearance", "Dorset", "Wareham"],
     content: `# Commercial Property Cleaning: Maintaining Business Exteriors
 
-First impressions matter for commercial properties. A well-maintained exterior signals professionalism, attention to detail, and successful business operations. Conversely, dirty, neglected exteriors suggest poor management and discourage customers. Commercial property cleaning isn't optional—it's essential business maintenance.
+First impressions matter for commercial properties. A well-maintained exterior signals professionalism, attention to detail, and successful business operations. Conversely, dirty, neglected exteriors suggest poor management and discourage customers. Commercial property cleaning isn't optional - it's essential business maintenance.
 
 ## Why Commercial Property Maintenance Matters
 
@@ -2573,7 +2573,7 @@ Grounds maintenance supports overall appearance:
 
 ## Commercial Cleaning Scheduling
 
-Strategic scheduling maximizes efficiency:
+Strategic scheduling maximises efficiency:
 
 ### Regular Maintenance Programs
 
@@ -2991,7 +2991,7 @@ Roof damage worsens during winter:
 - Complete repairs before winter weather complicates work
 - Plan larger repairs for spring if necessary
 
-**Urgency**: Don't delay roof repairs—winter weather exploits vulnerabilities causing expensive damage.
+**Urgency**: Don't delay roof repairs - winter weather exploits vulnerabilities causing expensive damage.
 
 ### Priority 4: Drain & Surface Water Assessment
 
@@ -3133,7 +3133,7 @@ Don't delay November maintenance until December when weather complicates work. C
     tags: ["year-end assessment", "maintenance planning", "2027 strategy", "property inspection", "Wareham"],
     content: `# Year-End Property Assessment: Planning 2027 Maintenance
 
-December brings an ideal opportunity to assess your property's condition and plan 2027 maintenance strategically. Learning from this year's experience—weather challenges faced, maintenance performed, problems encountered—enables better planning for the coming year. Systematic assessment identifies issues requiring attention before spring.
+December brings an ideal opportunity to assess your property's condition and plan 2027 maintenance strategically. Learning from this year's experience - weather challenges faced, maintenance performed, problems encountered - enables better planning for the coming year. Systematic assessment identifies issues requiring attention before spring.
 
 ## Why December Assessment Matters
 
@@ -3334,7 +3334,7 @@ Purbeck coastal properties require specific planning:
 - **Salt spray management**: More frequent preventive treatment
 - **Accelerated deterioration**: Shorter replacement cycles for some materials
 - **Specialist expertise**: Coastal damage requires specialist understanding
-- **Year-round maintenance**: Not seasonal—ongoing coastal protection
+- **Year-round maintenance**: Not seasonal - ongoing coastal protection
 
 ### Tree-Covered Properties
 
@@ -3390,7 +3390,7 @@ Enter 2027 prepared:
 - Systems verified functioning
 - Professionals engaged and scheduled
 - Budget established and ready
-- Records organized and accessible
+- Records organised and accessible
 
 ## Professional Year-End Assessment Services
 
