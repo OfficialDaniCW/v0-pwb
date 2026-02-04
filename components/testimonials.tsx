@@ -2,9 +2,19 @@
 
 import { Star } from "lucide-react"
 import { useState } from "react"
+import Script from "next/script"
 
 export function Testimonials() {
   const [activeSource, setActiveSource] = useState<"google" | "trustpilot">("google")
+
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "150",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
 
   const googleTestimonials = [
     {
@@ -135,6 +145,7 @@ export function Testimonials() {
         backgroundBlendMode: "overlay",
       }}
     >
+      <Script id="aggregate-rating" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }} />
       <div className="absolute inset-0 bg-primary/80 z-0" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">

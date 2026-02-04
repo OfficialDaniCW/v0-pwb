@@ -18,6 +18,244 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   {
+    title: "Best Time to Pressure Wash Your Driveway - Expert Guide",
+    slug: "best-time-pressure-wash-driveway-dorset-2026",
+    excerpt: "Learn the best time of year to jet wash and pressure wash your driveway in Dorset. Expert timing advice for optimal results and longest-lasting cleanliness.",
+    category: "Maintenance Tips",
+    publishedAt: "2026-02-05",
+    readTime: 6,
+    featuredImage: "",
+    relatedService: "/services/pressure-washing",
+    author: "PowerWash Bros",
+    tags: ["driveway cleaning", "pressure washing", "jet washing", "maintenance", "Dorset", "timing guide"],
+    content: `# Best Time to Pressure Wash Your Driveway - Expert Dorset Guide
+
+Knowing **when to pressure wash your driveway** is just as important as knowing how. In this comprehensive guide, we'll share expert timing advice for homeowners across Swanage, Purbeck, and all of Dorset.
+
+## The Ideal Season for Jet Washing Driveways
+
+**Spring (March-May)** is the optimal time for pressure washing your driveway across Dorset:
+
+- Temperatures are mild but above freezing (10-15°C+)
+- Surfaces dry quickly after jet washing
+- Rain patterns allow concrete to settle properly
+- You remove winter grime before summer use
+- Biocide treatments have maximum effectiveness
+
+**Summer (June-August)** is also suitable:
+- Fastest drying times
+- Best weather conditions for outdoor work
+- Your driveway looks pristine all summer
+- Easier to spot remaining stains
+
+## When NOT to Pressure Wash
+
+**Avoid winter driveway cleaning (November-February):**
+- Cold temperatures prevent proper drying
+- Moisture can freeze and damage concrete
+- Biocide treatments don't work as effectively
+- Slippery surfaces create safety hazards
+
+**Avoid immediately before rain:**
+- Rain can wash away biocide treatments
+- Surfaces won't dry properly
+- Treatment effectiveness is compromised
+
+## Frequency - How Often Should You Jet Wash?
+
+For best results with professional pressure washing in Dorset:
+
+- **Residential driveways**: Once yearly (spring) = 1 deep clean
+- **High-traffic commercial**: Quarterly maintenance
+- **After winter**: Once in spring to remove moss and algae
+
+## Why Timing Matters for Biocide Treatment
+
+Professional jet washing isn't just about pressure - it's about **biocide application timing**:
+
+- Biocide needs 48 hours of dry weather to cure
+- Spring and early summer provide ideal conditions
+- The treatment then lasts 12-18 months
+- Pressure washing in autumn means winter destroys the treatment
+
+## Book Your Spring Driveway Cleaning
+
+Ready for a professional pressure wash? **Contact PowerWash Bros** for the best jet washing in Dorset.
+
+- WhatsApp: +44 7418 610731
+- Email: info@powerwashbros.co.uk
+- Get your spring driveway cleaning scheduled today
+
+Your driveway deserves professional pressure washing at the right time of year.`,
+  },
+  {
+    title: "Why Biocide Treatment is Essential for Roof Cleaning - Science Explained",
+    slug: "biocide-treatment-roof-cleaning-moss-removal-dorset-2026",
+    excerpt: "Understand why professional biocide treatment is essential for roof cleaning and moss removal. Science-backed approach to protecting your Dorset property.",
+    category: "Expert Tips",
+    publishedAt: "2026-02-06",
+    readTime: 7,
+    featuredImage: "",
+    relatedService: "/services/roof-cleaning",
+    author: "PowerWash Bros",
+    tags: ["roof cleaning", "moss removal", "biocide", "algae treatment", "Dorset", "property care"],
+    content: `# Why Biocide Treatment is Essential for Roof Cleaning - Explained
+
+When it comes to **professional roof cleaning** in Dorset, one term keeps coming up: **biocide treatment**. But what exactly is it, and why is it so important?
+
+## What is Biocide in Roof Cleaning?
+
+**Biocide** is a specialized chemical treatment designed to:
+
+- Kill moss spores at the root
+- Eliminate algae growth permanently
+- Prevent regrowth for 12-18 months
+- Protect your roof long-term
+
+Without biocide, moss and algae return within weeks of pressure washing.
+
+## The Problem with Pressure Washing Alone
+
+Many DIY roof cleaners or budget cleaners use only pressure washing - a critical mistake:
+
+**Pressure washing only:**
+- Removes visible moss/algae
+- Doesn't kill the spores
+- Regrowth happens in 2-4 weeks
+- Can damage roof tiles
+- Waste of time and money
+
+**Professional biocide treatment:**
+- Kills spores at root
+- Prevents regrowth for months
+- Safe for all roof types
+- Protects your investment
+
+## Why Biocide Works for Roof Cleaning
+
+The science is simple:
+
+1. Biocide penetrates porous roof surfaces
+2. Kills microscopic moss and algae spores
+3. Creates a hostile environment for regrowth
+4. Effect lasts 12-18 months in Dorset climate
+
+## Biocide Treatment Benefits in Dorset's Climate
+
+Dorset's wet, mild climate is perfect for moss and algae growth - but ideal for biocide effectiveness:
+
+- Rain distributes treatment evenly
+- Mild temperatures optimize biocide activity
+- Long-term protection through winter months
+- Prevents water damage from blockages
+
+## Professional vs. DIY Biocide Application
+
+**Professional moss removal and biocide treatment:**
+- Correct concentration of biocide
+- Expert application techniques
+- Safe handling of chemicals
+- Guaranteed results
+- Insurance-backed work
+
+**DIY risks:**
+- Wrong biocide concentration
+- Ineffective application
+- Safety hazards
+- Potential damage to property
+
+## Book Professional Roof Cleaning with Biocide
+
+Stop replacing your roof cleaning every month. Get professional moss removal and biocide treatment from **PowerWash Bros** today.
+
+- WhatsApp: +44 7418 610731
+- Email: info@powerwashbros.co.uk
+- Serving: Swanage, Purbeck, Bournemouth, and all Dorset
+
+Professional roof cleaning means years of protection, not weeks.`,
+  },
+  {
+    title: "Jet Washing vs Pressure Washing - What's the Difference?",
+    slug: "jet-washing-vs-pressure-washing-dorset-guide-2026",
+    excerpt: "Confused about jet washing vs pressure washing? Learn the differences and when to use each for your Dorset property.",
+    category: "Education",
+    publishedAt: "2026-02-07",
+    readTime: 5,
+    featuredImage: "",
+    relatedService: "/services/pressure-washing",
+    author: "PowerWash Bros",
+    tags: ["jet washing", "pressure washing", "cleaning methods", "Dorset", "guide", "property maintenance"],
+    content: `# Jet Washing vs Pressure Washing - Expert Guide for Dorset Properties
+
+One of the most common questions we hear: **"What's the difference between jet washing and pressure washing?"**
+
+The short answer: They're essentially the same service. Here's the complete breakdown.
+
+## Jet Washing vs Pressure Washing - The Truth
+
+Both terms describe the same technology:
+
+- **Jet washing** = British term for pressure washing
+- **Pressure washing** = American term for jet washing
+- Both use high-pressure water jets
+- Both achieve identical results
+
+In Dorset, you'll hear both terms used interchangeably.
+
+## How Pressure Washing (Jet Washing) Works
+
+High-pressure water jets at 150+ bar pressure:
+
+1. Blast surface with concentrated water stream
+2. Remove dirt, algae, moss, and stains
+3. Clean without chemicals (or with biocide treatment)
+4. Leave surface pristine and protected
+
+## When Professional Jet Washing is Essential
+
+**Professional pressure washing needed for:**
+
+- Driveways (removing years of grime)
+- Patios and decking
+- Roof cleaning and moss removal
+- Gutter cleaning and maintenance
+- Commercial property cleaning
+- Window cleaning preparation
+
+## DIY vs Professional Pressure Washing
+
+**Why professional jet washing beats DIY:**
+
+- Proper equipment (150+ bar commercial pressure)
+- Biocide treatment expertise
+- Risk management (don't damage surfaces)
+- Guaranteed results
+- Insurance-backed work
+- Trained specialists in Dorset
+
+**DIY pressure washing risks:**
+
+- Wrong pressure settings damage surfaces
+- No biocide expertise
+- Can miss underlying issues
+- Expensive equipment rental
+- Safety hazards
+
+## The Bottom Line
+
+Whether you call it **jet washing** or **pressure washing**, professional results require expertise. Don't trust your property to DIY attempts or untrained cleaners.
+
+## Get Professional Pressure Washing in Dorset
+
+Looking for expert **jet washing and pressure washing** across Swanage, Purbeck, and Dorset?
+
+- WhatsApp: +44 7418 610731
+- Email: info@powerwashbros.co.uk
+- Free quotes for all your cleaning needs
+
+Let the professionals handle your pressure washing.`,
+  },
+  {
     title: "PowerWash Bros Partners with Evoca Group as Preferred Contractors",
     slug: "powerwash-bros-evoca-group-partnership-2026",
     excerpt: "We're proud to announce our partnership with Evoca Group as preferred external property maintenance contractors. Learn about our expanded services for commercial venues across Dorset.",

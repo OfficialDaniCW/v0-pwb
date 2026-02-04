@@ -7,8 +7,8 @@ import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 
 export const metadata: Metadata = {
-  title: "Soft Washing Swanage & Purbeck | Render & Stone Cleaning | PowerWash Bros",
-  description: "Professional soft washing in Swanage and Purbeck. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Free quotes.",
+  title: "Soft Washing Dorset | Render & Stone Cleaning | Biocide Treatment | PowerWash Bros",
+  description: "Professional soft washing in Swanage, Purbeck, and across Dorset. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Best soft washing Dorset.",
 }
 
 export default function SoftwashPage() {

@@ -5,8 +5,8 @@ import { CheckCircle2, Building2, Shield, FileText, Clock, AlertTriangle, Camera
 import Link from 'next/link'
 
 export const metadata = {
-  title: "Commercial Property Cleaning | PowerWash Bros | Swanage, Purbeck",
-  description: "Professional commercial property cleaning with RAMS provided, health & safety focused, working around your business across Purbeck.",
+  title: "Commercial Property Cleaning Dorset | Warehouse & Retail Cleaning | PowerWash Bros",
+  description: "Professional commercial property cleaning in Dorset with RAMS provided, health & safety focused. Warehouse cleaning, retail property maintenance, jet washing across Swanage, Purbeck, Bournemouth.",
 }
 
 export default function CommercialServicesPage() {
@@ -23,13 +23,13 @@ export default function CommercialServicesPage() {
                 <Building2 className="h-10 w-10 text-[#1E90FF]" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Commercial Property Cleaning
+                Commercial Property Cleaning & Warehouse Cleaning Dorset
               </h1>
               <p className="text-xl text-white/80 mb-4">
                 Your Business Matters to Us
               </p>
               <p className="text-lg text-white/70 max-w-2xl mx-auto mb-8">
-                Professional, health & safety focused property cleaning across Purbeck with RAMS provided, detailed reporting, and flexible scheduling to work around your business
+                Professional, health & safety focused commercial property cleaning and warehouse cleaning across Purbeck, Swanage, Bournemouth, and Dorset with RAMS provided, detailed reporting, and flexible scheduling to work around your business
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

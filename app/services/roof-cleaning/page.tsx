@@ -7,8 +7,8 @@ import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 
 export const metadata: Metadata = {
-  title: "Roof Cleaning Swanage & Purbeck | Moss Removal Experts | PowerWash Bros",
-  description: "Professional roof cleaning in Swanage and Purbeck. Biocide-trained moss removal specialists. Protect your Purbeck property from water damage. Free quotes.",
+  title: "Roof Cleaning & Moss Removal Swanage & Purbeck | Dorset Roof Cleaning | PowerWash Bros",
+  description: "Professional roof cleaning, moss removal, and biocide treatment in Swanage, Purbeck, and Dorset. Expert roof specialists with biocide training. Protect your property. Free quotes.",
 }
 
 export default function RoofCleaningPage() {
