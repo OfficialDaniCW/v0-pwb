@@ -73,7 +73,7 @@ export function CoreServices() {
                     {service.description}
                   </p>
                   <div className="flex items-center text-accent font-medium group-hover:gap-2 transition-all">
-                    <span>Learn More</span>
+                    <span>Learn more about {service.title}</span>
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>

@@ -46,7 +46,7 @@ export function PricingPreview() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-4">
               <Calculator className="h-5 w-5 text-accent" />
-              <span className="text-sm font-semibold text-accent">Transparent Pricing</span>
+              <span className="text-sm font-semibold text-foreground">Transparent Pricing</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">Average Service Quotes</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -103,9 +103,9 @@ export function PricingPreview() {
                   {/* Link */}
                   <Link
                     href={`/services/${service.name.toLowerCase().replace(" ", "-")}`}
-                    className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-white transition-colors"
+                    className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-accent transition-colors"
                   >
-                    Learn more
+                    Learn more about {service.name}
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
