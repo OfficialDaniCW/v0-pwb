@@ -3,6 +3,7 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import Script from "next/script"
 
 export const metadata = {
   title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
@@ -36,46 +37,45 @@ export default function DrivewayCleaningPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Driveway Cleaning and Restoration",
-    provider: {
+    "name": "Driveway Cleaning",
+    "description": "Professional driveway cleaning across Purbeck and Dorset with expert jet washing and biocide treatments.",
+    "serviceType": "Driveway Cleaning, Jet Washing, Pressure Washing",
+    "provider": {
       "@type": "LocalBusiness",
-      name: "PowerWash Bros",
-      image: "https://powerwashbros.co.uk/logo.png",
-      telephone: "+447418610731",
-      address: {
+      "name": "PowerWash Bros",
+      "image": "https://powerwashbros.co.uk/logo.png",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "address": {
         "@type": "PostalAddress",
-        addressLocality: "Swanage",
-        addressRegion: "Dorset",
-        postalCode: "BH19",
-        addressCountry: "GB",
+        "addressLocality": "Swanage",
+        "addressRegion": "Dorset",
+        "postalCode": "BH19",
+        "addressCountry": "GB"
       },
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
     },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Swanage",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Purbeck",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Dorset",
-      },
-    ],
-    description:
-      "Professional driveway cleaning and restoration services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
-    offers: {
+    "offers": {
       "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      priceCurrency: "GBP",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£150-£600"
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
   }
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="service-schema-driveway" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
 

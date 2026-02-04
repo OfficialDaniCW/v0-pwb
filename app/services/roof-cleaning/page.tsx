@@ -5,6 +5,33 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, Droplets, Shield, Sparkles } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
+
+// Declare breadcrumbSchema variable here
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://powerwashbros.co.uk/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://powerwashbros.co.uk/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Roof Cleaning",
+      "item": "https://powerwashbros.co.uk/services/roof-cleaning"
+    }
+  ]
+}
 
 export const metadata: Metadata = {
   title: "Roof Cleaning & Moss Removal Swanage & Purbeck | Dorset Roof Cleaning | PowerWash Bros",
@@ -12,8 +39,74 @@ export const metadata: Metadata = {
 }
 
 export default function RoofCleaningPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Roof Cleaning & Moss Removal",
+    "description": "Professional roof cleaning, moss removal, and biocide treatment in Swanage, Purbeck, and Dorset",
+    "serviceType": "Roof Cleaning, Moss Removal, Biocide Treatment",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "image": "https://powerwashbros.co.uk/logo.png",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "City", "name": "Corfe Castle" },
+        { "@type": "City", "name": "Worth Matravers" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£200-£800+"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I clean my roof?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We recommend roof cleaning every 12-18 months in Dorset's climate to prevent moss and algae growth. Regular cleaning extends roof life and maintains property value." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is biocide treatment safe for my roof?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, our biocide treatments are environmentally safe and specifically designed for roof cleaning. Our team is fully trained in biocide application and follows all safety protocols." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will pressure washing damage my roof tiles?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Professional pressure washing is safe when done correctly. We use appropriate pressure settings for different tile types. Soft wash methods are used for delicate tiles. DIY pressure washing can cause damage." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does roof cleaning take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most residential roofs take 2-4 hours depending on size and moss coverage. We complete the job safely from the ground using professional equipment." }
+      }
+    ]
+  }
+
+  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
+
   return (
     <>
+      {schemaList.map((schema, idx) => (
+        <Script key={idx} id={`roof-schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
@@ -397,32 +490,11 @@ export default function RoofCleaningPage() {
                 Roof Cleaning FAQs
               </h2>
               <div className="space-y-6">
-                {[
-                  {
-                    q: "How often should I clean my roof in Purbeck?",
-                    a: "Most Purbeck properties benefit from roof cleaning every 2-3 years. Coastal properties in Swanage or heavily shaded properties may need more frequent treatment due to accelerated moss growth."
-                  },
-                  {
-                    q: "Will you damage my tiles?",
-                    a: "No. We use gentle hand scraping, never high-pressure washing. Our method is safe for all tile types including Purbeck stone, slate, and historic materials."
-                  },
-                  {
-                    q: "How long does the biocide treatment last?",
-                    a: "PowerUps Bio-Clean provides protection for 12-24 months depending on your property's location, tree coverage, and exposure. Purbeck's climate means longer-lasting results than standard treatments."
-                  },
-                  {
-                    q: "Can you work on heritage buildings?",
-                    a: "Absolutely. We have extensive experience with Grade I and Grade II listed Purbeck properties. We understand the care required for historic Purbeck stone and traditional roofing materials."
-                  },
-                  {
-                    q: "Do you clean gutters too?",
-                    a: "Yes. Every roof clean includes complete gutter and downpipe clearance. We remove all moss, leaves, and debris to ensure proper water drainage."
-                  },
-                ].map((faq, i) => (
+                {faqSchema.mainEntity.map((faq, i) => (
                   <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
                     <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
+                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.name}</h3>
+                      <p className="text-white/80">{faq.acceptedAnswer.text}</p>
                     </CardContent>
                   </Card>
                 ))}

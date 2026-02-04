@@ -90,8 +90,45 @@ export default function PressureWashingPage() {
     }
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I pressure wash my property?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We recommend pressure washing annually for most properties. High-traffic areas may need more frequent cleaning, typically 6-12 months depending on climate and usage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is pressure washing safe for all surfaces?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Professional pressure washing is safe when done correctly. We adjust pressure settings for different surfaces - softwash for delicate materials, high-pressure for concrete. Always hire professionals to avoid damage." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between jet washing and pressure washing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Jet washing and pressure washing are the same thing. Both use high-pressure water jets to clean surfaces. In the UK, we typically use the term 'jet washing' while Americans say 'pressure washing'." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does biocide treatment really work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, biocide treatment is highly effective. It kills moss and algae spores at the root, preventing regrowth for 12-18 months. Professional application ensures proper effectiveness." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does cleaning take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Timings depend on property size and surface area. Average driveway: 1-2 hours. Large property: 3-4 hours. We provide exact timings after a site assessment." }
+      }
+    ]
+  }
+
+  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
+
   return (
     <>
+      {schemaList.map((schema, idx) => (
+        <Script key={idx} id={`schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
       <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">

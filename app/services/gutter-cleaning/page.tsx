@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, AlertTriangle } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "Gutter Cleaning Swanage & Purbeck | Prevent Water Damage | PowerWash Bros",
@@ -12,8 +13,40 @@ export const metadata: Metadata = {
 }
 
 export default function GutterCleaningPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Gutter Cleaning",
+    "description": "Professional gutter cleaning in Swanage and Purbeck. Prevent costly water damage to your property.",
+    "serviceType": "Gutter Cleaning, Gutter Maintenance",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£150-£400"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="service-schema-gutter" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] bg-[#0B1E3F] text-white">
         <SiteHeader />
         
@@ -45,7 +78,7 @@ export default function GutterCleaningPage() {
                     Chat on WhatsApp
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-[#1E90FF] text-white hover:bg-[#1E90FF]/10">
+                <Button asChild size="lg" variant="outline" className="border-[#1E90FF] text-white hover:bg-[#1E90FF]/10 bg-transparent">
                   <Link href="/quote">Get Free Quote</Link>
                 </Button>
               </div>

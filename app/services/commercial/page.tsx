@@ -3,6 +3,7 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, Building2, Shield, FileText, Clock, AlertTriangle, Camera } from 'lucide-react'
 import Link from 'next/link'
+import Script from 'next/script'
 
 export const metadata = {
   title: "Commercial Property Cleaning Dorset | Warehouse & Retail Cleaning | PowerWash Bros",
@@ -10,8 +11,41 @@ export const metadata = {
 }
 
 export default function CommercialServicesPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commercial Property Cleaning & Warehouse Cleaning",
+    "description": "Professional commercial property cleaning with warehouse and retail maintenance across Dorset with health & safety focus and RAMS provided.",
+    "serviceType": "Commercial Cleaning, Warehouse Cleaning, Property Maintenance",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "City", "name": "Bournemouth" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£500-£5000+"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="service-schema-commercial" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
