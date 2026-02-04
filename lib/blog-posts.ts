@@ -18,6 +18,109 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   {
+    title: "PowerWash Bros Partners with Evoca Group as Preferred Contractors",
+    slug: "powerwash-bros-evoca-group-partnership-2026",
+    excerpt: "We're proud to announce our partnership with Evoca Group as preferred external property maintenance contractors. Learn about our expanded services for commercial venues across Dorset.",
+    category: "Business News",
+    publishedAt: "2026-02-04",
+    readTime: 5,
+    featuredImage: "",
+    relatedService: "/services/commercial",
+    author: "PowerWash Bros",
+    tags: ["partnership", "commercial cleaning", "Evoca Group", "Santos&Co", "Dorset contractors"],
+    content: `# PowerWash Bros Partners with Evoca Group - Preferred External Maintenance Contractors
+
+We're delighted to announce a strategic partnership with **Evoca Group**, establishing PowerWash Bros as preferred contractors for external property maintenance across their portfolio of premium venues. This partnership reflects our commitment to delivering exceptional commercial cleaning services to Dorset's most discerning hospitality businesses.
+
+## About the Partnership
+
+Evoca Group operates a collection of premium dining establishments across the UK, and we've been selected to provide professional cleaning services that match their exacting standards. Our first project together was cleaning the stunning outdoor patio at their new restaurant venture, **Santos&Co** - a premium dining destination showcasing contemporary cuisine and exceptional hospitality.
+
+This partnership represents the confidence that high-end hospitality venues place in our expertise, professionalism, and quality standards.
+
+## What This Means for Our Clients
+
+Our partnership with Evoca Group reinforces our position as the preferred choice for commercial property maintenance in Dorset:
+
+- **Commercial Expertise**: We now bring established experience from premium hospitality venues to all our commercial contracts
+- **Quality Standards**: Every project meets the exacting standards required for high-end dining establishments
+- **Reliability**: Our proven track record with Evoca Group demonstrates our consistency and professionalism
+- **Portfolio Success**: Each project we complete adds to our portfolio of premium commercial work
+
+## Santos&Co: Our First Evoca Group Project
+
+The Santos&Co patio cleaning project showcased exactly why Evoca Group chose PowerWash Bros. This premium outdoor dining space required:
+
+- **Specialist soft-washing techniques** to protect high-end furniture and decor
+- **Precision scheduling** to work around service hours without disrupting restaurant operations
+- **Restaurant-grade cleanliness standards** befitting a luxury dining venue
+- **Attention to detail** that only professional contractors can deliver
+
+The transformation was remarkable - from weather-stained and algae-affected surfaces to an immaculate dining space that meets Evoca Group's premium standards.
+
+## Our Commercial Cleaning Services
+
+Through this partnership, we've expanded our commercial cleaning portfolio to include:
+
+**Hospitality & Retail Venues**
+- Restaurant patios, terraces, and outdoor dining areas
+- Bar and café external spaces
+- Retail frontages and window cleaning
+- Common areas and courtyard spaces
+
+**Specialist Solutions**
+- Soft-washing systems for delicate surfaces and furniture protection
+- Pressure washing for heavy-duty commercial requirements
+- Moss, algae, and organic growth treatment
+- Regular maintenance contracts tailored to venue requirements
+
+**Professional Standards**
+- Work scheduled around business operations
+- Safety-focused methodologies
+- Insurance-backed professional services
+- References from premium UK hospitality venues
+
+## Why Choose PowerWash Bros for Commercial Work?
+
+When Evoca Group evaluated contractors, they chose PowerWash Bros because we offer:
+
+1. **Proven Track Record** - Years of successful projects across Dorset's most demanding properties
+2. **Professional Team** - Trained staff who understand the unique requirements of commercial venues
+3. **Quality Assurance** - Every project meets exacting standards and brand requirements
+4. **Reliability** - Consistent delivery, professional conduct, and attention to detail
+5. **Bespoke Solutions** - Customised cleaning approaches for each unique venue
+
+## Expanding Services Across Dorset
+
+This partnership isn't just good news for us - it's excellent news for Dorset businesses looking for premium cleaning contractors. Our availability for commercial projects means:
+
+- **Premium hospitality venues** now have access to contractor-level expertise
+- **Retail businesses** can maintain pristine external appearances
+- **Commercial properties** can rely on consistent, professional maintenance
+- **Restaurant and café owners** can trust specialists in hospitality cleaning
+
+## Looking Forward
+
+We're excited about what this partnership represents - recognition of PowerWash Bros' commitment to excellence and professionalism. The success of the Santos&Co project demonstrates our ability to deliver at the highest standards, and we're proud to continue working with Evoca Group on their existing and future venues.
+
+For other hospitality businesses, retail venues, or commercial property managers in Dorset looking for professional external cleaning contractors, **our partnership with Evoca Group is your guarantee of quality and reliability.**
+
+## Interested in Our Commercial Services?
+
+Whether you operate a premium hospitality venue, retail business, or commercial property in Dorset, PowerWash Bros is ready to transform your external spaces.
+
+**Contact us today for a free consultation:**
+- WhatsApp: +44 7418 610731
+- Email: [info@powerwashbros.co.uk](mailto:info@powerwashbros.co.uk)
+- Visit: [Get a Quote](/get-quote)
+
+Let's discuss how we can help maintain your property to the same standards we bring to Evoca Group venues.
+
+---
+
+*PowerWash Bros - Professional Property Cleaning Services Across Dorset. Trusted by premium venues, chosen by businesses that demand excellence.*`,
+  },
+  {
     title: "Spring Roof Maintenance Checklist: Prepare Now for Summer",
     slug: "spring-roof-maintenance-checklist-2025",
     excerpt: "As spring arrives, it's the perfect time to inspect your roof and clear winter debris. Learn what to check before summer storms.",
