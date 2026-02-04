@@ -91,7 +91,7 @@ export function ScrollingTransformations() {
             <div className="relative h-[220px] overflow-hidden">
               <Image
                 src={item.afterImage || "/placeholder.svg"}
-                alt={`${item.title} - Professional ${item.serviceType}`}
+                alt={`${item.title} - Professional ${item.service}`}
                 fill
                 sizes="300px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"

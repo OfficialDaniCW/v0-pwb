@@ -36,7 +36,7 @@ export function PWBFooter() {
             </div>
 
             <div className="space-y-1 sm:space-y-2">
-              <h4 className="text-xs sm:text-sm font-bold text-foreground">Open Hours:</h4>
+              <h3 className="text-xs sm:text-sm font-bold text-foreground">Open Hours:</h3>
               <div className="text-xs sm:text-sm text-muted-foreground space-y-0.5 sm:space-y-1">
                 <p>Mon – Fri: 8 am – 5 pm</p>
                 <p>Saturday: 8am – 6pm</p>

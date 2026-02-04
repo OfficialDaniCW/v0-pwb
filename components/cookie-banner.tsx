@@ -82,7 +82,7 @@ export function CookieBanner() {
   // Preferences Modal
   if (showPreferences) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" style={{animation: 'fadeIn 0.3s ease-in'}}>
         <Card className="w-full max-w-lg bg-primary border-2 border-accent/30 shadow-2xl max-h-[90vh] overflow-y-auto">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-6">
@@ -186,7 +186,7 @@ export function CookieBanner() {
 
   // Main Banner
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 animate-in slide-in-from-bottom duration-500">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6" style={{animation: 'slideUp 0.5s ease-out'}}>
       <Card className="max-w-5xl mx-auto bg-[#0B1E3F] border-2 border-[#1E90FF]/30 shadow-2xl">
         <CardContent className="p-6">
           <div className="flex items-start justify-between gap-4">
