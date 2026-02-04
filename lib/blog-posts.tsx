@@ -18,7 +18,7 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   {
-    title: "Professional Gutter Cleaning Equipment - Why We Use Skyvac Systems",
+    title: "Professional Gutter Cleaning Equipment — Why We Use Skyvac Systems",
     slug: "professional-gutter-cleaning-equipment-skyvac-commercial-75-plus-dorset",
     excerpt: "Discover why PowerWash Bros uses professional Skyvac Commercial 75 Plus gutter cleaning systems. Learn about the equipment that keeps your gutters clean and damage-free.",
     category: "Equipment & Technology",
@@ -146,7 +146,7 @@ export const blogPosts: BlogPostData[] = [
 <p>Your gutters deserve professional care. We deliver exactly that.</p>`,
   },
   {
-    title: "Best Time to Pressure Wash Your Driveway - Expert Guide",
+    title: "Best Time to Pressure Wash Your Driveway — Expert Guide",
     slug: "best-time-pressure-wash-driveway-dorset-2026",
     excerpt: "Learn the best time of year to jet wash and pressure wash your driveway in Dorset. Expert timing advice for optimal results and longest-lasting cleanliness.",
     category: "Maintenance Tips",
@@ -234,7 +234,7 @@ export const blogPosts: BlogPostData[] = [
 <p>Your driveway deserves professional pressure washing at the right time of year. Learn more about our <a href="/services/driveway-cleaning">driveway cleaning services</a> today.</p>`,
   },
   {
-    title: "Why Biocide Treatment is Essential for Roof Cleaning - Science Explained",
+    title: "Why Biocide Treatment is Essential for Roof Cleaning — Science Explained",
     slug: "biocide-treatment-roof-cleaning-moss-removal-dorset-2026",
     excerpt: "Understand why professional biocide treatment is essential for roof cleaning and moss removal. Science-backed approach to protecting your Dorset property.",
     category: "Expert Tips",
@@ -342,7 +342,7 @@ export const blogPosts: BlogPostData[] = [
 <p>Explore more of our services: <a href="/services/softwash">soft washing</a> and <a href="/services/gutter-cleaning">gutter cleaning</a> also benefit from professional biocide treatments.</p>`,
   },
   {
-    title: "Jet Washing vs Pressure Washing - What's the Difference?",
+    title: "Jet Washing vs Pressure Washing — What's the Difference?",
     slug: "jet-washing-vs-pressure-washing-dorset-guide-2026",
     excerpt: "Confused about jet washing vs pressure washing? Learn the differences and when to use each for your Dorset property.",
     category: "Education",
