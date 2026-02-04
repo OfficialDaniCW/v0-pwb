@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { useState, useEffect } from "react"
 import { Calculator, CheckCircle2, Info, Droplets, Zap, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import { InfoTooltip } from "@/components/info-tooltip"
 
 export default function GetQuotePage() {
   const [serviceType, setServiceType] = useState("driveway")
@@ -198,9 +199,22 @@ export default function GetQuotePage() {
                           }`}
                         >
                           <div className="flex items-center justify-between">
-                            <div>
-                              <p className="font-semibold">Re-Sand Joints?</p>
-                              <p className="text-xs mt-1 opacity-80">+£2/m²</p>
+                            <div className="flex items-center gap-3">
+                              <div className="flex-1">
+                                <p className="font-semibold">Re-Sand Joints?</p>
+                                <p className="text-xs mt-1 opacity-80">+£2/m²</p>
+                              </div>
+                              <InfoTooltip
+                                title="Re-Sand Block Paving Joints"
+                                description="Block paving joints are the critical foundation that holds your entire surface together. Over time, sand washes away from between the blocks, causing them to shift, crack, and become uneven."
+                                benefits={[
+                                  "Prevents blocks from shifting and settling unevenly",
+                                  "Stops weeds and moss from growing between blocks",
+                                  "Extends the life of your paving by 5+ years",
+                                  "Maintains proper drainage and water run-off",
+                                  "Keeps your investment looking professionally finished",
+                                ]}
+                              />
                             </div>
                             <div className="text-xl">{needsResanding ? "✓" : "○"}</div>
                           </div>
@@ -213,6 +227,16 @@ export default function GetQuotePage() {
                       <Label className="text-foreground text-lg flex items-center gap-2 mb-3">
                         <Zap className="h-5 w-5 text-accent" />
                         Power Supply
+                        <InfoTooltip
+                          title="Power Supply Requirements"
+                          description="Professional cleaning equipment requires reliable electrical power. If external power isn't available, we bring our generator to power all equipment safely and efficiently."
+                          benefits={[
+                            "Generator ensures consistent, quality cleaning results",
+                            "We handle all generator setup and safety protocols",
+                            "No interruptions to your cleaning service",
+                            "Safe, professional operation on any property",
+                          ]}
+                        />
                       </Label>
                       <p className="text-sm text-muted-foreground mb-3">Do you have accessible external electricity available?</p>
                       <div className="flex gap-3 flex-col">
@@ -272,7 +296,19 @@ export default function GetQuotePage() {
                     {/* Access - Not shown for gutter - Button Group */}
                     {serviceType !== "gutter" && (
                       <div>
-                        <Label className="text-foreground text-lg">Access Type</Label>
+                        <Label className="text-foreground text-lg flex items-center gap-2">
+                          Access Type
+                          <InfoTooltip
+                            title="What is Access Type?"
+                            description="We classify access based on how easily we can position equipment and work safely. Difficult access (like steep roofs, narrow driveways, or enclosed spaces) requires additional safety equipment, time, and planning."
+                            benefits={[
+                              "Easy access means faster, more efficient work",
+                              "Difficult access requires specialised equipment and extra care",
+                              "Safety is our top priority regardless of access level",
+                              "Extra time needed for difficult access ensures quality results",
+                            ]}
+                          />
+                        </Label>
                         <div className="flex gap-3 mt-3 flex-wrap">
                           <button
                             onClick={() => setAccess("easy")}
