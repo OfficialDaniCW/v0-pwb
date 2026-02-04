@@ -1,11 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+
+import { CardTitle } from "@/components/ui/card"
+import { CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Users, Mail, Download, MailOpen } from "lucide-react"
+import { CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
+import { useEffect } from "react"
+import { useState } from "react"
+import { Users, Mail, Download, MailOpen, Send } from "lucide-react"
 import AdminLayout from "@/components/admin/admin-layout"
+import Link from "next/link"
 
 interface Subscriber {
   id: number
@@ -77,10 +83,32 @@ export default function NewsletterAdmin() {
   return (
     <AdminLayout>
       <div className="p-6 md:p-8 space-y-6">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Newsletter Subscribers</h1>
-          <p className="text-white/60">Manage your email list</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">Newsletter Management</h1>
+            <p className="text-white/60">Manage your subscriber list and create email campaigns</p>
+          </div>
         </div>
+
+        {/* Campaign CTA */}
+        <Card className="bg-gradient-to-r from-[#1E90FF]/20 to-[#00C853]/20 border-[#1E90FF]/30">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                  <Send className="h-5 w-5 text-[#1E90FF]" />
+                  Create Newsletter Campaign
+                </h3>
+                <p className="text-white/80">Design and send newsletters to your subscriber list with rich text editor and scheduling</p>
+              </div>
+              <Link href="/admin/newsletter/campaigns/list">
+                <Button className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white whitespace-nowrap">
+                  Manage Campaigns
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
 
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
@@ -135,13 +163,10 @@ export default function NewsletterAdmin() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="max-w-sm bg-white/10 border-white/20 text-white placeholder:text-white/40"
               />
-              <Button
-                onClick={exportSubscribers}
-                className="bg-[#0B1E3F] border border-white/20 text-white hover:bg-white/10"
-              >
-                <Download className="mr-2 h-4 w-4" />
+              <Link href="#" onClick={exportSubscribers} className="bg-[#0B1E3F] border border-white/20 text-white hover:bg-white/10 flex items-center justify-center gap-2 px-4 py-2 rounded">
+                <Download className="h-4 w-4" />
                 Export Active Subscribers
-              </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
