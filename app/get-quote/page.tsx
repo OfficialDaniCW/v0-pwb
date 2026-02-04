@@ -151,30 +151,54 @@ export default function GetQuotePage() {
                       </div>
                     )}
 
-                    {/* Surface Type - Only for Driveway */}
+                    {/* Surface Type - Only for Driveway - Button Group */}
                     {serviceType === "driveway" && (
                       <div>
                         <Label className="text-foreground text-lg">Surface Type</Label>
-                        <Select value={surfaceType} onValueChange={setSurfaceType}>
-                          <SelectTrigger className="mt-2">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="standard">Standard Concrete/Tarmac</SelectItem>
-                            <SelectItem value="block">Block Paving</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <div className="flex gap-3 mt-3 flex-wrap">
+                          <button
+                            onClick={() => setSurfaceType("standard")}
+                            className={`flex-1 min-w-[120px] py-3 px-4 rounded-lg font-semibold transition-all border-2 ${
+                              surfaceType === "standard"
+                                ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                                : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                            }`}
+                          >
+                            Concrete
+                          </button>
+                          <button
+                            onClick={() => setSurfaceType("block")}
+                            className={`flex-1 min-w-[120px] py-3 px-4 rounded-lg font-semibold transition-all border-2 ${
+                              surfaceType === "block"
+                                ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                                : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                            }`}
+                          >
+                            Block
+                          </button>
+                        </div>
                       </div>
                     )}
 
-                    {/* Re-sanding Option */}
+                    {/* Re-sanding Option - WhatsApp Green Button */}
                     {serviceType === "driveway" && surfaceType === "block" && (
-                      <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/50 border border-accent/30">
-                        <div>
-                          <Label className="text-foreground font-semibold">Add Block Paving Re-Sanding</Label>
-                          <p className="text-sm text-muted-foreground mt-1">Tightens joints and extends paving life</p>
-                        </div>
-                        <Switch checked={needsResanding} onCheckedChange={setNeedsResanding} />
+                      <div className="p-4 rounded-lg border-2 border-white/10 hover:border-[#00C853] transition-colors">
+                        <button
+                          onClick={() => setNeedsResanding(!needsResanding)}
+                          className={`w-full text-left p-4 rounded-lg font-semibold transition-all border-2 ${
+                            needsResanding
+                              ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                              : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="font-semibold">Re-Sand Joints?</p>
+                              <p className="text-xs mt-1 opacity-80">+£2/m²</p>
+                            </div>
+                            <div className="text-xl">{needsResanding ? "✓" : "○"}</div>
+                          </div>
+                        </button>
                       </div>
                     )}
 
@@ -192,19 +216,32 @@ export default function GetQuotePage() {
                       <p className="text-muted-foreground text-sm">Approximate distance from Swanage town centre</p>
                     </div>
 
-                    {/* Access - Not shown for gutter */}
+                    {/* Access - Not shown for gutter - Button Group */}
                     {serviceType !== "gutter" && (
                       <div>
                         <Label className="text-foreground text-lg">Access Type</Label>
-                        <Select value={access} onValueChange={setAccess}>
-                          <SelectTrigger className="mt-2">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="easy">Easy Access</SelectItem>
-                            <SelectItem value="hard">Difficult Access (Scaffolding/Equipment Required)</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <div className="flex gap-3 mt-3 flex-wrap">
+                          <button
+                            onClick={() => setAccess("easy")}
+                            className={`flex-1 min-w-[120px] py-3 px-4 rounded-lg font-semibold transition-all border-2 ${
+                              access === "easy"
+                                ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                                : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                            }`}
+                          >
+                            Easy Access
+                          </button>
+                          <button
+                            onClick={() => setAccess("hard")}
+                            className={`flex-1 min-w-[120px] py-3 px-4 rounded-lg font-semibold transition-all border-2 ${
+                              access === "hard"
+                                ? "bg-[#00C853] border-[#00C853] text-white shadow-lg"
+                                : "border-white/20 text-foreground hover:border-[#00C853] hover:bg-white/5"
+                            }`}
+                          >
+                            Difficult Access
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>
