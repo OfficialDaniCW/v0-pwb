@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { BlogPostsGrid } from "@/components/blog-posts-grid"
+import { BlogSearchFilterClient } from "@/components/blog-search-filter-client"
 
 export const metadata = {
   title: "Blog | PowerWash Bros | Expert Property Care Advice",
@@ -30,17 +31,6 @@ async function getBlogPosts() {
 export default async function BlogPage() {
   const posts = await getBlogPosts()
 
-  const categories = [
-    "All Posts",
-    "Property Maintenance",
-    "Prevention Tips",
-    "Dorset Properties",
-    "Industry Insights",
-    "Product Guides",
-    "Company News",
-    "Expert Advice",
-  ]
-
   return (
     <>
       <main className="min-h-[100dvh] text-white">
@@ -56,24 +46,11 @@ export default async function BlogPage() {
           </div>
         </section>
 
-        {/* Category Filters */}
-        <section className="py-8 border-b border-white/10">
+        {/* Search & Filters */}
+        <section className="py-12 border-b border-white/10">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex flex-wrap gap-3 justify-center">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                      category === "All Posts"
-                        ? "bg-[#1E90FF] text-white"
-                        : "bg-white/5 text-white/70 hover:bg-white/10"
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
+            <div className="max-w-4xl mx-auto">
+              <BlogSearchFilterClient posts={posts} />
             </div>
           </div>
         </section>
