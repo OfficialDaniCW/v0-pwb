@@ -7,6 +7,7 @@ import { CoreServices } from "@/components/core-services"
 import { HowItWorks } from "@/components/how-it-works"
 import { Testimonials } from "@/components/testimonials"
 import { PowerUpsIntro } from "@/components/powerups-intro"
+import { ServiceDiscountSection } from "@/components/service-discount-section"
 import { LatestBlogPosts } from "@/components/latest-blog-posts"
 import { InstagramFeed } from "@/components/instagram-feed"
 import { FinalCTA } from "@/components/final-cta"
@@ -67,6 +68,7 @@ export default function Page() {
         <HowItWorks />
         <Testimonials />
         <PowerUpsIntro />
+        <ServiceDiscountSection />
         <LatestBlogPosts />
         <InstagramFeed />
         <FinalCTA />
