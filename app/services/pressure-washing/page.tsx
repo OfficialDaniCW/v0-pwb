@@ -5,15 +5,132 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Zap, Home, Shield } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Pressure Washing Swanage & Purbeck | Driveway & Patio Cleaning | PowerWash Bros",
-  description: "Professional pressure washing in Swanage and Purbeck. Driveways, patios, walls, and decking restored. Expert power washing. Free quotes.",
+  title: "Pressure Washing Swanage & Purbeck | Jet Washing Dorset | PowerWash Bros",
+  description: "Professional jet washing and pressure washing in Swanage, Purbeck, and across Dorset. Expert driveway, patio, and wall cleaning. Best pressure washing Dorset. Free quotes.",
 }
 
 export default function PressureWashingPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://powerwashbros.co.uk"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://powerwashbros.co.uk/services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Pressure Washing",
+        "item": "https://powerwashbros.co.uk/services/pressure-washing"
+      }
+    ]
+  }
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pressure Washing & Jet Washing",
+    "description": "Professional jet washing and pressure washing services in Swanage, Purbeck, and across Dorset",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "image": "https://powerwashbros.co.uk/logo.png",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Swanage"
+        },
+        {
+          "@type": "City",
+          "name": "Purbeck"
+        },
+        {
+          "@type": "City",
+          "name": "Bournemouth"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Dorset"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dorset",
+        "addressCountry": "GB"
+      }
+    },
+    "serviceType": "Pressure Washing, Jet Washing, Driveway Cleaning",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£50-£500+"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I pressure wash my property?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We recommend pressure washing annually for most properties. High-traffic areas may need more frequent cleaning, typically 6-12 months depending on climate and usage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is pressure washing safe for all surfaces?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Professional pressure washing is safe when done correctly. We adjust pressure settings for different surfaces - softwash for delicate materials, high-pressure for concrete. Always hire professionals to avoid damage." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between jet washing and pressure washing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Jet washing and pressure washing are the same thing. Both use high-pressure water jets to clean surfaces. In the UK, we typically use the term 'jet washing' while Americans say 'pressure washing'." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does biocide treatment really work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, biocide treatment is highly effective. It kills moss and algae spores at the root, preventing regrowth for 12-18 months. Professional application ensures proper effectiveness." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does cleaning take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Timings depend on property size and surface area. Average driveway: 1-2 hours. Large property: 3-4 hours. We provide exact timings after a site assessment." }
+      }
+    ]
+  }
+
+  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
+
   return (
     <>
+      {schemaList.map((schema, idx) => (
+        <Script key={idx} id={`schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
+      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
@@ -30,10 +147,10 @@ export default function PressureWashingPage() {
               </nav>
               
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Expert Pressure Washing in Swanage & Purbeck
+                Expert Pressure Washing & Jet Washing in Swanage & Purbeck
               </h1>
               <p className="text-xl text-white/80 mb-8">
-                Transform your property with professional pressure washing services across Dorset. Driveways, patios, walls, decking and more restored to pristine condition.
+                Transform your property with professional jet washing and pressure washing services across Dorset. Best pressure washing for driveways, patios, walls, decking and more restored to pristine condition.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

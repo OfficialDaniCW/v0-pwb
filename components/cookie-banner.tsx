@@ -82,116 +82,83 @@ export function CookieBanner() {
   // Preferences Modal
   if (showPreferences) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-        <Card className="w-full max-w-lg bg-[#0B1E3F] border-2 border-[#1E90FF]/30 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" style={{animation: 'fadeIn 0.3s ease-in'}}>
+        <Card className="w-full max-w-lg bg-primary border-2 border-accent/30 shadow-2xl max-h-[90vh] overflow-y-auto">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-[#1E90FF]/20">
-                  <Settings className="h-5 w-5 text-[#1E90FF]" />
+                <div className="p-2 rounded-lg bg-accent/20 mt-0.5">
+                  <Shield className="h-4 w-4 text-accent" />
                 </div>
-                <h2 className="text-xl font-bold text-white">Cookie Preferences</h2>
+                <div>
+                  <h3 className="font-semibold text-foreground">Essential Cookies</h3>
+                  <p className="text-sm text-white/60 mt-1">
+                    Required for the website to function. These include session management and security features.
+                  </p>
+                </div>
               </div>
-              <button
-                onClick={() => setShowPreferences(false)}
-                className="text-white/60 hover:text-white transition-colors"
-                aria-label="Close preferences"
-              >
-                <X className="h-5 w-5" />
-              </button>
+                  <Switch checked={true} disabled className="data-[state=checked]:bg-success opacity-70" />
             </div>
-
-            <p className="text-sm text-white/70 mb-6">
-              Manage your cookie preferences below. Essential cookies are required for the website to function and
-              cannot be disabled.
-            </p>
-
-            <div className="space-y-4">
-              {/* Essential Cookies */}
-              <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#00C853]/20 mt-0.5">
-                      <Shield className="h-4 w-4 text-[#00C853]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Essential Cookies</h3>
-                      <p className="text-sm text-white/60 mt-1">
-                        Required for the website to function. These include session management and security features.
-                      </p>
-                    </div>
+            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-accent/20 mt-0.5">
+                    <BarChart3 className="h-4 w-4 text-accent" />
                   </div>
-                  <Switch checked={true} disabled className="data-[state=checked]:bg-[#00C853] opacity-70" />
-                </div>
-              </div>
-
-              {/* Analytics Cookies */}
-              <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#1E90FF]/20 mt-0.5">
-                      <BarChart3 className="h-4 w-4 text-[#1E90FF]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Analytics Cookies</h3>
-                      <p className="text-sm text-white/60 mt-1">
-                        Help us understand how visitors interact with our website to improve user experience.
-                      </p>
-                    </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Analytics Cookies</h3>
+                    <p className="text-sm text-white/60 mt-1">
+                      Help us understand how visitors interact with our website to improve user experience.
+                    </p>
                   </div>
-                  <Switch
-                    checked={preferences.analytics}
-                    onCheckedChange={() => togglePreference("analytics")}
-                    className="data-[state=checked]:bg-[#1E90FF]"
-                  />
                 </div>
-              </div>
-
-              {/* Marketing Cookies */}
-              <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#FF6B35]/20 mt-0.5">
-                      <Target className="h-4 w-4 text-[#FF6B35]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Marketing Cookies</h3>
-                      <p className="text-sm text-white/60 mt-1">
-                        Used to track visitors across websites to display relevant advertisements.
-                      </p>
-                    </div>
-                  </div>
-                  <Switch
-                    checked={preferences.marketing}
-                    onCheckedChange={() => togglePreference("marketing")}
-                    className="data-[state=checked]:bg-[#FF6B35]"
-                  />
-                </div>
-              </div>
-
-              {/* Functional Cookies */}
-              <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-[#9C27B0]/20 mt-0.5">
-                      <Settings className="h-4 w-4 text-[#9C27B0]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Functional Cookies</h3>
-                      <p className="text-sm text-white/60 mt-1">
-                        Enable enhanced functionality like remembering your preferences and settings.
-                      </p>
-                    </div>
-                  </div>
-                  <Switch
-                    checked={preferences.functional}
-                    onCheckedChange={() => togglePreference("functional")}
-                    className="data-[state=checked]:bg-[#9C27B0]"
-                  />
-                </div>
+                <Switch
+                  checked={preferences.analytics}
+                  onCheckedChange={() => togglePreference("analytics")}
+                    className="data-[state=checked]:bg-accent"
+                />
               </div>
             </div>
-
+            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-destructive/20 mt-0.5">
+                    <Target className="h-4 w-4 text-destructive" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Marketing Cookies</h3>
+                    <p className="text-sm text-white/60 mt-1">
+                      Used to track visitors across websites to display relevant advertisements.
+                    </p>
+                  </div>
+                </div>
+                <Switch
+                  checked={preferences.marketing}
+                  onCheckedChange={() => togglePreference("marketing")}
+                  className="data-[state=checked]:bg-[#FF6B35]"
+                />
+              </div>
+            </div>
+            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-[#9C27B0]/20 mt-0.5">
+                    <Settings className="h-4 w-4 text-[#9C27B0]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Functional Cookies</h3>
+                    <p className="text-sm text-white/60 mt-1">
+                      Enable enhanced functionality like remembering your preferences and settings.
+                    </p>
+                  </div>
+                </div>
+                <Switch
+                  checked={preferences.functional}
+                  onCheckedChange={() => togglePreference("functional")}
+                  className="data-[state=checked]:bg-[#9C27B0]"
+                />
+              </div>
+            </div>
             <div className="flex flex-wrap gap-3 mt-6 pt-6 border-t border-white/10">
               <Button onClick={savePreferences} className="bg-[#00C853] hover:bg-[#00C853]/90 text-white flex-1">
                 Save Preferences
@@ -204,7 +171,6 @@ export function CookieBanner() {
                 Accept All
               </Button>
             </div>
-
             <p className="text-xs text-white/50 mt-4 text-center">
               Read our{" "}
               <Link href="/cookies" className="text-[#1E90FF] hover:underline">
@@ -220,7 +186,7 @@ export function CookieBanner() {
 
   // Main Banner
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 animate-in slide-in-from-bottom duration-500">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6" style={{animation: 'slideUp 0.5s ease-out'}}>
       <Card className="max-w-5xl mx-auto bg-[#0B1E3F] border-2 border-[#1E90FF]/30 shadow-2xl">
         <CardContent className="p-6">
           <div className="flex items-start justify-between gap-4">

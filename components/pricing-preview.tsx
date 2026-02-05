@@ -9,9 +9,9 @@ export function PricingPreview() {
     {
       name: "Gutter Cleaning",
       description: "Per linear metre",
-      price: "£8",
+      price: "£6",
       unit: "/metre",
-      typical: "Average 3-bed semi: £140-£180",
+      typical: "Average 3-bed semi: £90-£120",
       features: ["Full debris removal", "Downpipe clearing", "Flow testing", "Before/after photos"],
       icon: Droplets,
       color: "#60A5FA",
@@ -19,19 +19,19 @@ export function PricingPreview() {
     {
       name: "Roof Cleaning",
       description: "Per square metre",
-      price: "£4.50",
+      price: "£11.50",
       unit: "/m²",
-      typical: "Average 3-bed semi: £450-£650",
-      features: ["Moss & algae removal", "Biocide treatment", "Ridge & valley clean", "Long-lasting protection"],
+      typical: "Average 3-bed semi: £1,150-£1,725",
+      features: ["Moss & algae removal", "Soft washing method", "Ridge & valley clean", "Biocide treatment extra"],
       icon: Home,
       color: "#F59E0B",
     },
     {
       name: "Patio Cleaning",
       description: "Per square metre",
-      price: "£3.00",
+      price: "£5",
       unit: "/m²",
-      typical: "Average patio 20m²: £60-£80",
+      typical: "Average patio 20m²: £100-£150",
       features: ["Deep pressure clean", "Weed removal", "Stain treatment", "Re-sanding available"],
       icon: Square,
       color: "#34D399",
@@ -39,17 +39,17 @@ export function PricingPreview() {
   ]
 
   return (
-    <section className="relative py-16 sm:py-20 bg-[#0A1628]">
+    <section className="relative py-16 sm:py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1E90FF]/10 border border-[#1E90FF]/30 mb-4">
-              <Calculator className="h-5 w-5 text-[#1E90FF]" />
-              <span className="text-sm font-semibold text-[#1E90FF]">Transparent Pricing</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-4">
+              <Calculator className="h-5 w-5 text-accent" />
+              <span className="text-sm font-semibold text-foreground">Transparent Pricing</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Average Service Quotes</h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">Average Service Quotes</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Professional property maintenance with no hidden costs. Get an instant estimate below.
             </p>
           </div>
@@ -61,8 +61,8 @@ export function PricingPreview() {
               return (
                 <div
                   key={service.name}
-                  className="group relative bg-[#0F2851]/50 backdrop-blur-sm border border-white/10 rounded-xl p-6
-                         hover:border-white/30 hover:bg-[#0F2851]/80 transition-all duration-300
+                  className="group relative bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6
+                         hover:border-border/80 hover:bg-card/80 transition-all duration-300
                          hover:scale-105 hover:shadow-xl"
                   style={{
                     animationDelay: `${index * 100}ms`,
@@ -78,22 +78,22 @@ export function PricingPreview() {
                   </div>
 
                   {/* Service Name */}
-                  <h3 className="text-xl font-bold text-white mb-2">{service.name}</h3>
-                  <p className="text-sm text-white/60 mb-4">{service.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{service.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
 
                   {/* Price */}
                   <div className="mb-4">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-white">{service.price}</span>
-                      <span className="text-lg text-white/60">{service.unit}</span>
+                      <span className="text-4xl font-bold text-foreground">{service.price}</span>
+                      <span className="text-lg text-muted-foreground">{service.unit}</span>
                     </div>
-                    <p className="text-sm text-white/50 mt-2">{service.typical}</p>
+                    <p className="text-sm text-muted-foreground/50 mt-2">{service.typical}</p>
                   </div>
 
                   {/* Features */}
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-white/70">
+                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" style={{ color: service.color }} />
                         <span>{feature}</span>
                       </li>
@@ -103,9 +103,9 @@ export function PricingPreview() {
                   {/* Link */}
                   <Link
                     href={`/services/${service.name.toLowerCase().replace(" ", "-")}`}
-                    className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-white transition-colors"
+                    className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-accent transition-colors"
                   >
-                    Learn more
+                    Learn more about {service.name}
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -114,7 +114,7 @@ export function PricingPreview() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="bg-gradient-to-r from-[#1E90FF]/10 to-[#00C853]/10 border border-white/10 rounded-xl p-8 text-center">
+            <div className="bg-gradient-to-r from-accent/10 to-green-500/10 border border-border rounded-xl p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-3">Need an Accurate Quote?</h3>
             <p className="text-white/70 mb-6 max-w-2xl mx-auto">
               Every property is unique. Get a personalised quote in minutes via WhatsApp or use our instant pricing
@@ -141,8 +141,8 @@ export function PricingPreview() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg px-8 py-6 text-base
-                         hover:bg-[#1E90FF] hover:text-white transition-all duration-300"
+                className="border-2 border-accent bg-transparent text-accent rounded-lg px-8 py-6 text-base
+                         hover:bg-accent hover:text-accent-foreground transition-all duration-300"
               >
                 <Link href="/pricing">
                   <Calculator className="h-5 w-5 mr-2" />

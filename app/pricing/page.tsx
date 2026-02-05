@@ -4,63 +4,175 @@ import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
+import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
-import { Calculator, CheckCircle2, Info, Droplets, Zap } from "lucide-react"
+import { Calculator, MapPin, AlertCircle, Package, Car, Home, Book as Roof, Droplets, Wind, Pipette, MessageCircle } from "lucide-react"
+import Link from "next/link"
+
+const SERVICES = [
+  { id: "driveway", name: "Driveway Cleaning", icon: Car },
+  { id: "patio", name: "Patio/Decking", icon: Home },
+  { id: "roof", name: "Roof Cleaning", icon: Roof },
+  { id: "gutter", name: "Gutter Cleaning", icon: Droplets },
+  { id: "walls", name: "Exterior Walls", icon: Wind },
+  { id: "softwash", name: "Softwash Treatment", icon: Pipette },
+]
+
+const SIZE_TIERS = {
+  driveway: {
+    small: { label: "Small", price: 120, description: "Compact parking / small single driveway" },
+    medium: { label: "Medium", price: 180, description: "Standard driveway (1-2 car spaces)" },
+    large: { label: "Large", price: 280, description: "Large driveway (2-3 car spaces)" },
+    xlarge: { label: "Extra Large", price: 420, description: "Multiple spaces / large turning area" },
+  },
+  patio: {
+    small: { label: "Small", price: 100, description: "Small patio (2-4 person seating)" },
+    medium: { label: "Medium", price: 220, description: "Medium patio (4-6 person seating)" },
+    large: { label: "Large", price: 380, description: "Large patio (6-8 person seating)" },
+    xlarge: { label: "Extra Large", price: 580, description: "8+ person / garden room area" },
+  },
+  roof: {
+    small: { label: "Small", price: 280, description: "Small/compact roof (terraced)" },
+    medium: { label: "Medium", price: 520, description: "Medium roof (semi-detached)" },
+    large: { label: "Large", price: 980, description: "Large roof (3-4 bed detached)" },
+    xlarge: { label: "Extra Large", price: 1280, description: "Large detached / complex roof" },
+  },
+  gutter: {
+    small: { label: "Small", price: 120, description: "Terraced / small bungalow" },
+    medium: { label: "Medium", price: 200, description: "Semi-detached / larger bungalow" },
+    large: { label: "Large", price: 340, description: "3-4 bed detached" },
+    xlarge: { label: "Extra Large", price: 480, description: "Large detached property" },
+  },
+  walls: {
+    small: { label: "Small", price: 250, description: "Small property (terraced)" },
+    medium: { label: "Medium", price: 480, description: "Medium property (semi-detached)" },
+    large: { label: "Large", price: 780, description: "Large property (detached)" },
+    xlarge: { label: "Extra Large", price: 1180, description: "Large detached / multiple storeys" },
+  },
+  softwash: {
+    small: { label: "Small", price: 280, description: "Small property (terraced)" },
+    medium: { label: "Medium", price: 520, description: "Medium property (semi-detached)" },
+    large: { label: "Large", price: 880, description: "Large property (detached)" },
+    xlarge: { label: "Extra Large", price: 1280, description: "Large detached property" },
+  },
+}
 
 export default function PricingPage() {
-  const [serviceType, setServiceType] = useState("driveway")
-  const [size, setSize] = useState([50])
-  const [gutterLength, setGutterLength] = useState([15])
-  const [access, setAccess] = useState("easy")
-  const [surfaceType, setSurfaceType] = useState("standard")
-  const [needsResanding, setNeedsResanding] = useState(false)
+  const [selectedServices, setSelectedServices] = useState<{ [key: string]: string }>({})
+  const [postcode, setPostcode] = useState("")
+  const [distanceFromSwanage, setDistanceFromSwanage] = useState(0)
+  const [postcodeError, setPostcodeError] = useState("")
+  const [isLoadingPostcode, setIsLoadingPostcode] = useState(false)
   const [estimatedPrice, setEstimatedPrice] = useState(0)
 
-  const [pricingData] = useState({
-    driveway: {
-      baseRate: 3.5,
-      blockPavingResanding: 1.5,
-      easyAccess: 1,
-      hardAccess: 1.3,
-    },
-    patio: { baseRate: 3.0, easyAccess: 1, hardAccess: 1.25 },
-    roof: { baseRate: 4.5, easyAccess: 1, hardAccess: 1.4 },
-    gutter: { baseRate: 8.0, perMetre: true },
-    walls: { baseRate: 2.8, easyAccess: 1, hardAccess: 1.3 },
-    softwash: { baseRate: 3.2, easyAccess: 1, hardAccess: 1.35 },
-  })
+  const handlePostcodeChange = async (value: string) => {
+    setPostcode(value.toUpperCase())
+    setPostcodeError("")
+
+    if (!value || value.length < 2) return
+
+    if (!/^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$/i.test(value.trim())) {
+      return
+    }
+
+    setIsLoadingPostcode(true)
+    try {
+      const response = await fetch(
+        `https://api.postcodes.io/postcodes/${encodeURIComponent(value.trim())}`
+      )
+
+      if (!response.ok) {
+        setPostcodeError("Postcode not found. Please check and try again.")
+        setIsLoadingPostcode(false)
+        return
+      }
+
+      const data = await response.json()
+      const { latitude, longitude } = data.result
+
+      const swanageLatitude = 50.6154
+      const swanageLongitude = -1.9410
+
+      const R = 3959
+      const lat1 = (swanageLatitude * Math.PI) / 180
+      const lat2 = (latitude * Math.PI) / 180
+      const deltaLat = ((latitude - swanageLatitude) * Math.PI) / 180
+      const deltaLon = ((longitude - swanageLongitude) * Math.PI) / 180
+
+      const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + 
+                Math.cos(lat1) * Math.cos(lat2) * 
+                Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2)
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+      const distance = R * c
+
+      setDistanceFromSwanage(Math.round(distance))
+      setPostcodeError("")
+    } catch (error) {
+      setPostcodeError("Unable to calculate distance.")
+      console.error("[v0] Postcode lookup error:", error)
+    } finally {
+      setIsLoadingPostcode(false)
+    }
+  }
+
+  const toggleService = (serviceId: string, sizeId: string) => {
+    setSelectedServices((prev) => {
+      const updated = { ...prev }
+      if (updated[serviceId] === sizeId) {
+        delete updated[serviceId]
+      } else {
+        updated[serviceId] = sizeId
+      }
+      return updated
+    })
+  }
 
   useEffect(() => {
     calculatePrice()
-  }, [serviceType, size, gutterLength, access, surfaceType, needsResanding])
+  }, [selectedServices])
 
   const calculatePrice = () => {
-    let price = 0
-
-    if (serviceType === "gutter") {
-      // Gutter is priced per linear metre
-      price = gutterLength[0] * pricingData.gutter.baseRate
-    } else {
-      const service = pricingData[serviceType as keyof typeof pricingData]
-      if (!service || !("baseRate" in service)) return
-
-      price = size[0] * service.baseRate
-
-      // Apply access multiplier
-      if ("easyAccess" in service && "hardAccess" in service) {
-        price *= access === "hard" ? service.hardAccess : service.easyAccess
+    let total = 0
+    Object.entries(selectedServices).forEach(([serviceId, sizeId]) => {
+      const sizes = SIZE_TIERS[serviceId as keyof typeof SIZE_TIERS]
+      if (sizes) {
+        const size = sizes[sizeId as keyof typeof sizes] as any
+        total += size.price
       }
+    })
+    setEstimatedPrice(total)
+  }
 
-      // Add block paving resanding for driveways
-      if (serviceType === "driveway" && surfaceType === "block" && needsResanding) {
-        price += size[0] * pricingData.driveway.blockPavingResanding
-      }
+  const handleGetQuote = () => {
+    if (Object.keys(selectedServices).length === 0) {
+      alert("Please select at least one service")
+      return
     }
 
-    setEstimatedPrice(Math.round(price))
+    if (!postcode) {
+      alert("Please enter your postcode")
+      return
+    }
+
+    // Build WhatsApp message with selections
+    let message = "Hi! I'd like a quote for:\n\n"
+    
+    Object.entries(selectedServices).forEach(([serviceId, sizeId]) => {
+      const service = SERVICES.find(s => s.id === serviceId)
+      const sizes = SIZE_TIERS[serviceId as keyof typeof SIZE_TIERS]
+      const size = sizes?.[sizeId as keyof typeof sizes] as any
+      message += `${service?.name}: ${size?.label}\n`
+    })
+
+    message += `\nPostcode: ${postcode}`
+    message += `\nEstimated Price: £${estimatedPrice}`
+
+    // WhatsApp Business number (UK format)
+    const phoneNumber = "447418610731" // Your WhatsApp number
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+    
+    window.open(whatsappUrl, "_blank")
   }
 
   return (
@@ -70,185 +182,97 @@ export default function PricingPage() {
 
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-6 mx-auto">
-                  <Calculator className="h-10 w-10 text-[#1E90FF]" />
+            <div className="text-center mb-16">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-6 mx-auto">
+                <Calculator className="h-10 w-10 text-[#1E90FF]" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Quick Pricing</h1>
+              <p className="text-xl text-white/70">Select your services, enter your postcode, and get a quick estimate</p>
+            </div>
+
+            <div className="max-w-6xl mx-auto">
+              {/* Postcode Input */}
+              <div className="mb-12 bg-white/5 rounded-lg p-6 border border-white/10">
+                <Label className="text-white text-lg font-semibold flex items-center gap-2 mb-3">
+                  <MapPin className="h-5 w-5 text-[#1E90FF]" />
+                  Your Location
+                </Label>
+                <div className="space-y-2 max-w-md">
+                  <Input
+                    placeholder="Enter postcode (e.g., BH19 2JJ)"
+                    value={postcode}
+                    onChange={(e) => handlePostcodeChange(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  />
+                  {isLoadingPostcode && (
+                    <p className="text-sm text-[#1E90FF]">Calculating distance...</p>
+                  )}
+                  {postcodeError && (
+                    <p className="text-sm text-red-400 flex items-center gap-1">
+                      <AlertCircle className="h-4 w-4" />
+                      {postcodeError}
+                    </p>
+                  )}
+                  {postcode && !postcodeError && !isLoadingPostcode && distanceFromSwanage > 0 && (
+                    <p className="text-sm text-green-400">✓ {distanceFromSwanage} miles from Swanage</p>
+                  )}
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Instant Pricing Calculator</h1>
-                <p className="text-xl text-white/70">Get a rough estimate for your property cleaning project</p>
               </div>
 
-              <div className="glass-border-enhanced rounded-2xl p-8 space-y-8">
-                {/* Service Type */}
-                <div className="space-y-3">
-                  <Label className="text-white text-lg">Service Type</Label>
-                  <Select
-                    value={serviceType}
-                    onValueChange={(val) => {
-                      setServiceType(val)
-                      // Reset surface type when changing service
-                      setSurfaceType("standard")
-                      setNeedsResanding(false)
-                    }}
-                  >
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="driveway">Driveway Cleaning</SelectItem>
-                      <SelectItem value="patio">Patio/Decking</SelectItem>
-                      <SelectItem value="roof">Roof Cleaning</SelectItem>
-                      <SelectItem value="gutter">Gutter Cleaning</SelectItem>
-                      <SelectItem value="walls">Exterior Walls</SelectItem>
-                      <SelectItem value="softwash">Softwash Treatment</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Conditional: Driveway Surface Type */}
-                {serviceType === "driveway" && (
-                  <div className="space-y-3">
-                    <Label className="text-white text-lg">Driveway Surface Type</Label>
-                    <Select value={surfaceType} onValueChange={setSurfaceType}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="standard">Concrete / Tarmac / Resin</SelectItem>
-                        <SelectItem value="block">Block Paving</SelectItem>
-                        <SelectItem value="natural">Natural Stone</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    {/* Block Paving Resanding Option */}
-                    {surfaceType === "block" && (
-                      <div className="bg-[#1E90FF]/10 rounded-lg p-4 border border-[#1E90FF]/30 mt-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-start gap-3">
-                            <Info className="h-5 w-5 text-[#1E90FF] mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="text-white font-medium">Kiln-Dried Sand Re-Application</p>
-                              <p className="text-white/60 text-sm">
-                                Block paving benefits from re-sanding after cleaning (+£
-                                {pricingData.driveway.blockPavingResanding.toFixed(2)}/sqm)
-                              </p>
-                            </div>
+              {/* Services Grid with Size Tiers */}
+              <div className="space-y-8">
+                {SERVICES.map((service) => (
+                  <div key={service.id}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <service.icon className="h-6 w-6 text-[#1E90FF]" />
+                      <h2 className="text-2xl font-bold text-white">{service.name}</h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {Object.entries(SIZE_TIERS[service.id as keyof typeof SIZE_TIERS]).map(([sizeId, sizeData]) => (
+                        <button
+                          key={sizeId}
+                          onClick={() => toggleService(service.id, sizeId)}
+                          className={`p-4 rounded-lg border-2 transition-all text-left ${
+                            selectedServices[service.id] === sizeId
+                              ? "border-[#00C853] bg-[#00C853]/20 shadow-lg"
+                              : "border-white/20 bg-white/5 hover:border-[#1E90FF] hover:bg-white/10"
+                          }`}
+                        >
+                          <div className="mb-3">
+                            <p className="text-lg font-bold text-white">{sizeData.label}</p>
+                            <p className="text-xs text-white/60 mt-1">{sizeData.description}</p>
                           </div>
-                          <Switch checked={needsResanding} onCheckedChange={setNeedsResanding} />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Size - for non-gutter services */}
-                {serviceType !== "gutter" ? (
-                  <div className="space-y-3">
-                    <Label className="text-white text-lg">Approximate Size: {size[0]}m²</Label>
-                    <Slider value={size} onValueChange={setSize} min={10} max={500} step={10} className="w-full" />
-                    <p className="text-white/60 text-sm">Adjust slider to match your property size</p>
-                  </div>
-                ) : (
-                  /* Gutter Length */
-                  <div className="space-y-3">
-                    <Label className="text-white text-lg">Gutter Length: {gutterLength[0]} linear metres</Label>
-                    <Slider
-                      value={gutterLength}
-                      onValueChange={setGutterLength}
-                      min={5}
-                      max={100}
-                      step={5}
-                      className="w-full"
-                    />
-                    <p className="text-white/60 text-sm">Estimate the total length of guttering around your property</p>
-                  </div>
-                )}
-
-                {/* Access - not shown for gutter */}
-                {serviceType !== "gutter" && (
-                  <div className="space-y-3">
-                    <Label className="text-white text-lg">Property Access</Label>
-                    <Select value={access} onValueChange={setAccess}>
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="easy">Easy (parking nearby, no obstructions)</SelectItem>
-                        <SelectItem value="hard">Difficult (limited access, stairs, slopes)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                )}
-
-                {/* Water & Power Notice */}
-                <div className="bg-amber-500/10 rounded-lg p-4 border border-amber-500/30">
-                  <div className="flex items-start gap-3">
-                    <div className="flex gap-2">
-                      <Droplets className="h-5 w-5 text-amber-400" />
-                      <Zap className="h-5 w-5 text-amber-400" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium">Water & Power Required</p>
-                      <p className="text-white/60 text-sm">
-                        We will need access to an external water tap and power supply on the day of service. Please
-                        ensure these are accessible.
-                      </p>
+                          <div className="text-[#00C853] font-semibold text-xl">£{sizeData.price}</div>
+                        </button>
+                      ))}
                     </div>
                   </div>
-                </div>
-
-                {/* Estimated Price */}
-                <div className="bg-[#1E90FF]/20 rounded-xl p-8 text-center border-2 border-[#1E90FF]">
-                  <p className="text-white/80 mb-2">Estimated Price</p>
-                  <p className="text-5xl font-bold text-[#1E90FF]">£{estimatedPrice}</p>
-                  <p className="text-white/60 text-sm mt-2">
-                    {serviceType === "gutter"
-                      ? `Based on ${gutterLength[0]} linear metres`
-                      : `Based on ${size[0]}m² area`}
-                    {serviceType === "driveway" && surfaceType === "block" && needsResanding && " (includes resanding)"}
-                  </p>
-                  <p className="text-amber-400 text-xs mt-3">
-                    * Online estimates are indicative. Final quote provided after site assessment.
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <div className="space-y-4">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="w-full bg-[#00C853] text-white font-semibold text-lg py-6
-                               hover:bg-[#00A843] transition-all"
-                  >
-                    <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
-                      Get Accurate Quote via WhatsApp
-                    </a>
-                  </Button>
-                  <p className="text-white/60 text-sm text-center">
-                    Send us photos for a precise quote tailored to your property
-                  </p>
-                </div>
+                ))}
               </div>
 
-              {/* What's Included */}
-              <div className="mt-12 glass-border rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Every Quote Includes</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    "Free property assessment",
-                    "PowerUps biocide treatment",
-                    "Professional equipment",
-                    "Waste disposal",
-                    "Before/after photos",
-                    "Satisfaction guarantee",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-6 w-6 text-[#00C853] flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">{item}</span>
-                    </div>
-                  ))}
+              {/* Summary & CTA */}
+              <div className="mt-16 bg-gradient-to-r from-[#1E90FF]/20 to-[#00C853]/20 rounded-lg p-8 border-2 border-white/10">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div>
+                    <p className="text-white/70 text-sm mb-1">Estimated Total</p>
+                    <p className="text-5xl font-bold text-white">£{estimatedPrice}</p>
+                    <p className="text-white/60 text-sm mt-2">
+                      {Object.keys(selectedServices).length} service{Object.keys(selectedServices).length !== 1 ? "s" : ""} selected
+                    </p>
+                  </div>
+                  <Button
+                    onClick={handleGetQuote}
+                    disabled={Object.keys(selectedServices).length === 0}
+                    className="w-full sm:w-auto h-14 px-8 bg-[#00C853] hover:bg-[#00C853]/90 text-white font-semibold text-lg flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    Get Exact Quote via WhatsApp
+                  </Button>
                 </div>
+                <p className="text-white/60 text-xs mt-4">
+                  This is an estimate based on standard assumptions. Your final quote may vary based on site conditions, access, and specific requirements. We'll confirm exact pricing via WhatsApp.
+                </p>
               </div>
             </div>
           </div>

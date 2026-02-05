@@ -38,12 +38,12 @@ export function HowItWorks() {
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#3B82F6] to-[#1E90FF]">
+    <section className="py-24 bg-gradient-to-br from-accent to-accent/80">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">How It Works</h2>
-            <p className="text-xl text-white/70">Simple, transparent, professional</p>
+            <h2 className="text-4xl font-bold text-accent-foreground mb-4">How It Works</h2>
+            <p className="text-xl text-accent-foreground/70">Simple, transparent, professional</p>
           </div>
 
           <div className="relative">
@@ -51,12 +51,12 @@ export function HowItWorks() {
             <div className="grid md:grid-cols-5 gap-8 relative">
               {steps.map((step, index) => (
                 <div key={step.number} className="flex flex-col items-center text-center">
-                  <div className="rounded-full w-20 h-20 flex items-center justify-center mb-4 bg-white/10 backdrop-blur-sm border border-white/20 relative z-10">
-                    <step.icon className="h-10 w-10 text-white" />
+                  <div className="rounded-full w-20 h-20 flex items-center justify-center mb-4 bg-accent-foreground/10 backdrop-blur-sm border border-accent-foreground/20 relative z-10">
+                    <step.icon className="h-10 w-10 text-accent-foreground" />
                   </div>
-                  <div className="text-4xl font-black text-white mb-2">{step.number}</div>
-                  <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm text-white/70 leading-relaxed">{step.description}</p>
+                  <div className="text-4xl font-black text-accent-foreground mb-2">{step.number}</div>
+                  <h3 className="text-lg font-bold text-accent-foreground mb-2">{step.title}</h3>
+                  <p className="text-sm text-accent-foreground/70 leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>

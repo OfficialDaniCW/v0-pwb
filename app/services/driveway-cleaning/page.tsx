@@ -3,14 +3,15 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import Script from "next/script"
 
 export const metadata = {
-  title: "Driveway Cleaning & Restoration | PowerWash Bros | Swanage, Purbeck",
+  title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
   description:
-    "Professional driveway cleaning services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
+    "Professional driveway cleaning across Purbeck and Dorset. Expert jet washing and biocide treatments. Transform tired driveways back to pristine condition. Best driveway cleaning Dorset. Free quotes.",
   openGraph: {
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
-    description: "Transform tired driveways with professional biocide treatments in Swanage and Purbeck",
+    description: "Transform tired driveways with professional jet washing and biocide treatments in Swanage and Purbeck",
     url: "https://powerwashbros.co.uk/services/driveway-cleaning",
     siteName: "PowerWash Bros",
     images: [
@@ -18,7 +19,7 @@ export const metadata = {
         url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-3.jpeg",
         width: 1200,
         height: 630,
-        alt: "Driveway cleaning transformation in Purbeck",
+        alt: "Driveway cleaning and jet washing transformation in Purbeck",
       },
     ],
     locale: "en_GB",
@@ -27,7 +28,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
-    description: "Transform tired driveways with professional biocide treatments in Swanage and Purbeck",
+    description: "Transform tired driveways with professional jet washing in Swanage and Purbeck",
     images: ["https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-3.jpeg"],
   },
 }
@@ -36,46 +37,45 @@ export default function DrivewayCleaningPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Driveway Cleaning and Restoration",
-    provider: {
+    "name": "Driveway Cleaning",
+    "description": "Professional driveway cleaning across Purbeck and Dorset with expert jet washing and biocide treatments.",
+    "serviceType": "Driveway Cleaning, Jet Washing, Pressure Washing",
+    "provider": {
       "@type": "LocalBusiness",
-      name: "PowerWash Bros",
-      image: "https://powerwashbros.co.uk/logo.png",
-      telephone: "+447418610731",
-      address: {
+      "name": "PowerWash Bros",
+      "image": "https://powerwashbros.co.uk/logo.png",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "address": {
         "@type": "PostalAddress",
-        addressLocality: "Swanage",
-        addressRegion: "Dorset",
-        postalCode: "BH19",
-        addressCountry: "GB",
+        "addressLocality": "Swanage",
+        "addressRegion": "Dorset",
+        "postalCode": "BH19",
+        "addressCountry": "GB"
       },
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
     },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Swanage",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Purbeck",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Dorset",
-      },
-    ],
-    description:
-      "Professional driveway cleaning and restoration services across Purbeck and Dorset. Transform tired driveways back to pristine condition using biocide treatments and expert techniques.",
-    offers: {
+    "offers": {
       "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      priceCurrency: "GBP",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£150-£600"
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
   }
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="service-schema-driveway" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
 

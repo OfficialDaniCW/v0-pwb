@@ -3,12 +3,13 @@ import { Instagram, Facebook, Mail, Phone, MapPin, Send, ArrowUp } from "lucide-
 import { FaTiktok } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { NewsletterForm } from "@/components/newsletter-form"
 import Image from "next/image"
 import Link from "next/link"
 
 export function PWBFooter() {
   return (
-    <footer className="relative bg-[#0B1E3F] text-white overflow-hidden">
+    <footer className="relative bg-primary text-foreground overflow-hidden">
       {/* Background Pattern with Overlay */}
       <div
         className="absolute inset-0 z-0 opacity-10 pointer-events-none"
@@ -29,14 +30,14 @@ export function PWBFooter() {
               <div className="relative h-12 w-12 sm:h-16 sm:w-16">
                 <Image src="/images/pwb-logo-circle.png" alt="PowerWash Bros Logo" fill className="object-contain" />
               </div>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Dorsets leading pressure washing company.
               </p>
             </div>
 
             <div className="space-y-1 sm:space-y-2">
-              <h4 className="text-xs sm:text-sm font-bold text-white">Open Hours:</h4>
-              <div className="text-xs sm:text-sm text-white/70 space-y-0.5 sm:space-y-1">
+              <h3 className="text-xs sm:text-sm font-bold text-foreground">Open Hours:</h3>
+              <div className="text-xs sm:text-sm text-muted-foreground space-y-0.5 sm:space-y-1">
                 <p>Mon – Fri: 8 am – 5 pm</p>
                 <p>Saturday: 8am – 6pm</p>
                 <p>Sunday: 9am – 3pm</p>
@@ -47,19 +48,19 @@ export function PWBFooter() {
           {/* Column 2: Official info */}
           <div className="col-span-2 md:col-span-1 space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-bold">Official info</h3>
-            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-white/70">
+            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-muted-foreground">
               <li className="flex items-start gap-2 sm:gap-3">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-accent shrink-0 mt-0.5" />
                 <span>Hardingredmans, Bridge House, Court Road, Swanage, BH19 1DX</span>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0" />
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-accent shrink-0" />
                 <a href="tel:07418610731" className="hover:text-white transition-colors">
                   07418610731
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
-                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E90FF] shrink-0 mt-0.5" />
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-accent shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <a href="mailto:info@powerwashbros.co.uk" className="hover:text-white transition-colors break-all">
                     info@powerwashbros.co.uk
@@ -100,7 +101,7 @@ export function PWBFooter() {
                 href="https://uk.trustpilot.com/review/powerwashbros.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-[#00B67A] transition-colors"
+                className="text-muted-foreground hover:text-green-500 transition-colors"
                 aria-label="Trustpilot Reviews"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -140,46 +141,46 @@ export function PWBFooter() {
           {/* Column 3: Quick Links */}
           <div className="space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-bold">Quick Links</h3>
-            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-white/70">
+            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
               <li>
-                <Link href="/about" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/about"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/services"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   All Services
                 </Link>
               </li>
               <li>
-                <Link href="/our-work" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/our-work"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Our Work
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/blog"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/contact"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/get-quote" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/get-quote"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Get a Quote
                 </Link>
               </li>
               <li>
-                <Link href="/admin/login" className="hover:text-[#1E90FF] transition-colors flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" />
+                <Link href="/admin/login"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Staff Portal
                 </Link>
               </li>
@@ -189,7 +190,7 @@ export function PWBFooter() {
           {/* Column 4: Services */}
           <div className="space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-bold">Services</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-white/70">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li>
                 <Link href="/services/driveway-cleaning" className="hover:text-[#1E90FF] transition-colors">
                   Driveway Cleaning
@@ -251,39 +252,24 @@ export function PWBFooter() {
           {/* Column 5: Newsletter */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-bold">Newsletter</h3>
-            <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
               Subscribe to our newsletter to get our latest updates & news
             </p>
-            <form className="flex gap-0 max-w-sm">
-              <div className="relative flex-1">
-                <Input
-                  type="email"
-                  placeholder="Your mail address"
-                  className="bg-[#1A2C4E] border-none text-white placeholder:text-white/40 h-10 sm:h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0 text-sm"
-                />
-              </div>
-              <Button
-                type="submit"
-                aria-label="Subscribe to newsletter"
-                className="h-10 sm:h-12 w-10 sm:w-12 min-w-[48px] min-h-[48px] rounded-l-none bg-[#1E90FF] hover:bg-[#1E90FF]/90 p-0 flex items-center justify-center"
-              >
-                <Send className="h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 bg-[#0033CC] py-4 sm:py-6">
+      <div className="relative z-10 bg-card py-4 sm:py-6">
         <div className="container mx-auto px-4 flex flex-col items-center gap-4">
-          <p className="text-xs sm:text-sm text-white/90 text-center">
+          <p className="text-xs sm:text-sm text-foreground/90 text-center">
             2025 © All rights reserved by <span className="font-bold">PowerwashBros Ltd</span>
             <span className="hidden sm:inline"> | Company no. 16100439</span>
           </p>
-          <p className="text-xs text-white/70 sm:hidden">Company no. 16100439</p>
+          <p className="text-xs text-foreground/70 sm:hidden">Company no. 16100439</p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/80">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-foreground/80">
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy
             </Link>
@@ -298,7 +284,7 @@ export function PWBFooter() {
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="h-8 w-8 sm:h-10 sm:w-10 bg-[#1E90FF] rounded flex items-center justify-center hover:bg-white hover:text-[#1E90FF] transition-all shadow-lg"
+              className="h-8 w-8 sm:h-10 sm:w-10 bg-accent rounded flex items-center justify-center hover:bg-foreground hover:text-accent transition-all shadow-lg"
               aria-label="Scroll to top"
             >
               <ArrowUp className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -310,13 +296,13 @@ export function PWBFooter() {
       {/* TrueNorthTech credit bar */}
       <div className="relative z-10 bg-black py-2 sm:py-3">
         <div className="container mx-auto px-4 flex items-center justify-center">
-          <p className="text-xs text-white/80 text-center">
+          <p className="text-xs text-foreground/80 text-center">
             created by{" "}
             <a
               href="https://www.truenorthtech.co.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-white hover:text-[#1E90FF] transition-colors"
+              className="font-medium text-foreground hover:text-accent transition-colors"
             >
               TrueNorthTech
             </a>{" "}

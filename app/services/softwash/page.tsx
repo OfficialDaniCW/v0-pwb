@@ -5,15 +5,48 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Shield, Leaf } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Soft Washing Swanage & Purbeck | Render & Stone Cleaning | PowerWash Bros",
-  description: "Professional soft washing in Swanage and Purbeck. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Free quotes.",
+  title: "Soft Washing Dorset | Render & Stone Cleaning | Biocide Treatment | PowerWash Bros",
+  description: "Professional soft washing in Swanage, Purbeck, and across Dorset. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Best soft washing Dorset.",
 }
 
 export default function SoftwashPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Soft Washing",
+    "description": "Professional soft washing in Swanage, Purbeck, and Dorset. Gentle biocide treatment for render, stone, and delicate surfaces.",
+    "serviceType": "Soft Washing, Render Cleaning, Biocide Treatment",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£150-£700"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="service-schema-softwash" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         

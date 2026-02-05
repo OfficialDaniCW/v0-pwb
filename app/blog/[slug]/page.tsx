@@ -108,95 +108,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
 
               {/* Content */}
-              <div className="prose prose-invert prose-lg max-w-none">
-                <div className="text-white/80 leading-relaxed space-y-6">
-                  {post.content.split("\n\n").map((paragraph, index) => {
-                    if (paragraph.startsWith("## ")) {
-                      return (
-                        <h2 key={index} className="text-2xl font-bold text-white mt-12 mb-4">
-                          {paragraph.replace("## ", "")}
-                        </h2>
-                      )
-                    } else if (paragraph.startsWith("### ")) {
-                      return (
-                        <h3 key={index} className="text-xl font-bold text-white mt-8 mb-3">
-                          {paragraph.replace("### ", "")}
-                        </h3>
-                      )
-                    } else if (paragraph.startsWith("- ")) {
-                      return (
-                        <ul key={index} className="list-disc list-inside space-y-2 ml-4">
-                          {paragraph.split("\n").map((item, i) => (
-                            <li key={i}>{item.replace(/^- /, "")}</li>
-                          ))}
-                        </ul>
-                      )
-                    } else if (paragraph.match(/^\d+\./)) {
-                      return (
-                        <ol key={index} className="list-decimal list-inside space-y-2 ml-4">
-                          {paragraph.split("\n").map((item, i) => (
-                            <li key={i}>{item.replace(/^\d+\.\s*/, "")}</li>
-                          ))}
-                        </ol>
-                      )
-                    } else {
-                      // Basic link parser for markdown-style links [text](url)
-                      const linkRegex = /\[([^\]]+)\]$$([^)]+)$$/g
-                      if (paragraph.match(linkRegex)) {
-                        const parts = []
-                        let lastIndex = 0
-                        let match
-                        while ((match = linkRegex.exec(paragraph)) !== null) {
-                          if (match.index > lastIndex) {
-                            parts.push(paragraph.substring(lastIndex, match.index))
-                          }
-                          parts.push(
-                            <a
-                              key={match.index}
-                              href={match[2]}
-                              className="text-[#1E90FF] hover:underline"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {match[1]}
-                            </a>,
-                          )
-                          lastIndex = match.index + match[0].length
-                        }
-                        if (lastIndex < paragraph.length) {
-                          parts.push(paragraph.substring(lastIndex))
-                        }
-                        return <p key={index}>{parts}</p>
-                      }
-
-                      // Bold text parser **text**
-                      const boldRegex = /\*\*([^*]+)\*\*/g
-                      if (paragraph.match(boldRegex)) {
-                        const parts = []
-                        let lastIndex = 0
-                        let match
-                        while ((match = boldRegex.exec(paragraph)) !== null) {
-                          if (match.index > lastIndex) {
-                            parts.push(paragraph.substring(lastIndex, match.index))
-                          }
-                          parts.push(
-                            <strong key={match.index} className="font-bold text-white">
-                              {match[1]}
-                            </strong>,
-                          )
-                          lastIndex = match.index + match[0].length
-                        }
-                        if (lastIndex < paragraph.length) {
-                          parts.push(paragraph.substring(lastIndex))
-                        }
-                        return <p key={index}>{parts}</p>
-                      }
-
-                      return <p key={index}>{paragraph}</p>
-                    }
-                  })}
-                </div>
-              </div>
+              <div
+                className="prose prose-invert max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: post.content
+                    .replace(/<h1/g, '<h1 class="text-4xl font-bold text-white mt-16 mb-6 leading-tight"')
+                    .replace(/<h2/g, '<h2 class="text-2xl font-bold text-white mt-12 mb-4"')
+                    .replace(/<h3/g, '<h3 class="text-xl font-bold text-white mt-8 mb-3"')
+                    .replace(/<h4/g, '<h4 class="text-lg font-bold text-white mt-6 mb-2"')
+                    .replace(/<p/g, '<p class="text-white/80 leading-relaxed mb-4"')
+                    .replace(/<ul/g, '<ul class="list-disc list-inside space-y-2 ml-4 text-white/80 mb-4"')
+                    .replace(/<ol/g, '<ol class="list-decimal list-inside space-y-2 ml-4 text-white/80 mb-4"')
+                    .replace(/<li/g, '<li class="text-white/80"')
+                    .replace(/<strong/g, '<strong class="font-bold text-white"')
+                    .replace(/<a/g, '<a class="text-[#1E90FF] hover:underline"'),
+                }}
+              />
 
               {/* Tags */}
               <div className="mt-12 pt-8 border-t border-white/10">

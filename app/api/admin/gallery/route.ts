@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 
-const sql = neon(process.env.DATABASE_URL!)
+const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
 
 export async function GET() {
   try {

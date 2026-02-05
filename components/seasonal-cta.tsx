@@ -175,7 +175,7 @@ export function SeasonalCTA() {
 
   return (
     <section className={`relative py-16 sm:py-20 bg-gradient-to-br ${seasonConfig.bgGradient}`}>
-      <div className="absolute inset-0 bg-[#0A1628] opacity-95" />
+      <div className="absolute inset-0 bg-primary opacity-95" />
 
       <div className="container relative mx-auto px-4">
         <div className="max-w-5xl mx-auto">
@@ -219,7 +219,7 @@ export function SeasonalCTA() {
                     {service.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#1E90FF] transition-colors">
+                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
                       {service.name}
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed">{service.reason}</p>

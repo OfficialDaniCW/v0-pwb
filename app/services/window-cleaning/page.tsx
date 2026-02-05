@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Shield, Sparkles, Clock } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "Window Cleaning Swanage & Purbeck | Residential & Commercial | PowerWash Bros",
@@ -12,8 +13,40 @@ export const metadata: Metadata = {
 }
 
 export default function WindowCleaningPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Window Cleaning",
+    "description": "Professional window cleaning in Swanage and Purbeck. Interior and exterior. PASMA trained team. Streak-free results.",
+    "serviceType": "Window Cleaning, Residential Cleaning, Commercial Cleaning",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£80-£300"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="service-schema-window" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         

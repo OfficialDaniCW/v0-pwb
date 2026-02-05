@@ -28,19 +28,17 @@ export function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center py-20 sm:py-28">
           {/* Headline */}
-          <h1 className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl leading-tight">
+          <h1 className="text-center text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl leading-tight">
             <span className="block">Dorset's Leading</span>
-            <span className="block text-[#1E90FF] drop-shadow-[0_0_30px_rgba(30,144,255,0.4)] mt-2">
-              <span className="inline-block relative h-[1.2em]">
-                <span className="inline-block">Property </span>
-                <span className="inline-block relative w-[180px] sm:w-[220px] md:w-[260px]">
-                  <span
-                    className={`absolute left-0 top-0 w-full text-left transition-all duration-300 ${
-                      isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-                    }`}
-                  >
-                    {rotatingWords[currentIndex]}
-                  </span>
+            <span className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 text-accent drop-shadow-[0_0_30px_rgba(30,144,255,0.4)] mt-2">
+              <span className="inline-block">Property</span>
+              <span className="inline-block relative min-w-[180px] sm:min-w-[220px] md:min-w-[260px] lg:min-w-[300px] overflow-hidden text-left">
+                <span
+                  className={`block transition-all duration-300 ${
+                    isAnimating ? "opacity-0 -translate-y-2" : "opacity-100 translate-y-0"
+                  }`}
+                >
+                  {rotatingWords[currentIndex]}
                 </span>
               </span>
             </span>
@@ -48,31 +46,31 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="mt-6 text-center text-lg text-white/80 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-center text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed px-4">
             Biocide-trained specialists in exterior cleaning for residential, commercial, and heritage properties across
             Dorset
           </p>
 
           {/* Trust Signals */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/70">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="flex text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <span className="font-medium text-white">4.9 Google Rating</span>
+              <span className="font-medium text-foreground">4.9 Google Rating</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 text-[#1E90FF]" />
+              <CheckCircle2 className="h-5 w-5 text-accent" />
               <span>500+ Properties Transformed</span>
             </div>
             <div className="flex items-center gap-2">
-              <Award className="h-5 w-5 text-[#1E90FF]" />
+              <Award className="h-5 w-5 text-accent" />
               <span>Biocide Trained & Registered</span>
             </div>
             <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-[#1E90FF]" />
+              <Shield className="h-5 w-5 text-accent" />
               <span>Fully Insured</span>
             </div>
           </div>
@@ -82,9 +80,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-[#00C853] text-white font-semibold rounded-lg px-8 py-6 text-lg
-                         hover:bg-[#00A843] hover:shadow-lg hover:scale-105
-                         transition-all duration-300"
+              className="font-semibold rounded-lg px-8 py-6 text-lg transition-all duration-300 hover:opacity-90 hover:shadow-lg hover:scale-105 bg-green-600 text-white"
               aria-label="Chat with PowerWash Bros on WhatsApp"
             >
               <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -95,8 +91,8 @@ export function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg px-8 py-6 text-lg
-                         hover:bg-[#1E90FF] hover:text-white transition-all duration-300"
+              className="border-2 border-accent bg-transparent text-accent rounded-lg px-8 py-6 text-lg
+                         hover:bg-accent hover:text-accent-foreground transition-all duration-300"
               aria-label="View our work transformations gallery"
             >
               <a href="/our-work">View Transformations</a>

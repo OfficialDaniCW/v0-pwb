@@ -1,5 +1,7 @@
 "use client"
 
+import React from "react"
+
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
@@ -139,7 +141,9 @@ export default function ContactPage() {
 
                   {status === 'error' && (
                     <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-white">
-                      {errorMessage}
+                      <p className="font-semibold mb-2">Message not sent</p>
+                      <p className="text-sm">{errorMessage}</p>
+                      <p className="text-xs mt-2 text-red-300">Please try WhatsApp or call directly for immediate assistance.</p>
                     </div>
                   )}
 

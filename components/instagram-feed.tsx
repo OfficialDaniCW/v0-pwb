@@ -61,15 +61,15 @@ export async function InstagramFeed() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Instagram className="h-8 w-8 text-[#1E90FF]" />
-            <h2 className="text-3xl md:text-5xl font-bold text-white">Follow Our Work</h2>
+            <Instagram className="h-8 w-8 text-accent" />
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground">Follow Our Work</h2>
           </div>
-          <p className="text-xl text-white/70 mb-6">See our latest transformations on Instagram</p>
+          <p className="text-xl text-muted-foreground mb-6">See our latest transformations on Instagram</p>
           <a
             href="https://www.instagram.com/powerwashbrosltd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#1E90FF] hover:text-[#1E90FF]/80 font-semibold transition-colors"
+            className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold transition-colors"
           >
             @powerwashbrosltd
           </a>
@@ -82,7 +82,7 @@ export async function InstagramFeed() {
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden rounded-lg bg-gray-900 min-h-[48px] min-w-[48px]"
+              className="group relative aspect-square overflow-hidden rounded-lg bg-card min-h-[48px] min-w-[48px]"
               aria-label={`View Instagram post: ${post.caption?.slice(0, 50) || "Instagram post"}`}
             >
               <Image
@@ -95,7 +95,7 @@ export async function InstagramFeed() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white text-xs md:text-sm line-clamp-2">{post.caption}</p>
+                  <p className="text-foreground text-xs md:text-sm line-clamp-2">{post.caption}</p>
                 </div>
               </div>
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

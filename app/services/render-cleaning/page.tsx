@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Home, Shield } from 'lucide-react'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Render Cleaning Swanage & Purbeck | K-Rend & Monocouche Cleaning',
@@ -12,8 +13,40 @@ export const metadata: Metadata = {
 }
 
 export default function RenderCleaningPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Render Cleaning",
+    "description": "Professional render cleaning in Swanage, Purbeck & Dorset. Remove green algae and black spots from K-rend and monocouche.",
+    "serviceType": "Render Cleaning, K-Rend Cleaning, Softwash",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£200-£800"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="service-schema-render" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <SiteHeader />
       <main className="min-h-screen bg-[#0B1E3F] text-white">
         <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0B1E3F]">

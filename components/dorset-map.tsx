@@ -56,7 +56,7 @@ export function DorsetMap() {
     <div className="relative w-full">
       <svg viewBox="0 0 800 520" className="w-full h-auto" style={{ maxHeight: "500px" }}>
         {/* Background */}
-        <rect x="0" y="0" width="800" height="520" fill="#0B1E3F" />
+        <rect x="0" y="0" width="800" height="520" fill="var(--primary)" />
 
         {/* Dorset county outline - simplified accurate shape */}
         <path
@@ -69,21 +69,19 @@ export function DorsetMap() {
              L 270,470 L 260,440 L 250,410 L 230,380
              L 200,360 L 180,340 L 160,300 L 150,260 L 160,220 L 170,180 L 180,120
              Z"
-          fill="#1E3A5F"
-          stroke="#1E90FF"
+          fill="var(--card)"
+          stroke="var(--accent)"
           strokeWidth="2"
           opacity="0.6"
         />
 
         {/* Isle of Purbeck peninsula detail */}
         <path
-          d="M 540,330 L 580,340 L 620,335 L 660,340 L 700,350 L 720,360
-             L 710,380 L 690,400 L 670,420 L 640,425 L 600,430 L 560,425
-             L 520,410 L 500,400 L 510,370 L 530,350 L 540,330 Z"
-          fill="#1E4A6F"
-          stroke="#1E90FF"
-          strokeWidth="1.5"
-          opacity="0.5"
+          d="M 540,330 L 580,340 L 620,335 L 660,340 L 700,350 L 720,360"
+          fill="var(--secondary)"
+          stroke="var(--accent)"
+          strokeWidth="2"
+          opacity="0.8"
         />
 
         {/* Poole Harbour */}

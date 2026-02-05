@@ -2,9 +2,19 @@
 
 import { Star } from "lucide-react"
 import { useState } from "react"
+import Script from "next/script"
 
 export function Testimonials() {
   const [activeSource, setActiveSource] = useState<"google" | "trustpilot">("google")
+
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "150",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
 
   const googleTestimonials = [
     {
@@ -135,11 +145,12 @@ export function Testimonials() {
         backgroundBlendMode: "overlay",
       }}
     >
-      <div className="absolute inset-0 bg-[#0B1E3F]/80 z-0" />
+      <Script id="aggregate-rating" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }} />
+      <div className="absolute inset-0 bg-primary/80 z-0" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-4">
-            <h2 className="text-4xl font-bold text-white mb-6">What Purbeck Property Owners Say</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-6">What Purbeck Property Owners Say</h2>
 
             <div className="flex items-center justify-center gap-8 mb-6">
               <button
@@ -153,7 +164,7 @@ export function Testimonials() {
                     <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <span className="text-white font-semibold">4.9 Rating</span>
+                <span className="text-foreground font-semibold">4.9 Rating</span>
               </button>
 
               <button
@@ -164,14 +175,14 @@ export function Testimonials() {
               >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-green-500 text-green-500" />
+                    <Star key={i} className="h-5 w-5 fill-success text-success" />
                   ))}
                 </div>
-                <span className="text-white font-semibold">Excellent Trustpilot</span>
+                <span className="text-foreground font-semibold">Excellent Trustpilot</span>
               </button>
             </div>
 
-            <p className="text-white/60">100+ Five-Star Reviews from satisfied customers across Swanage and Purbeck</p>
+            <p className="text-muted-foreground">100+ Five-Star Reviews from satisfied customers across Swanage and Purbeck</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -185,16 +196,16 @@ export function Testimonials() {
                   )}
                 </div>
 
-                <div className={`flex mb-4 ${testimonial.source === "google" ? "text-yellow-400" : "text-green-500"}`}>
+                <div className={`flex mb-4 ${testimonial.source === "google" ? "text-yellow-400" : "text-success"}`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-current" />
                   ))}
                 </div>
-                <p className="text-white/80 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                <div className="border-t border-white/10 pt-4">
-                  <p className="font-semibold text-white">{testimonial.author}</p>
-                  <p className="text-sm text-white/60">{testimonial.location}</p>
-                  <p className="text-sm text-[#1E90FF] mt-1">{testimonial.service}</p>
+                <p className="text-foreground/80 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                <div className="border-t border-border pt-4">
+                  <p className="font-semibold text-foreground">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  <p className="text-sm text-accent mt-1">{testimonial.service}</p>
                 </div>
               </div>
             ))}
@@ -205,7 +216,7 @@ export function Testimonials() {
               href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6119,-1.9598,17z"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-white hover:bg-white/90 transition-all px-6 py-3 rounded-lg shadow-lg"
+              className="flex items-center gap-2 bg-foreground hover:bg-foreground/90 transition-all px-6 py-3 rounded-lg shadow-lg text-primary"
             >
               <svg className="h-6 w-6" viewBox="0 0 24 24">
                 <path
@@ -225,19 +236,19 @@ export function Testimonials() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span className="font-semibold text-gray-700">Google Reviews</span>
+              <span className="font-semibold text-primary">Google Reviews</span>
             </a>
 
             <a
               href="https://uk.trustpilot.com/review/powerwashbros.co.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-[#00B67A] hover:bg-[#00B67A]/90 transition-all px-6 py-3 rounded-lg shadow-lg"
+              className="flex items-center gap-2 bg-success hover:bg-success/90 transition-all px-6 py-3 rounded-lg shadow-lg text-success-foreground"
             >
               <svg className="h-6 w-6" viewBox="0 0 24 24" fill="white">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
-              <span className="font-semibold text-white">Trustpilot</span>
+              <span className="font-semibold text-success-foreground">Trustpilot</span>
             </a>
           </div>
         </div>
