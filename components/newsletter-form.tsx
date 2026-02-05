@@ -54,7 +54,7 @@ export function NewsletterForm({ variant = "default", className = "" }: Newslett
 
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit} className={`flex gap-0 max-w-sm ${className}`}>
+      <form onSubmit={handleSubmit} className={`flex gap-0 max-w-sm mx-auto ${className}`}>
         <div className="relative flex-1">
           <input
             type="email"
