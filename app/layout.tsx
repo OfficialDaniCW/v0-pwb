@@ -6,6 +6,7 @@ import Script from "next/script"
 import Plasma from "@/components/plasma"
 import { Suspense } from "react"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CookieBanner } from "@/components/cookie-banner"
 import { ScrollToTop } from "@/components/scroll-to-top"
 
@@ -263,6 +264,7 @@ export default function RootLayout({
         <CookieBanner />
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
