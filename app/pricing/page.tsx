@@ -6,67 +6,48 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
-import { Calculator, MapPin, AlertCircle, Package, Car, Home, Book as Roof, Droplets, Wind, Pipette, MessageCircle } from "lucide-react"
+import { Calculator, MapPin, AlertCircle, Zap, Droplets, ParkingMeterIcon as ParkinglotIcon, MessageCircle, Check } from "lucide-react"
 import Link from "next/link"
 
 const SERVICES = [
-  { id: "driveway", name: "Driveway Cleaning", icon: Car },
-  { id: "patio", name: "Patio/Decking", icon: Home },
-  { id: "roof", name: "Roof Cleaning", icon: Roof },
-  { id: "gutter", name: "Gutter Cleaning", icon: Droplets },
-  { id: "walls", name: "Exterior Walls", icon: Wind },
-  { id: "softwash", name: "Softwash Treatment", icon: Pipette },
+  { id: "driveway", name: "Driveway Cleaning", baseMultiplier: 1.0 },
+  { id: "patio", name: "Patio/Decking", baseMultiplier: 0.95 },
+  { id: "roof", name: "Roof Cleaning", baseMultiplier: 1.8 },
+  { id: "gutter", name: "Gutter Cleaning", baseMultiplier: 0.9 },
+  { id: "walls", name: "Exterior Walls", baseMultiplier: 1.5 },
+  { id: "softwash", name: "Softwash Treatment", baseMultiplier: 1.6 },
 ]
 
-const SIZE_TIERS = {
-  driveway: {
-    small: { label: "Small", price: 120, description: "Compact parking / small single driveway" },
-    medium: { label: "Medium", price: 180, description: "Standard driveway (1-2 car spaces)" },
-    large: { label: "Large", price: 280, description: "Large driveway (2-3 car spaces)" },
-    xlarge: { label: "Extra Large", price: 420, description: "Multiple spaces / large turning area" },
-  },
-  patio: {
-    small: { label: "Small", price: 100, description: "Small patio (2-4 person seating)" },
-    medium: { label: "Medium", price: 220, description: "Medium patio (4-6 person seating)" },
-    large: { label: "Large", price: 380, description: "Large patio (6-8 person seating)" },
-    xlarge: { label: "Extra Large", price: 580, description: "8+ person / garden room area" },
-  },
-  roof: {
-    small: { label: "Small", price: 280, description: "Small/compact roof (terraced)" },
-    medium: { label: "Medium", price: 520, description: "Medium roof (semi-detached)" },
-    large: { label: "Large", price: 980, description: "Large roof (3-4 bed detached)" },
-    xlarge: { label: "Extra Large", price: 1280, description: "Large detached / complex roof" },
-  },
-  gutter: {
-    small: { label: "Small", price: 120, description: "Terraced / small bungalow" },
-    medium: { label: "Medium", price: 200, description: "Semi-detached / larger bungalow" },
-    large: { label: "Large", price: 340, description: "3-4 bed detached" },
-    xlarge: { label: "Extra Large", price: 480, description: "Large detached property" },
-  },
-  walls: {
-    small: { label: "Small", price: 250, description: "Small property (terraced)" },
-    medium: { label: "Medium", price: 480, description: "Medium property (semi-detached)" },
-    large: { label: "Large", price: 780, description: "Large property (detached)" },
-    xlarge: { label: "Extra Large", price: 1180, description: "Large detached / multiple storeys" },
-  },
-  softwash: {
-    small: { label: "Small", price: 280, description: "Small property (terraced)" },
-    medium: { label: "Medium", price: 520, description: "Medium property (semi-detached)" },
-    large: { label: "Large", price: 880, description: "Large property (detached)" },
-    xlarge: { label: "Extra Large", price: 1280, description: "Large detached property" },
-  },
-}
+const PROPERTY_SIZES = [
+  { id: "small", label: "Small", sqmRange: "Up to 50m²", basePrice: 120 },
+  { id: "medium", label: "Medium", sqmRange: "50-150m²", basePrice: 200 },
+  { id: "large", label: "Large", sqmRange: "150-300m²", basePrice: 400 },
+  { id: "xlarge", label: "Extra Large", sqmRange: "300m²+", basePrice: 650 },
+]
 
 export default function PricingPage() {
-  const [selectedServices, setSelectedServices] = useState<{ [key: string]: string }>({})
-  const [postcode, setPostcode] = useState("")
-  const [distanceFromSwanage, setDistanceFromSwanage] = useState(0)
+  const [formData, setFormData] = useState({
+    name: "",
+    postcode: "",
+    serviceType: "",
+    propertySize: "medium",
+  })
+  
+  const [accessFeatures, setAccessFeatures] = useState({
+    hasElectricity: false,
+    hasWaterAccess: false,
+    hasGateAccess: false,
+    isPaved: false,
+  })
+
   const [postcodeError, setPostcodeError] = useState("")
   const [isLoadingPostcode, setIsLoadingPostcode] = useState(false)
+  const [distanceFromSwanage, setDistanceFromSwanage] = useState<number | null>(null)
   const [estimatedPrice, setEstimatedPrice] = useState(0)
 
   const handlePostcodeChange = async (value: string) => {
-    setPostcode(value.toUpperCase())
+    const upperValue = value.toUpperCase()
+    setFormData(prev => ({ ...prev, postcode: upperValue }))
     setPostcodeError("")
 
     if (!value || value.length < 2) return
@@ -115,60 +96,69 @@ export default function PricingPage() {
     }
   }
 
-  const toggleService = (serviceId: string, sizeId: string) => {
-    setSelectedServices((prev) => {
-      const updated = { ...prev }
-      if (updated[serviceId] === sizeId) {
-        delete updated[serviceId]
-      } else {
-        updated[serviceId] = sizeId
-      }
-      return updated
-    })
+  const toggleAccessFeature = (feature: keyof typeof accessFeatures) => {
+    setAccessFeatures(prev => ({
+      ...prev,
+      [feature]: !prev[feature]
+    }))
   }
 
   useEffect(() => {
     calculatePrice()
-  }, [selectedServices])
+  }, [formData, accessFeatures])
 
   const calculatePrice = () => {
-    let total = 0
-    Object.entries(selectedServices).forEach(([serviceId, sizeId]) => {
-      const sizes = SIZE_TIERS[serviceId as keyof typeof SIZE_TIERS]
-      if (sizes) {
-        const size = sizes[sizeId as keyof typeof sizes] as any
-        total += size.price
-      }
-    })
-    setEstimatedPrice(total)
+    if (!formData.serviceType) {
+      setEstimatedPrice(0)
+      return
+    }
+
+    const service = SERVICES.find(s => s.id === formData.serviceType)
+    const propertySize = PROPERTY_SIZES.find(s => s.id === formData.propertySize)
+
+    if (!service || !propertySize) {
+      setEstimatedPrice(0)
+      return
+    }
+
+    let total = propertySize.basePrice * service.baseMultiplier
+
+    // Add surcharges for missing access features
+    if (!accessFeatures.hasElectricity) total += 80
+    if (!accessFeatures.hasWaterAccess) total += 120
+    if (!accessFeatures.hasGateAccess) total += 50
+
+    // Discount for paved surfaces
+    if (accessFeatures.isPaved) total *= 0.9
+
+    // Distance surcharge (if over 20 miles from Swanage)
+    if (distanceFromSwanage && distanceFromSwanage > 20) {
+      const extraMiles = distanceFromSwanage - 20
+      total += extraMiles * 2
+    }
+
+    setEstimatedPrice(Math.round(total))
   }
 
   const handleGetQuote = () => {
-    if (Object.keys(selectedServices).length === 0) {
-      alert("Please select at least one service")
+    if (!formData.name || !formData.postcode || !formData.serviceType) {
+      alert("Please fill in all required fields")
       return
     }
 
-    if (!postcode) {
-      alert("Please enter your postcode")
-      return
-    }
+    let message = `Hi! I'd like a quote:\n\n`
+    message += `Name: ${formData.name}\n`
+    message += `Service: ${SERVICES.find(s => s.id === formData.serviceType)?.name}\n`
+    message += `Property Size: ${PROPERTY_SIZES.find(s => s.id === formData.propertySize)?.label}\n`
+    message += `Postcode: ${formData.postcode}\n`
+    message += `\nProperty Access:\n`
+    message += `Electricity Available: ${accessFeatures.hasElectricity ? "Yes" : "No"}\n`
+    message += `Water Access: ${accessFeatures.hasWaterAccess ? "Yes" : "No"}\n`
+    message += `Gate Access: ${accessFeatures.hasGateAccess ? "Yes" : "No"}\n`
+    message += `Paved Surface: ${accessFeatures.isPaved ? "Yes" : "No"}\n`
+    message += `\nEstimated Price: £${estimatedPrice}\n`
 
-    // Build WhatsApp message with selections
-    let message = "Hi! I'd like a quote for:\n\n"
-    
-    Object.entries(selectedServices).forEach(([serviceId, sizeId]) => {
-      const service = SERVICES.find(s => s.id === serviceId)
-      const sizes = SIZE_TIERS[serviceId as keyof typeof SIZE_TIERS]
-      const size = sizes?.[sizeId as keyof typeof sizes] as any
-      message += `${service?.name}: ${size?.label}\n`
-    })
-
-    message += `\nPostcode: ${postcode}`
-    message += `\nEstimated Price: £${estimatedPrice}`
-
-    // WhatsApp Business number (UK format)
-    const phoneNumber = "447418610731" // Your WhatsApp number
+    const phoneNumber = "447418610731"
     const encodedMessage = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
     
@@ -180,99 +170,233 @@ export default function PricingPage() {
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
 
-        <section className="py-20">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
+            {/* Header */}
             <div className="text-center mb-16">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-6 mx-auto">
                 <Calculator className="h-10 w-10 text-[#1E90FF]" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Quick Pricing</h1>
-              <p className="text-xl text-white/70">Select your services, enter your postcode, and get a quick estimate</p>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Instant Pricing Quote</h1>
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">Fill in your details and property information to get an accurate estimate</p>
             </div>
 
-            <div className="max-w-6xl mx-auto">
-              {/* Postcode Input */}
-              <div className="mb-12 bg-white/5 rounded-lg p-6 border border-white/10">
-                <Label className="text-white text-lg font-semibold flex items-center gap-2 mb-3">
-                  <MapPin className="h-5 w-5 text-[#1E90FF]" />
-                  Your Location
-                </Label>
-                <div className="space-y-2 max-w-md">
-                  <Input
-                    placeholder="Enter postcode (e.g., BH19 2JJ)"
-                    value={postcode}
-                    onChange={(e) => handlePostcodeChange(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-                  />
-                  {isLoadingPostcode && (
-                    <p className="text-sm text-[#1E90FF]">Calculating distance...</p>
-                  )}
-                  {postcodeError && (
-                    <p className="text-sm text-red-400 flex items-center gap-1">
-                      <AlertCircle className="h-4 w-4" />
-                      {postcodeError}
-                    </p>
-                  )}
-                  {postcode && !postcodeError && !isLoadingPostcode && distanceFromSwanage > 0 && (
-                    <p className="text-sm text-green-400">✓ {distanceFromSwanage} miles from Swanage</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Services Grid with Size Tiers */}
-              <div className="space-y-8">
-                {SERVICES.map((service) => (
-                  <div key={service.id}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <service.icon className="h-6 w-6 text-[#1E90FF]" />
-                      <h2 className="text-2xl font-bold text-white">{service.name}</h2>
-                    </div>
+            {/* Main Content - Two Column Layout */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-8">
+                
+                {/* Left Column - Form */}
+                <div className="md:col-span-2 space-y-8">
+                  
+                  {/* Basic Information */}
+                  <div className="bg-white/5 rounded-lg p-6 border border-white/10 backdrop-blur">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm">1</span>
+                      Your Details
+                    </h2>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {Object.entries(SIZE_TIERS[service.id as keyof typeof SIZE_TIERS]).map(([sizeId, sizeData]) => (
+                    <div className="space-y-4">
+                      <div>
+                        <Label className="text-white text-sm font-semibold mb-2 block">Full Name</Label>
+                        <Input
+                          placeholder="Enter your name"
+                          value={formData.name}
+                          onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-white text-sm font-semibold mb-2 flex items-center gap-2 block">
+                          <MapPin className="h-4 w-4 text-[#1E90FF]" />
+                          Postcode
+                        </Label>
+                        <Input
+                          placeholder="e.g., BH19 2JJ"
+                          value={formData.postcode}
+                          onChange={(e) => handlePostcodeChange(e.target.value)}
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                        />
+                        {isLoadingPostcode && (
+                          <p className="text-xs text-[#1E90FF] mt-2">Calculating distance...</p>
+                        )}
+                        {postcodeError && (
+                          <p className="text-xs text-red-400 flex items-center gap-1 mt-2">
+                            <AlertCircle className="h-3 w-3" />
+                            {postcodeError}
+                          </p>
+                        )}
+                        {formData.postcode && !postcodeError && !isLoadingPostcode && distanceFromSwanage !== null && (
+                          <p className="text-xs text-green-400 mt-2">✓ {distanceFromSwanage} miles from Swanage</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Service Selection */}
+                  <div className="bg-white/5 rounded-lg p-6 border border-white/10 backdrop-blur">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm">2</span>
+                      Service Type
+                    </h2>
+                    
+                    <div className="grid grid-cols-2 gap-3">
+                      {SERVICES.map((service) => (
                         <button
-                          key={sizeId}
-                          onClick={() => toggleService(service.id, sizeId)}
-                          className={`p-4 rounded-lg border-2 transition-all text-left ${
-                            selectedServices[service.id] === sizeId
-                              ? "border-[#00C853] bg-[#00C853]/20 shadow-lg"
-                              : "border-white/20 bg-white/5 hover:border-[#1E90FF] hover:bg-white/10"
+                          key={service.id}
+                          onClick={() => setFormData(prev => ({ ...prev, serviceType: service.id }))}
+                          className={`p-3 rounded-lg border-2 transition-all text-left text-sm font-medium ${
+                            formData.serviceType === service.id
+                              ? "border-[#1E90FF] bg-[#1E90FF]/20 shadow-lg"
+                              : "border-white/20 bg-white/5 hover:border-[#1E90FF]/50 hover:bg-white/10"
                           }`}
                         >
-                          <div className="mb-3">
-                            <p className="text-lg font-bold text-white">{sizeData.label}</p>
-                            <p className="text-xs text-white/60 mt-1">{sizeData.description}</p>
-                          </div>
-                          <div className="text-[#00C853] font-semibold text-xl">£{sizeData.price}</div>
+                          {service.name}
                         </button>
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Summary & CTA */}
-              <div className="mt-16 bg-gradient-to-r from-[#1E90FF]/20 to-[#00C853]/20 rounded-lg p-8 border-2 border-white/10">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                  <div>
-                    <p className="text-white/70 text-sm mb-1">Estimated Total</p>
-                    <p className="text-5xl font-bold text-white">£{estimatedPrice}</p>
-                    <p className="text-white/60 text-sm mt-2">
-                      {Object.keys(selectedServices).length} service{Object.keys(selectedServices).length !== 1 ? "s" : ""} selected
+                  {/* Property Size */}
+                  <div className="bg-white/5 rounded-lg p-6 border border-white/10 backdrop-blur">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm">3</span>
+                      Property Size
+                    </h2>
+                    
+                    <div className="grid grid-cols-2 gap-3">
+                      {PROPERTY_SIZES.map((size) => (
+                        <button
+                          key={size.id}
+                          onClick={() => setFormData(prev => ({ ...prev, propertySize: size.id }))}
+                          className={`p-4 rounded-lg border-2 transition-all text-left ${
+                            formData.propertySize === size.id
+                              ? "border-[#00C853] bg-[#00C853]/20 shadow-lg"
+                              : "border-white/20 bg-white/5 hover:border-[#1E90FF]/50 hover:bg-white/10"
+                          }`}
+                        >
+                          <p className="font-semibold text-white">{size.label}</p>
+                          <p className="text-xs text-white/60 mt-1">{size.sqmRange}</p>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Property Access */}
+                  <div className="bg-white/5 rounded-lg p-6 border border-white/10 backdrop-blur">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm">4</span>
+                      Property Access
+                    </h2>
+                    
+                    <div className="space-y-3">
+                      <button
+                        onClick={() => toggleAccessFeature("hasElectricity")}
+                        className={`w-full p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
+                          accessFeatures.hasElectricity
+                            ? "border-[#00C853] bg-[#00C853]/10"
+                            : "border-white/20 bg-white/5 hover:border-white/30"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Zap className="h-5 w-5 text-[#1E90FF]" />
+                          <span className="text-white font-medium">Electricity Available</span>
+                        </div>
+                        {accessFeatures.hasElectricity && <Check className="h-5 w-5 text-[#00C853]" />}
+                      </button>
+
+                      <button
+                        onClick={() => toggleAccessFeature("hasWaterAccess")}
+                        className={`w-full p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
+                          accessFeatures.hasWaterAccess
+                            ? "border-[#00C853] bg-[#00C853]/10"
+                            : "border-white/20 bg-white/5 hover:border-white/30"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Droplets className="h-5 w-5 text-[#1E90FF]" />
+                          <span className="text-white font-medium">Water Access Available</span>
+                        </div>
+                        {accessFeatures.hasWaterAccess && <Check className="h-5 w-5 text-[#00C853]" />}
+                      </button>
+
+                      <button
+                        onClick={() => toggleAccessFeature("hasGateAccess")}
+                        className={`w-full p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
+                          accessFeatures.hasGateAccess
+                            ? "border-[#00C853] bg-[#00C853]/10"
+                            : "border-white/20 bg-white/5 hover:border-white/30"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <ParkinglotIcon className="h-5 w-5 text-[#1E90FF]" />
+                          <span className="text-white font-medium">Easy Gate/Entry Access</span>
+                        </div>
+                        {accessFeatures.hasGateAccess && <Check className="h-5 w-5 text-[#00C853]" />}
+                      </button>
+
+                      <button
+                        onClick={() => toggleAccessFeature("isPaved")}
+                        className={`w-full p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
+                          accessFeatures.isPaved
+                            ? "border-[#00C853] bg-[#00C853]/10"
+                            : "border-white/20 bg-white/5 hover:border-white/30"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <ParkinglotIcon className="h-5 w-5 text-[#1E90FF]" />
+                          <span className="text-white font-medium">Paved/Hard Surface</span>
+                        </div>
+                        {accessFeatures.isPaved && <Check className="h-5 w-5 text-[#00C853]" />}
+                      </button>
+                    </div>
+
+                    <p className="text-xs text-white/50 mt-4">Missing features may add surcharges to your quote</p>
+                  </div>
+                </div>
+
+                {/* Right Column - Price Summary (Sticky) */}
+                <div className="md:col-span-1">
+                  <div className="sticky top-24 bg-gradient-to-br from-[#1E90FF]/20 to-[#00C853]/20 rounded-lg p-8 border-2 border-white/10 backdrop-blur">
+                    <p className="text-white/70 text-sm font-medium mb-2">Estimated Price</p>
+                    <div className="mb-6">
+                      <p className="text-5xl font-bold text-white">£{estimatedPrice}</p>
+                      <p className="text-sm text-white/60 mt-2">
+                        {formData.serviceType ? "Based on your selections" : "Fill in details above"}
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 mb-6 pb-6 border-b border-white/10">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-white/70">Service</span>
+                        <span className="text-white font-medium">{formData.serviceType ? SERVICES.find(s => s.id === formData.serviceType)?.name : "—"}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-white/70">Property Size</span>
+                        <span className="text-white font-medium">{PROPERTY_SIZES.find(s => s.id === formData.propertySize)?.label}</span>
+                      </div>
+                      {distanceFromSwanage && (
+                        <div className="flex justify-between text-sm">
+                          <span className="text-white/70">Distance</span>
+                          <span className="text-white font-medium">{distanceFromSwanage} miles</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <Button
+                      onClick={handleGetQuote}
+                      disabled={!formData.name || !formData.postcode || !formData.serviceType}
+                      className="w-full h-12 bg-[#00C853] hover:bg-[#00C853]/90 text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      Get Quote via WhatsApp
+                    </Button>
+
+                    <p className="text-xs text-white/50 mt-4 text-center">
+                      This is an estimate. Final pricing confirmed via WhatsApp.
                     </p>
                   </div>
-                  <Button
-                    onClick={handleGetQuote}
-                    disabled={Object.keys(selectedServices).length === 0}
-                    className="w-full sm:w-auto h-14 px-8 bg-[#00C853] hover:bg-[#00C853]/90 text-white font-semibold text-lg flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    Get Exact Quote via WhatsApp
-                  </Button>
                 </div>
-                <p className="text-white/60 text-xs mt-4">
-                  This is an estimate based on standard assumptions. Your final quote may vary based on site conditions, access, and specific requirements. We'll confirm exact pricing via WhatsApp.
-                </p>
               </div>
             </div>
           </div>
