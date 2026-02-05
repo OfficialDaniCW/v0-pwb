@@ -23,14 +23,14 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
     })
 
     if (!response.ok) {
-      console.error(`Failed to fetch Instagram posts: ${response.statusText}`)
+      // Silently fail and use static fallback images
       return []
     }
 
     const data = await response.json()
     return data.data || []
   } catch (error) {
-    console.error("Error fetching Instagram posts:", error)
+    // Silently fail and use static fallback images instead of logging error
     return []
   }
 }
