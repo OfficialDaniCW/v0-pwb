@@ -63,8 +63,8 @@ export default function RoofCleanBiocidePage() {
               {/* First Slider */}
               <div className="glass-border rounded-2xl p-6">
                 <BeforeAfterSlider
-                  beforeImage="/images/before2.jpeg"
-                  afterImage="/images/after3.png"
+                  beforeImage="/images/before1.jpeg"
+                  afterImage="/images/after1.jpeg"
                   alt="Roof cleaning transformation - moss removal and biocide treatment"
                 />
                 <p className="text-center text-sm text-white/60 mt-4">← Drag the slider to see the transformation →</p>
