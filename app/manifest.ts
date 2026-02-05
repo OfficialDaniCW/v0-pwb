@@ -11,17 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#0B1E3F',
     icons: [
       {
-        src: '/favicon.webp',
-        sizes: 'any',
-        type: 'image/webp',
-      },
-      {
-        src: '/icons/pwb-logo.png',
+        src: '/images/pwb-logo-circle.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/icons/pwb-logo.png',
+        src: '/images/pwb-logo-full.png',
         sizes: '512x512',
         type: 'image/png',
       },

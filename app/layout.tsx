@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   ],
   generator: "v0.app",
   icons: {
-    icon: "/favicon.webp",
-    shortcut: "/favicon.webp",
-    apple: "/favicon.webp",
+    icon: "/images/pwb-logo-circle.png",
+    shortcut: "/images/pwb-logo-circle.png",
+    apple: "/images/pwb-logo-circle.png",
   },
   openGraph: {
     type: "website",
