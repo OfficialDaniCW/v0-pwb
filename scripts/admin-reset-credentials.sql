@@ -6,7 +6,7 @@
 INSERT INTO admin_users (email, password_hash, is_active, created_at, last_login)
 VALUES (
   'admin@powerwashbros.co.uk',
-  'YourSecurePasswordHere',  -- Replace with your actual password
+  'PWB2025Admin!',  -- Replace with your actual password
   true,
   NOW(),
   NOW()
