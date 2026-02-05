@@ -60,8 +60,8 @@ export default function SwanagePatioProject() {
                 {/* Before/After Slider */}
                 <div className="mb-8">
                   <BeforeAfterSlider
-                    beforeImage="/images/screenshot-202025-11-24-20at-2012-dirty.png"
-                    afterImage="/images/screenshot-202025-11-24-20at-2012-clean.png"
+                    beforeImage="/images/portfolio/swanage-patio-before.jpg"
+                    afterImage="/images/portfolio/swanage-patio-after.jpg"
                     alt="Swanage Patio Transformation"
                   />
                   <p className="text-center text-sm text-white/60 mt-4">
