@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -151,12 +152,7 @@ export default function AdminLogin() {
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full"
-        style={{
-          backgroundColor: 'var(--accent)',
-          color: 'var(--accent-foreground)',
-        }}
-      >
+            <Button type="submit" disabled={isLoading} className="w-full bg-accent text-accent-foreground">
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
