@@ -3,12 +3,13 @@
 import type React from "react"
 
 import { useState } from "react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AlertCircle } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link"
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -151,12 +152,7 @@ export default function AdminLogin() {
               />
             </div>
 
-            <Button type="submit" disabled={isLoading} className="w-full"
-        style={{
-          backgroundColor: 'var(--accent)',
-          color: 'var(--accent-foreground)',
-        }}
-      >
+            <Button type="submit" disabled={isLoading} className="w-full bg-accent text-accent-foreground">
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
@@ -170,10 +166,7 @@ export default function AdminLogin() {
 
           <div className="mt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              Need help? Contact{" "}
-              <a href="mailto:info@powerwashbros.co.uk" className="text-accent hover:underline">
-                info@powerwashbros.co.uk
-              </a>
+              Need help? <Link href="/contact" className="text-accent hover:underline font-medium">Contact us</Link>
             </p>
           </div>
         </div>

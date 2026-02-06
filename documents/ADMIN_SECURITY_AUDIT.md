@@ -101,7 +101,7 @@
 
 The following tables must exist in the database:
 
-```sql
+\`\`\`sql
 CREATE TABLE admin_users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE admin_users (
   last_login TIMESTAMP,
   updated_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 ### ⚠️ Important Security Notes
 

@@ -40,7 +40,7 @@
 #### Implementation Items:
 
 **A. LocalBusiness Schema** (Homepage)
-```typescript
+\`\`\`typescript
 // Add to /app/page.tsx
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -68,10 +68,10 @@ const localBusinessSchema = {
     "https://www.instagram.com/powerwashbros"
   ]
 }
-```
+\`\`\`
 
 **B. Service Schema** (Service pages)
-```typescript
+\`\`\`typescript
 // Add to /app/services/[service]/page.tsx
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -84,10 +84,10 @@ const serviceSchema = {
   "areaServed": "Dorset, UK",
   "serviceType": "Exterior Cleaning"
 }
-```
+\`\`\`
 
 **C. FAQPage Schema** (FAQ page)
-```typescript
+\`\`\`typescript
 // Add to /app/faq/page.tsx
 const faqSchema = {
   "@context": "https://schema.org",
@@ -104,10 +104,10 @@ const faqSchema = {
     // More FAQ items
   ]
 }
-```
+\`\`\`
 
 **D. BreadcrumbList Schema** (All pages)
-```typescript
+\`\`\`typescript
 // Add to layout or navigation component
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -122,7 +122,7 @@ const breadcrumbSchema = {
     // More breadcrumbs
   ]
 }
-```
+\`\`\`
 
 **Effort:** 3-4 hours (but can be done gradually)
 **ROI:** 20-30% CTR improvement for featured snippets
@@ -177,13 +177,13 @@ const breadcrumbSchema = {
 **Goal:** Create topical authority clusters
 
 **Example Cluster - Gutter Cleaning:**
-```
+\`\`\`
 /services/gutter-cleaning (hub)
 ├── /blog/gutter-cleaning-cost-swanage (pillar)
 ├── /blog/best-time-to-clean-gutters (pillar)
 ├── /blog/gutter-cleaning-maintenance-tips (pillar)
 └── /service-areas/swanage → /services/gutter-cleaning/swanage
-```
+\`\`\`
 
 **Implementation:** 2 hours per cluster (10 clusters = 20 hours)
 

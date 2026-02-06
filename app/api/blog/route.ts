@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
 import { blogPosts } from "@/lib/blog-posts"
 
+// Mark this route as dynamic since it uses request.url
+export const dynamic = "force-dynamic"
+
 // Transform blog posts to match API schema expected by components
 function transformBlogPost(post: (typeof blogPosts)[0]) {
   return {

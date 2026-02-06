@@ -133,7 +133,7 @@
 ## 🗄️ Database Tables
 
 ### admin_users
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - email (UNIQUE)
 - password_hash (bcrypt)
@@ -144,20 +144,20 @@
 - role
 - reset_requested_at
 - reset_email
-```
+\`\`\`
 
 ### password_reset_tokens
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - admin_id (FOREIGN KEY → admin_users)
 - token (UNIQUE)
 - expires_at
 - used_at (nullable - marked when used)
 - created_at
-```
+\`\`\`
 
 ### transformations
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - title
 - before_image_url
@@ -168,18 +168,18 @@
 - featured (BOOLEAN)
 - display_order
 - created_at
-```
+\`\`\`
 
 ### newsletter_subscribers
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - email (UNIQUE)
 - subscribed_at
 - is_active (BOOLEAN)
-```
+\`\`\`
 
 ### newsletter_campaigns
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - title
 - description
@@ -198,10 +198,10 @@
 - recipient_count
 - opened_count
 - clicked_count
-```
+\`\`\`
 
 ### quote_requests
-```sql
+\`\`\`sql
 - id (PRIMARY KEY)
 - name
 - email
@@ -214,18 +214,18 @@
 - heard_from
 - status (new/contacted/completed)
 - created_at
-```
+\`\`\`
 
 ---
 
 ## 🧪 Testing the Integration
 
 ### Test Login
-```
+\`\`\`
 Email: admin@powerwashbros.co.uk
 Password: PowerWash2024!
 URL: https://www.powerwashbros.co.uk/admin/login
-```
+\`\`\`
 
 ### Test Password Reset
 1. Go to `/admin/forgot-password`
@@ -235,10 +235,10 @@ URL: https://www.powerwashbros.co.uk/admin/login
 5. New password is hashed and stored in Neon
 
 ### Test Portfolio API
-```bash
+\`\`\`bash
 curl https://www.powerwashbros.co.uk/api/portfolio
 # Returns transformations from Neon database
-```
+\`\`\`
 
 ---
 

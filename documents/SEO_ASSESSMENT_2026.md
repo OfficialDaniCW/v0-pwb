@@ -109,13 +109,13 @@ Your `layout.tsx` includes:
 - **Impact**: You're losing search traffic to competitors who have Wareham-specific pages
 
 **What to add:**
-```
+\`\`\`
 - /services/pressure-washing/wareham
 - /services/gutter-cleaning/wareham
 - /services/roof-cleaning/wareham
 - /services/driveway-cleaning/wareham
 - Plus: /service-areas/wareham with local content
-```
+\`\`\`
 
 #### 2. **Weak Purbeck-Specific Optimization**
 - Purbeck mentioned but needs hyper-local targeting
@@ -215,7 +215,7 @@ Facebook's algorithm favors:
 ### What to Add to Your Strategy:
 
 #### 1. **Add Facebook Review Schema to Website**
-```json
+\`\`\`json
 {
   "@type": "Review",
   "@id": "https://powerwashbros.co.uk/#reviews",
@@ -235,7 +235,7 @@ Facebook's algorithm favors:
     }
   ]
 }
-```
+\`\`\`
 
 #### 2. **Create Reviews Page** with structured data
 - Pull testimonials from Facebook, Google, Trustpilot
@@ -310,7 +310,7 @@ Facebook's algorithm favors:
 ## 9. KEYWORD TARGETING ROADMAP
 
 ### Tier 1 - HIGH PRIORITY (Do First)
-```
+\`\`\`
 Primary keywords (Swanage focus - home base):
 - "pressure washing swanage" (Volume: ~200/month, Easy)
 - "jet washing swanage" (Volume: ~80/month, Easy) ← ADD THIS
@@ -319,36 +319,36 @@ Primary keywords (Swanage focus - home base):
 - "gutter cleaning swanage" (Volume: ~90/month, Easy)
 - "roof cleaning swanage" (Volume: ~70/month, Medium)
 - "external cleaning swanage" (Volume: ~40/month, Easy) ← ADD THIS
-```
+\`\`\`
 
 ### Tier 2 - WAREHAM (Underexploited)
-```
+\`\`\`
 - "pressure washing wareham" (Volume: ~80/month, Easy) ← CREATE PAGES
 - "jet washing wareham" (Volume: ~30/month, Easy)
 - "driveway cleaning wareham" (Volume: ~40/month, Easy)
 - "gutter cleaning wareham" (Volume: ~50/month, Easy)
 - "roof cleaning wareham" (Volume: ~35/month, Medium)
-```
+\`\`\`
 
 ### Tier 3 - PURBECK (High-Value Geographic Term)
-```
+\`\`\`
 - "pressure washing purbeck" (Volume: ~120/month, Medium)
 - "jet washing purbeck" (Volume: ~40/month, Medium)
 - "purbeck stone cleaning" (Volume: ~50/month, Hard) ← ADD THIS
 - "external cleaning purbeck" (Volume: ~30/month, Medium)
-```
+\`\`\`
 
 ### Tier 4 - DORSET BROAD (Medium Competition)
-```
+\`\`\`
 - "pressure washing dorset" (Volume: ~400/month, Hard)
 - "jet washing dorset" (Volume: ~120/month, Hard)
 - "external cleaning dorset" (Volume: ~90/month, Hard)
 - "driveway cleaning dorset" (Volume: ~150/month, Hard)
 - "soft washing dorset" (Volume: ~110/month, Hard)
-```
+\`\`\`
 
 ### Tier 5 - LONG-TAIL OPPORTUNITIES (Quick Wins)
-```
+\`\`\`
 - "best pressure washing swanage"
 - "professional jet washing purbeck"
 - "external cleaning near me swanage"
@@ -356,7 +356,7 @@ Primary keywords (Swanage focus - home base):
 - "moss removal purbeck"
 - "roof cleaning wareham"
 - "external wall cleaning dorset"
-```
+\`\`\`
 
 ---
 

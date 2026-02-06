@@ -420,9 +420,9 @@ export default function GetQuotePage() {
                       </p>
                       <p>
                         <span className="text-muted-foreground">Email: </span>
-                        <a href="mailto:info@powerwashbros.co.uk" className="text-accent hover:underline font-semibold">
-                          info@powerwashbros.co.uk
-                        </a>
+                        <Link href="/contact" className="text-accent hover:underline font-semibold">
+                          Send via contact form
+                        </Link>
                       </p>
                     </div>
                   </div>

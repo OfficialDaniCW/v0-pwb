@@ -104,7 +104,7 @@ PowerWash Bros is a **WELL-STRUCTURED** production-ready application with strong
 All referenced images have corresponding files.
 
 #### Image Locations:
-```
+\`\`\`
 /public/images/
 ├── portfolio/
 │   ├── commercial-patio-before.jpg ✅
@@ -122,7 +122,7 @@ All referenced images have corresponding files.
 ├── before1.jpeg ✅
 ├── after1.jpeg ✅
 └── pwb-logo-circle.png ✅
-```
+\`\`\`
 
 #### Image Optimization Status:
 | Aspect | Status | Details |
@@ -136,7 +136,7 @@ All referenced images have corresponding files.
 | API Integration | ✅ | Portfolio API returns image URLs from Neon |
 
 #### Image Data Flow:
-```
+\`\`\`
 Admin adds image → Stored in database (transformations table)
         ↓
 API fetches image URL from Neon database
@@ -144,7 +144,7 @@ API fetches image URL from Neon database
 Frontend component receives URL
         ↓
 Image renders on portfolio carousel & detail pages
-```
+\`\`\`
 
 **Image Management Confidence:** 100% - All images properly stored and displaying
 
@@ -286,7 +286,7 @@ Image renders on portfolio carousel & detail pages
 
 ### Data Flow Diagram:
 
-```
+\`\`\`
 CONTACT FORM
 User Input → /app/contact/page.tsx → /api/contact → Neon DB (quote_requests)
          ↓
@@ -306,7 +306,7 @@ Login → /api/admin/auth → Session cookie → Protected routes
 Quote Management → /api/admin/quotes → Neon (quote_requests)
 Blog Management → /api/admin/blog → Neon (blog_posts)
 Newsletter Campaigns → /api/admin/newsletter/campaigns → Neon (newsletter_campaigns)
-```
+\`\`\`
 
 #### Data Flow Verification:
 | Flow | Frontend | API | Database | Status |
@@ -335,13 +335,13 @@ Newsletter Campaigns → /api/admin/newsletter/campaigns → Neon (newsletter_ca
 - ✅ Loading states for async operations
 
 #### Folder Structure Health:
-```
+\`\`\`
 /app - Clean, organized by feature/page ✅
 /components - Reusable components, no duplication ✅
 /lib - Utilities, database connections, data ✅
 /public - Static assets, images organized ✅
 /scripts - Database migrations present ✅
-```
+\`\`\`
 
 #### Security & Cleanup:
 - ✅ No .env files in repo (using Vercel vars)
@@ -368,13 +368,13 @@ Newsletter Campaigns → /api/admin/newsletter/campaigns → Neon (newsletter_ca
 ### Critical Priority (Should Fix):
 
 #### 1. **Create robots.txt** (SEO Impact: HIGH)
-```
+\`\`\`
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 Sitemap: https://powerwashbros.co.uk/sitemap.xml
-```
+\`\`\`
 
 #### 2. **Add JSON-LD Schema Markup** (SEO Impact: MEDIUM-HIGH)
 - LocalBusiness schema (homepage)

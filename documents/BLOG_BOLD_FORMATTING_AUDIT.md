@@ -149,13 +149,13 @@ The blog rendering system at `/app/blog/[slug]/page.tsx` includes a dedicated bo
 ## Rendering Verification
 
 The blog post rendering system will properly convert all instances:
-```javascript
+\`\`\`javascript
 // Bold text parser **text**
 const boldRegex = /\*\*([^*]+)\*\*/g
 if (paragraph.match(boldRegex)) {
   // Converts to: <strong className="font-bold text-white">text</strong>
 }
-```
+\`\`\`
 
 ## Conclusion
 

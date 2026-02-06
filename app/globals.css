@@ -23,6 +23,13 @@
   }
 }
 
+.footer-bg-pattern {
+  background-image: url('/backgrounds/pwb-dark-white.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @theme {
   /* Replaced @theme inline with @theme and direct color values */
   --color-pwb-primary-blue: #1e90ff;

@@ -67,39 +67,39 @@ WhatsApp setup provides a backup notification channel, but email alone is suffic
 ## Testing the Form
 
 ### Test Case 1: Basic Submission
-```
+\`\`\`
 Name: John Smith
 Email: john@example.com
 Phone: 07418 610731
 Subject: Roof Cleaning Quote
 Message: I'd like a quote for my slate roof in Swanage
-```
+\`\`\`
 Expected: Email arrives at info@powerwashbros.co.uk with formatted content
 
 ### Test Case 2: Without Phone
-```
+\`\`\`
 Name: Jane Doe
 Email: jane@example.com
 Phone: (leave blank)
 Subject: Driveway Stains
 Message: How much would moss removal cost?
-```
+\`\`\`
 Expected: Email sent without phone field
 
 ## What Customers See
 
 ### Success Message
-```
+\`\`\`
 ✅ Thank you! We'll get back to you within 24 hours.
-```
+\`\`\`
 
 ### Error Message (if email service fails)
-```
+\`\`\`
 ❌ Message not sent
 Failed to send message. Please try WhatsApp or email directly.
 
 💡 Tip: Please try WhatsApp or call directly for immediate assistance.
-```
+\`\`\`
 
 ## Email Content Example
 
@@ -142,15 +142,15 @@ Failed to send message. Please try WhatsApp or email directly.
 
 ### Change recipient email
 Edit `/app/api/contact/route.ts` line 26:
-```typescript
+\`\`\`typescript
 to: 'your-email@powerwashbros.co.uk',
-```
+\`\`\`
 
 ### Change response message
 Edit `/app/contact/page.tsx` line 113:
-```typescript
+\`\`\`typescript
 message: 'Your custom success message here!'
-```
+\`\`\`
 
 ### Add more form fields
 1. Add to form in `/app/contact/page.tsx`
