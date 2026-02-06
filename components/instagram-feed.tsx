@@ -3,8 +3,15 @@ import { getInstagramPosts } from "@/lib/instagram"
 import Image from "next/image"
 
 export async function InstagramFeed() {
-  // Fetch live posts
-  const livePosts = await getInstagramPosts()
+  let livePosts = []
+  
+  try {
+    // Fetch live posts - wrapped in try/catch to prevent render errors
+    livePosts = await getInstagramPosts()
+  } catch (error) {
+    console.error("[InstagramFeed] Failed to fetch posts:", error)
+    livePosts = []
+  }
 
   const staticPosts = [
     {
