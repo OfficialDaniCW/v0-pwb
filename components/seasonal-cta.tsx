@@ -46,7 +46,7 @@ function getSeason(): SeasonConfig {
           name: "Patio Cleaning",
           icon: <AlertCircle className="h-6 w-6" />,
           reason: "Remove dangerous moss and algae that become treacherous when wet",
-          link: "/services/patio-cleaning",
+          link: "/services/patio-decking",
         },
       ],
       urgency: "Book now before the next storm",
