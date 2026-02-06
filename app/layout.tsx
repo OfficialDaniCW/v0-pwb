@@ -15,11 +15,11 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 export const metadata: Metadata = {
   metadataBase: new URL("https://powerwashbros.co.uk"),
   title: {
-    default: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage, Purbeck & Dorset",
+    default: "Pressure Washing Swanage, Purbeck & Dorset | PowerWash Bros",
     template: "%s | PowerWash Bros",
   },
   description:
-    "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes. Call 07418 610731.",
+    "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Biocide-trained. Free quotes available.",
   keywords: [
     "pressure washing swanage",
     "gutter cleaning swanage",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: "https://powerwashbros.co.uk",
-    title: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage, Purbeck & Dorset",
+    title: "Pressure Washing Swanage, Purbeck & Dorset | PowerWash Bros",
     description:
-      "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes.",
+      "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes.",
     siteName: "PowerWash Bros",
     images: [
       {
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PowerWash Bros | Pressure Washing & Exterior Cleaning Swanage & Dorset",
+    title: "Pressure Washing Swanage, Purbeck & Dorset | PowerWash Bros",
     description:
-      "Professional pressure washing, gutter cleaning, roof cleaning & exterior property maintenance in Swanage, Purbeck & Dorset. Free quotes.",
+      "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Free quotes.",
     images: ["/og-image.jpg"],
   },
   verification: {
