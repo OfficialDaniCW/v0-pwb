@@ -166,7 +166,7 @@ async function sendFormattedEmail(
         'Authorization': `Bearer ${RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: 'Contact Form <onboarding@resend.dev>',
+        from: 'PowerWash Bros <noreply@powerwashbros.co.uk>',
         to: 'info@powerwashbros.co.uk',
         reply_to: email,
         subject: `New Contact: ${name} - ${subject}`,
