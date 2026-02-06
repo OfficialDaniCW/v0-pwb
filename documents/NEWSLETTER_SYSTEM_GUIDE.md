@@ -90,7 +90,7 @@ Click **"Preview"** to see exactly how the email will look with:
 
 ### newsletter_campaigns Table
 Stores all newsletter campaigns with content and scheduling info:
-```sql
+\`\`\`sql
 - id: Unique campaign identifier
 - title: Campaign name
 - subject_line: Email subject line
@@ -104,29 +104,29 @@ Stores all newsletter campaigns with content and scheduling info:
 - recipient_count: Number of people who'll receive it
 - opened_count: Email open count (future)
 - clicked_count: CTA click count (future)
-```
+\`\`\`
 
 ### newsletter_subscribers Table (Existing)
 Stores subscribers who signed up for newsletters:
-```sql
+\`\`\`sql
 - id: Unique subscriber
 - email: Email address
 - subscribed_at: When they joined
 - is_active: If they're still subscribed
-```
+\`\`\`
 
 ### newsletter_subscriber_groups Table
 Organizes subscribers into targeting segments:
-```sql
+\`\`\`sql
 - id: Unique entry
 - subscriber_id: References newsletter_subscribers
 - group_name: Segment name (service_discount/premium/engaged/etc)
 - added_at: When added to group
-```
+\`\`\`
 
 ### newsletter_campaign_recipients Table
 Tracks delivery status and engagement for each email sent:
-```sql
+\`\`\`sql
 - id: Unique record
 - campaign_id: References newsletter_campaigns
 - subscriber_id: References newsletter_subscribers
@@ -134,26 +134,26 @@ Tracks delivery status and engagement for each email sent:
 - opened_at: When email was opened (if tracked)
 - clicked_at: When CTA was clicked (if tracked)
 - status: pending/sent/bounced/failed
-```
+\`\`\`
 
 ## API Endpoints
 
 ### GET /api/admin/newsletter
 Fetch list of subscribers
-```
+\`\`\`
 Returns: { subscribers: [{id, email, subscribed_at, is_active}, ...] }
-```
+\`\`\`
 
 ### GET /api/admin/newsletter/campaigns
 Fetch all campaigns
-```
+\`\`\`
 Returns: { campaigns: [{id, title, subject_line, status, ...}, ...] }
 Optional: ?status=draft|scheduled|sent
-```
+\`\`\`
 
 ### POST /api/admin/newsletter/campaigns
 Create new campaign
-```
+\`\`\`
 Body: {
   title: string,
   subject_line: string,
@@ -163,26 +163,26 @@ Body: {
   target_group: string,
   scheduled_for: datetime (optional)
 }
-```
+\`\`\`
 
 ### PUT /api/admin/newsletter/campaigns
 Update existing campaign
-```
+\`\`\`
 Body: {
   id: number,
   ... (same fields as POST)
 }
-```
+\`\`\`
 
 ### POST /api/admin/newsletter/campaigns/send
 Send or queue a campaign
-```
+\`\`\`
 Body: {
   campaign_id: number,
   send_now: boolean
 }
 Returns: { success: true, recipients_count: number }
-```
+\`\`\`
 
 ## Best Practices
 

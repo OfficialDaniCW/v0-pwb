@@ -33,7 +33,7 @@ Your PowerWash Bros website uses **Neon PostgreSQL** as the backend database wit
 ## 🔐 Security Architecture
 
 ### Login Flow
-```
+\`\`\`
 User Login (frontend)
     ↓
 POST /api/admin/auth
@@ -49,10 +49,10 @@ Return authenticated session
 Frontend sets: admin-session=authenticated cookie
     ↓
 Middleware protects: /admin/* routes
-```
+\`\`\`
 
 ### Password Reset Flow
-```
+\`\`\`
 Forgot Password (frontend)
     ↓
 POST /api/admin/forgot-password
@@ -78,14 +78,14 @@ Update: admin_users.password_hash
 Mark: password_reset_tokens.used_at = NOW()
     ↓
 Success: Redirect to login
-```
+\`\`\`
 
 ---
 
 ## 📊 Database Schema (Neon)
 
 ### admin_users Table
-```sql
+\`\`\`sql
 CREATE TABLE admin_users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE admin_users (
   reset_requested_at TIMESTAMP,
   reset_email VARCHAR(255)
 );
-```
+\`\`\`
 
 **Current Admin User:**
 - Email: `admin@powerwashbros.co.uk`
@@ -106,7 +106,7 @@ CREATE TABLE admin_users (
 - Status: Active (is_active = true)
 
 ### password_reset_tokens Table
-```sql
+\`\`\`sql
 CREATE TABLE password_reset_tokens (
   id SERIAL PRIMARY KEY,
   admin_id INTEGER NOT NULL REFERENCES admin_users(id) ON DELETE CASCADE,
@@ -115,7 +115,7 @@ CREATE TABLE password_reset_tokens (
   used_at TIMESTAMP,                          -- NULL until token is used
   created_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 **Security Features:**
 - Tokens are cryptographically random (32 bytes)
@@ -144,7 +144,7 @@ CREATE TABLE password_reset_tokens (
 8. Login with new password
 
 ### Verify Password Reset Works
-```bash
+\`\`\`bash
 # 1. Request password reset
 curl -X POST https://www.powerwashbros.co.uk/api/admin/forgot-password \
   -H "Content-Type: application/json" \
@@ -161,7 +161,7 @@ curl -X POST https://www.powerwashbros.co.uk/api/admin/reset-password \
 curl -X POST https://www.powerwashbros.co.uk/api/admin/auth \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@powerwashbros.co.uk","password":"NewPassword123"}'
-```
+\`\`\`
 
 ---
 
@@ -204,53 +204,53 @@ curl -X POST https://www.powerwashbros.co.uk/api/admin/auth \
 ## 🧪 Testing Authentication
 
 ### Test 1: Successful Login
-```
+\`\`\`
 1. Navigate to /admin/login
 2. Enter: admin@powerwashbros.co.uk / PowerWash2024!
 3. Expected: Redirects to /admin/pwb dashboard
 4. Cookie Set: admin-session=authenticated
-```
+\`\`\`
 
 ### Test 2: Failed Login
-```
+\`\`\`
 1. Navigate to /admin/login
 2. Enter: admin@powerwashbros.co.uk / WrongPassword
 3. Expected: Error message "Invalid credentials"
 4. No Cookie Set
-```
+\`\`\`
 
 ### Test 3: Password Reset
-```
+\`\`\`
 1. Navigate to /admin/forgot-password
 2. Enter: admin@powerwashbros.co.uk
 3. Expected: Message "If account exists..."
 4. Dev Mode: Reset link displayed in console
 5. Production: Email would be sent
-```
+\`\`\`
 
 ### Test 4: Session Expiration
-```
+\`\`\`
 1. Login successfully
 2. Wait 24 hours (or manually delete cookie)
 3. Try to access /admin/pwb
 4. Expected: Redirects to /admin/login
 5. Reason: admin-session cookie expired
-```
+\`\`\`
 
 ### Test 5: Protected Routes
-```
+\`\`\`
 1. Open Developer Tools → Network
 2. Try to access /admin/pwb WITHOUT logging in
 3. Expected: 307 Redirect to /admin/login
 4. Reason: Middleware blocks unauthenticated access
-```
+\`\`\`
 
 ---
 
 ## 📈 Data Flow (Neon Integration)
 
 ### Portfolio/Transformations
-```
+\`\`\`
 Frontend Component (scrolling-transformations.tsx)
     ↓
 fetch('/api/portfolio')
@@ -264,10 +264,10 @@ If empty: Seed database from static portfolio-data.ts
 Return JSON to frontend
     ↓
 Frontend renders images
-```
+\`\`\`
 
 ### Admin Authentication
-```
+\`\`\`
 Frontend Form (login/page.tsx)
     ↓
 POST /api/admin/auth
@@ -281,16 +281,16 @@ UPDATE admin_users SET last_login = NOW()
 Return {success: true, email, id}
     ↓
 Frontend sets cookie & redirects to dashboard
-```
+\`\`\`
 
 ---
 
 ## 🛠️ Environment Variables
 
 Required in Vercel:
-```
+\`\`\`
 DATABASE_URL=postgresql://user:password@host/dbname
-```
+\`\`\`
 
 The DATABASE_URL is automatically used by:
 - `/api/admin/auth/route.ts` - Login

@@ -43,24 +43,24 @@
 ## REQUIRED ACTION - Root Domain Setup
 
 ### Current Configuration
-```
+\`\`\`
 @ A 216.198.79.1  ← Currently points to Ionos
 www CNAME 8b4208562320af2.vercel-dns-017.com  ← Correctly points to Vercel
-```
+\`\`\`
 
 ### Recommended Configuration
 For optimal setup with root domain routing to Vercel:
 
 **Option A: Vercel A Records (Recommended)**
-```
+\`\`\`
 @ A 76.76.19.165   ← Vercel North America
 @ A 76.76.27.200   ← Vercel Europe
-```
+\`\`\`
 
 **Option B: Root Domain CNAME (Alternative)**
-```
+\`\`\`
 @ CNAME 8b4208562320af2.vercel-dns-017.com  ← Same as www
-```
+\`\`\`
 
 ---
 

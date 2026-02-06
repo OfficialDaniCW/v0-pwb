@@ -10,17 +10,17 @@ Google Search Console reported: **"Missing field 'itemReviewed' - Items with thi
 **File:** `/components/testimonials.tsx`
 
 **Problem:** AggregateRating schema without itemReviewed context
-```json
+\`\`\`json
 // BEFORE (Invalid)
 {
   "@type": "AggregateRating",
   "ratingValue": "4.9",
   "ratingCount": "150"
 }
-```
+\`\`\`
 
 **Solution:** Wrapped in AggregateOffer with proper itemReviewed
-```json
+\`\`\`json
 // AFTER (Valid)
 {
   "@type": "AggregateOffer",
@@ -31,7 +31,7 @@ Google Search Console reported: **"Missing field 'itemReviewed' - Items with thi
     "url": "https://powerwashbros.co.uk"
   }
 }
-```
+\`\`\`
 
 ### 2. **FAQ Page - FIXED** ✅
 **File:** `/app/faq/page.tsx`

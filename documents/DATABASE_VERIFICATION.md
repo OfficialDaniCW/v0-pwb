@@ -52,7 +52,7 @@
 ### Verification Queries
 Run these in Neon console to verify setup:
 
-```sql
+\`\`\`sql
 -- Check all tables exist
 SELECT tablename FROM pg_tables WHERE schemaname = 'public';
 
@@ -67,7 +67,7 @@ SELECT COUNT(*) as campaign_count FROM newsletter_campaigns;
 
 -- Check if password_reset_tokens table exists
 SELECT * FROM information_schema.tables WHERE table_name = 'password_reset_tokens';
-```
+\`\`\`
 
 ## API Endpoints Using Database
 - `/api/admin/auth` - Authentication (fixed: now uses bcrypt)
