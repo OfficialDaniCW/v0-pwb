@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
   title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
@@ -34,6 +35,8 @@ export const metadata = {
 }
 
 export default function DrivewayCleaningPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Driveway Cleaning", "driveway-cleaning")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -75,6 +78,7 @@ export default function DrivewayCleaningPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-driveway" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema-driveway" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />

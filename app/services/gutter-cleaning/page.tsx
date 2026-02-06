@@ -6,6 +6,7 @@ import { CheckCircle, Phone, AlertTriangle } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Gutter Cleaning Swanage & Purbeck | Prevent Water Damage | PowerWash Bros",
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default function GutterCleaningPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Gutter Cleaning", "gutter-cleaning")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -46,6 +49,7 @@ export default function GutterCleaningPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-gutter" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema-gutter" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] bg-[#0B1E3F] text-white">
         <SiteHeader />

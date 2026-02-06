@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { blogPosts } from "@/lib/blog-posts"
 import { notFound } from "next/navigation"
+import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -19,17 +21,42 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound()
   }
 
-  const articleSchema = {
+  const breadcrumbSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://powerwashbros.co.uk"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://powerwashbros.co.uk/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://powerwashbros.co.uk/blog/${params.slug}`
+      }
+    ]
+  }
+
+  const newsArticleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
-    image: "https://powerwashbros.co.uk/moss-removal-purbeck.jpg",
+    image: post.featuredImage || "https://powerwashbros.co.uk/og-image.jpg",
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     author: {
       "@type": "Organization",
-      name: "PowerWash Bros",
+      name: post.author || "PowerWash Bros",
       url: "https://powerwashbros.co.uk",
     },
     publisher: {
@@ -44,11 +71,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       "@type": "WebPage",
       "@id": `https://powerwashbros.co.uk/blog/${params.slug}`,
     },
+    keywords: post.tags.join(", "),
+    articleBody: post.content.replace(/<[^>]*>/g, "").substring(0, 500),
   }
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <Script id="breadcrumb-schema-blog" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(newsArticleSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
 

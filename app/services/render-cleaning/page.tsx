@@ -5,6 +5,7 @@ import { PWBFooter } from '@/components/pwb-footer'
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Home, Shield } from 'lucide-react'
 import Script from 'next/script'
+import { createServiceBreadcrumbs } from '@/lib/schema-utils'
 
 export const metadata: Metadata = {
   title: 'Render Cleaning Swanage & Purbeck | K-Rend & Monocouche Cleaning',
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default function RenderCleaningPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Render Cleaning", "render-cleaning")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",

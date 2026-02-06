@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification
+    google: "your-verification-code", // Already verified via DNS
   },
   alternates: {
     canonical: "https://powerwashbros.co.uk",

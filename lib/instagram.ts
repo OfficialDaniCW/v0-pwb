@@ -24,6 +24,7 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
 
     if (!response.ok) {
       // Silently fail and use static fallback images
+      // This handles 400, 401, 403, 404, etc. without logging
       return []
     }
 
@@ -31,6 +32,7 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
     return data.data || []
   } catch (error) {
     // Silently fail and use static fallback images instead of logging error
+    // This prevents network errors, JSON parse errors, etc. from being logged
     return []
   }
 }

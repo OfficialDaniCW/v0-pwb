@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Exterior Wall Cleaning Swanage & Purbeck | Render Soft Washing | PowerWash Bros",
@@ -12,8 +14,43 @@ export const metadata: Metadata = {
 }
 
 export default function ExteriorWallsPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Exterior Walls & Render", "exterior-walls")
+  
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Exterior Wall & Render Cleaning",
+    "description": "Professional exterior wall and render cleaning in Swanage and Purbeck. Soft wash specialists for all surfaces.",
+    "serviceType": "Exterior Wall Cleaning, Render Cleaning, Soft Washing",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£200-£800"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="breadcrumb-schema-exterior-walls" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-exterior-walls" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         

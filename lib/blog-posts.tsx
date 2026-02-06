@@ -14,6 +14,8 @@ export interface BlogPostData {
   tags: string[]
   content: string
   status?: BlogPostStatus
+  metaTitle?: string
+  metaDescription?: string
 }
 
 export const blogPosts: BlogPostData[] = [
@@ -28,6 +30,8 @@ export const blogPosts: BlogPostData[] = [
     relatedService: "/services/gutter-cleaning",
     author: "PowerWash Bros",
     tags: ["gutter cleaning", "professional equipment", "skyvac", "high reach cleaning", "Dorset", "commercial cleaning"],
+    metaTitle: "Professional Gutter Cleaning Equipment Dorset | Skyvac Systems",
+    metaDescription: "Expert gutter cleaning using Skyvac Commercial 75 Plus. Professional equipment ensures safe, effective cleaning across Swanage, Purbeck & Dorset.",
     content: `<h1>Professional Gutter Cleaning Equipment: Why We Use Skyvac Systems</h1>
 
 <p>When it comes to gutter cleaning in Dorset, using the right equipment makes all the difference. At <strong>PowerWash Bros</strong>, we invest in professional-grade systems like the <strong>Skyvac Commercial 75 Plus</strong> because your property deserves nothing but the best. Our commitment to quality equipment ensures thorough, safe gutter maintenance across Swanage, Purbeck, and all of Dorset.</p>
@@ -156,6 +160,8 @@ export const blogPosts: BlogPostData[] = [
     relatedService: "/services/pressure-washing",
     author: "PowerWash Bros",
     tags: ["driveway cleaning", "pressure washing", "jet washing", "maintenance", "Dorset", "timing guide"],
+    metaTitle: "Best Time to Pressure Wash Driveway | Spring Cleaning Guide Dorset",
+    metaDescription: "When to pressure wash your driveway for best results. Expert timing guide for spring driveway cleaning in Dorset, Swanage & Purbeck.",
     content: `<h1>Best Time to Pressure Wash Your Driveway: Expert Dorset Guide</h1>
 
 <p>Knowing <strong>when to pressure wash your driveway</strong> is just as important as knowing how. In this comprehensive guide, we'll share expert timing advice for homeowners across Swanage, Purbeck, and all of Dorset.</p>
@@ -244,6 +250,8 @@ export const blogPosts: BlogPostData[] = [
     relatedService: "/services/roof-cleaning",
     author: "PowerWash Bros",
     tags: ["roof cleaning", "moss removal", "biocide", "algae treatment", "Dorset", "property care"],
+    metaTitle: "Biocide Treatment for Roof Cleaning Moss Removal | Dorset Expert",
+    metaDescription: "Why biocide treatment is essential for roof cleaning. Science-backed moss and algae removal for Swanage, Purbeck & Dorset properties.",
     content: `<h1>Why Biocide Treatment is Essential for Roof Cleaning</h1>
 
 <p>When it comes to <strong>professional roof cleaning</strong> in Dorset, one term keeps coming up: <strong>biocide treatment</strong>. But what exactly is it, and why is it so important?</p>
@@ -352,6 +360,8 @@ export const blogPosts: BlogPostData[] = [
     relatedService: "/services/pressure-washing",
     author: "PowerWash Bros",
     tags: ["jet washing", "pressure washing", "cleaning methods", "Dorset", "guide", "property maintenance"],
+    metaTitle: "Jet Washing vs Pressure Washing | Dorset Guide & Comparison",
+    metaDescription: "What's the difference between jet washing and pressure washing? Complete guide for Dorset homeowners. Learn when to use each service.",
     content: `<h1>Jet Washing vs Pressure Washing: Expert Guide for Dorset Properties</h1>
 
 <p>One of the most common questions we hear: <strong>"What's the difference between jet washing and pressure washing?"</strong> The short answer: they're essentially the same service. Here's the complete breakdown.</p>
@@ -3945,5 +3955,133 @@ Contact PowerWash Bros for comprehensive year-end property assessment planning s
 
 Enter 2027 prepared and confident in your property maintenance approach.`,
     status: "scheduled",
-  }
+  },
+  {
+    title: "How Often Should You Clean Your Roof in Dorset? Seasonal Guide",
+    slug: "how-often-clean-roof-dorset-seasonal-maintenance-guide",
+    excerpt: "How often should you get your roof cleaned in Dorset? Expert seasonal recommendations for moss, algae, and lichen prevention in Purbeck.",
+    category: "Maintenance Tips",
+    publishedAt: "2026-03-15",
+    readTime: 5,
+    featuredImage: "",
+    relatedService: "/services/roof-cleaning",
+    author: "PowerWash Bros",
+    tags: ["roof cleaning", "roof maintenance", "moss prevention", "seasonal care", "Dorset", "how often"],
+    metaTitle: "How Often to Clean Your Roof | Dorset Seasonal Maintenance Guide",
+    metaDescription: "Expert guide: how often should you clean your roof in Dorset? Learn seasonal maintenance schedules for Swanage, Purbeck & surrounding areas.",
+    content: `<h1>How Often Should You Clean Your Roof? Dorset Seasonal Maintenance Guide</h1><p>Knowing how frequently to clean your roof is crucial for protecting your property. Our Dorset specialists recommend biannual cleaning in spring and autumn to prevent moss, algae, and lichen damage. High-moisture areas like Swanage may benefit from quarterly maintenance. Contact us for a personalized roof maintenance assessment.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Commercial Pressure Washing Services Dorset - Business Solutions",
+    slug: "commercial-pressure-washing-services-dorset-industrial-cleaning",
+    excerpt: "Professional commercial pressure washing for Dorset businesses. Industrial cleaning solutions for forecourts, retail parks, warehouses & factories.",
+    category: "Commercial Services",
+    publishedAt: "2026-04-01",
+    readTime: 7,
+    featuredImage: "",
+    relatedService: "/services/commercial",
+    author: "PowerWash Bros",
+    tags: ["commercial cleaning", "pressure washing", "industrial cleaning", "business services", "Dorset", "forecourt cleaning"],
+    metaTitle: "Commercial Pressure Washing Dorset | Industrial Cleaning Services",
+    metaDescription: "Professional commercial pressure washing for businesses in Dorset. Forecourt cleaning, retail parks, warehouses. Free quotes on industrial cleaning.",
+    content: `<h1>Commercial Pressure Washing Services Dorset</h1><p>Protect your business image with professional commercial pressure washing. We service forecourts, retail parks, industrial units, and warehouses across Dorset. Our PowerUps biocide treatments ensure long-lasting cleanliness and professional appearance for commercial properties.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Before and After: Transform Your Home with Professional Cleaning",
+    slug: "before-after-professional-property-cleaning-transformations-dorset",
+    excerpt: "See stunning before and after transformations. Professional cleaning projects across Dorset show the power of expert exterior cleaning services.",
+    category: "Case Studies",
+    publishedAt: "2026-04-15",
+    readTime: 6,
+    featuredImage: "",
+    relatedService: "/our-work",
+    author: "PowerWash Bros",
+    tags: ["before after", "transformations", "case studies", "property cleaning", "results", "Dorset"],
+    metaTitle: "Before & After Professional Property Cleaning | Dorset Transformations",
+    metaDescription: "View stunning before/after transformations. Real property cleaning projects across Dorset & Purbeck. See professional results from PowerWash Bros.",
+    content: `<h1>Property Transformation: Before & After Professional Cleaning</h1><p>Explore our gallery of remarkable property transformations. From moss-covered roofs to grimy driveways, see how professional cleaning restores your property's curb appeal. Visit our portfolio for more stunning Dorset cleaning results.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Driveway Sealing After Pressure Washing - Protection Guide",
+    slug: "driveway-sealing-after-pressure-washing-protection-guide",
+    excerpt: "Should you seal your driveway after pressure washing? Expert guide on driveway protection and sealant options for Dorset properties.",
+    category: "Expert Tips",
+    publishedAt: "2026-05-01",
+    readTime: 6,
+    featuredImage: "",
+    relatedService: "/services/driveway-cleaning",
+    author: "PowerWash Bros",
+    tags: ["driveway sealing", "pressure washing", "driveway protection", "maintenance", "Dorset", "preservation"],
+    metaTitle: "Driveway Sealing After Pressure Washing | Protection Tips Dorset",
+    metaDescription: "Should you seal your driveway after pressure washing? Expert guide on sealants and protection for Dorset driveways after professional cleaning.",
+    content: `<h1>Driveway Sealing After Pressure Washing: Complete Protection Guide</h1><p>After professional pressure washing, sealing protects your investment. Learn about driveway sealant options, timing, and benefits for Dorset properties. Our specialists can recommend the best protection strategy for your specific driveway type.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Solar Panel Cleaning Benefits - Increase Energy Output by 25%",
+    slug: "solar-panel-cleaning-benefits-increase-energy-efficiency-dorset",
+    excerpt: "Increase solar panel efficiency by up to 25%. Learn why regular professional solar panel cleaning is essential for maximum energy output in Dorset.",
+    category: "Expert Tips",
+    publishedAt: "2026-05-15",
+    readTime: 6,
+    featuredImage: "",
+    relatedService: "/services/solar-panel-cleaning",
+    author: "PowerWash Bros",
+    tags: ["solar panels", "energy efficiency", "renewable energy", "maintenance", "Dorset", "cleaning"],
+    metaTitle: "Solar Panel Cleaning Benefits | Increase Energy Efficiency 25% Dorset",
+    metaDescription: "Maximize solar panel efficiency with professional cleaning. Learn how solar panel maintenance increases energy output by up to 25% in Dorset.",
+    content: `<h1>Solar Panel Cleaning Benefits: Maximize Energy Efficiency</h1><p>Dirty solar panels lose up to 25% efficiency. Professional cleaning restores output, improves ROI on your renewable investment, and extends panel lifespan. Dorset's coastal climate requires regular maintenance for optimal performance.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Roof Cleaning vs Moss Treatment - What's the Difference?",
+    slug: "roof-cleaning-vs-moss-treatment-professional-comparison",
+    excerpt: "Confused about roof cleaning vs moss treatment? Expert comparison explaining the difference and when to use each service for Dorset homes.",
+    category: "Expert Tips",
+    publishedAt: "2026-06-01",
+    readTime: 5,
+    featuredImage: "",
+    relatedService: "/services/roof-cleaning",
+    author: "PowerWash Bros",
+    tags: ["roof cleaning", "moss treatment", "biocide", "comparison", "Dorset", "maintenance"],
+    metaTitle: "Roof Cleaning vs Moss Treatment | Which Service Do You Need?",
+    metaDescription: "Roof cleaning vs moss treatment: which service do you need? Expert comparison for Dorset property owners. Learn when to use each approach.",
+    content: `<h1>Roof Cleaning vs Moss Treatment: Complete Comparison</h1><p>Roof cleaning removes visible debris; moss treatment prevents biological growth. Both are essential for complete protection. Our integrated approach combines soft wash cleaning with PowerUps biocide for lasting results on Dorset properties.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "Eco-Friendly Pressure Washing - Sustainable Property Care Dorset",
+    slug: "eco-friendly-pressure-washing-sustainable-cleaning-dorset",
+    excerpt: "Eco-friendly pressure washing solutions for Dorset properties. Sustainable cleaning methods that protect environment while delivering professional results.",
+    category: "Sustainability",
+    publishedAt: "2026-06-15",
+    readTime: 6,
+    featuredImage: "",
+    relatedService: "/services/softwash",
+    author: "PowerWash Bros",
+    tags: ["eco-friendly", "sustainable", "green cleaning", "environment", "pressure washing", "Dorset"],
+    metaTitle: "Eco-Friendly Pressure Washing Dorset | Sustainable Cleaning Methods",
+    metaDescription: "Professional eco-friendly pressure washing for Dorset. Sustainable cleaning solutions that protect the environment while delivering results.",
+    content: `<h1>Eco-Friendly Pressure Washing: Sustainable Property Care</h1><p>Our soft washing techniques use environmentally responsible methods. Bio-safe biocide treatments protect local waterways while effectively eliminating moss and algae. Sustainable property care that benefits Dorset communities and ecosystems.</p>`,
+    status: "scheduled",
+  },
+  {
+    title: "DIY vs Professional Pressure Washing - Cost Benefit Analysis",
+    slug: "diy-vs-professional-pressure-washing-cost-comparison-analysis",
+    excerpt: "DIY vs professional pressure washing: detailed cost analysis. Discover why professional services save money and protect your Dorset property.",
+    category: "Expert Tips",
+    publishedAt: "2026-07-01",
+    readTime: 7,
+    featuredImage: "",
+    relatedService: "/services/pressure-washing",
+    author: "PowerWash Bros",
+    tags: ["DIY vs professional", "cost analysis", "pressure washing", "investment", "maintenance", "Dorset"],
+    metaTitle: "DIY vs Professional Pressure Washing | Cost Benefit Analysis Dorset",
+    metaDescription: "Compare DIY vs professional pressure washing costs. Analysis shows why professionals save money and prevent property damage in Dorset.",
+    content: `<h1>DIY vs Professional Pressure Washing: Cost Benefit Analysis</h1><p>While DIY pressure washing seems economical, equipment costs, safety risks, and potential property damage make professional services more cost-effective. Our biocide-backed approach prevents costly regrowth cycles. Learn why Dorset homeowners choose professional care.</p>`,
+    status: "scheduled",
+  },
 ]

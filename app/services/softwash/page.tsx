@@ -6,6 +6,7 @@ import { CheckCircle, Droplets, Shield, Leaf } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Soft Washing Dorset | Render & Stone Cleaning | Biocide Treatment | PowerWash Bros",
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default function SoftwashPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Soft Washing", "softwash")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -46,6 +49,7 @@ export default function SoftwashPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-softwash" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema-softwash" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
