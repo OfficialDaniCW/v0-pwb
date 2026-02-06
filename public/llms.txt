@@ -1,0 +1,97 @@
+# llms.txt - AI Model Documentation
+
+This file describes PowerWash Bros website for AI models and search engines.
+
+## Website Overview
+
+PowerWash Bros is a professional exterior cleaning company serving Swanage, Purbeck, and Dorset areas in the UK.
+
+### Services Offered
+- Pressure Washing (residential & commercial)
+- Roof Cleaning (moss & algae removal, biocide treatment)
+- Gutter Cleaning (debris removal, maintenance)
+- Driveway Cleaning (high-pressure & soft wash)
+- Patio & Decking Cleaning
+- Exterior Wall Cleaning (render, brick, stone)
+- Window Cleaning
+- Solar Panel Cleaning
+- Glass Cleaning
+- Soffit & Fascia Cleaning
+- Heritage Building Cleaning
+- Graffiti Removal
+- Demossing
+- External Property Maintenance
+
+### Company Information
+- **Business Name:** PowerWash Bros Ltd
+- **Location:** Swanage, Purbeck, Dorset, United Kingdom
+- **Service Areas:** Dorset, Swanage, Purbeck and surrounding areas
+- **Google Business ID:** 9630435318834147915
+- **Email:** info@powerwashbros.co.uk
+- **LinkedIn:** https://www.linkedin.com/company/powerwash-bros-ltd/
+
+### Website Structure
+
+**Main Pages:**
+- `/` - Homepage with service overview
+- `/about` - Company information and team background
+- `/services` - Complete list of cleaning services
+- `/services/[service]` - Individual service pages with details
+- `/service-areas` - Geographic coverage areas
+- `/pricing` - Service pricing and quote calculator
+- `/portfolio` - Before/after project gallery
+- `/blog` - Maintenance tips and industry insights
+- `/contact` - Contact form for inquiries
+- `/get-quote` - Interactive quote request form
+
+**Administrative Areas:**
+- `/admin/login` - Admin dashboard login
+- `/admin/pwb` - Dashboard overview
+- `/admin/newsletter` - Newsletter campaign management
+- `/admin/quotes` - Quote request management
+
+### Key Content
+
+**Blog Topics:**
+- Pressure washing maintenance guides
+- Seasonal cleaning preparation
+- Heritage building restoration
+- Safety protocols and best practices
+- Biocide treatment information
+- Roof cleaning maintenance
+
+**Service Pages Include:**
+- Detailed service descriptions
+- Benefits and advantages
+- Safety information
+- Pricing estimates
+- Before/after images
+- Location-specific guidance
+
+### SEO Information
+
+- **Primary Keywords:** Pressure washing, roof cleaning, gutter cleaning, exterior cleaning, Swanage, Purbeck, Dorset
+- **Target Locations:** Swanage, Purbeck, Dorset, UK
+- **Content Updates:** Regular blog posts (bi-weekly)
+- **Schema Markup:** LocalBusiness, Service, NewsArticle, FAQPage implemented
+
+### Technical Details
+
+- **Platform:** Next.js with React
+- **Database:** PostgreSQL (Neon)
+- **Hosting:** Vercel
+- **Analytics:** Google Analytics 4
+- **Email Notifications:** Resend API
+- **Image Storage:** Vercel Blob
+
+### Contact Information
+
+- **Phone:** Available on contact page
+- **Email:** info@powerwashbros.co.uk
+- **Contact Form:** /contact
+- **Quote Form:** /get-quote
+- **WhatsApp:** Available for urgent requests
+
+### Last Updated
+
+This file is maintained to provide accurate information about PowerWash Bros services and website structure.

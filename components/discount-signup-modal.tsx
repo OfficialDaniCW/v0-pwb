@@ -52,10 +52,7 @@ export function DiscountSignupModal() {
       <Button
         onClick={() => setIsOpen(true)}
         size="lg"
-        className="w-full sm:w-auto text-white font-semibold rounded-lg hover:shadow-lg transition-all"
-        style={{
-          backgroundColor: "var(--success)",
-        }}
+        className="w-full sm:w-auto text-white font-semibold rounded-lg hover:shadow-lg transition-all bg-success"
       >
         <Gift className="h-5 w-5 mr-2" />
         Get Discount Code
@@ -80,7 +77,7 @@ export function DiscountSignupModal() {
 
             {/* Modal Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--success)" }}>
+              <div className="p-3 rounded-lg bg-success">
                 <Gift className="h-6 w-6 text-white" />
               </div>
               <div>

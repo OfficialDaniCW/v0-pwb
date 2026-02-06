@@ -479,14 +479,11 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="mt-8 text-center">
-                <p className="text-white/60 text-sm">
-                  For full policy details, please contact us at{" "}
-                  <a href="mailto:info@powerwashbros.co.uk" className="text-[#1E90FF] hover:underline">
-                    info@powerwashbros.co.uk
-                  </a>
-                </p>
-              </div>
+  <div className="mt-8 text-center">
+  <p className="text-white/60 text-sm">
+  For full policy details, please <Link href="/contact" className="text-[#1E90FF] hover:underline font-medium">contact us</Link>.
+  </p>
+  </div>
             </div>
           </div>
         </section>

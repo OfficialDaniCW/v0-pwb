@@ -143,7 +143,7 @@ export const blogPosts: BlogPostData[] = [
 
 <ul>
 <li>WhatsApp: <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">+44 7418 610731</a></li>
-<li>Email: <a href="mailto:info@powerwashbros.co.uk">info@powerwashbros.co.uk</a></li>
+<li>Email: <Link href="/contact">Submit via contact form</Link></li>
 <li>Free quotes on all gutter cleaning work</li>
 </ul>
 
@@ -233,7 +233,7 @@ export const blogPosts: BlogPostData[] = [
 
 <ul>
 <li>WhatsApp: <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">+44 7418 610731</a></li>
-<li>Email: <a href="mailto:info@powerwashbros.co.uk">info@powerwashbros.co.uk</a></li>
+<li>Email: <Link href="/contact">Submit via contact form</Link></li>
 <li>Get your spring driveway cleaning scheduled today</li>
 </ul>
 
@@ -343,7 +343,7 @@ export const blogPosts: BlogPostData[] = [
 
 <ul>
 <li>WhatsApp: <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">+44 7418 610731</a></li>
-<li>Email: <a href="mailto:info@powerwashbros.co.uk">info@powerwashbros.co.uk</a></li>
+<li>Email: <Link href="/contact">Submit via contact form</Link></li>
 <li>Free roof cleaning assessment and quote</li>
 </ul>
 
@@ -436,7 +436,7 @@ export const blogPosts: BlogPostData[] = [
 
 <ul>
 <li>WhatsApp: <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">+44 7418 610731</a></li>
-<li>Email: <a href="mailto:info@powerwashbros.co.uk">info@powerwashbros.co.uk</a></li>
+<li>Email: <Link href="/contact">Submit via contact form</Link></li>
 <li>Free quotes for all your cleaning needs</li>
 </ul>
 

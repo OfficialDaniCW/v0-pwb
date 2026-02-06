@@ -55,9 +55,9 @@ export default function DataDeletion() {
                 <div className="space-y-2 text-sm">
                   <p>
                     <strong>Email:</strong>{" "}
-                    <a href="mailto:info@powerwashbros.co.uk" className="text-[#1E90FF] hover:underline">
-                      info@powerwashbros.co.uk
-                    </a>
+                    <Link href="/contact" className="text-[#1E90FF] hover:underline font-medium">
+                      Submit request via contact form
+                    </Link>
                   </p>
                   <p>
                     <strong>Phone:</strong>{" "}

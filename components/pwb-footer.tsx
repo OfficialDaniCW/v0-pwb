@@ -11,15 +11,7 @@ export function PWBFooter() {
   return (
     <footer className="relative bg-primary text-foreground overflow-hidden">
       {/* Background Pattern with Overlay */}
-      <div
-        className="absolute inset-0 z-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: "url('/backgrounds/pwb-dark-white.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none footer-bg-pattern" />
 
       {/* Main Footer Content */}
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-16 lg:py-20">
@@ -61,11 +53,9 @@ export function PWBFooter() {
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-accent shrink-0 mt-0.5" />
-                <div className="flex flex-col">
-                  <a href="mailto:info@powerwashbros.co.uk" className="hover:text-white transition-colors break-all">
-                    info@powerwashbros.co.uk
-                  </a>
-                </div>
+                <Link href="/contact" className="text-accent hover:text-white transition-colors font-medium">
+                  Send us an email
+                </Link>
               </li>
             </ul>
 

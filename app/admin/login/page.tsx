@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AlertCircle } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link"
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -170,10 +170,7 @@ export default function AdminLogin() {
 
           <div className="mt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              Need help? Contact{" "}
-              <a href="mailto:info@powerwashbros.co.uk" className="text-accent hover:underline">
-                info@powerwashbros.co.uk
-              </a>
+              Need help? <Link href="/contact" className="text-accent hover:underline font-medium">Contact us</Link>
             </p>
           </div>
         </div>

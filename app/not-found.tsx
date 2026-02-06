@@ -17,7 +17,7 @@ export default function NotFound() {
               Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
             </p>
             <p className="text-foreground/50 text-sm">
-              If you think this is a mistake, please contact us at <a href="mailto:info@powerwashbros.co.uk" className="text-accent hover:underline">info@powerwashbros.co.uk</a>
+              If you think this is a mistake, please <Link href="/contact" className="text-accent hover:underline font-medium">contact us</Link>.
             </p>
           </div>
           <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
