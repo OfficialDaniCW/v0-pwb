@@ -23,14 +23,16 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
     })
 
     if (!response.ok) {
-      console.error(`Failed to fetch Instagram posts: ${response.statusText}`)
+      // Silently fail and use static fallback images
+      // This handles 400, 401, 403, 404, etc. without logging
       return []
     }
 
     const data = await response.json()
     return data.data || []
   } catch (error) {
-    console.error("Error fetching Instagram posts:", error)
+    // Silently fail and use static fallback images instead of logging error
+    // This prevents network errors, JSON parse errors, etc. from being logged
     return []
   }
 }

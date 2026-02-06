@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, Building2, Shield, FileText, Clock, AlertTriangle, Camera } from 'lucide-react'
 import Link from 'next/link'
 import Script from 'next/script'
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
   title: "Commercial Property Cleaning Dorset | Warehouse & Retail Cleaning | PowerWash Bros",
@@ -11,6 +12,8 @@ export const metadata = {
 }
 
 export default function CommercialServicesPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Commercial Cleaning", "commercial")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -45,6 +48,7 @@ export default function CommercialServicesPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-commercial" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema-commercial" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />

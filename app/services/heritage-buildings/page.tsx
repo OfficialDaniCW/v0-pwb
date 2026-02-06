@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, ShieldCheck, FileText, Landmark } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
+import { createServiceBreadcrumbs } from '@/lib/schema-utils'
 
 export const metadata = {
   title: "Heritage & Listed Building Cleaning | PowerWash Bros | Purbeck",
@@ -33,6 +35,8 @@ export const metadata = {
 }
 
 export default function HeritageBuildingsPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Heritage Buildings", "heritage-buildings")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -73,6 +77,7 @@ export default function HeritageBuildingsPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-heritage" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

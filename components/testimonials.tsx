@@ -9,11 +9,19 @@ export function Testimonials() {
 
   const aggregateRatingSchema = {
     "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "150",
-    "bestRating": "5",
-    "worstRating": "1"
+    "@type": "AggregateOffer",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros Ltd",
+      "url": "https://powerwashbros.co.uk"
+    }
   }
 
   const googleTestimonials = [
@@ -213,7 +221,7 @@ export function Testimonials() {
 
           <div className="text-center mt-8 flex flex-wrap justify-center items-center gap-6">
             <a
-              href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6119,-1.9598,17z"
+              href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6096156,-1.9657821,17z/data=!3m1!4b1!4m6!3m5!1s0x326cc51b7553d29:0x623817cb057a3b98!8m2!3d50.6096156!4d-1.9632018!16s%2Fg%2F11wty1x79b?entry=ttu&g_ep=EgoyMDI2MDIwMy4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-foreground hover:bg-foreground/90 transition-all px-6 py-3 rounded-lg shadow-lg text-primary"

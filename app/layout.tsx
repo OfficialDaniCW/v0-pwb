@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification
+    google: "your-verification-code", // Already verified via DNS
   },
   alternates: {
     canonical: "https://powerwashbros.co.uk",
@@ -242,13 +242,13 @@ export default function RootLayout({
 
         {/* Leaflet CSS is removed from here */}
 
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XT0PL3MJH0" strategy="lazyOnload" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-7S3SLJT7WZ" strategy="lazyOnload" />
         <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XT0PL3MJH0');
+            gtag('config', 'G-7S3SLJT7WZ');
           `}
         </Script>
       </head>

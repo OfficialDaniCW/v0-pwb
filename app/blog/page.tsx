@@ -3,6 +3,7 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { BlogPostsGrid } from "@/components/blog-posts-grid"
 import { BlogSearchFilterClient } from "@/components/blog-search-filter-client"
 import { NewsletterForm } from "@/components/newsletter-form"
+import Script from "next/script"
 
 export const metadata = {
   title: "Blog | PowerWash Bros | Expert Property Care Advice",
@@ -32,8 +33,58 @@ async function getBlogPosts() {
 export default async function BlogPage() {
   const posts = await getBlogPosts()
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://powerwashbros.co.uk"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://powerwashbros.co.uk/blog"
+      }
+    ]
+  }
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Expert Property Care Advice Blog",
+    "description": "Learn from Dorset's biocide-trained specialists",
+    "url": "https://powerwashbros.co.uk/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PowerWash Bros",
+      "url": "https://powerwashbros.co.uk",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://powerwashbros.co.uk/logo.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": (posts || []).slice(0, 10).map((post: any, index: number) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://powerwashbros.co.uk/blog/${post.slug}`,
+        "name": post.title,
+        "description": post.excerpt,
+        "image": post.featured_image_url || "https://powerwashbros.co.uk/og-image.jpg",
+        "datePublished": post.published_at
+      }))
+    }
+  }
+
   return (
     <>
+      <Script id="breadcrumb-schema-blog-list" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="collection-schema-blog" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
 

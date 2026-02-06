@@ -1,6 +1,8 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { CheckCircle, ChevronRight } from 'lucide-react'
+import Script from 'next/script'
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
   title: 'External Property Maintenance Swanage | Building Cleaning Purbeck Dorset',
@@ -18,6 +20,8 @@ export const metadata = {
 }
 
 export default function ExternalPropertyMaintenancePage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("External Property Maintenance", "external-property-maintenance")
+  
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -43,11 +47,12 @@ export default function ExternalPropertyMaintenancePage() {
 
   return (
     <>
-      <SiteHeader />
+      <Script id="breadcrumb-schema-external" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <SiteHeader />
       <div className="min-h-screen bg-[#0B1E3F]">
         <section className="relative py-20 bg-[#0B1E3F]">
           <div className="container mx-auto px-4">

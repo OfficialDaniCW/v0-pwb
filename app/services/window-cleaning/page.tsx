@@ -6,6 +6,7 @@ import { CheckCircle, Shield, Sparkles, Clock } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import Script from "next/script"
+import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Window Cleaning Swanage & Purbeck | Residential & Commercial | PowerWash Bros",
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default function WindowCleaningPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Window Cleaning", "window-cleaning")
+  
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -46,6 +49,7 @@ export default function WindowCleaningPage() {
 
   return (
     <>
+      <Script id="breadcrumb-schema-window" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Script id="service-schema-window" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />

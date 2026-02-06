@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
 import { ChevronDown } from 'lucide-react'
+import Script from "next/script"
 import {
   Accordion,
   AccordionContent,
@@ -87,6 +88,24 @@ export default function FAQPage() {
 
   return (
     <>
+      <Script 
+        id="faq-structured-data" 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         

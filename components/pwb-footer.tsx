@@ -72,7 +72,7 @@ export function PWBFooter() {
             {/* Social Icons */}
             <div className="flex gap-3 sm:gap-4 pt-2 flex-wrap">
               <a
-                href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6119,-1.9598,17z"
+                href="https://www.google.com/maps/place/Powerwash+Bros+Ltd/@50.6096156,-1.9657821,17z/data=!3m1!4b1!4m6!3m5!1s0x326cc51b7553d29:0x623817cb057a3b98!8m2!3d50.6096156!4d-1.9632018!16s%2Fg%2F11wty1x79b?entry=ttu&g_ep=EgoyMDI2MDIwMy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-[#1E90FF] transition-colors"

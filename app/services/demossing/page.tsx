@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Leaf, Shield, AlertTriangle } from 'lucide-react'
+import Script from 'next/script'
+import { createServiceBreadcrumbs } from '@/lib/schema-utils'
 
 export const metadata: Metadata = {
   title: 'De-Mossing Services Swanage & Purbeck | Roof & Surface De-Mossing',
@@ -12,8 +14,43 @@ export const metadata: Metadata = {
 }
 
 export default function DemossingPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("De-Mossing", "demossing")
+  
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "De-Mossing Services",
+    "description": "Professional de-mossing services for roofs, driveways, and all surfaces in Swanage, Purbeck, and Dorset",
+    "serviceType": "De-Mossing, Moss Removal, Algae Removal",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£100-£500"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="breadcrumb-schema-demossing" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-demossing" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <SiteHeader />
       <main className="min-h-screen bg-[#0B1E3F] text-white">
         <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0B1E3F]">

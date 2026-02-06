@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
+import bcrypt from "bcryptjs"
 
 const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
 
@@ -39,10 +40,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Reset link has already been used" }, { status: 401 })
     }
 
+    // Hash the new password with bcrypt
+    const passwordHash = await bcrypt.hash(newPassword, 10)
+
     // Update admin user password
     await sql`
       UPDATE admin_users
-      SET password_hash = ${newPassword},
+      SET password_hash = ${passwordHash},
           reset_requested_at = NULL
       WHERE id = ${resetToken.admin_id}
     `
@@ -56,7 +60,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, message: "Password has been reset successfully" })
   } catch (error) {
-    console.error("Password reset error:", error)
+    console.error("[v0] Password reset error:", error)
     return NextResponse.json({ error: "Failed to reset password" }, { status: 500 })
   }
 }

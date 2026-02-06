@@ -4,8 +4,9 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://powerwashbros.co.uk/sitemap.xml
+Sitemap: https://powerwashbros.co.uk/sitemap-images.xml
 
 # Speed up crawling
 Crawl-delay: 0

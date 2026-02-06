@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Sun, TrendingUp, Shield, Zap } from 'lucide-react'
+import Script from 'next/script'
+import { createServiceBreadcrumbs } from '@/lib/schema-utils'
 
 export const metadata: Metadata = {
   title: 'Solar Panel Cleaning Swanage & Purbeck | PowerWash Bros Dorset',
@@ -12,8 +14,43 @@ export const metadata: Metadata = {
 }
 
 export default function SolarPanelCleaningPage() {
+  const breadcrumbSchema = createServiceBreadcrumbs("Solar Panel Cleaning", "solar-panel-cleaning")
+  
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Solar Panel Cleaning",
+    "description": "Professional solar panel cleaning in Swanage, Purbeck & Dorset. Restore efficiency, increase energy output. Expert PV cleaning service.",
+    "serviceType": "Solar Panel Cleaning, PV Cleaning, Panel Maintenance",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£200-£600"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
+    }
+  }
+
   return (
     <>
+      <Script id="breadcrumb-schema-solar" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-solar" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <SiteHeader />
       <main className="min-h-screen bg-[#0B1E3F] text-white">
         <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0B1E3F]">

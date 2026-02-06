@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Info, ImageIcon, FileText, Calculator, Mail, Briefcase } from 'lucide-react'
+import { Menu, Info, ImageIcon, FileText, Calculator, Mail, Briefcase, HelpCircle } from 'lucide-react'
 
 export function SiteHeader() {
   const links = [
@@ -12,6 +12,7 @@ export function SiteHeader() {
     { href: "/our-work", label: "Our Work", icon: ImageIcon },
     { href: "/services", label: "Services", icon: Briefcase },
     { href: "/pricing", label: "Pricing", icon: Calculator },
+    { href: "/faq", label: "FAQ", icon: HelpCircle },
     { href: "/blog", label: "News", icon: FileText },
     { href: "/contact", label: "Contact Us", icon: Mail },
   ]
@@ -44,6 +45,9 @@ export function SiteHeader() {
             </Link>
             <Link href="/pricing" className="hover:text-accent transition-colors">
               Pricing
+            </Link>
+            <Link href="/faq" className="hover:text-accent transition-colors">
+              FAQ
             </Link>
             <Link href="/blog" className="hover:text-accent transition-colors">
               News

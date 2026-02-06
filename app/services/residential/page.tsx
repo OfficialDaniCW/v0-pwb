@@ -3,6 +3,32 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, Home, Sparkles, Shield, Calendar } from 'lucide-react'
 import Link from 'next/link'
+import Script from 'next/script'
+import { createServiceBreadcrumbs } from '@/lib/schema-utils'
+
+const maintenancePackages = [
+  {
+    name: "Kerb Appeal Boost",
+    price: "From £299",
+    frequency: "One-time",
+    includes: ["Driveway deep clean", "Front path cleaning", "Porch & entrance area", "Before/after photos"],
+    ideal: "Perfect for property sales or special occasions"
+  },
+  {
+    name: "Seasonal Refresh",
+    price: "From £450",
+    frequency: "Twice yearly",
+    includes: ["Full driveway clean", "Patio/decking treatment", "Gutter clearance", "Biocide protection"],
+    ideal: "Spring & autumn maintenance to keep properties pristine"
+  },
+  {
+    name: "Complete Care",
+    price: "From £750",
+    frequency: "Quarterly",
+    includes: ["All exterior surfaces", "Roof moss treatment", "Gutters & downpipes", "Maintenance advice"],
+    ideal: "Year-round protection for Purbeck's coastal climate"
+  }
+]
 
 export const metadata = {
   title: "Residential Property Cleaning | PowerWash Bros | Swanage, Purbeck",
@@ -10,32 +36,43 @@ export const metadata = {
 }
 
 export default function ResidentialServicesPage() {
-  const maintenancePackages = [
-    {
-      name: "Kerb Appeal Boost",
-      price: "From £299",
-      frequency: "One-time",
-      includes: ["Driveway deep clean", "Front path cleaning", "Porch & entrance area", "Before/after photos"],
-      ideal: "Perfect for property sales or special occasions"
+  const breadcrumbSchema = createServiceBreadcrumbs("Residential Services", "residential")
+  
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Residential Property Cleaning",
+    "description": "Professional residential property cleaning focused on kerb appeal and maintenance packages across Purbeck.",
+    "serviceType": "Residential Cleaning, Property Maintenance, Kerb Appeal",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "PowerWash Bros",
+      "telephone": "+447418610731",
+      "email": "info@powerwashbros.co.uk",
+      "url": "https://powerwashbros.co.uk",
+      "areaServed": [
+        { "@type": "City", "name": "Swanage" },
+        { "@type": "City", "name": "Purbeck" },
+        { "@type": "AdministrativeArea", "name": "Dorset" }
+      ]
     },
-    {
-      name: "Seasonal Refresh",
-      price: "From £450",
-      frequency: "Twice yearly",
-      includes: ["Full driveway clean", "Patio/decking treatment", "Gutter clearance", "Biocide protection"],
-      ideal: "Spring & autumn maintenance to keep properties pristine"
+    "offers": {
+      "@type": "Offer",
+      "url": "https://powerwashbros.co.uk/quote",
+      "priceCurrency": "GBP",
+      "priceRange": "£299-£1000"
     },
-    {
-      name: "Complete Care",
-      price: "From £750",
-      frequency: "Quarterly",
-      includes: ["All exterior surfaces", "Roof moss treatment", "Gutters & downpipes", "Maintenance advice"],
-      ideal: "Year-round protection for Purbeck's coastal climate"
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "150"
     }
-  ]
+  }
 
   return (
     <>
+      <Script id="breadcrumb-schema-residential" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-residential" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
