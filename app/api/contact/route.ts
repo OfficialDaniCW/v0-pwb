@@ -28,11 +28,21 @@ export async function POST(request: NextRequest) {
     // Send WhatsApp notification
     const whatsappSent = await sendWhatsAppNotification(name, email, phone, subject, message)
 
+    // Check if email was specifically configured but failed
+    const hasEmailKey = !!process.env.RESEND_API_KEY
+    if (hasEmailKey && !emailSent) {
+      console.error('[Contact API] Email API key configured but email send failed')
+      return NextResponse.json(
+        { error: 'Email service error. Please try again or contact us via phone.' },
+        { status: 500 }
+      )
+    }
+
     // At least one notification method should succeed
     if (!emailSent && !whatsappSent) {
       console.error('[Contact API] Both email and WhatsApp failed')
       return NextResponse.json(
-        { error: 'Failed to send notification' },
+        { error: 'Unable to send notification. Please try again or contact us directly.' },
         { status: 500 }
       )
     }
