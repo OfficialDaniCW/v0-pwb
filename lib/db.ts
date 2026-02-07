@@ -1,6 +1,18 @@
 // Database utility functions for PowerWash Bros
 // Using Neon PostgreSQL
 
+import { Pool } from "pg"
+
+// Initialize the PostgreSQL connection pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+})
+
+export { pool }
+
 export interface BlogPost {
   id: number
   title: string
@@ -61,6 +73,3 @@ export interface QuoteRequest {
   status: string
   created_at: Date
 }
-
-// Database query functions would go here
-// In production, these would use the DATABASE_URL env variable to connect to Neon

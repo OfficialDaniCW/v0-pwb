@@ -15,13 +15,13 @@ Your admin dashboard now has **3-layer security** protecting against unauthorize
 - **Cannot be bypassed** - enforced at database level, not code
 
 **Status:** 
-```sql
+\`\`\`sql
 -- Constraint enforced via trigger
 CREATE TRIGGER admin_limit_trigger
 BEFORE INSERT OR UPDATE ON admin_users
 FOR EACH ROW
 EXECUTE FUNCTION check_admin_limit();
-```
+\`\`\`
 
 ---
 
@@ -35,11 +35,11 @@ EXECUTE FUNCTION check_admin_limit();
 - Logs all attempts to `login_attempts` table
 
 **How it works:**
-```
+\`\`\`
 Failed attempt 1-4: Normal response
 Failed attempt 5: 429 Too Many Requests error
 "Too many failed login attempts. Please try again in 15 minutes."
-```
+\`\`\`
 
 **Stored in database:**
 - `login_attempts` table tracks: email, IP, timestamp, success/failure
@@ -62,7 +62,7 @@ Failed attempt 5: 429 Too Many Requests error
 - Cannot be bypassed by API code
 
 **RLS Status:**
-```
+\`\`\`
 Table: admin_users
 - RLS Enabled: YES ✅
 - Policies: 2 (select + modify)
@@ -70,7 +70,7 @@ Table: admin_users
 Table: password_reset_tokens
 - RLS Enabled: YES ✅
 - Policies: 1 (select only)
-```
+\`\`\`
 
 ---
 
@@ -125,7 +125,7 @@ Table: password_reset_tokens
 
 ## Dashboard Login Flow (Now Secured)
 
-```
+\`\`\`
 User enters email + password
 ↓
 Check rate limit (5 failed attempts/15 min) ← LAYER 2
@@ -139,7 +139,7 @@ Bcrypt password verification (existing)
 Set session cookie (HTTP-only, SameSite=Strict)
 ↓
 ✅ Login successful
-```
+\`\`\`
 
 ---
 
