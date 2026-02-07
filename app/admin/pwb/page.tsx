@@ -316,30 +316,33 @@ export default function PWBAdminDashboard() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    // Check file size (max 10MB)
-    const MAX_FILE_SIZE = 10 * 1024 * 1024
+    // Check file size (max 5MB)
+    const MAX_FILE_SIZE = 5 * 1024 * 1024
     if (file.size > MAX_FILE_SIZE) {
-      setSaveMessage("File too large. Maximum size is 10MB.")
+      setSaveMessage("File too large. Maximum size is 5MB.")
       setTimeout(() => setSaveMessage(""), 3000)
       return
     }
 
     setUploadingBlogImage(true)
-    setSaveMessage("Optimizing and uploading image...")
+    setSaveMessage("Uploading image...")
 
     try {
-      const response = await fetch(`/api/upload?filename=${file.name}`, {
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/upload/image", {
         method: "POST",
-        body: file,
+        body: formData,
       })
 
       if (response.ok) {
         const data = await response.json()
         setCurrentPost((prev) => ({ ...prev, featured_image_url: data.url }))
-        const savingsMsg = data.savings > 0 ? ` (optimized to ${data.optimizedSize} bytes, ${data.savings}% reduction)` : ""
-        setSaveMessage(`Image uploaded successfully!${savingsMsg}`)
+        setSaveMessage("Image uploaded successfully!")
       } else {
-        setSaveMessage("Failed to upload image")
+        const error = await response.json()
+        setSaveMessage(error.error || "Failed to upload image")
       }
     } catch (error) {
       setSaveMessage("Error uploading image")

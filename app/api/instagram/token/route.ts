@@ -1,36 +1,30 @@
 export async function GET() {
-  const appId = process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID
-  const appSecret = process.env.INSTAGRAM_APP_SECRET
+  const token = process.env.INSTAGRAM_ACCESS_TOKEN
 
-  if (!appId || !appSecret) {
+  if (!token) {
     return Response.json(
-      { error: "Instagram credentials not configured" },
-      { status: 400 }
+      { data: [], error: "Instagram token not configured" },
+      { status: 200 }
     )
   }
 
   try {
-    // Exchange short-lived token for long-lived token
-    // First, we need to get a user access token - this is typically done via OAuth flow
-    // For now, we'll return the credentials needed for manual setup
-    
-    const tokenUrl = `https://graph.instagram.com/oauth/access_token?client_id=${appId}&client_secret=${appSecret}&grant_type=client_credentials`
+    const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${token}&limit=6`
 
-    const response = await fetch(tokenUrl, {
-      method: "POST",
+    const response = await fetch(url, {
+      next: { revalidate: 3600 }, // Revalidate every hour
     })
 
     if (!response.ok) {
-      throw new Error(`Failed to get token: ${response.statusText}`)
+      // Silently fail and return empty array to use static fallback images
+      return Response.json({ data: [] })
     }
 
     const data = await response.json()
     return Response.json(data)
   } catch (error) {
-    console.error("Error generating Instagram token:", error)
-    return Response.json(
-      { error: "Failed to generate token" },
-      { status: 500 }
-    )
+    console.error("[Instagram API] Error:", error)
+    // Return empty data array instead of error to gracefully fallback to static posts
+    return Response.json({ data: [] })
   }
 }
