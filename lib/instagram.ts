@@ -8,23 +8,14 @@ export interface InstagramPost {
 }
 
 export async function getInstagramPosts(): Promise<InstagramPost[]> {
-  const token = process.env.INSTAGRAM_ACCESS_TOKEN
-
-  // If no token is configured, return empty array to use static fallback images
-  if (!token) {
-    return []
-  }
-
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${token}&limit=6`
-
   try {
-    const response = await fetch(url, {
+    // Call server API route instead of directly accessing token
+    const response = await fetch("/api/instagram/token", {
       next: { revalidate: 3600 }, // Revalidate every hour
     })
 
     if (!response.ok) {
       // Silently fail and use static fallback images
-      // This handles 400, 401, 403, 404, etc. without logging
       return []
     }
 

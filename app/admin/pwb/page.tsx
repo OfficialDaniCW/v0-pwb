@@ -316,30 +316,33 @@ export default function PWBAdminDashboard() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    // Check file size (max 10MB)
-    const MAX_FILE_SIZE = 10 * 1024 * 1024
+    // Check file size (max 5MB)
+    const MAX_FILE_SIZE = 5 * 1024 * 1024
     if (file.size > MAX_FILE_SIZE) {
-      setSaveMessage("File too large. Maximum size is 10MB.")
+      setSaveMessage("File too large. Maximum size is 5MB.")
       setTimeout(() => setSaveMessage(""), 3000)
       return
     }
 
     setUploadingBlogImage(true)
-    setSaveMessage("Optimizing and uploading image...")
+    setSaveMessage("Uploading image...")
 
     try {
-      const response = await fetch(`/api/upload?filename=${file.name}`, {
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/upload/image", {
         method: "POST",
-        body: file,
+        body: formData,
       })
 
       if (response.ok) {
         const data = await response.json()
         setCurrentPost((prev) => ({ ...prev, featured_image_url: data.url }))
-        const savingsMsg = data.savings > 0 ? ` (optimized to ${data.optimizedSize} bytes, ${data.savings}% reduction)` : ""
-        setSaveMessage(`Image uploaded successfully!${savingsMsg}`)
+        setSaveMessage("Image uploaded successfully!")
       } else {
-        setSaveMessage("Failed to upload image")
+        const error = await response.json()
+        setSaveMessage(error.error || "Failed to upload image")
       }
     } catch (error) {
       setSaveMessage("Error uploading image")
@@ -1091,6 +1094,9 @@ export default function PWBAdminDashboard() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Scheduled Posts Manager */}
+      <ScheduledPostsManager />
     </div>
   )
 
@@ -1175,7 +1181,7 @@ export default function PWBAdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">Our Works Management</h1>
-          <p className="text-white/60 mt-1">Create and manage our works items</p>
+          <p className="text-white/60 mt-1">Create and manage our works items with before/after images</p>
         </div>
       </div>
       <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
@@ -1231,6 +1237,84 @@ export default function PWBAdminDashboard() {
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
+
+          {/* Before Image Upload */}
+          <div>
+            <Label htmlFor="works-before" className="text-white">
+              Before Image URL
+            </Label>
+            <div className="flex gap-2">
+              <Input
+                id="works-before"
+                value={currentTransformation.before_image_url || ""}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, before_image_url: e.target.value }))}
+                placeholder="Enter before image URL..."
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              />
+              <Button
+                variant="outline"
+                className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white"
+                onClick={() => setUploadingWorksBefore(true)}
+              >
+                <Upload className="h-4 w-4" />
+              </Button>
+            </div>
+            {currentTransformation.before_image_url && (
+              <div className="mt-2 relative w-full h-32 rounded-lg overflow-hidden">
+                <Image
+                  src={currentTransformation.before_image_url || "/placeholder.svg"}
+                  alt="Before preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* After Image Upload */}
+          <div>
+            <Label htmlFor="works-after" className="text-white">
+              After Image URL
+            </Label>
+            <div className="flex gap-2">
+              <Input
+                id="works-after"
+                value={currentTransformation.after_image_url || ""}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, after_image_url: e.target.value }))}
+                placeholder="Enter after image URL..."
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              />
+              <Button
+                variant="outline"
+                className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white"
+                onClick={() => setUploadingWorksAfter(true)}
+              >
+                <Upload className="h-4 w-4" />
+              </Button>
+            </div>
+            {currentTransformation.after_image_url && (
+              <div className="mt-2 relative w-full h-32 rounded-lg overflow-hidden">
+                <Image
+                  src={currentTransformation.after_image_url || "/placeholder.svg"}
+                  alt="After preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <Label className="text-white flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={currentTransformation.featured || false}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, featured: e.target.checked }))}
+              />
+              Featured Work
+            </Label>
+          </div>
+
           <div className="flex justify-end">
             <Button
               variant="outline"
