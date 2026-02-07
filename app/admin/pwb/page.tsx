@@ -1091,6 +1091,9 @@ export default function PWBAdminDashboard() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Scheduled Posts Manager */}
+      <ScheduledPostsManager />
     </div>
   )
 
@@ -1175,7 +1178,7 @@ export default function PWBAdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">Our Works Management</h1>
-          <p className="text-white/60 mt-1">Create and manage our works items</p>
+          <p className="text-white/60 mt-1">Create and manage our works items with before/after images</p>
         </div>
       </div>
       <Card className="bg-[#0B1E3F] border-white/10 shadow-lg">
@@ -1231,6 +1234,84 @@ export default function PWBAdminDashboard() {
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
+
+          {/* Before Image Upload */}
+          <div>
+            <Label htmlFor="works-before" className="text-white">
+              Before Image URL
+            </Label>
+            <div className="flex gap-2">
+              <Input
+                id="works-before"
+                value={currentTransformation.before_image_url || ""}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, before_image_url: e.target.value }))}
+                placeholder="Enter before image URL..."
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              />
+              <Button
+                variant="outline"
+                className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white"
+                onClick={() => setUploadingWorksBefore(true)}
+              >
+                <Upload className="h-4 w-4" />
+              </Button>
+            </div>
+            {currentTransformation.before_image_url && (
+              <div className="mt-2 relative w-full h-32 rounded-lg overflow-hidden">
+                <Image
+                  src={currentTransformation.before_image_url || "/placeholder.svg"}
+                  alt="Before preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* After Image Upload */}
+          <div>
+            <Label htmlFor="works-after" className="text-white">
+              After Image URL
+            </Label>
+            <div className="flex gap-2">
+              <Input
+                id="works-after"
+                value={currentTransformation.after_image_url || ""}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, after_image_url: e.target.value }))}
+                placeholder="Enter after image URL..."
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              />
+              <Button
+                variant="outline"
+                className="border-white/20 bg-[#0B1E3F] hover:bg-[#1E90FF] text-white"
+                onClick={() => setUploadingWorksAfter(true)}
+              >
+                <Upload className="h-4 w-4" />
+              </Button>
+            </div>
+            {currentTransformation.after_image_url && (
+              <div className="mt-2 relative w-full h-32 rounded-lg overflow-hidden">
+                <Image
+                  src={currentTransformation.after_image_url || "/placeholder.svg"}
+                  alt="After preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          <div>
+            <Label className="text-white flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={currentTransformation.featured || false}
+                onChange={(e) => setCurrentTransformation((prev) => ({ ...prev, featured: e.target.checked }))}
+              />
+              Featured Work
+            </Label>
+          </div>
+
           <div className="flex justify-end">
             <Button
               variant="outline"
