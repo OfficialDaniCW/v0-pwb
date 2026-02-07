@@ -8,10 +8,11 @@ export interface InstagramPost {
 }
 
 export async function getInstagramPosts(): Promise<InstagramPost[]> {
-  const token = process.env.INSTAGRAM_ACCESS_TOKEN
+  const token = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN
 
   // If no token is configured, return empty array to use static fallback images
   if (!token) {
+    console.log("[v0] Instagram token not configured, using static fallback posts")
     return []
   }
 
