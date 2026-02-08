@@ -29,6 +29,7 @@ export function SiteHeader() {
               width={180} 
               height={32} 
               className="h-8 w-auto"
+              sizes="(max-width: 768px) 150px, 180px"
               priority
             />
           </Link>
@@ -94,6 +95,7 @@ export function SiteHeader() {
                     width={150} 
                     height={32} 
                     className="h-8 w-auto"
+                    sizes="150px"
                   />
                 </div>
 
