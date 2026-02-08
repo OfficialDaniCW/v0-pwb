@@ -252,7 +252,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Suspense fallback={null}>
           <ScrollToTop />
           <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
