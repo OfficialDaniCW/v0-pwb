@@ -1,3 +1,5 @@
+"use server"
+
 // Database utility functions for PowerWash Bros
 // Using Neon PostgreSQL
 
