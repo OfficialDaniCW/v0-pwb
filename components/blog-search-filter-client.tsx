@@ -102,6 +102,7 @@ export function BlogSearchFilterClient({ posts }: BlogSearchFilterClientProps) {
           placeholder="Search blog posts by title, topic, or keyword..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          suppressHydrationWarning
           className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:border-[#1E90FF] transition-colors"
         />
       </div>
@@ -114,6 +115,7 @@ export function BlogSearchFilterClient({ posts }: BlogSearchFilterClientProps) {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
+              suppressHydrationWarning
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 selectedCategory === category
                   ? "bg-[#1E90FF] text-white"
@@ -138,6 +140,7 @@ export function BlogSearchFilterClient({ posts }: BlogSearchFilterClientProps) {
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
+                  suppressHydrationWarning
                   className={`px-3 py-1 rounded-full text-xs font-medium transition-all border ${
                     isSelected
                       ? `${colors.bg} ${colors.text} ${colors.border} border-opacity-100`
@@ -161,6 +164,7 @@ export function BlogSearchFilterClient({ posts }: BlogSearchFilterClientProps) {
           </div>
           <button
             onClick={clearFilters}
+            suppressHydrationWarning
             className="flex items-center gap-1 text-sm text-[#1E90FF] hover:text-[#1E90FF]/80 transition-colors"
           >
             <X className="w-4 h-4" />
