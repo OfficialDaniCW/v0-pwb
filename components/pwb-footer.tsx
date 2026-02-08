@@ -274,6 +274,7 @@ export function PWBFooter() {
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              suppressHydrationWarning
               className="h-8 w-8 sm:h-10 sm:w-10 bg-accent rounded flex items-center justify-center hover:bg-foreground hover:text-accent transition-all shadow-lg"
               aria-label="Scroll to top"
             >
