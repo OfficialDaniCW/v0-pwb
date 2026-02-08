@@ -1,22 +1,39 @@
 import { NextResponse } from "next/server"
-import { pool } from "@/lib/db"
+import { blogPosts } from "@/lib/blog-posts"
 
 // Mark this route as dynamic since it uses request.url
 export const dynamic = "force-dynamic"
 
-// Transform blog posts from database to match API schema
-function transformBlogPost(post: any) {
+// Transform blog posts to match API schema expected by components
+function transformBlogPost(post: (typeof blogPosts)[0]) {
   return {
-    id: post.id,
+    id: Math.random(), // Generate a simple ID
     title: post.title,
     slug: post.slug,
     excerpt: post.excerpt,
     category: post.category,
-    published_at: post.published_at,
-    read_time_minutes: post.read_time_minutes || 5,
-    featured_image_url: post.featured_image_url || undefined,
-    is_published: post.is_published,
+    published_at: post.publishedAt,
+    read_time_minutes: post.readTime,
+    featured_image_url: post.featuredImage || undefined,
+    is_published: true,
   }
+}
+
+// Filter posts based on publish date and status
+function filterPublishedPosts(posts: (typeof blogPosts), includeScheduled: boolean = false) {
+  const now = new Date()
+  
+  return posts.filter((post) => {
+    const publishDate = new Date(post.publishedAt)
+    
+    // If including scheduled (admin view), return all
+    if (includeScheduled) {
+      return true
+    }
+    
+    // For public view, only show posts published on or before today
+    return publishDate <= now
+  })
 }
 
 export async function GET(request: Request) {
@@ -28,19 +45,13 @@ export async function GET(request: Request) {
 
     // If slug provided, fetch single post
     if (slug) {
-      const result = await pool.query(
-        "SELECT * FROM blog_posts WHERE slug = $1",
-        [slug]
-      )
-      
-      if (result.rows.length === 0) {
+      const post = blogPosts.find((p) => p.slug === slug)
+      if (!post) {
         return NextResponse.json({ error: "Post not found" }, { status: 404 })
       }
-
-      const post = result.rows[0]
       
       // Check if post is published or should be shown
-      const publishDate = new Date(post.published_at)
+      const publishDate = new Date(post.publishedAt)
       const now = new Date()
       
       if (publishDate > now && !includeScheduled) {
@@ -50,29 +61,21 @@ export async function GET(request: Request) {
       return NextResponse.json(transformBlogPost(post))
     }
 
-    // Query published posts from database
-    let query = "SELECT * FROM blog_posts WHERE is_published = true"
-    const params: any[] = []
+    // Filter to published posts only (unless admin view)
+    const publishedPosts = filterPublishedPosts(blogPosts, includeScheduled)
 
-    // For admin view, include scheduled posts
-    if (includeScheduled) {
-      query = "SELECT * FROM blog_posts"
-    } else {
-      // For public view, only show posts published on or before today
-      query += " AND published_at <= NOW()"
-    }
-
-    // Sort by published date (newest first)
-    query += " ORDER BY published_at DESC"
+    // Sort posts by published date (newest first)
+    const sortedPosts = [...publishedPosts].sort((a, b) => {
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    })
 
     // Apply limit if provided
     if (limit) {
-      query += " LIMIT $1"
-      params.push(Number.parseInt(limit))
+      const limitedPosts = sortedPosts.slice(0, Number.parseInt(limit))
+      return NextResponse.json(limitedPosts.map(transformBlogPost))
     }
 
-    const result = await pool.query(query, params)
-    return NextResponse.json(result.rows.map(transformBlogPost))
+    return NextResponse.json(sortedPosts.map(transformBlogPost))
   } catch (error) {
     console.error("Failed to fetch posts:", error)
     return NextResponse.json({ error: "Failed to fetch posts" }, { status: 500 })

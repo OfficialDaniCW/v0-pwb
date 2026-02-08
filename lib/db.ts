@@ -1,19 +1,8 @@
-"use server"
-
 // Database utility functions for PowerWash Bros
 // Using Neon PostgreSQL
 
-import { Pool } from "pg"
-
-// Initialize the PostgreSQL connection pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-})
-
-export { pool }
+// Note: Direct database connections should only be used in server-only contexts
+// For client-facing features, use API routes instead
 
 export interface BlogPost {
   id: number
