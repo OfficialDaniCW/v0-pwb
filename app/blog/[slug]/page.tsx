@@ -14,9 +14,9 @@ export function generateStaticParams() {
   }))
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const post = blogPosts.find((p) => p.slug === slug)
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((p) => p.slug === params.slug)
+  const slug = params.slug; // Declare the slug variable
 
   if (!post) {
     notFound()
@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://powerwashbros.co.uk/blog/${slug}`
+        "item": `https://powerwashbros.co.uk/blog/${params.slug}`
       }
     ]
   }
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://powerwashbros.co.uk/blog/${slug}`,
+      "@id": `https://powerwashbros.co.uk/blog/${params.slug}`,
     },
     keywords: post.tags.join(", "),
     articleBody: post.content.replace(/<[^>]*>/g, "").substring(0, 500),
