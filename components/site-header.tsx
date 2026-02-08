@@ -28,7 +28,7 @@ export function SiteHeader() {
               alt="PowerWash Bros" 
               width={180} 
               height={32} 
-              className="h-8 w-auto object-contain"
+              className="h-8 w-auto"
               priority
             />
           </Link>
@@ -93,7 +93,7 @@ export function SiteHeader() {
                     alt="PowerWash Bros" 
                     width={150} 
                     height={32} 
-                    className="h-8 w-auto object-contain"
+                    className="h-8 w-auto"
                   />
                 </div>
 
