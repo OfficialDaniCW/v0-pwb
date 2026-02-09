@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     const post = posts[0]
     const slug = params.slug
 
-  const breadcrumbSchema = {
+    const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -226,7 +226,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </main>
     </>
   )
-} catch (error) {
+  } catch (error) {
     console.error("Failed to fetch blog post:", error)
     notFound()
   }
+}
