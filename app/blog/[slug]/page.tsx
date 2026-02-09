@@ -3,24 +3,43 @@ import { PWBFooter } from "@/components/pwb-footer"
 import { Clock, Calendar, Share2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { blogPosts } from "@/lib/blog-posts"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
+import { neon } from "@neondatabase/serverless"
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }))
+const sql = neon(process.env.DATABASE_URL!)
+
+export async function generateStaticParams() {
+  try {
+    const posts = await sql`
+      SELECT slug FROM blog_posts WHERE is_published = true ORDER BY published_at DESC
+    `
+    return posts.map((post: any) => ({
+      slug: post.slug,
+    }))
+  } catch (error) {
+    console.error("Failed to generate static params:", error)
+    return []
+  }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug)
-  const slug = params.slug; // Declare the slug variable
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  try {
+    const posts = await sql`
+      SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url, is_published, content, author, tags, meta_title, meta_description
+      FROM blog_posts
+      WHERE slug = ${params.slug} AND is_published = true
+      LIMIT 1
+    `
 
-  if (!post) {
-    notFound()
-  }
+    if (!posts.length) {
+      notFound()
+    }
+
+    const post = posts[0]
+    const slug = params.slug
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -52,9 +71,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
-    image: post.featuredImage || "https://powerwashbros.co.uk/og-image.jpg",
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    image: post.featured_image_url || "https://powerwashbros.co.uk/og-image.jpg",
+    datePublished: post.published_at,
+    dateModified: post.published_at,
     author: {
       "@type": "Organization",
       name: post.author || "PowerWash Bros",
@@ -72,7 +91,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       "@type": "WebPage",
       "@id": `https://powerwashbros.co.uk/blog/${params.slug}`,
     },
-    keywords: post.tags.join(", "),
+    keywords: post.tags?.join(", ") || "",
     articleBody: post.content.replace(/<[^>]*>/g, "").substring(0, 500),
   }
 
@@ -111,7 +130,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>
-                    {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+                    {new Date(post.published_at).toLocaleDateString("en-GB", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
@@ -120,7 +139,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  <span>{post.readTime} min read</span>
+                  <span>{post.read_time_minutes} min read</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>By {post.author}</span>
@@ -132,11 +151,25 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
 
               {/* Featured Image */}
-              <div className="mb-12 glass-border rounded-2xl overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
-                  <p className="text-white/60">Featured Image</p>
+              {post.featured_image_url ? (
+                <div className="mb-12 glass-border rounded-2xl overflow-hidden">
+                  <div className="relative aspect-video">
+                    <Image
+                      src={post.featured_image_url}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="mb-12 glass-border rounded-2xl overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
+                    <p className="text-white/60">Featured Image</p>
+                  </div>
+                </div>
+              )}
 
               {/* Content */}
               <div
@@ -160,7 +193,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <div className="mt-12 pt-8 border-t border-white/10">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm text-white/60">Tags:</span>
-                  {post.tags.map((tag) => (
+                  {post.tags?.map((tag: string) => (
                     <span key={tag} className="text-sm bg-white/5 text-white/70 px-3 py-1 rounded-full">
                       {tag}
                     </span>
@@ -193,4 +226,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </main>
     </>
   )
-}
+} catch (error) {
+    console.error("Failed to fetch blog post:", error)
+    notFound()
+  }
