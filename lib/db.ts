@@ -1,6 +1,9 @@
 // Database utility functions for PowerWash Bros
 // Using Neon PostgreSQL
 
+// Note: Direct database connections should only be used in server-only contexts
+// For client-facing features, use API routes instead
+
 export interface BlogPost {
   id: number
   title: string
@@ -61,6 +64,3 @@ export interface QuoteRequest {
   status: string
   created_at: Date
 }
-
-// Database query functions would go here
-// In production, these would use the DATABASE_URL env variable to connect to Neon

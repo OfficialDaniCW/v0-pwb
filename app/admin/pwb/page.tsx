@@ -933,7 +933,9 @@ export default function PWBAdminDashboard() {
                       src={currentPost.featured_image_url || "/placeholder.svg"}
                       alt="Featured image preview"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
+                      unoptimized
                     />
                     <Button
                       variant="destructive"

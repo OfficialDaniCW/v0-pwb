@@ -58,21 +58,15 @@ export function ScrollingTransformations() {
     // Fetch from database if available, fall back to static data
     async function fetchProjects() {
       try {
-        console.log("[v0] Fetching portfolio from API...")
         const res = await fetch("/api/portfolio")
-        console.log("[v0] API response status:", res.status)
         if (res.ok) {
           const data = await res.json()
-          console.log("[v0] API returned", data.length, "projects")
           if (data && data.length > 0) {
             setProjects(data)
-          } else {
-            console.log("[v0] No data from API, using static data")
           }
         }
       } catch (error) {
         // Use shared portfolio data if fetch fails
-        console.log("[v0] Using static portfolio data, error:", error)
       }
     }
     fetchProjects()

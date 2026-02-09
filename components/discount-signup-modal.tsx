@@ -40,7 +40,6 @@ export function DiscountSignupModal() {
         setStatus("error")
       }
     } catch (error) {
-      console.log("[v0] Discount signup error:", error)
       setStatus("error")
     } finally {
       setIsLoading(false)

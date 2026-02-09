@@ -20,7 +20,7 @@ export function PWBFooter() {
           <div className="col-span-2 md:col-span-1 space-y-4 sm:space-y-6">
             <div className="space-y-3 sm:space-y-4">
               <div className="relative h-12 w-12 sm:h-16 sm:w-16">
-                <Image src="/images/pwb-logo-circle.png" alt="PowerWash Bros Logo" fill className="object-contain" />
+                <Image src="/images/pwb-logo-circle.png" alt="PowerWash Bros Logo" fill sizes="(max-width: 640px) 48px, 64px" className="object-contain" />
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Dorsets leading pressure washing company.
@@ -274,6 +274,7 @@ export function PWBFooter() {
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              suppressHydrationWarning
               className="h-8 w-8 sm:h-10 sm:w-10 bg-accent rounded flex items-center justify-center hover:bg-foreground hover:text-accent transition-all shadow-lg"
               aria-label="Scroll to top"
             >
