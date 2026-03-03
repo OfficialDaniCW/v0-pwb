@@ -16,44 +16,42 @@ export async function InstagramFeed() {
   const staticPosts = [
     {
       id: "1",
-      media_url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-3.jpeg",
+      media_url: "/images/portfolio/commercial-patio-after.jpg",
       caption: "Another stunning driveway transformation in Swanage",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",
     },
     {
       id: "2",
-      media_url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-4.jpeg",
+      media_url: "/images/portfolio/garden-patio-after.jpg",
       caption: "Roof cleaning perfection in Purbeck",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",
     },
     {
       id: "3",
-      media_url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/the-vicarage/after-5.jpeg",
+      media_url: "/images/portfolio/render-after.jpg",
       caption: "Purbeck stone patio restored to its former glory",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",
     },
     {
       id: "4",
-      media_url:
-        "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/portfolio/commercial-patio-after.jpg",
+      media_url: "/images/portfolio/swanage-patio-after.jpg",
       caption: "Commercial property maintenance in Bournemouth",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",
     },
     {
       id: "5",
-      media_url: "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/portfolio/render-after.jpg",
+      media_url: "/images/portfolio/patio-cleaning-after.jpg",
       caption: "Render soft washing brings properties back to life",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",
     },
     {
       id: "6",
-      media_url:
-        "https://kjtbsmcgxocczcoajdhs.supabase.co/storage/v1/object/public/pwb/portfolio/garden-patio-after.jpg",
+      media_url: "/images/portfolio/driveway-cleaning-after.jpg",
       caption: "Gutter cleaning keeping Dorset properties protected",
       permalink: "https://www.instagram.com/powerwashbrosltd/",
       media_type: "IMAGE",

@@ -242,16 +242,26 @@ export default function RootLayout({
         </Script>
       </head>
       <body suppressHydrationWarning>
+        {/* Fixed background — never blocks rendering */}
+        <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
+          <Plasma
+            color="#1E90FF"
+            speed={0.4}
+            direction="forward"
+            scale={1.8}
+            opacity={0.25}
+            mouseInteractive={false}
+          />
+        </div>
+
+        {/* Page content */}
+        <div className="relative z-10">{children}</div>
+
+        {/* Lightweight UI helpers — isolated Suspense boundaries */}
         <Suspense fallback={null}>
           <ScrollToTop />
-          <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
-            <Plasma color="#1E90FF" speed={0.6} direction="forward" scale={1.8} opacity={0.3} mouseInteractive={true} />
-          </div>
-          <div className="relative z-10">{children}</div>
         </Suspense>
-
         <CookieBanner />
-
         <Analytics />
         <SpeedInsights />
       </body>

@@ -58,7 +58,7 @@ void mainImage(out vec4 o, vec2 C) {
   float i, d, z, T = iTime * uSpeed * uDirection;
   vec3 O, p, S;
 
-  for (vec2 r = iResolution.xy, Q; ++i < 60.; O += o.w/d*o.xyz) {
+  for (vec2 r = iResolution.xy, Q; ++i < 40.; O += o.w/d*o.xyz) {
     p = z*normalize(vec3(C-.5*r,r.y)); 
     p.z -= 4.; 
     S = p;
@@ -137,7 +137,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
           webgl: 2,
           alpha: true,
           antialias: false,
-          dpr: Math.max(0.5, Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 2) * (isIOS || isMobile ? 0.5 : 1)),
+          dpr: Math.max(0.5, Math.min(window.devicePixelRatio || 1, 1)), // cap at 1x — background doesn't need retina
         })
         const gl = renderer.gl
         const canvas = gl.canvas as HTMLCanvasElement
@@ -200,7 +200,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
         let raf = 0
         let lastTime = 0
         let running = true
-        const targetDelta = isMobile ? 50 : 33
+        const targetDelta = isMobile ? 100 : 50 // ~20fps desktop, ~10fps mobile — fine for a background
         const t0 = performance.now()
 
         const loop = (t: number) => {
