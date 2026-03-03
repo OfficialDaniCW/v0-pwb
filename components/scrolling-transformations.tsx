@@ -1,79 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-data"
-
-interface Transformation {
-  id: number
-  title: string
-  before_image_url: string
-  after_image_url: string
-  service_type: string
-}
-
-const fallbackTransformations: Transformation[] = [
-  {
-    id: 1,
-    before_image_url: "/images/portfolio/commercial-patio-before.jpg",
-    after_image_url: "/images/portfolio/commercial-patio-after.jpg",
-    title: "Commercial Patio",
-    service_type: "Patio Cleaning",
-  },
-  {
-    id: 2,
-    before_image_url: "/images/portfolio/garden-patio-before.jpg",
-    after_image_url: "/images/portfolio/garden-patio-after.jpg",
-    title: "Garden Patio",
-    service_type: "Patio Cleaning",
-  },
-  {
-    id: 3,
-    before_image_url: "/images/portfolio/render-clean-before.jpg",
-    after_image_url: "/images/portfolio/render-clean-after.jpg",
-    title: "Render Cleaning",
-    service_type: "Render Cleaning",
-  },
-  {
-    id: 4,
-    before_image_url: "/images/portfolio/swanage-patio-before.jpg",
-    after_image_url: "/images/portfolio/swanage-patio-after.jpg",
-    title: "Swanage Patio",
-    service_type: "Patio Cleaning",
-  },
-  {
-    id: 5,
-    before_image_url: "/images/portfolio/patio-cleaning-before.jpg",
-    after_image_url: "/images/portfolio/patio-cleaning-after.jpg",
-    title: "Patio Restoration",
-    service_type: "Patio Cleaning",
-  },
-]
+import { portfolioProjects } from "@/lib/portfolio-data"
 
 export function ScrollingTransformations() {
-  const [projects, setProjects] = useState<PortfolioProject[]>(portfolioProjects)
-
-  useEffect(() => {
-    // Fetch from database if available, fall back to static data
-    async function fetchProjects() {
-      try {
-        const res = await fetch("/api/portfolio")
-        if (res.ok) {
-          const data = await res.json()
-          if (data && data.length > 0) {
-            setProjects(data)
-          }
-        }
-      } catch (error) {
-        // Use shared portfolio data if fetch fails
-      }
-    }
-    fetchProjects()
-  }, [])
-
   // Duplicate for infinite scroll effect
-  const displayItems = [...projects, ...projects]
+  const displayItems = [...portfolioProjects, ...portfolioProjects]
 
   return (
     <div className="relative w-full overflow-hidden py-8 bg-[#0B1E3F]/50 backdrop-blur-sm">

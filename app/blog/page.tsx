@@ -4,6 +4,7 @@ import { BlogPostsGrid } from "@/components/blog-posts-grid"
 import { BlogSearchFilterClient } from "@/components/blog-search-filter-client"
 import { NewsletterForm } from "@/components/newsletter-form"
 import Script from "next/script"
+import { neon } from "@neondatabase/serverless"
 
 export const metadata = {
   title: "Blog | PowerWash Bros | Expert Property Care Advice",
@@ -13,17 +14,14 @@ export const metadata = {
 
 async function getBlogPosts() {
   try {
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
-
-    const response = await fetch(`${baseUrl}/api/blog`, {
-      next: { revalidate: 60 }, // Revalidate every 60 seconds
-    })
-
-    if (!response.ok) {
-      return []
-    }
-
-    return response.json()
+    const sql = neon(process.env.DATABASE_URL!)
+    const rows = await sql`
+      SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url, tags
+      FROM blog_posts
+      WHERE is_published = true AND published_at <= NOW()
+      ORDER BY published_at DESC
+    `
+    return rows
   } catch (error) {
     console.error("Failed to fetch blog posts:", error)
     return []

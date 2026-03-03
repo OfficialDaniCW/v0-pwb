@@ -14,7 +14,7 @@ import { FinalCTA } from "@/components/final-cta"
 import { PWBFooter } from "@/components/pwb-footer"
 import Script from "next/script"
 
-export const dynamic = "force-static"
+export const revalidate = 3600 // Revalidate the full page every hour
 
 export default function Page() {
   const organizationStructuredData = {
