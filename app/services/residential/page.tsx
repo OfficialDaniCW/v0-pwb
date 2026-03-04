@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, Home, Sparkles, Shield, Calendar } from 'lucide-react'
 import Link from 'next/link'
@@ -298,13 +299,25 @@ export default function ResidentialServicesPage() {
                              hover:bg-white/10 transition-all"
                 >
                   <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
-                    Chat on WhatsApp
-                  </a>
+                  Chat on WhatsApp
+                </a>
                 </Button>
               </div>
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Residential Services FAQs"
+          subheading="Common questions about our residential property cleaning services across Purbeck and Dorset."
+          faqs={[
+            { q: "What residential cleaning services do you offer?", a: "We offer a complete range of residential exterior cleaning including driveway and patio cleaning, roof cleaning and moss removal, gutter clearing, soffit and fascia cleaning, window cleaning, render and wall cleaning, and full exterior property maintenance packages." },
+            { q: "How do I know which service I need?", a: "Send us photos via WhatsApp and we will advise exactly what treatment your property needs. Most enquiries get a same-day response with a clear recommendation and indicative price." },
+            { q: "Do you offer package deals for multiple services?", a: "Yes. Many customers combine services such as driveway cleaning with patio and gutter clearing in a single visit, which reduces cost and disruption. Ask us about our combined service packages." },
+            { q: "Are you insured to work on residential properties?", a: "Yes. We carry full public liability insurance for all residential work. We are also PASMA trained for safe working at height and registered biocide users, meeting all professional standards required for domestic property work." },
+            { q: "How long will results last?", a: "With our PowerUps biocide treatments, most surfaces remain clean for 12-18 months. We also offer annual maintenance plans so you never have to think about it — we schedule and remind you when treatment is due." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

@@ -36,7 +36,6 @@ export const metadata: Metadata = {
     "PowerWash Bros",
     "pressure washing near me",
   ],
-  generator: "v0.app",
   icons: {
     icon: "/images/pwb-logo-circle.png",
     shortcut: "/images/pwb-logo-circle.png",
@@ -65,9 +64,6 @@ export const metadata: Metadata = {
     description:
       "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Free quotes.",
     images: ["/og-image.jpg"],
-  },
-  verification: {
-    google: "your-verification-code", // Already verified via DNS
   },
   alternates: {
     canonical: "https://powerwashbros.co.uk",

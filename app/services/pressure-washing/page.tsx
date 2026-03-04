@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Zap, Home, Shield } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 
 export const metadata: Metadata = {
@@ -467,47 +468,32 @@ export default function PressureWashingPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Pressure Washing FAQs
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "How often should I pressure wash my driveway in Purbeck?",
-                    a: "Most Purbeck properties benefit from pressure washing every 12-18 months. Coastal properties in Swanage or shaded driveways may need more frequent cleaning due to accelerated growth."
-                  },
-                  {
-                    q: "Will pressure washing damage my surfaces?",
-                    a: "No. We adjust pressure levels for each surface type. Block paving, concrete, and stone are safely cleaned with professional equipment and techniques."
-                  },
-                  {
-                    q: "How long does pressure washing take?",
-                    a: "A typical driveway takes 2-4 hours. Larger properties or heavily contaminated surfaces may require additional time for optimal results."
-                  },
-                  {
-                    q: "Do you use chemicals?",
-                    a: "Yes. We use PowerUps biocides to kill organic growth at the root. This provides longer-lasting results than pressure washing alone and prevents rapid regrowth."
-                  },
-                  {
-                    q: "Can you clean in winter?",
-                    a: "Yes. We work year-round across Purbeck. We avoid freezing conditions but can clean effectively in cold, dry weather throughout winter months."
-                  },
-                ].map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <ServiceFaqSection
+          heading="Pressure Washing FAQs"
+          subheading="Common questions about our pressure washing and jet washing services in Purbeck and Dorset."
+          faqs={[
+            {
+              q: "How often should I pressure wash my driveway in Purbeck?",
+              a: "Most Purbeck properties benefit from pressure washing every 12-18 months. Coastal properties in Swanage or shaded driveways may need more frequent cleaning due to accelerated growth.",
+            },
+            {
+              q: "Will pressure washing damage my surfaces?",
+              a: "No. We adjust pressure levels for each surface type. Block paving, concrete, and stone are safely cleaned with professional equipment and techniques.",
+            },
+            {
+              q: "How long does pressure washing take?",
+              a: "A typical driveway takes 2-4 hours. Larger properties or heavily contaminated surfaces may require additional time for optimal results.",
+            },
+            {
+              q: "Do you use chemicals?",
+              a: "Yes. We use PowerUps biocides to kill organic growth at the root. This provides longer-lasting results than pressure washing alone and prevents rapid regrowth.",
+            },
+            {
+              q: "Can you clean in winter?",
+              a: "Yes. We work year-round across Purbeck. We avoid freezing conditions but can clean effectively in cold, dry weather throughout winter months.",
+            },
+          ]}
+        />
 
         {/* CTA */}
         <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">

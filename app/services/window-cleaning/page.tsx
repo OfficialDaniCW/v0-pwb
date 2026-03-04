@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Shield, Sparkles, Clock } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -395,6 +396,18 @@ export default function WindowCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Window Cleaning FAQs"
+          subheading="Common questions about our residential and commercial window cleaning services in Purbeck and Dorset."
+          faqs={[
+            { q: "How often should I have my windows professionally cleaned?", a: "We recommend every 4-8 weeks for residential properties in coastal areas like Swanage where sea salt accelerates soiling. Commercial properties may need more frequent cleaning depending on location and footfall." },
+            { q: "Do you clean conservatory roofs and skylights?", a: "Yes. We clean all glass surfaces including conservatory roofs, skylights, and roof lights using specialist equipment that allows safe access without ladders for most heights." },
+            { q: "What is the pure water cleaning method?", a: "Pure water cleaning uses water that has been filtered to remove all minerals. This water is naturally attracted to dirt and leaves glass spot-free as it dries without streaks or residue, giving better results than traditional cleaning." },
+            { q: "Can you clean my windows in wet weather?", a: "Yes. Pure water cleaning is particularly effective in light rain. We avoid working in very strong winds or heavy rain for safety reasons, but overcast and light rain conditions are fine." },
+            { q: "Do I need to be home?", a: "Not at all. We can clean external windows without access to your property. We'll notify you before arriving and send confirmation photos when complete." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

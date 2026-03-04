@@ -1,13 +1,8 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
-import { ArrowRight, Droplets, Wind, Home, Fence, SparklesIcon, Building2, TreesIcon, Trash2, Sparkle, PaintBucket, Sun, Sprout, Brush, Landmark, Wrench, Store, Users } from 'lucide-react'
+import { ServiceFaqSection } from "@/components/service-faq-section"
+import { ArrowRight, Droplets, Wind, Home, Fence, SparklesIcon, Building2, Sparkle, PaintBucket, Sun, Sprout, Brush, Landmark, Wrench, Store, Users } from 'lucide-react'
 import Link from 'next/link'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 export const metadata = {
   title: "Our Services | PowerWash Bros | Dorset Property Maintenance",
@@ -275,50 +270,11 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-primary/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-white mb-4">
-                Common Questions About Our Services
-              </h2>
-              <p className="text-white/70 text-lg">
-                Have questions about pressure washing, soft washing, or our specialist services? We've got answers.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {serviceFaqs.map((faq, index) => (
-                <Accordion key={index} type="single" collapsible>
-                  <AccordionItem value={`faq-${index}`} className="border-border/50">
-                    <AccordionTrigger className="text-lg font-medium text-white hover:text-[#1E90FF] transition-colors">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-white/80 leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <p className="text-white/70 mb-4">
-                Need more information?
-              </p>
-              <Link
-                href="/faq"
-                className="inline-flex items-center justify-center bg-[#1E90FF] text-white font-bold rounded-lg px-8 py-3
-                           hover:bg-[#1E90FF]/90 hover:shadow-lg transition-all"
-              >
-                View All FAQs
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceFaqSection
+        heading="Common Questions About Our Services"
+        subheading="Have questions about pressure washing, soft washing, or our specialist services? We've got answers."
+        faqs={serviceFaqs.map((f) => ({ q: f.question, a: f.answer }))}
+      />
 
       <PWBFooter />
     </main>

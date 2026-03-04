@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Building2, Carrot as Mirror, Building } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -426,6 +427,18 @@ export default function GlassCleaningPage() {
           </div>
         </div>
       </section>
+
+      <ServiceFaqSection
+        heading="Commercial Glass Cleaning FAQs"
+        subheading="Common questions about our commercial glass and mirror cleaning services across Purbeck and Dorset."
+        faqs={[
+          { q: "How often should commercial shopfront glass be cleaned?", a: "For retail premises with heavy footfall, weekly or fortnightly cleaning is recommended to maintain a professional appearance. Office buildings and quieter commercial properties typically need monthly cleaning. We offer scheduled contracts to suit any frequency." },
+          { q: "Can you clean glass at height on commercial buildings?", a: "Yes. We use water-fed pole systems capable of reaching up to four storeys safely from ground level, and we are PASMA trained for working at height using access equipment when required for higher buildings." },
+          { q: "Do you clean internal mirrors and glass in commercial premises?", a: "Yes. We provide internal commercial glass cleaning including partitions, mirrors, display cases, and atrium glazing. Internal cleaning visits can be scheduled outside of business hours to minimise disruption." },
+          { q: "Will you leave smears or marks on the glass?", a: "No. We use pure, deionised water that leaves zero residue as it dries. This produces a streak-free, spot-free finish that is superior to traditional squeegee and cloth methods, particularly on large commercial glazing." },
+          { q: "Can you include frame and sill cleaning?", a: "Yes. We clean frames, sills, and surrounding surfaces as standard on commercial glass cleaning visits, leaving the entire shopfront or glazing system looking clean and well-maintained." },
+        ]}
+      />
 
       <PWBFooter />
     </div>

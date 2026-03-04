@@ -135,7 +135,18 @@ export default function RenderCleaningPage() {
             </div>
           </div>
         </section>
-      </main>
+      <ServiceFaqSection
+        heading="Render Cleaning FAQs"
+        subheading="Common questions about our render cleaning services across Purbeck and Dorset."
+        faqs={[
+          { q: "Why does render go green and black?", a: "Green staining is algae growth encouraged by moisture, shade, and Dorset's coastal humidity. Black spotting is lichen or atmospheric carbon. Both are effectively removed by soft washing with biocide treatment and will not damage your render." },
+          { q: "Is soft washing safe for K-rend and monocouche?", a: "Yes. Soft washing is the only professionally recommended method for modern through-coloured renders like K-rend and monocouche. High-pressure washing risks stripping the surface layer and is not appropriate for these materials." },
+          { q: "Will cleaning change the colour of my render?", a: "No. Cleaning removes contamination and restores the original colour. We do not bleach or chemically alter the substrate. The result is your original render colour, not a lighter or different tone." },
+          { q: "How long does render cleaning last?", a: "With our biocide treatment, render typically stays clean for 12-18 months. North-facing and heavily shaded walls may see regrowth sooner due to persistent moisture. We offer maintenance plans to keep results consistent." },
+          { q: "Can you clean pebbledash and painted render?", a: "Yes. We adjust our treatment and pressure settings for pebbledash, painted, and roughcast render surfaces. We use products compatible with all common render types found on Dorset properties." },
+        ]}
+      />
+              </main>
       <PWBFooter />
     </>
   )

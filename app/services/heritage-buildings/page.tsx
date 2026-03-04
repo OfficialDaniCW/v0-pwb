@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, ShieldCheck, FileText, Landmark } from 'lucide-react'
 import Link from 'next/link'
@@ -333,6 +334,18 @@ export default function HeritageBuildingsPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Heritage Building Cleaning FAQs"
+          subheading="Common questions about our specialist heritage and listed building cleaning services in Purbeck and Dorset."
+          faqs={[
+            { q: "Do you need planning permission to clean a listed building?", a: "Cleaning a listed building generally does not require listed building consent if the process does not alter the character or fabric of the structure. However, we always recommend checking with your local conservation officer before proceeding. We can advise based on our experience working with Purbeck District Council guidelines." },
+            { q: "Can you clean Purbeck stone on listed buildings?", a: "Yes. This is our speciality. We use pH-neutral, stone-safe biocide treatments at very low pressure, specifically chosen to be safe for the unique porosity of Purbeck limestone. We do not use anything that could etch, bleach, or damage the stone." },
+            { q: "What methods do you use on heritage properties?", a: "We exclusively use soft washing — low-pressure water application combined with professionally registered biocide treatments. This removes organic growth without mechanical or chemical damage to historic materials." },
+            { q: "Are your treatments safe for historic mortars and pointing?", a: "Yes. We select treatments appropriate to the building's construction era and materials. Historic lime mortars require different consideration than modern cement pointing, and we adjust our approach accordingly." },
+            { q: "Can you provide documentation for heritage records?", a: "Yes. We can provide before and after photographic records and documentation of the products and methods used, which can be submitted to conservation officers or building records as required." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

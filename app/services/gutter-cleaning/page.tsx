@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, AlertTriangle } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -320,6 +321,18 @@ export default function GutterCleaningPage() {
             </Button>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Gutter Cleaning FAQs"
+          subheading="Common questions about our gutter clearing and downpipe maintenance services across Purbeck and Dorset."
+          faqs={[
+            { q: "How often should gutters be cleaned?", a: "We recommend at least once a year, ideally in late autumn after leaves have fallen. Properties surrounded by trees or in coastal areas like Swanage may benefit from twice-yearly clearing to prevent blockages." },
+            { q: "What happens if I don't clean my gutters?", a: "Blocked gutters overflow, causing water damage to fascias, soffits, foundations, and interior walls. They also become heavy with debris, leading to bracket failure and gutter collapse. Regular cleaning prevents costly repairs." },
+            { q: "How do you clean gutters safely?", a: "We use professional-grade gutter vacuum systems and ladders with stabilisers rated for the working height. Our team is PASMA trained for safe working at height on all residential and commercial properties." },
+            { q: "Can you fix damaged gutters during cleaning?", a: "We assess gutters during cleaning and report any damage found. We can replace brackets, reseal joints, and carry out minor repairs as part of our external property maintenance service." },
+            { q: "Do you remove and dispose of the debris?", a: "Yes. All debris is bagged and removed from your property as standard. We leave your gutters clear and your property clean after every visit." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

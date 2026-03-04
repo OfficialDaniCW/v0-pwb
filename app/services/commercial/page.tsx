@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, Building2, Shield, FileText, Clock, AlertTriangle, Camera } from 'lucide-react'
 import Link from 'next/link'
@@ -314,6 +315,18 @@ export default function CommercialServicesPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Commercial Services FAQs"
+          subheading="Common questions about our commercial property cleaning and maintenance services across Purbeck and Dorset."
+          faqs={[
+            { q: "Can you work outside of business hours?", a: "Yes. We regularly schedule commercial cleaning for early mornings, evenings, and weekends to minimise disruption to your business operations and customers. We discuss timing requirements upfront and work around your schedule." },
+            { q: "Do you offer scheduled maintenance contracts?", a: "Yes. We provide monthly, quarterly, and annual maintenance contracts for commercial clients. Regular scheduled cleaning keeps your premises consistently presentable and prevents the build-up that requires expensive deep cleaning." },
+            { q: "Are you insured for commercial work?", a: "Yes. We carry full public liability insurance suitable for commercial premises. We can provide insurance certificates and COSHH data sheets for all products used on request, as required by most commercial clients and facilities managers." },
+            { q: "Can you clean large car parks and forecourts?", a: "Yes. We have commercial-grade equipment capable of handling large surface areas efficiently. Car parks, forecourts, loading bays, and industrial hard-standing are all within our capability across Dorset." },
+            { q: "Can you remove graffiti from commercial properties?", a: "Yes. We offer specialist graffiti removal as part of our commercial cleaning services. We carry treatments appropriate to different surfaces and substrates, and fast response is available for commercial clients." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

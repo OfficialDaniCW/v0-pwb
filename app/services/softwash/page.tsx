@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Shield, Leaf } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -502,6 +503,18 @@ export default function SoftwashPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Soft Washing FAQs"
+          subheading="Common questions about soft washing for Purbeck stone, render, and heritage properties across Dorset."
+          faqs={[
+            { q: "What surfaces is soft washing suitable for?", a: "Soft washing is ideal for render, painted walls, Purbeck stone, heritage buildings, roofs, timber cladding, and any surface that could be damaged by high-pressure cleaning. It is the professional standard for delicate exterior surfaces." },
+            { q: "How is soft washing different from pressure washing?", a: "Soft washing uses very low water pressure combined with professional biocide treatments. The chemicals do the cleaning work rather than physical force, making it safe for fragile materials while providing longer-lasting results." },
+            { q: "Will the chemicals harm my plants or garden?", a: "Our PowerUps biocide treatments are professionally registered and applied following strict environmental protocols. We protect plants and drainage during application and rinse thoroughly when required." },
+            { q: "How long does soft washing take to work?", a: "You will see immediate improvement, but soft washing continues working after application. Over the following weeks, treated organic matter gradually breaks down and washes away with rainfall, often giving even better results over time." },
+            { q: "How often do I need soft washing?", a: "Most surfaces remain clean for 12-18 months with a single treatment. Heavily shaded or damp areas may benefit from more frequent treatment. We offer maintenance plans to keep your property looking its best year-round." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

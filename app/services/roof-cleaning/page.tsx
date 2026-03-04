@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, Droplets, Shield, Sparkles } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 
 // Declare breadcrumbSchema variable here
@@ -526,6 +527,18 @@ export default function RoofCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Roof Cleaning FAQs"
+          subheading="Common questions about our roof cleaning and moss removal services across Purbeck and Dorset."
+          faqs={[
+            { q: "Is soft washing safe for all roof types?", a: "Yes. Soft washing with biocide treatments is safe for all common roof types including clay tiles, concrete tiles, slate, and felt roofs. We never use high-pressure washing on roofs as this can force water beneath tiles and damage pointing." },
+            { q: "How long does roof cleaning last?", a: "With our PowerUps biocide treatment, most roofs stay clean for 18-24 months. The treatment continues working after application, gradually clearing remaining organic matter over the following weeks." },
+            { q: "Will roof cleaning void my warranty?", a: "No. Soft washing with approved biocide treatments is a recognised maintenance activity and does not void manufacturer warranties. We use professionally registered treatments applied to industry standards." },
+            { q: "How long does roof cleaning take?", a: "A typical residential roof takes 2-4 hours. We assess access requirements and surface area beforehand to give you an accurate timeframe." },
+            { q: "Do I need to be home during the clean?", a: "Not necessarily. As long as we have access to the property and a water supply, we can work while you're out. We'll send before and after photos when complete." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Home, Shield } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -251,6 +252,18 @@ export default function SoffitCleaningPage() {
           </div>
         </div>
       </section>
+
+      <ServiceFaqSection
+        heading="Soffit & Fascia Cleaning FAQs"
+        subheading="Common questions about our soffit and fascia cleaning services across Purbeck and Dorset."
+        faqs={[
+          { q: "What are soffits and fascias?", a: "Fascias are the boards fixed directly behind your gutters. Soffits are the boards fitted underneath the fascias on the underside of your roof overhang. Both protect the roof structure from weather and pests and are highly visible from street level." },
+          { q: "Why do soffits go green or black?", a: "Algae, lichen, and atmospheric pollution cause green and black discolouration on UPVC, timber, and painted soffits. Coastal properties in Swanage and Purbeck are particularly susceptible due to salt-laden air increasing moisture retention." },
+          { q: "Can you clean painted timber soffits without causing damage?", a: "Yes. We use soft washing techniques at low pressure with appropriate biocide treatments that clean without stripping paint or damaging timber grain. This is far safer than pressure washing painted surfaces." },
+          { q: "How often should soffits and fascias be cleaned?", a: "Annual cleaning is recommended for most Dorset properties. Properties in shaded or coastal positions may benefit from cleaning every 6-12 months to prevent heavy build-up." },
+          { q: "Do you clean gutters at the same time?", a: "Yes. We commonly combine soffit and fascia cleaning with a full gutter clearance visit. This is more cost-effective and ensures your entire roofline is maintained in one appointment." },
+        ]}
+      />
 
       <PWBFooter />
     </>

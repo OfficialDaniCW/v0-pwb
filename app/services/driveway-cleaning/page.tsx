@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
@@ -310,6 +311,18 @@ export default function DrivewayCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Driveway Cleaning FAQs"
+          subheading="Common questions about our driveway cleaning services across Purbeck and Dorset."
+          faqs={[
+            { q: "Can you remove oil stains from my driveway?", a: "Yes. We use specialist pre-treatment degreasers on oil and fuel stains before pressure washing. Most oil stains are significantly reduced or fully removed. Heavily ingrained stains may require multiple treatments." },
+            { q: "Will pressure washing damage block paving?", a: "No, when done correctly. We use the right nozzle type and pressure setting for your specific paving material. After cleaning we can re-sand the joints to restore the surface to full structural integrity." },
+            { q: "How long will my driveway stay clean?", a: "With our biocide treatment applied after cleaning, most driveways remain clean for 12-18 months. Shaded driveways or those under trees may see re-growth sooner. Annual maintenance keeps costs low and results consistent." },
+            { q: "How long does driveway cleaning take?", a: "A standard residential driveway takes 2-4 hours. Larger driveways or those with heavy contamination, oil stains, or requiring joint re-sanding take longer. We give you an accurate timeframe after assessing your property." },
+            { q: "Do I need to clear my driveway before you arrive?", a: "We ask that vehicles are moved from the area to be cleaned. We handle everything else, including moving any small obstacles. Heavy items like large plant pots should be moved beforehand if possible." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -225,6 +226,18 @@ export default function ExteriorWallsPage() {
             </Button>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Exterior Wall Cleaning FAQs"
+          subheading="Common questions about our exterior wall cleaning services across Purbeck and Dorset."
+          faqs={[
+            { q: "What causes green and black staining on exterior walls?", a: "Green staining is algae and moss growth encouraged by damp, shade, and Purbeck's coastal humidity. Black staining is typically lichen or atmospheric carbon deposits. Both are effectively removed with soft washing and biocide treatment." },
+            { q: "Is soft washing safe for rendered walls?", a: "Yes. Soft washing at low pressure is the professional recommended method for all rendered walls including K-rend, monocouche, pebbledash, and painted render. High-pressure washing risks stripping or cracking the render surface." },
+            { q: "Can you clean Purbeck stone walls?", a: "Yes, and this is one of our specialisms. We understand the unique porosity and character of Purbeck limestone and use pH-balanced treatments and low-pressure techniques to clean without etching or bleaching this irreplaceable stone." },
+            { q: "How long does wall cleaning last?", a: "With PowerUps biocide treatment, most exterior walls remain clean for 12-18 months. Heavily shaded north-facing walls or properties very close to the coast may need more frequent treatment due to accelerated moisture and organic growth." },
+            { q: "Will cleaning change the colour of my render or stone?", a: "Cleaning restores the original colour by removing surface contamination. We do not bleach or chemically alter the substrate. The result is a clean surface, not a colour-changed one." },
+          ]}
+        />
 
         <PWBFooter />
       </main>
