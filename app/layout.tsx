@@ -3,7 +3,6 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
-import Plasma from "@/components/plasma"
 import { Suspense } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -242,16 +241,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body suppressHydrationWarning>
-        {/* Fixed background — never blocks rendering */}
-        <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
-          <Plasma
-            color="#1E90FF"
-            speed={0.4}
-            direction="forward"
-            scale={1.8}
-            opacity={0.25}
-            mouseInteractive={false}
-          />
+        {/* Pure-CSS fluid background — no JS, no WebGL, no memory leaks */}
+        <div className="fluid-bg" aria-hidden="true">
+          <div className="fluid-bg-mid" />
         </div>
 
         {/* Page content */}
