@@ -12,6 +12,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata: Metadata = {
   title: 'Soffit & Fascia Cleaning Swanage | PowerWash Bros Purbeck | Remove Black Stains',
   description: 'Professional soffit, fascia and bargeboard cleaning in Swanage & Purbeck. Remove black stains and restore your roofline. Expert service.',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/soffit-cleaning",
+  },
 }
 
 export default function SoffitCleaningPage() {

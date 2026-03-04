@@ -12,6 +12,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata: Metadata = {
   title: "Patio & Decking Cleaning Swanage & Purbeck | Slip Prevention | PowerWash Bros",
   description: "Professional patio and decking cleaning in Swanage and Purbeck. Remove dangerous algae. Safe for Purbeck stone, sandstone, and all surfaces.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/patio-decking",
+  },
 }
 
 export default function PatioDecking() {

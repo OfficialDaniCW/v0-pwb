@@ -11,6 +11,9 @@ export const metadata = {
   title: "Our Work | PowerWash Bros | Before & After Transformations",
   description:
     "See the dramatic transformations we've achieved across Dorset. Real properties, real results from biocide-trained specialists.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/our-work",
+  },
 }
 
 export default function OurWorkPage() {

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'De-Mossing Services Swanage & Purbeck | Roof & Surface De-Mossing',
   description: 'Professional de-mossing services in Swanage, Purbeck & Dorset. Remove moss, algae, lichen from roofs, driveways, patios. Expert moss removal.',
   keywords: 'demossing swanage, demossing purbeck, moss removal swanage, moss removal dorset, roof demossing purbeck, driveway demossing',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/demossing",
+  },
 }
 
 export default function DemossingPage() {

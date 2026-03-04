@@ -90,7 +90,7 @@ export default function PricingPage() {
       setPostcodeError("")
     } catch (error) {
       setPostcodeError("Unable to calculate distance.")
-      console.error("[v0] Postcode lookup error:", error)
+      console.error("Postcode lookup error:", error)
     } finally {
       setIsLoadingPostcode(false)
     }

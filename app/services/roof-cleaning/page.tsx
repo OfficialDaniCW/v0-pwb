@@ -37,6 +37,9 @@ const breadcrumbSchema = {
 export const metadata: Metadata = {
   title: "Roof Cleaning & Moss Removal Swanage & Purbeck | Dorset Roof Cleaning | PowerWash Bros",
   description: "Professional roof cleaning, moss removal, and biocide treatment in Swanage, Purbeck, and Dorset. Expert roof specialists with biocide training. Protect your property. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/roof-cleaning",
+  },
 }
 
 export default function RoofCleaningPage() {
@@ -113,12 +116,14 @@ export default function RoofCleaningPage() {
         <section className="py-20 sm:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <nav className="text-sm text-white/60 mb-6">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {' > '}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {' > '}
-                <span className="text-white">Roof Cleaning</span>
+              <nav aria-label="Breadcrumb" className="text-sm text-white/60 mb-6">
+                <ol className="flex items-center justify-center gap-1 flex-wrap">
+                  <li><Link href="/" className="hover:text-[#1E90FF]">Home</Link></li>
+                  <li aria-hidden="true" className="text-white/40">/</li>
+                  <li><Link href="/services" className="hover:text-[#1E90FF]">Services</Link></li>
+                  <li aria-hidden="true" className="text-white/40">/</li>
+                  <li><span className="text-white" aria-current="page">Roof Cleaning</span></li>
+                </ol>
               </nav>
               
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -340,7 +345,7 @@ export default function RoofCleaningPage() {
                       className="mt-4 bg-[#1E90FF] text-white font-bold rounded-lg px-8 py-6
                                 hover:bg-[#1E90FF]/90 hover:shadow-2xl hover:scale-105 transition-all"
                     >
-                      <a href="/about-powerups">Learn About PowerUps</a>
+                      <a href="/powerups">Learn About PowerUps</a>
                     </Button>
                   </CardContent>
                 </Card>

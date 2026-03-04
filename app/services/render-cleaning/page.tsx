@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Render Cleaning Swanage & Purbeck | K-Rend & Monocouche Cleaning',
   description: 'Professional render cleaning in Swanage, Purbeck & Dorset. Remove green algae, black spots from K-rend, monocouche, painted render. Expert render softwash.',
   keywords: 'render cleaning swanage, render cleaning purbeck, k-rend cleaning dorset, monocouche cleaning swanage, painted render cleaning',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/render-cleaning",
+  },
 }
 
 export default function RenderCleaningPage() {

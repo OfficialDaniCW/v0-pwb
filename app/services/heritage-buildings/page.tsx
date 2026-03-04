@@ -11,6 +11,9 @@ import { createServiceBreadcrumbs } from '@/lib/schema-utils'
 export const metadata = {
   title: "Heritage & Listed Building Cleaning | PowerWash Bros | Purbeck",
   description: "Specialist cleaning for Grade I, II and II* listed buildings across Purbeck and Dorset. Expert care for Purbeck stone, heritage properties, and historic buildings.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/heritage-buildings",
+  },
   openGraph: {
     title: "Heritage & Listed Building Cleaning | PowerWash Bros",
     description: "Specialist cleaning for listed buildings and Purbeck stone properties",

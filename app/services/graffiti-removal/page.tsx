@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Graffiti Removal Swanage & Purbeck | Professional Graffiti Cleaning',
   description: 'Professional graffiti removal in Swanage, Purbeck & Dorset. Fast, effective graffiti cleaning for commercial and residential properties.',
   keywords: 'graffiti removal swanage, graffiti removal purbeck, graffiti cleaning dorset, graffiti removal service swanage',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/graffiti-removal",
+  },
 }
 
 export default function GraffitiRemovalPage() {

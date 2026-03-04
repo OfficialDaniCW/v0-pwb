@@ -13,6 +13,9 @@ export const metadata = {
   title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
   description:
     "Professional driveway cleaning across Purbeck and Dorset. Expert jet washing and biocide treatments. Transform tired driveways back to pristine condition. Best driveway cleaning Dorset. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/driveway-cleaning",
+  },
   openGraph: {
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
     description: "Transform tired driveways with professional jet washing and biocide treatments in Swanage and Purbeck",

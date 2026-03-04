@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Solar Panel Cleaning Swanage & Purbeck | PowerWash Bros Dorset',
   description: 'Professional solar panel cleaning in Swanage, Purbeck & Dorset. Restore efficiency, increase energy output. Expert PV cleaning service.',
   keywords: 'solar panel cleaning swanage, solar panel cleaning purbeck, solar panel cleaning dorset, pv cleaning swanage, solar panel maintenance purbeck',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/solar-panel-cleaning",
+  },
 }
 
 export default function SolarPanelCleaningPage() {

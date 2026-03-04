@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     setSessionCookie(response, token)
     return response
   } catch (error) {
-    console.error("[v0] Admin auth error:", error)
+    console.error("Admin auth error:", error)
     return NextResponse.json({ error: "Authentication failed" }, { status: 500 })
   }
 }

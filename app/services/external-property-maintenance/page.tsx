@@ -8,6 +8,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata = {
   title: 'External Property Maintenance Swanage | Building Cleaning Purbeck Dorset',
   description: 'Complete external property maintenance and building cleaning services in Swanage, Purbeck, and Dorset. Protect and maintain your property with PowerWash Bros.',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/external-property-maintenance",
+  },
   openGraph: {
     title: 'External Property Maintenance Swanage | Building Cleaning Purbeck',
     description: 'Complete external property maintenance and building cleaning services in Swanage, Purbeck, and Dorset. Protect and maintain your property.',

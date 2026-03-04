@@ -12,6 +12,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata: Metadata = {
   title: 'Commercial Glass Cleaning Swanage & Purbeck | Shop Fronts & Offices | PowerWash Bros',
   description: 'Professional commercial glass cleaning in Swanage and Purbeck. Shop fronts, office buildings, mirrors. Streak-free results. Free quotes.',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/glass-cleaning",
+  },
 }
 
 export default function GlassCleaningPage() {

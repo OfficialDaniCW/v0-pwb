@@ -7,6 +7,9 @@ import Link from 'next/link'
 export const metadata = {
   title: "Our Services | PowerWash Bros | Dorset Property Maintenance",
   description: "Complete property care services across Dorset. From driveway cleaning to heritage building maintenance, we deliver expert biocide-trained care.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services",
+  },
 }
 
 export default function ServicesPage() {

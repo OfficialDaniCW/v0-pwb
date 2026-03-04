@@ -12,6 +12,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata: Metadata = {
   title: "Exterior Wall Cleaning Swanage & Purbeck | Render Soft Washing | PowerWash Bros",
   description: "Professional exterior wall and render cleaning in Swanage and Purbeck. Soft wash specialists. Safe for all surfaces including Purbeck stone.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/exterior-walls",
+  },
 }
 
 export default function ExteriorWallsPage() {

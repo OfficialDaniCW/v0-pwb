@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, message: 'Email updated successfully' })
   } catch (error) {
-    console.error('[v0] Email change error:', error)
+    console.error('Email change error:', error)
     return NextResponse.json({ error: 'Failed to update email' }, { status: 500 })
   }
 }

@@ -12,6 +12,9 @@ import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 export const metadata: Metadata = {
   title: "Window Cleaning Swanage & Purbeck | Residential & Commercial | PowerWash Bros",
   description: "Professional window cleaning in Swanage and Purbeck. Interior and exterior. PASMA trained team. Streak-free results. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/window-cleaning",
+  },
 }
 
 export default function WindowCleaningPage() {

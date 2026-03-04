@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
     const campaigns = await sql(query)
     return NextResponse.json({ campaigns })
   } catch (error) {
-    console.error("[v0] Failed to fetch campaigns:", error)
+    console.error("Failed to fetch campaigns:", error)
     return NextResponse.json({ error: "Failed to fetch campaigns" }, { status: 500 })
   }
 }
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ campaign: campaign[0] })
   } catch (error) {
-    console.error("[v0] Failed to create campaign:", error)
+    console.error("Failed to create campaign:", error)
     return NextResponse.json({ error: "Failed to create campaign" }, { status: 500 })
   }
 }
@@ -97,7 +97,7 @@ export async function PUT(req: NextRequest) {
 
     return NextResponse.json({ campaign: campaign[0] })
   } catch (error) {
-    console.error("[v0] Failed to update campaign:", error)
+    console.error("Failed to update campaign:", error)
     return NextResponse.json({ error: "Failed to update campaign" }, { status: 500 })
   }
 }

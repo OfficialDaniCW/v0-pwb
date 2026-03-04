@@ -19,35 +19,6 @@ import { Suspense } from "react"
 export const revalidate = 3600 // Revalidate the full page every hour
 
 export default function Page() {
-  const organizationStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "PowerWash Bros Ltd",
-    image: "/icons/pwb-logo.png",
-    "@id": "https://powerwashbros.co.uk",
-    url: "https://powerwashbros.co.uk",
-    telephone: "07418610731",
-    priceRange: "££",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Hardingredmans, Bridge House, Court Road",
-      addressLocality: "Swanage",
-      postalCode: "BH19 1DX",
-      addressCountry: "GB",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "50.6079",
-      longitude: "-1.9589",
-    },
-    areaServed: ["Bournemouth", "Poole", "Swanage", "Wimborne", "Christchurch", "Wareham", "Ferndown", "Dorset"],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "100",
-    },
-  }
-
   const pageStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -85,15 +56,6 @@ export default function Page() {
       </main>
 
       {/* JSON-LD structured data */}
-      <Script
-        id="organization-structured-data"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationStructuredData),
-        }}
-      />
-
       <Script
         id="page-structured-data"
         type="application/ld+json"

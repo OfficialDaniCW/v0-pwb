@@ -45,7 +45,7 @@ async function optimizeImage(
   const newFilename = filename.replace(/\.(jpg|jpeg|png|gif|bmp|tiff)$/i, ".webp")
 
   console.log(
-    `[v0] Image optimized: ${filename} (${buffer.length} bytes) -> ${newFilename} (${optimizedBuffer.length} bytes) - ${Math.round((1 - optimizedBuffer.length / buffer.length) * 100)}% reduction`,
+    `Image optimized: ${filename} (${buffer.length} bytes) -> ${newFilename} (${optimizedBuffer.length} bytes) - ${Math.round((1 - optimizedBuffer.length / buffer.length) * 100)}% reduction`,
   )
 
   return { optimizedBuffer, newFilename }
@@ -78,7 +78,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         finalFilename = result.newFilename
       } catch (optimizeError) {
         // If optimization fails, upload original
-        console.error("[v0] Image optimization failed, uploading original:", optimizeError)
+        console.error("Image optimization failed, uploading original:", optimizeError)
       }
     }
 
@@ -94,7 +94,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       savings: Math.round((1 - finalBuffer.length / buffer.length) * 100),
     })
   } catch (error) {
-    console.error("[v0] Upload error:", error)
+    console.error("Upload error:", error)
     return NextResponse.json({ error: "Upload failed" }, { status: 500 })
   }
 }

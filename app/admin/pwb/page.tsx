@@ -346,7 +346,7 @@ export default function PWBAdminDashboard() {
       }
     } catch (error) {
       setSaveMessage("Error uploading image")
-      console.error("[v0] Blog image upload error:", error)
+      console.error("Blog image upload error:", error)
     } finally {
       setUploadingBlogImage(false)
       setTimeout(() => setSaveMessage(""), 4000)
