@@ -246,8 +246,8 @@ export default function RootLayout({
           <div className="fluid-bg-mid" />
         </div>
 
-        {/* Page content */}
-        <div className="relative z-10">{children}</div>
+        {/* Page content — isolation:isolate scopes backdrop-filter to the bg layer only */}
+        <div className="relative z-10" style={{ isolation: "isolate" }}>{children}</div>
 
         {/* Lightweight UI helpers — isolated Suspense boundaries */}
         <Suspense fallback={null}>
