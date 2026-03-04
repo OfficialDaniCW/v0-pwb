@@ -284,6 +284,7 @@
   z-index: 0;
   background: #0b1e3f;
   overflow: hidden;
+  pointer-events: none; /* never intercept clicks — content sits above this */
 }
 
 .fluid-bg::before,
@@ -295,6 +296,7 @@
   filter: blur(80px);
   opacity: 0.35;
   will-change: transform;
+  pointer-events: none;
 }
 
 /* Blob 1 — large blue, top-left */
