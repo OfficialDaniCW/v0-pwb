@@ -6,8 +6,42 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import Script from "next/script"
-import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 import { neon } from "@neondatabase/serverless"
+import type { Metadata } from "next"
+
+type Props = { params: { slug: string } }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const sql = neon(process.env.DATABASE_URL!)
+    const rows = await sql`
+      SELECT title, excerpt, meta_title, meta_description, featured_image_url
+      FROM blog_posts WHERE slug = ${params.slug} AND is_published = true LIMIT 1
+    `
+    if (!rows.length) return {}
+    const post = rows[0]
+    const title = post.meta_title || post.title
+    const description = post.meta_description || post.excerpt
+    return {
+      title: `${title} | PowerWash Bros`,
+      description,
+      openGraph: {
+        title,
+        description,
+        images: post.featured_image_url ? [post.featured_image_url] : [],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: post.featured_image_url ? [post.featured_image_url] : [],
+      },
+    }
+  } catch {
+    return {}
+  }
+}
 
 export async function generateStaticParams() {
   try {

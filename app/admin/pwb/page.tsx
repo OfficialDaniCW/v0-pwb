@@ -241,7 +241,7 @@ export default function PWBAdminDashboard() {
 
   const loadTransformations = async () => {
     try {
-      const response = await fetch("/api/transformations")
+      const response = await fetch("/api/admin/gallery")
       const data = await response.json()
       if (Array.isArray(data) && data.length > 0) {
         setTransformations(data)
@@ -454,7 +454,7 @@ export default function PWBAdminDashboard() {
     if (!confirm("Are you sure you want to delete this gallery item?")) return
 
     try {
-      const response = await fetch(`/api/admin/gallery/${id}`, {
+      const response = await fetch(`/api/admin/gallery?id=${id}`, {
         method: "DELETE",
       })
 
@@ -473,7 +473,7 @@ export default function PWBAdminDashboard() {
   const saveTransformation = async () => {
     try {
       const method = currentTransformation.id ? "PUT" : "POST"
-      const response = await fetch("/api/transformations", {
+      const response = await fetch("/api/admin/gallery", {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(currentTransformation),
@@ -507,7 +507,7 @@ export default function PWBAdminDashboard() {
     if (!confirm("Are you sure you want to delete this transformation?")) return
 
     try {
-      const response = await fetch(`/api/transformations/${id}`, {
+      const response = await fetch(`/api/admin/gallery?id=${id}`, {
         method: "DELETE",
       })
 
@@ -589,7 +589,7 @@ export default function PWBAdminDashboard() {
 
     setAiGenerating(true)
     try {
-      const response = await fetch("/api/ai/blog-helper", {
+      const response = await fetch("/api/admin/ai-blog-helper", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: aiPrompt }),

@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { Star, Shield, CheckCircle2, Award } from "lucide-react"
-import { ScrollingTransformations } from "@/components/scrolling-transformations"
 import { useState, useEffect } from "react"
 
 const rotatingWords = ["Cleaning", "Washing", "Restoring", "Protecting"]
@@ -101,7 +100,6 @@ export function Hero() {
         </div>
       </div>
 
-      <ScrollingTransformations />
     </section>
   )
 }

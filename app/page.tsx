@@ -12,6 +12,7 @@ import { LatestBlogPosts } from "@/components/latest-blog-posts"
 import { InstagramFeed } from "@/components/instagram-feed"
 import { FinalCTA } from "@/components/final-cta"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ScrollingTransformations } from "@/components/scrolling-transformations"
 import Script from "next/script"
 import { Suspense } from "react"
 
@@ -62,6 +63,9 @@ export default function Page() {
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         <Hero />
+        <Suspense fallback={null}>
+          <ScrollingTransformations />
+        </Suspense>
         <SeasonalCTA />
         <PricingPreview />
         <WhyPropertyCentered />

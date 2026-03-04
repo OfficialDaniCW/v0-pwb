@@ -1,19 +1,16 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 
-// Mark this route as dynamic since it uses request.url
 export const dynamic = "force-dynamic"
 
-const sql = neon(process.env.DATABASE_URL!)
-
 export async function GET(request: Request) {
+  const sql = neon(process.env.DATABASE_URL!)
   try {
     const url = new URL(request.url)
     const limit = url.searchParams.get("limit")
     const slug = url.searchParams.get("slug")
     const includeScheduled = url.searchParams.get("includeScheduled") === "true"
 
-    // If slug provided, fetch single post
     if (slug) {
       const rows = await sql`
         SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url, is_published, content, author, tags
