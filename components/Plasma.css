@@ -3,12 +3,10 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-
-  /* Helps GPU rendering and avoids flicker on iOS */
-  contain: strict;
-  will-change: transform, opacity;
+  /* No will-change — avoids permanent GPU compositing layer allocation */
+  /* No contain:strict — conflicts with fixed background positioning */
   backface-visibility: hidden;
-  -webkit-transform: translateZ(0); /* iOS Safari performance boost */
+  -webkit-transform: translateZ(0);
 }
 
 .plasma-container canvas {

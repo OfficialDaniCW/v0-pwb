@@ -17,13 +17,19 @@ interface BlogPost {
 async function getLatestPosts(): Promise<BlogPost[]> {
   try {
     const sql = neon(process.env.DATABASE_URL!)
-    const rows = await sql`
-      SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url
-      FROM blog_posts
-      WHERE is_published = true AND published_at <= NOW()
-      ORDER BY published_at DESC
-      LIMIT 3
-    `
+    // Race against a 5s timeout so a slow DB never hangs the page render
+    const rows = await Promise.race([
+      sql`
+        SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url
+        FROM blog_posts
+        WHERE is_published = true AND published_at <= NOW()
+        ORDER BY published_at DESC
+        LIMIT 3
+      `,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("DB timeout")), 5000)
+      ),
+    ])
     return rows as BlogPost[]
   } catch {
     return []

@@ -9,24 +9,21 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 import { neon } from "@neondatabase/serverless"
 
-const sql = neon(process.env.DATABASE_URL!)
-
 export async function generateStaticParams() {
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const posts = await sql`
       SELECT slug FROM blog_posts WHERE is_published = true ORDER BY published_at DESC
     `
-    return posts.map((post: any) => ({
-      slug: post.slug,
-    }))
-  } catch (error) {
-    console.error("Failed to generate static params:", error)
+    return posts.map((post: any) => ({ slug: post.slug }))
+  } catch {
     return []
   }
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const posts = await sql`
       SELECT id, title, slug, excerpt, category, published_at, read_time_minutes, featured_image_url, is_published, content, author, tags, meta_title, meta_description
       FROM blog_posts

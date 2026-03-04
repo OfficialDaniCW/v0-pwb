@@ -13,9 +13,14 @@ export async function getInstagramPosts(): Promise<InstagramPost[]> {
 
   try {
     const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${token}&limit=6`
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 5000)
+
     const response = await fetch(url, {
       next: { revalidate: 3600 },
+      signal: controller.signal,
     })
+    clearTimeout(timeout)
 
     if (!response.ok) return []
 

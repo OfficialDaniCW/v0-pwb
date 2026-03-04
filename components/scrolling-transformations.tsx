@@ -5,8 +5,9 @@ import Link from "next/link"
 import { portfolioProjects } from "@/lib/portfolio-data"
 
 export function ScrollingTransformations() {
-  // Duplicate for infinite scroll effect
-  const displayItems = [...portfolioProjects, ...portfolioProjects]
+  // Cap at 6 items per pass — enough for seamless loop, limits DOM nodes
+  const items = portfolioProjects.slice(0, 6)
+  const displayItems = [...items, ...items]
 
   return (
     <div className="relative w-full overflow-hidden py-8 bg-[#0B1E3F]/50 backdrop-blur-sm">
@@ -47,15 +48,12 @@ export function ScrollingTransformations() {
 
       <style jsx>{`
         @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-scroll {
           animation: scroll 30s linear infinite;
+          will-change: transform;
         }
         .animate-scroll:hover {
           animation-play-state: paused;

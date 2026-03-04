@@ -13,6 +13,7 @@ import { InstagramFeed } from "@/components/instagram-feed"
 import { FinalCTA } from "@/components/final-cta"
 import { PWBFooter } from "@/components/pwb-footer"
 import Script from "next/script"
+import { Suspense } from "react"
 
 export const revalidate = 3600 // Revalidate the full page every hour
 
@@ -69,8 +70,12 @@ export default function Page() {
         <Testimonials />
         <PowerUpsIntro />
         <ServiceDiscountSection />
-        <LatestBlogPosts />
-        <InstagramFeed />
+        <Suspense fallback={null}>
+          <LatestBlogPosts />
+        </Suspense>
+        <Suspense fallback={null}>
+          <InstagramFeed />
+        </Suspense>
         <FinalCTA />
         <PWBFooter />
       </main>
