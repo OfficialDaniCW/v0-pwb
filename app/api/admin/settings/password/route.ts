@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server'
 import { neon } from '@neondatabase/serverless'
 import bcrypt from 'bcryptjs'
+import { requireAdminSession } from '@/lib/admin-auth'
+import type { NextRequest } from 'next/server'
 
-const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
+export async function POST(request: NextRequest) {
+  const auth = await requireAdminSession(request)
+  if (auth instanceof NextResponse) return auth
 
-export async function POST(request: Request) {
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const { currentPassword, newPassword } = await request.json()
-    const email = request.headers.get('x-admin-email')
+    // Fetch email from DB using verified adminId from the session token
+    const adminRow = await sql`SELECT email FROM admin_users WHERE id = ${auth} LIMIT 1`
+    const email = adminRow[0]?.email
 
     if (!email || !currentPassword || !newPassword) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })

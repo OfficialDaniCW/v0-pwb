@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
+import { requireAdminSession } from "@/lib/admin-auth"
+import type { NextRequest } from "next/server"
 
-const sql = neon(process.env.DATABASE_URL!, { disableWarningInBrowsers: true })
+export async function GET(request: NextRequest) {
+  const auth = await requireAdminSession(request)
+  if (auth instanceof NextResponse) return auth
 
-export async function GET() {
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const posts = await sql`
       SELECT * FROM blog_posts 
       ORDER BY published_at DESC NULLS LAST, updated_at DESC
@@ -16,8 +20,12 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  const auth = await requireAdminSession(request)
+  if (auth instanceof NextResponse) return auth
+
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const body = await request.json()
     const {
       title,
@@ -69,8 +77,12 @@ export async function POST(request: Request) {
   }
 }
 
-export async function PUT(request: Request) {
+export async function PUT(request: NextRequest) {
+  const auth = await requireAdminSession(request)
+  if (auth instanceof NextResponse) return auth
+
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const body = await request.json()
     const {
       id,
@@ -112,8 +124,12 @@ export async function PUT(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request: NextRequest) {
+  const auth = await requireAdminSession(request)
+  if (auth instanceof NextResponse) return auth
+
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     const { searchParams } = new URL(request.url)
     const id = searchParams.get("id")
 
