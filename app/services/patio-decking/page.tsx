@@ -213,22 +213,24 @@ export default function PatioDecking() {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-6 text-white">Enjoy Your Purbeck Outdoor Space Again</h2>
-            <p className="text-xl mb-8 text-white/90">
-              Free quotes • Purbeck stone specialists • Safe, non-slip surfaces
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
-                         hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
-            >
-              <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
-                Get Your Free Quote
-              </a>
-            </Button>
+        <section className="py-20 bg-[#1E90FF]">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6 text-white">Enjoy Your Purbeck Outdoor Space Again</h2>
+              <p className="text-xl mb-8 text-white/90">
+                Free quotes &bull; Purbeck stone specialists &bull; Safe, non-slip surfaces
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
+                           hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
+              >
+                <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+                  Get Your Free Quote
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
 

@@ -438,62 +438,20 @@ export default function SoftwashPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16 bg-white/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Soft Washing FAQs
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "How long does soft washing take?",
-                    a: "Most Purbeck properties take 2-4 hours depending on size and complexity. The biocide needs 10-20 minutes dwell time to work effectively."
-                  },
-                  {
-                    q: "Is soft washing safe for all surfaces?",
-                    a: "Yes. Soft washing is safe for render, stone, brick, timber, and most external surfaces. We adjust our treatment strength for each surface type."
-                  },
-                  {
-                    q: "How long until I see results?",
-                    a: "You'll see immediate improvement, but full results develop over 1-2 weeks as the biocide continues working and dead growth weathers away naturally."
-                  },
-                  {
-                    q: "Will it damage my plants?",
-                    a: "No. We protect all plants and landscaping before treatment. Our biocides are biodegradable and safe when applied correctly by trained professionals."
-                  },
-                  {
-                    q: "How often should I soft wash my property?",
-                    a: "Typically every 2-3 years for coastal Purbeck properties. Results last 12-24 months depending on exposure and environmental conditions."
-                  },
-                ].map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Transform Your Purbeck Property with Soft Washing
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
+              <p className="text-xl mb-8 text-white/90">
                 Gentle, effective cleaning that protects your surfaces
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">

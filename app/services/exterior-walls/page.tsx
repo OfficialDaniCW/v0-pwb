@@ -208,7 +208,7 @@ export default function ExteriorWallsPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold mb-6 text-white">Transform Your Purbeck Property's Facade</h2>
             <p className="text-xl mb-8 text-white/90">

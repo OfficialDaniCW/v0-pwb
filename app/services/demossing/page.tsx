@@ -161,7 +161,7 @@ export default function DemossingPage() {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0A1628]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
+            <div className="bg-[#1E90FF] rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Protect Your Property from Moss Damage</h2>
               <p className="text-xl text-white/90 mb-8">
                 Professional de-mossing services across Swanage, Purbeck and Dorset. Free quotes and guaranteed results.

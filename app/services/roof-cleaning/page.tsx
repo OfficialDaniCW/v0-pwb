@@ -101,13 +101,11 @@ export default function RoofCleaningPage() {
     ]
   }
 
-  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
-
   return (
     <>
-      {schemaList.map((schema, idx) => (
-        <Script key={idx} id={`roof-schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
+      <Script id="breadcrumb-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="faq-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
@@ -159,13 +157,6 @@ export default function RoofCleaningPage() {
         <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-sm text-white/60 mb-4">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {" > "}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {" > "}
-                <span className="text-white">Roof Cleaning</span>
-              </div>
               <h2 className="text-3xl font-bold mb-8 text-white">
                 Why Roof Cleaning Matters in Purbeck
               </h2>
@@ -483,41 +474,20 @@ export default function RoofCleaningPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16 bg-white/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Roof Cleaning FAQs
-              </h2>
-              <div className="space-y-6">
-                {faqSchema.mainEntity.map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.name}</h3>
-                      <p className="text-white/80">{faq.acceptedAnswer.text}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Protect Your Purbeck Property Today
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
-                Free assessments • No obligation quotes • Usually respond within 2 hours
+              <p className="text-xl mb-8 text-white/90">
+                Free assessments &bull; No obligation quotes &bull; Usually respond within 2 hours
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
