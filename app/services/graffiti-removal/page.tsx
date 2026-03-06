@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Shield, Zap } from 'lucide-react'
 import Script from 'next/script'
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Graffiti Removal Swanage & Purbeck | Professional Graffiti Cleaning',
   description: 'Professional graffiti removal in Swanage, Purbeck & Dorset. Fast, effective graffiti cleaning for commercial and residential properties.',
   keywords: 'graffiti removal swanage, graffiti removal purbeck, graffiti cleaning dorset, graffiti removal service swanage',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/graffiti-removal",
+  },
 }
 
 export default function GraffitiRemovalPage() {
@@ -116,7 +120,7 @@ export default function GraffitiRemovalPage() {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0B1E3F]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
+            <div className="bg-[#1E90FF] rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Need Graffiti Removed?</h2>
               <p className="text-xl text-white/90 mb-8">
                 Professional graffiti removal across Swanage, Purbeck and Dorset. Contact us for rapid response.
@@ -131,6 +135,17 @@ export default function GraffitiRemovalPage() {
           </div>
         </section>
       </main>
+      <ServiceFaqSection
+        heading="Graffiti Removal FAQs"
+        subheading="Common questions about our graffiti removal services for commercial and residential properties across Purbeck and Dorset."
+        faqs={[
+          { q: "Can graffiti be removed from all surfaces?", a: "Most surfaces including brick, render, stone, UPVC, metal, glass, and painted walls can be treated. Some porous surfaces like sandstone or very old brick may retain a faint ghost mark after full treatment, which we will advise you about before proceeding." },
+          { q: "How quickly can you respond to a graffiti incident?", a: "We aim to respond to commercial graffiti removal requests within 24-48 hours. Rapid removal is important — the longer graffiti remains, the deeper the pigments penetrate the surface, making removal harder and more expensive." },
+          { q: "Will graffiti removal damage my brickwork or render?", a: "No. We use professional graffiti removers specifically formulated for each surface type. We test on a discrete area first and adjust our method to achieve full removal without surface damage." },
+          { q: "Can you prevent graffiti from returning?", a: "Yes. We can apply anti-graffiti coatings to cleaned surfaces. These sacrificial coatings make future graffiti easier and cheaper to remove, and some permanent coatings prevent paint from bonding to the surface at all." },
+          { q: "Do you work with housing associations and councils?", a: "Yes. We work with residential landlords, housing associations, local businesses, and commercial property managers across Dorset for both reactive graffiti removal and ongoing anti-graffiti maintenance programmes." },
+        ]}
+      />
       <PWBFooter />
     </>
   )

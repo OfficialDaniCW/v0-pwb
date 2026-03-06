@@ -5,12 +5,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Shield, Sparkles, Clock } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Window Cleaning Swanage & Purbeck | Residential & Commercial | PowerWash Bros",
   description: "Professional window cleaning in Swanage and Purbeck. Interior and exterior. PASMA trained team. Streak-free results. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/window-cleaning",
+  },
 }
 
 export default function WindowCleaningPage() {
@@ -102,13 +106,6 @@ export default function WindowCleaningPage() {
         <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-sm text-white/60 mb-4">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {" > "}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {" > "}
-                <span className="text-white">Window Cleaning</span>
-              </div>
               <h2 className="text-3xl font-bold mb-8 text-white">
                 Why Regular Window Cleaning Matters in Purbeck
               </h2>
@@ -330,62 +327,20 @@ export default function WindowCleaningPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16 bg-white/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Window Cleaning FAQs
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "How often should I clean windows in Purbeck?",
-                    a: "Residential properties typically benefit from quarterly cleaning. Coastal properties in Swanage or commercial premises may need monthly service due to increased salt spray and footfall."
-                  },
-                  {
-                    q: "Do you clean inside and outside?",
-                    a: "Yes. We offer both interior and exterior window cleaning. Most residential clients choose exterior-only for regular maintenance, with interior cleaning added annually or bi-annually."
-                  },
-                  {
-                    q: "What about hard-to-reach windows?",
-                    a: "Our PASMA-trained team safely accesses windows up to 3 storeys. We use professional ladders and reach-and-wash systems for challenging Purbeck properties."
-                  },
-                  {
-                    q: "Will you damage window frames?",
-                    a: "No. We use appropriate cleaning solutions for each frame type - PVC, wood, or aluminium. Our methods protect seals and fixtures."
-                  },
-                  {
-                    q: "Can you remove hard water stains?",
-                    a: "Yes. Dorset's hard water causes stubborn mineral deposits. We use specialist treatments to restore clarity without damaging glass."
-                  },
-                ].map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Ready for Crystal-Clear Windows?
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
+              <p className="text-xl mb-8 text-white/90">
                 Professional window cleaning across Swanage and Purbeck
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -395,6 +350,18 @@ export default function WindowCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Window Cleaning FAQs"
+          subheading="Common questions about our residential and commercial window cleaning services in Purbeck and Dorset."
+          faqs={[
+            { q: "How often should I have my windows professionally cleaned?", a: "We recommend every 4-8 weeks for residential properties in coastal areas like Swanage where sea salt accelerates soiling. Commercial properties may need more frequent cleaning depending on location and footfall." },
+            { q: "Do you clean conservatory roofs and skylights?", a: "Yes. We clean all glass surfaces including conservatory roofs, skylights, and roof lights using specialist equipment that allows safe access without ladders for most heights." },
+            { q: "What is the pure water cleaning method?", a: "Pure water cleaning uses water that has been filtered to remove all minerals. This water is naturally attracted to dirt and leaves glass spot-free as it dries without streaks or residue, giving better results than traditional cleaning." },
+            { q: "Can you clean my windows in wet weather?", a: "Yes. Pure water cleaning is particularly effective in light rain. We avoid working in very strong winds or heavy rain for safety reasons, but overcast and light rain conditions are fine." },
+            { q: "Do I need to be home?", a: "Not at all. We can clean external windows without access to your property. We'll notify you before arriving and send confirmation photos when complete." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

@@ -21,6 +21,9 @@ export const metadata = {
   title: "PowerUps: Professional Chemical Range | PowerWash Bros",
   description:
     "Our professional chemical range featuring BAC50 biocides, surfactants, sodium hypochlorite, rust removers, graffiti solutions, and wood care products. Specialist treatments for Dorset properties.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/powerups",
+  },
 }
 
 export default function PowerUpsPage() {

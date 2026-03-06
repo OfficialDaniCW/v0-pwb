@@ -82,7 +82,7 @@ export function CookieBanner() {
   // Preferences Modal
   if (showPreferences) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" style={{animation: 'fadeIn 0.3s ease-in'}}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" style={{animation: 'fadeIn 0.3s ease-in'}}>
         <Card className="w-full max-w-lg bg-primary border-2 border-accent/30 shadow-2xl max-h-[90vh] overflow-y-auto">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-6">

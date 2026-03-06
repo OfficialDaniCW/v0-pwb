@@ -10,6 +10,9 @@ export const metadata = {
   title: "About Us | PowerWash Bros | Dorset's Property Care Brothers",
   description:
     "Meet the brothers behind PowerWash Bros. Founded in November 2024 with a passion for property restoration and biocide-trained expertise.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/about",
+  },
 }
 
 export default function AboutPage() {

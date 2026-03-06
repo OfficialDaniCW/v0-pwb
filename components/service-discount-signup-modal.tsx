@@ -41,7 +41,6 @@ export function ServiceDiscountSignupModal() {
         setStatus("error")
       }
     } catch (error) {
-      console.log("[v0] Service discount signup error:", error)
       setStatus("error")
     } finally {
       setIsLoading(false)

@@ -34,7 +34,7 @@ export default function NewsletterCampaignsList() {
       const data = await response.json()
       setCampaigns(data.campaigns || [])
     } catch (error) {
-      console.error('[v0] Failed to fetch campaigns:', error)
+      console.error('Failed to fetch campaigns:', error)
     } finally {
       setLoading(false)
     }
@@ -47,7 +47,7 @@ export default function NewsletterCampaignsList() {
       await fetch(`/api/admin/newsletter/campaigns/${id}`, { method: 'DELETE' })
       setCampaigns(campaigns.filter((c) => c.id !== id))
     } catch (error) {
-      console.error('[v0] Failed to delete campaign:', error)
+      console.error('Failed to delete campaign:', error)
     }
   }
 

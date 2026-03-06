@@ -68,7 +68,7 @@ export default function NewsletterCampaignEditor() {
         setSaveMessage('Failed to save campaign')
       }
     } catch (error) {
-      console.error('[v0] Save error:', error)
+      console.error('Save error:', error)
       setSaveMessage('Error saving campaign')
     } finally {
       setSaving(false)
@@ -93,7 +93,7 @@ export default function NewsletterCampaignEditor() {
         setTimeout(() => setSaveMessage(''), 4000)
       }
     } catch (error) {
-      console.error('[v0] Send error:', error)
+      console.error('Send error:', error)
       setSaveMessage('Error sending newsletter')
     } finally {
       setSaving(false)

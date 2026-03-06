@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       `
 
       // TODO: Send actual emails using email service (Resend, SendGrid, etc)
-      console.log(`[v0] Newsletter sending to ${subscribers.length} subscribers`)
+      console.log(`Newsletter sending to ${subscribers.length} subscribers`)
     } else {
       await sql`
         UPDATE newsletter_campaigns
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       recipients_count: subscribers.length,
     })
   } catch (error) {
-    console.error("[v0] Failed to send campaign:", error)
+    console.error("Failed to send campaign:", error)
     return NextResponse.json({ error: "Failed to send campaign" }, { status: 500 })
   }
 }

@@ -30,32 +30,8 @@
   background-repeat: no-repeat;
 }
 
-@theme {
-  /* Replaced @theme inline with @theme and direct color values */
-  --color-pwb-primary-blue: #1e90ff;
-  --color-pwb-deep-navy: #0b1e3f;
-  --color-pwb-white: #ffffff;
-  --color-pwb-light-gray: #f5f7fa;
-  --color-pwb-dark-gray: #37474f;
-  --color-pwb-accent-green: #00c853;
-  --color-success: #00c853;
-  --color-success-foreground: #ffffff;
-
-  --radius-sm: 0.5rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-}
-
 :root {
   /* PowerWash Bros Brand Colors */
-  --pwb-primary-blue: #1e90ff;
-  --pwb-deep-navy: #0b1e3f;
-  --pwb-white: #ffffff;
-  --pwb-light-gray: #f5f7fa;
-  --pwb-dark-gray: #37474f;
-  --pwb-accent-green: #00c853;
-
   --background: #0b1e3f;
   --foreground: #ffffff;
   --card: #0b1e3f;
@@ -130,8 +106,16 @@
   --sidebar-ring: #1e90ff;
 }
 
-@theme {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+@theme inline {
+  /* PowerWash Bros brand palette */
+  --color-pwb-primary-blue: #1e90ff;
+  --color-pwb-deep-navy: #0b1e3f;
+  --color-pwb-white: #ffffff;
+  --color-pwb-light-gray: #f5f7fa;
+  --color-pwb-dark-gray: #37474f;
+  --color-pwb-accent-green: #00c853;
+
+  /* Semantic design tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -158,10 +142,6 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -170,20 +150,18 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
   }
 
   html {
@@ -212,44 +190,44 @@
 
 /* Apple Site Header Glass Effects - Clean, Minimal, Crisp */
 .liquid-glass {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .liquid-glass-enhanced {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .liquid-glass-header {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-border {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .glass-border-enhanced {
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .glass-border-subtle {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -292,6 +270,84 @@
 
 .animate-scroll-left {
   animation: scroll-left 45s linear infinite;
+}
+
+/* ─── Pure-CSS fluid background ─────────────────────────────────────────────
+   Three large radial-gradient blobs animated with translate3d.
+   Runs entirely on the GPU compositor thread — zero JS, zero WebGL.
+   The fixed wrapper gets a subtle parallax feel via scale on scroll
+   handled by the CSS perspective trick on <html>.
+──────────────────────────────────────────────────────────────────────────── */
+.fluid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #0b1e3f;
+  overflow: hidden;
+  pointer-events: none; /* never intercept clicks — content sits above this */
+}
+
+.fluid-bg::before,
+.fluid-bg::after,
+.fluid-bg-mid {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Blob 1 — large blue, top-left */
+.fluid-bg::before {
+  width: 70vmax;
+  height: 70vmax;
+  top: -20vmax;
+  left: -20vmax;
+  background: radial-gradient(circle, #1e90ff 0%, transparent 70%);
+  animation: blob-drift-a 18s ease-in-out infinite alternate;
+}
+
+/* Blob 2 — deep navy-teal, bottom-right */
+.fluid-bg::after {
+  width: 60vmax;
+  height: 60vmax;
+  bottom: -20vmax;
+  right: -10vmax;
+  background: radial-gradient(circle, #0a4fa0 0%, transparent 70%);
+  animation: blob-drift-b 22s ease-in-out infinite alternate;
+}
+
+/* Blob 3 — accent blue-green, centre */
+.fluid-bg-mid {
+  width: 50vmax;
+  height: 50vmax;
+  top: 30%;
+  left: 35%;
+  background: radial-gradient(circle, #1060c0 0%, transparent 70%);
+  animation: blob-drift-c 26s ease-in-out infinite alternate;
+  opacity: 0.2;
+}
+
+@keyframes blob-drift-a {
+  0%   { transform: translate3d(0,    0,    0) scale(1);    }
+  33%  { transform: translate3d(6vw,  8vh,  0) scale(1.08); }
+  66%  { transform: translate3d(-4vw, 12vh, 0) scale(0.95); }
+  100% { transform: translate3d(8vw,  4vh,  0) scale(1.05); }
+}
+
+@keyframes blob-drift-b {
+  0%   { transform: translate3d(0,    0,    0) scale(1);    }
+  33%  { transform: translate3d(-8vw, -6vh, 0) scale(1.1);  }
+  66%  { transform: translate3d(4vw,  -10vh,0) scale(0.92); }
+  100% { transform: translate3d(-6vw, -4vh, 0) scale(1.06); }
+}
+
+@keyframes blob-drift-c {
+  0%   { transform: translate3d(0,   0,   0) scale(1);    }
+  50%  { transform: translate3d(5vw, 8vh, 0) scale(1.12); }
+  100% { transform: translate3d(-5vw,-6vh,0) scale(0.9);  }
 }
 
 @keyframes bounce-subtle {

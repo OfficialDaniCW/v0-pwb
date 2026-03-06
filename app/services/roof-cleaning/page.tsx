@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, Droplets, Shield, Sparkles } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 
 // Declare breadcrumbSchema variable here
@@ -36,6 +37,9 @@ const breadcrumbSchema = {
 export const metadata: Metadata = {
   title: "Roof Cleaning & Moss Removal Swanage & Purbeck | Dorset Roof Cleaning | PowerWash Bros",
   description: "Professional roof cleaning, moss removal, and biocide treatment in Swanage, Purbeck, and Dorset. Expert roof specialists with biocide training. Protect your property. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/roof-cleaning",
+  },
 }
 
 export default function RoofCleaningPage() {
@@ -100,13 +104,11 @@ export default function RoofCleaningPage() {
     ]
   }
 
-  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
-
   return (
     <>
-      {schemaList.map((schema, idx) => (
-        <Script key={idx} id={`roof-schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
+      <Script id="breadcrumb-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="faq-schema-roof" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
@@ -114,12 +116,14 @@ export default function RoofCleaningPage() {
         <section className="py-20 sm:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <nav className="text-sm text-white/60 mb-6">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {' > '}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {' > '}
-                <span className="text-white">Roof Cleaning</span>
+              <nav aria-label="Breadcrumb" className="text-sm text-white/60 mb-6">
+                <ol className="flex items-center justify-center gap-1 flex-wrap">
+                  <li><Link href="/" className="hover:text-[#1E90FF]">Home</Link></li>
+                  <li aria-hidden="true" className="text-white/40">/</li>
+                  <li><Link href="/services" className="hover:text-[#1E90FF]">Services</Link></li>
+                  <li aria-hidden="true" className="text-white/40">/</li>
+                  <li><span className="text-white" aria-current="page">Roof Cleaning</span></li>
+                </ol>
               </nav>
               
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -158,13 +162,6 @@ export default function RoofCleaningPage() {
         <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-sm text-white/60 mb-4">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {" > "}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {" > "}
-                <span className="text-white">Roof Cleaning</span>
-              </div>
               <h2 className="text-3xl font-bold mb-8 text-white">
                 Why Roof Cleaning Matters in Purbeck
               </h2>
@@ -348,7 +345,7 @@ export default function RoofCleaningPage() {
                       className="mt-4 bg-[#1E90FF] text-white font-bold rounded-lg px-8 py-6
                                 hover:bg-[#1E90FF]/90 hover:shadow-2xl hover:scale-105 transition-all"
                     >
-                      <a href="/about-powerups">Learn About PowerUps</a>
+                      <a href="/powerups">Learn About PowerUps</a>
                     </Button>
                   </CardContent>
                 </Card>
@@ -482,41 +479,20 @@ export default function RoofCleaningPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16 bg-white/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Roof Cleaning FAQs
-              </h2>
-              <div className="space-y-6">
-                {faqSchema.mainEntity.map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.name}</h3>
-                      <p className="text-white/80">{faq.acceptedAnswer.text}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Protect Your Purbeck Property Today
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
-                Free assessments • No obligation quotes • Usually respond within 2 hours
+              <p className="text-xl mb-8 text-white/90">
+                Free assessments &bull; No obligation quotes &bull; Usually respond within 2 hours
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -526,6 +502,18 @@ export default function RoofCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Roof Cleaning FAQs"
+          subheading="Common questions about our roof cleaning and moss removal services across Purbeck and Dorset."
+          faqs={[
+            { q: "Is soft washing safe for all roof types?", a: "Yes. Soft washing with biocide treatments is safe for all common roof types including clay tiles, concrete tiles, slate, and felt roofs. We never use high-pressure washing on roofs as this can force water beneath tiles and damage pointing." },
+            { q: "How long does roof cleaning last?", a: "With our PowerUps biocide treatment, most roofs stay clean for 18-24 months. The treatment continues working after application, gradually clearing remaining organic matter over the following weeks." },
+            { q: "Will roof cleaning void my warranty?", a: "No. Soft washing with approved biocide treatments is a recognised maintenance activity and does not void manufacturer warranties. We use professionally registered treatments applied to industry standards." },
+            { q: "How long does roof cleaning take?", a: "A typical residential roof takes 2-4 hours. We assess access requirements and surface area beforehand to give you an accurate timeframe." },
+            { q: "Do I need to be home during the clean?", a: "Not necessarily. As long as we have access to the property and a water supply, we can work while you're out. We'll send before and after photos when complete." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

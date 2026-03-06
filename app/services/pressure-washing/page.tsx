@@ -5,11 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Zap, Home, Shield } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "Pressure Washing Swanage & Purbeck | Jet Washing Dorset | PowerWash Bros",
   description: "Professional jet washing and pressure washing in Swanage, Purbeck, and across Dorset. Expert driveway, patio, and wall cleaning. Best pressure washing Dorset. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/pressure-washing",
+  },
 }
 
 export default function PressureWashingPage() {
@@ -122,15 +126,11 @@ export default function PressureWashingPage() {
     ]
   }
 
-  const schemaList = [breadcrumbSchema, serviceSchema, faqSchema]
-
   return (
     <>
-      {schemaList.map((schema, idx) => (
-        <Script key={idx} id={`schema-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
-      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="breadcrumb-schema-pressure" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="service-schema-pressure" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script id="faq-schema-pressure" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         
@@ -182,13 +182,6 @@ export default function PressureWashingPage() {
         <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-sm text-white/60 mb-4">
-                <Link href="/" className="hover:text-[#1E90FF]">Home</Link>
-                {" > "}
-                <Link href="/services" className="hover:text-[#1E90FF]">Services</Link>
-                {" > "}
-                <span className="text-white">Pressure Washing</span>
-              </div>
               <h2 className="text-3xl font-bold mb-8 text-white">
                 Why Pressure Washing Matters in Purbeck
               </h2>
@@ -467,62 +460,20 @@ export default function PressureWashingPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Pressure Washing FAQs
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "How often should I pressure wash my driveway in Purbeck?",
-                    a: "Most Purbeck properties benefit from pressure washing every 12-18 months. Coastal properties in Swanage or shaded driveways may need more frequent cleaning due to accelerated growth."
-                  },
-                  {
-                    q: "Will pressure washing damage my surfaces?",
-                    a: "No. We adjust pressure levels for each surface type. Block paving, concrete, and stone are safely cleaned with professional equipment and techniques."
-                  },
-                  {
-                    q: "How long does pressure washing take?",
-                    a: "A typical driveway takes 2-4 hours. Larger properties or heavily contaminated surfaces may require additional time for optimal results."
-                  },
-                  {
-                    q: "Do you use chemicals?",
-                    a: "Yes. We use PowerUps biocides to kill organic growth at the root. This provides longer-lasting results than pressure washing alone and prevents rapid regrowth."
-                  },
-                  {
-                    q: "Can you clean in winter?",
-                    a: "Yes. We work year-round across Purbeck. We avoid freezing conditions but can clean effectively in cold, dry weather throughout winter months."
-                  },
-                ].map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Transform Your Purbeck Property Today
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
+              <p className="text-xl mb-8 text-white/90">
                 Professional pressure washing that protects and enhances your investment
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -532,6 +483,18 @@ export default function PressureWashingPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Pressure Washing FAQs"
+          subheading="Common questions about our pressure washing and jet washing services in Purbeck and Dorset."
+          faqs={[
+            { q: "How often should I pressure wash my driveway in Purbeck?", a: "Most Purbeck properties benefit from pressure washing every 12-18 months. Coastal properties in Swanage or shaded driveways may need more frequent cleaning due to accelerated growth." },
+            { q: "Will pressure washing damage my surfaces?", a: "No. We adjust pressure levels for each surface type. Block paving, concrete, and stone are safely cleaned with professional equipment and techniques." },
+            { q: "How long does pressure washing take?", a: "A typical driveway takes 2-4 hours. Larger properties or heavily contaminated surfaces may require additional time for optimal results." },
+            { q: "Do you use chemicals?", a: "Yes. We use PowerUps biocides to kill organic growth at the root. This provides longer-lasting results than pressure washing alone and prevents rapid regrowth." },
+            { q: "Can you clean in winter?", a: "Yes. We work year-round across Purbeck. We avoid freezing conditions but can clean effectively in cold, dry weather throughout winter months." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

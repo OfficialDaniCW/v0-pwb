@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
+import { ServiceFaqSection } from '@/components/service-faq-section'
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Home, Shield } from 'lucide-react'
 import Script from 'next/script'
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Render Cleaning Swanage & Purbeck | K-Rend & Monocouche Cleaning',
   description: 'Professional render cleaning in Swanage, Purbeck & Dorset. Remove green algae, black spots from K-rend, monocouche, painted render. Expert render softwash.',
   keywords: 'render cleaning swanage, render cleaning purbeck, k-rend cleaning dorset, monocouche cleaning swanage, painted render cleaning',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/render-cleaning",
+  },
 }
 
 export default function RenderCleaningPage() {
@@ -121,7 +125,7 @@ export default function RenderCleaningPage() {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0B1E3F]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
+            <div className="bg-[#1E90FF] rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Restore Your Render Today</h2>
               <p className="text-xl text-white/90 mb-8">
                 Professional render cleaning across Swanage, Purbeck and Dorset. Safe for all render types with guaranteed results.
@@ -135,7 +139,18 @@ export default function RenderCleaningPage() {
             </div>
           </div>
         </section>
-      </main>
+      <ServiceFaqSection
+        heading="Render Cleaning FAQs"
+        subheading="Common questions about our render cleaning services across Purbeck and Dorset."
+        faqs={[
+          { q: "Why does render go green and black?", a: "Green staining is algae growth encouraged by moisture, shade, and Dorset's coastal humidity. Black spotting is lichen or atmospheric carbon. Both are effectively removed by soft washing with biocide treatment and will not damage your render." },
+          { q: "Is soft washing safe for K-rend and monocouche?", a: "Yes. Soft washing is the only professionally recommended method for modern through-coloured renders like K-rend and monocouche. High-pressure washing risks stripping the surface layer and is not appropriate for these materials." },
+          { q: "Will cleaning change the colour of my render?", a: "No. Cleaning removes contamination and restores the original colour. We do not bleach or chemically alter the substrate. The result is your original render colour, not a lighter or different tone." },
+          { q: "How long does render cleaning last?", a: "With our biocide treatment, render typically stays clean for 12-18 months. North-facing and heavily shaded walls may see regrowth sooner due to persistent moisture. We offer maintenance plans to keep results consistent." },
+          { q: "Can you clean pebbledash and painted render?", a: "Yes. We adjust our treatment and pressure settings for pebbledash, painted, and roughcast render surfaces. We use products compatible with all common render types found on Dorset properties." },
+        ]}
+      />
+              </main>
       <PWBFooter />
     </>
   )

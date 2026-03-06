@@ -12,40 +12,13 @@ import { LatestBlogPosts } from "@/components/latest-blog-posts"
 import { InstagramFeed } from "@/components/instagram-feed"
 import { FinalCTA } from "@/components/final-cta"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ScrollingTransformations } from "@/components/scrolling-transformations"
 import Script from "next/script"
+import { Suspense } from "react"
 
-export const dynamic = "force-static"
+export const revalidate = 3600 // Revalidate the full page every hour
 
 export default function Page() {
-  const organizationStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "PowerWash Bros Ltd",
-    image: "/icons/pwb-logo.png",
-    "@id": "https://powerwashbros.co.uk",
-    url: "https://powerwashbros.co.uk",
-    telephone: "07418610731",
-    priceRange: "££",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Hardingredmans, Bridge House, Court Road",
-      addressLocality: "Swanage",
-      postalCode: "BH19 1DX",
-      addressCountry: "GB",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "50.6079",
-      longitude: "-1.9589",
-    },
-    areaServed: ["Bournemouth", "Poole", "Swanage", "Wimborne", "Christchurch", "Wareham", "Ferndown", "Dorset"],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "100",
-    },
-  }
-
   const pageStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -61,6 +34,9 @@ export default function Page() {
       <main className="min-h-[100dvh] text-white">
         <SiteHeader />
         <Hero />
+        <Suspense fallback={null}>
+          <ScrollingTransformations />
+        </Suspense>
         <SeasonalCTA />
         <PricingPreview />
         <WhyPropertyCentered />
@@ -69,22 +45,17 @@ export default function Page() {
         <Testimonials />
         <PowerUpsIntro />
         <ServiceDiscountSection />
-        <LatestBlogPosts />
-        <InstagramFeed />
+        <Suspense fallback={null}>
+          <LatestBlogPosts />
+        </Suspense>
+        <Suspense fallback={null}>
+          <InstagramFeed />
+        </Suspense>
         <FinalCTA />
         <PWBFooter />
       </main>
 
       {/* JSON-LD structured data */}
-      <Script
-        id="organization-structured-data"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationStructuredData),
-        }}
-      />
-
       <Script
         id="page-structured-data"
         type="application/ld+json"

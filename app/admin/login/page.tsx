@@ -33,13 +33,8 @@ export default function AdminLogin() {
       const data = await response.json()
 
       if (response.ok) {
-        localStorage.setItem("admin-email", data.email)
-        localStorage.setItem("admin-id", data.id)
-
-        // Set a secure HTTP-only cookie via Set-Cookie header
-        const expiryDate = new Date()
-        expiryDate.setTime(expiryDate.getTime() + 24 * 60 * 60 * 1000)
-        document.cookie = `admin-session=authenticated; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`
+        // The HTTP-only signed cookie is set by the server in the response headers.
+        // No client-side cookie or localStorage needed — the browser stores it automatically.
         router.push("/admin/pwb")
       } else {
         setError(data.error || "Invalid email or password")

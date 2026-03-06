@@ -1,18 +1,29 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { verifySessionToken } from "@/lib/admin-auth"
 
-export function middleware(request: NextRequest) {
-  // Only check admin routes, not the login page
-  if (
-    request.nextUrl.pathname === "/admin" ||
-    (request.nextUrl.pathname.startsWith("/admin/") && !request.nextUrl.pathname.startsWith("/admin/login"))
-  ) {
-    // Check for admin session cookie
-    const adminSession = request.cookies.get("admin-session")
+const COOKIE_NAME = "pwb_admin"
 
-    if (!adminSession || adminSession.value !== "authenticated") {
-      // Redirect to login if not authenticated
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Only guard admin routes (except the login page itself)
+  const isAdminRoute = pathname === "/admin" || pathname.startsWith("/admin/")
+  const isLoginPage = pathname.startsWith("/admin/login")
+
+  if (isAdminRoute && !isLoginPage) {
+    const token = request.cookies.get(COOKIE_NAME)?.value
+
+    if (!token) {
       return NextResponse.redirect(new URL("/admin/login", request.url))
+    }
+
+    const adminId = await verifySessionToken(token)
+    if (!adminId) {
+      // Token is invalid or expired — clear cookie and redirect
+      const response = NextResponse.redirect(new URL("/admin/login", request.url))
+      response.cookies.set(COOKIE_NAME, "", { maxAge: 0, path: "/" })
+      return response
     }
   }
 

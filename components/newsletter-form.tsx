@@ -93,6 +93,7 @@ export function NewsletterForm({ variant = "default", className = "" }: Newslett
           onChange={(e) => setEmail(e.target.value)}
           required
           disabled={loading}
+          suppressHydrationWarning
           className="w-full bg-secondary border-none text-foreground placeholder:text-foreground/40 h-10 sm:h-12 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0 text-sm disabled:opacity-50 px-4"
         />
       </div>
@@ -100,6 +101,7 @@ export function NewsletterForm({ variant = "default", className = "" }: Newslett
         type="submit"
         disabled={loading}
         aria-label="Subscribe to newsletter"
+        suppressHydrationWarning
         className="h-10 sm:h-12 w-10 sm:w-12 min-w-[48px] min-h-[48px] rounded-l-none bg-accent hover:bg-accent/90 p-0 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-all"
       >
         <Send className="h-4 w-4 sm:h-5 sm:w-5" />

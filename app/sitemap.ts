@@ -1,146 +1,124 @@
-import { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/blog-posts'
+import { MetadataRoute } from "next"
+import { neon } from "@neondatabase/serverless"
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://powerwashbros.co.uk'
+const baseUrl = "https://powerwashbros.co.uk"
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/our-work`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Fetch live blog posts from Neon so every published post is indexed by Google
+  let blogPages: MetadataRoute.Sitemap = []
+  try {
+    const sql = neon(process.env.DATABASE_URL!)
+    const posts = await sql`
+      SELECT slug, published_at FROM blog_posts
+      WHERE is_published = true AND published_at <= NOW()
+      ORDER BY published_at DESC
+    `
+    blogPages = posts.map((post: any) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.published_at),
+      changeFrequency: "monthly" as const,
       priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/service-areas`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/powerups`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/cookies`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+    }))
+  } catch {
+    // Fallback: blog posts simply won't appear in sitemap if DB is unavailable
+  }
+
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: baseUrl,                          lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${baseUrl}/services`,            lastModified: new Date(), changeFrequency: "monthly", priority: 0.95 },
+    { url: `${baseUrl}/about`,               lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/our-work`,            lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${baseUrl}/pricing`,             lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/service-areas`,       lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/blog`,                lastModified: new Date(), changeFrequency: "daily",   priority: 0.9 },
+    { url: `${baseUrl}/powerups`,            lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/faq`,                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/contact`,             lastModified: new Date(), changeFrequency: "yearly",  priority: 0.6 },
+    { url: `${baseUrl}/get-quote`,           lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/privacy`,             lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
+    { url: `${baseUrl}/terms`,               lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
+    { url: `${baseUrl}/cookies`,             lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
   ]
 
-  // Portfolio/Our Works pages
-  const portfolioPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/portfolio/commercial-patio`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio/garden-patio`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio/patio-cleaning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio/render-clean`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio/roof-clean-biocide-treatment`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio/swanage-patio-wall-refresh`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+  // All individual service pages
+  const individualServices = [
+    "pressure-washing",
+    "softwash",
+    "roof-cleaning",
+    "gutter-cleaning",
+    "driveway-cleaning",
+    "patio-decking",
+    "render-cleaning",
+    "exterior-walls",
+    "window-cleaning",
+    "solar-panel-cleaning",
+    "heritage-buildings",
+    "graffiti-removal",
+    "commercial",
+    "residential",
+    "glass-cleaning",
+    "soffit-cleaning",
+    "demossing",
+    "external-property-maintenance",
   ]
 
-  // Blog pages
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: 'monthly' as const,
-    priority: 0.85,
+  const individualServicePages: MetadataRoute.Sitemap = individualServices.map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
   }))
 
-  // Service area pages
+  const portfolioPages: MetadataRoute.Sitemap = [
+    "commercial-patio",
+    "garden-patio",
+    "patio-cleaning",
+    "render-clean",
+    "roof-clean-biocide-treatment",
+    "swanage-patio-wall-refresh",
+  ].map((slug) => ({
+    url: `${baseUrl}/portfolio/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
+
+  // All service area location pages
   const serviceAreas = [
-    'swanage',
-    'purbeck',
-    'poole',
-    'bournemouth',
-    'weymouth',
-    'corfe-castle',
-    'langton-matravers',
-    'studland',
-    'worth-matravers',
+    "swanage",
+    "purbeck",
+    "poole",
+    "bournemouth",
+    "weymouth",
+    "corfe-castle",
+    "langton-matravers",
+    "studland",
+    "worth-matravers",
+    "wareham",
+    "wimborne",
+    "christchurch",
+    "ferndown",
+    "dorchester",
+    "portland",
+    "lulworth",
+    "isle-of-purbeck",
+    "wool",
+    "blandford-forum",
+    "swanage-and-purbeck",
   ]
 
-  const servicePages: MetadataRoute.Sitemap = serviceAreas.map((area) => ({
+  const serviceAreaPages: MetadataRoute.Sitemap = serviceAreas.map((area) => ({
     url: `${baseUrl}/service-areas/${area}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.75,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }))
 
-  return [...staticPages, ...portfolioPages, ...blogPages, ...servicePages]
+  return [
+    ...staticPages,
+    ...individualServicePages,
+    ...portfolioPages,
+    ...blogPages,
+    ...serviceAreaPages,
+  ]
 }

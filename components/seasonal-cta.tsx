@@ -4,7 +4,7 @@ import type React from "react"
 
 import { Button } from "@/components/ui/button"
 import { Droplets, Wind, Sun, Snowflake, ArrowRight, AlertCircle } from "lucide-react"
-import { useEffect, useState } from "react"
+
 import Link from "next/link"
 
 interface SeasonConfig {
@@ -156,15 +156,8 @@ function Shield({ className }: { className?: string }) {
 }
 
 export function SeasonalCTA() {
-  const [seasonConfig, setSeasonConfig] = useState<SeasonConfig | null>(null)
-
-  useEffect(() => {
-    setSeasonConfig(getSeason())
-  }, [])
-
-  if (!seasonConfig) {
-    return null // Server-side render placeholder
-  }
+  // Compute synchronously — no useEffect, no null flash, no hydration mismatch
+  const seasonConfig = getSeason()
 
   const SeasonIcon = {
     Winter: Snowflake,
@@ -182,7 +175,7 @@ export function SeasonalCTA() {
           {/* Season Badge */}
           <div className="flex items-center justify-center gap-2 mb-6">
             <div
-              className="flex items-center gap-2 px-4 py-2 rounded-full border-2 animate-pulse"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border-2"
               style={{ borderColor: seasonConfig.color, backgroundColor: `${seasonConfig.color}20` }}
             >
               <SeasonIcon className="h-5 w-5" style={{ color: seasonConfig.color }} />

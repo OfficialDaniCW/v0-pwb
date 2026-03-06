@@ -5,12 +5,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Phone, AlertTriangle } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Patio & Decking Cleaning Swanage & Purbeck | Slip Prevention | PowerWash Bros",
   description: "Professional patio and decking cleaning in Swanage and Purbeck. Remove dangerous algae. Safe for Purbeck stone, sandstone, and all surfaces.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/patio-decking",
+  },
 }
 
 export default function PatioDecking() {
@@ -212,24 +216,38 @@ export default function PatioDecking() {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-6 text-white">Enjoy Your Purbeck Outdoor Space Again</h2>
-            <p className="text-xl mb-8 text-white/90">
-              Free quotes • Purbeck stone specialists • Safe, non-slip surfaces
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
-                         hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
-            >
-              <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
-                Get Your Free Quote
-              </a>
-            </Button>
+        <section className="py-20 bg-[#1E90FF]">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6 text-white">Enjoy Your Purbeck Outdoor Space Again</h2>
+              <p className="text-xl mb-8 text-white/90">
+                Free quotes &bull; Purbeck stone specialists &bull; Safe, non-slip surfaces
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
+                           hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
+              >
+                <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
+                  Get Your Free Quote
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Patio & Decking FAQs"
+          subheading="Common questions about our patio and decking cleaning services across Purbeck and Dorset."
+          faqs={[
+            { q: "Is pressure washing safe for Purbeck stone patios?", a: "Yes, when carried out by specialists. We understand Purbeck limestone's unique properties and use pH-balanced, low-pressure techniques to clean safely while preserving the natural patina and surface integrity." },
+            { q: "Can you clean wooden and composite decking?", a: "Yes. We use appropriate pressure settings and treatments for both natural timber and composite decking. We avoid surface damage while fully removing algae, moss, and organic growth that makes decking dangerously slippery." },
+            { q: "How long does patio cleaning take?", a: "A typical residential patio takes 1-3 hours depending on size and contamination level. We provide an accurate timeframe when we assess your property." },
+            { q: "Should I seal my patio after cleaning?", a: "Sealing is recommended for most stone and block paving surfaces. It significantly slows the return of organic growth, makes future cleaning easier, and protects the surface from staining. We offer sealing as an optional additional service." },
+            { q: "How soon can I use my patio after cleaning?", a: "You can normally walk on the surface within a few hours. We advise waiting 24 hours before replacing furniture to allow any applied treatments to fully dry and activate." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

@@ -837,7 +837,7 @@ export default async function LocationServicePage({ params }: Props) {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">
               Ready for Professional {serviceData.name} in {locationData.name}?

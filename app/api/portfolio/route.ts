@@ -15,8 +15,6 @@ export async function GET() {
     `
 
     if (dbTransformations.length > 0) {
-      console.log("[v0] Portfolio API: Returning", dbTransformations.length, "items from Neon database")
-      
       // Map database response to match PortfolioProject interface
       const mappedProjects = dbTransformations.map((item: any) => ({
         id: item.id,
@@ -36,7 +34,6 @@ export async function GET() {
     }
 
     // Fallback: seed database with static portfolio data if empty
-    console.log("[v0] Portfolio API: Database empty, seeding with static data...")
     const seededProjects = []
 
     for (const project of portfolioProjects) {
@@ -63,10 +60,8 @@ export async function GET() {
       seededProjects.push(mappedProject)
     }
 
-    console.log("[v0] Portfolio API: Seeded and returning", seededProjects.length, "items from Neon database")
     return NextResponse.json(seededProjects)
   } catch (error) {
-    console.error("[v0] Portfolio API Error:", error)
     // Last resort: return static data if database fails
     return NextResponse.json(portfolioProjects)
   }

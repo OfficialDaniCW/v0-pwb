@@ -12,6 +12,9 @@ import {
 export const metadata = {
   title: "Frequently Asked Questions | PowerWash Bros - Dorset Property Cleaning",
   description: "Common questions about our pressure washing, soft washing, and property maintenance services in Swanage, Purbeck, and across Dorset.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/faq",
+  },
 }
 
 export default function FAQPage() {

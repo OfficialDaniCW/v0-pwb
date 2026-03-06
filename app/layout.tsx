@@ -3,7 +3,6 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
-import Plasma from "@/components/plasma"
 import { Suspense } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -37,7 +36,6 @@ export const metadata: Metadata = {
     "PowerWash Bros",
     "pressure washing near me",
   ],
-  generator: "v0.app",
   icons: {
     icon: "/images/pwb-logo-circle.png",
     shortcut: "/images/pwb-logo-circle.png",
@@ -67,22 +65,8 @@ export const metadata: Metadata = {
       "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Free quotes.",
     images: ["/og-image.jpg"],
   },
-  verification: {
-    google: "your-verification-code", // Already verified via DNS
-  },
   alternates: {
     canonical: "https://powerwashbros.co.uk",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 }
 
@@ -252,17 +236,20 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      <body suppressHydrationWarning>
+        {/* Pure-CSS fluid background — no JS, no WebGL, no memory leaks */}
+        <div className="fluid-bg" aria-hidden="true">
+          <div className="fluid-bg-mid" />
+        </div>
+
+        {/* Page content — isolation:isolate scopes backdrop-filter to the bg layer only */}
+        <div className="relative z-10" style={{ isolation: "isolate" }}>{children}</div>
+
+        {/* Lightweight UI helpers — isolated Suspense boundaries */}
         <Suspense fallback={null}>
           <ScrollToTop />
-          <div className="fixed inset-0 z-0 bg-[#0B1E3F]">
-            <Plasma color="#1E90FF" speed={0.6} direction="forward" scale={1.8} opacity={0.3} mouseInteractive={true} />
-          </div>
-          <div className="relative z-10">{children}</div>
         </Suspense>
-
         <CookieBanner />
-
         <Analytics />
         <SpeedInsights />
       </body>

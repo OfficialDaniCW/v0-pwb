@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Leaf, Shield, AlertTriangle } from 'lucide-react'
 import Script from 'next/script'
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
   title: 'De-Mossing Services Swanage & Purbeck | Roof & Surface De-Mossing',
   description: 'Professional de-mossing services in Swanage, Purbeck & Dorset. Remove moss, algae, lichen from roofs, driveways, patios. Expert moss removal.',
   keywords: 'demossing swanage, demossing purbeck, moss removal swanage, moss removal dorset, roof demossing purbeck, driveway demossing',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/demossing",
+  },
 }
 
 export default function DemossingPage() {
@@ -160,7 +164,7 @@ export default function DemossingPage() {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0A1628]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
+            <div className="bg-[#1E90FF] rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Protect Your Property from Moss Damage</h2>
               <p className="text-xl text-white/90 mb-8">
                 Professional de-mossing services across Swanage, Purbeck and Dorset. Free quotes and guaranteed results.
@@ -175,6 +179,17 @@ export default function DemossingPage() {
           </div>
         </section>
       </main>
+      <ServiceFaqSection
+        heading="De-Mossing FAQs"
+        subheading="Common questions about our moss removal services for all exterior surfaces across Purbeck and Dorset."
+        faqs={[
+          { q: "Is moss on my roof dangerous?", a: "Yes. Moss retains moisture against your roof covering, which accelerates the deterioration of tiles and pointing. As moss roots work into joints and cracks, it can lift tiles and allow water ingress. On paths and driveways, moss creates dangerous slipping hazards." },
+          { q: "What is the difference between removing moss and treating it?", a: "Physical removal brushes away visible moss but leaves roots and spores in the surface, leading to rapid regrowth within weeks. Our biocide treatment kills moss at the root and prevents regrowth for 12-24 months, giving far superior long-term results." },
+          { q: "Can de-mossing damage my roof tiles?", a: "Our soft washing method does not damage roof tiles. We never use high-pressure washing or stiff wire brushing on roofs. Biocide treatment with gentle low-pressure rinsing is the professional standard for safe roof de-mossing." },
+          { q: "Will moss grow back after treatment?", a: "All surfaces will eventually see organic re-growth, but our PowerUps biocide treatment significantly delays this, typically providing 12-24 months of protection. We offer annual or bi-annual maintenance plans to keep surfaces clean long-term." },
+          { q: "Can you treat moss on paths and patios as well as roofs?", a: "Yes. We de-moss all exterior surfaces including roofs, paths, driveways, patios, steps, walls, and fencing. A combined treatment visit is cost-effective and ensures all surfaces around your property are protected simultaneously." },
+        ]}
+      />
       <PWBFooter />
     </>
   )

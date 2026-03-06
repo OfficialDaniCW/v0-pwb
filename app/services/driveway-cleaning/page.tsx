@@ -1,8 +1,11 @@
+import { Metadata } from "next"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { CheckCircle } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
-import { Button } from "@/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
-import Link from "next/link"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
@@ -10,6 +13,9 @@ export const metadata = {
   title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
   description:
     "Professional driveway cleaning across Purbeck and Dorset. Expert jet washing and biocide treatments. Transform tired driveways back to pristine condition. Best driveway cleaning Dorset. Free quotes.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/driveway-cleaning",
+  },
   openGraph: {
     title: "Driveway Cleaning & Restoration | PowerWash Bros",
     description: "Transform tired driveways with professional jet washing and biocide treatments in Swanage and Purbeck",
@@ -126,12 +132,7 @@ export default function DrivewayCleaningPage() {
                 </Button>
               </div>
 
-              {/* Before/After Image Placeholder */}
-              <div className="mt-12 glass-border rounded-2xl overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-[#0B1E3F] to-[#1E90FF]/20 flex items-center justify-center">
-                  <p className="text-white/60">Before/After Driveway Transformation</p>
-                </div>
-              </div>
+
             </div>
           </div>
         </section>
@@ -201,7 +202,7 @@ export default function DrivewayCleaningPage() {
                   "Maintenance advice",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-[#00C853] flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="h-5 w-5 text-[#1E90FF] flex-shrink-0 mt-1" />
                     <span className="text-white/90">{item}</span>
                   </div>
                 ))}
@@ -213,43 +214,25 @@ export default function DrivewayCleaningPage() {
         {/* Our Process */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-white mb-8">Our 5-Step Process</h2>
-              <div className="space-y-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-12 text-white">Our Driveway Cleaning Process</h2>
+              <div className="grid md:grid-cols-5 gap-6">
                 {[
-                  {
-                    number: "01",
-                    title: "WhatsApp Consultation",
-                    description: "Send us photos and details about your driveway",
-                  },
-                  {
-                    number: "02",
-                    title: "Property Assessment",
-                    description: "We visit to evaluate surface type, drainage, and specific challenges",
-                  },
-                  {
-                    number: "03",
-                    title: "Preparation & Protection",
-                    description: "We protect surrounding areas and pre-treat stubborn stains",
-                  },
-                  {
-                    number: "04",
-                    title: "Professional Cleaning with PowerUps",
-                    description: "Thorough cleaning using appropriate pressure and our biocide treatments",
-                  },
-                  {
-                    number: "05",
-                    title: "Quality Check & Maintenance Advice",
-                    description: "Final inspection and guidance on keeping your driveway pristine",
-                  },
-                ].map((step) => (
-                  <div key={step.number} className="glass-border rounded-xl p-6 flex gap-6">
-                    <div className="text-4xl font-bold text-[#1E90FF]/30">{step.number}</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                      <p className="text-white/70">{step.description}</p>
-                    </div>
-                  </div>
+                  { step: 1, title: "WhatsApp Consultation", desc: "Send us photos and details about your driveway for a fast, accurate assessment." },
+                  { step: 2, title: "Property Visit", desc: "We inspect surface type, drainage, oil stains, and specific challenges on-site." },
+                  { step: 3, title: "Preparation", desc: "Surrounding areas protected. Stubborn stains and oil spots pre-treated." },
+                  { step: 4, title: "PowerUps Clean", desc: "Thorough cleaning at the right pressure with our biocide and degreaser treatments." },
+                  { step: 5, title: "Quality Check", desc: "Final inspection, before/after photos, and maintenance advice to keep results lasting." },
+                ].map((item) => (
+                  <Card key={item.step} className="bg-white/10 border-2 border-[#1E90FF]/20">
+                    <CardContent className="p-6 text-center">
+                      <div className="w-12 h-12 rounded-full bg-[#1E90FF] text-white font-bold text-xl flex items-center justify-center mx-auto mb-4">
+                        {item.step}
+                      </div>
+                      <h3 className="font-semibold mb-2 text-white">{item.title}</h3>
+                      <p className="text-sm text-white/80">{item.desc}</p>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -262,45 +245,45 @@ export default function DrivewayCleaningPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-8">Common Issues We Solve</h2>
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="glass-border rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">Oil & Tire Stains</h3>
-                  <p className="text-white/70">
-                    Specialised treatments to lift deep-set oil stains and rubber marks from your driveway surface.
-                  </p>
-                </div>
-                <div className="glass-border rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">Moss & Algae Growth</h3>
-                  <p className="text-white/70">
-                    Biocide treatments that eliminate organic growth at the root and prevent regrowth for months.
-                  </p>
-                </div>
-                <div className="glass-border rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">Weed Infestation</h3>
-                  <p className="text-white/70">
-                    Complete weed removal from joints and cracks, with preventative treatments to stop return.
-                  </p>
-                </div>
-                <div className="glass-border rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">Faded Appearance</h3>
-                  <p className="text-white/70">
-                    Restore original colour and vibrancy to block paving and concrete surfaces.
-                  </p>
-                </div>
+                <Card className="bg-white/10 border-2 border-[#1E90FF]/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-3">Oil & Tyre Stains</h3>
+                    <p className="text-white/80">Specialist degreasers lift deep-set oil and rubber marks from all driveway surfaces before pressure washing.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white/10 border-2 border-[#1E90FF]/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-3">Moss & Algae Growth</h3>
+                    <p className="text-white/80">PowerUps biocide treatments eliminate organic growth at the root and prevent regrowth for 12-18 months.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white/10 border-2 border-[#1E90FF]/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-3">Weed Infestation</h3>
+                    <p className="text-white/80">Complete weed removal from joints and cracks, with re-sanding of block paving to restore structural integrity.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white/10 border-2 border-[#1E90FF]/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-3">Faded Appearance</h3>
+                    <p className="text-white/80">Restore original colour and surface vibrancy to block paving, concrete, tarmac, and resin driveways.</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Driveway?</h2>
-              <p className="text-xl text-white/90 mb-8">Serving Swanage, Purbeck, and surrounding areas</p>
+              <p className="text-xl text-white/90 mb-8">Serving Swanage, Purbeck, and surrounding areas in Dorset</p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -310,6 +293,18 @@ export default function DrivewayCleaningPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Driveway Cleaning FAQs"
+          subheading="Common questions about our driveway cleaning services across Purbeck and Dorset."
+          faqs={[
+            { q: "Can you remove oil stains from my driveway?", a: "Yes. We use specialist pre-treatment degreasers on oil and fuel stains before pressure washing. Most oil stains are significantly reduced or fully removed. Heavily ingrained stains may require multiple treatments." },
+            { q: "Will pressure washing damage block paving?", a: "No, when done correctly. We use the right nozzle type and pressure setting for your specific paving material. After cleaning we can re-sand the joints to restore the surface to full structural integrity." },
+            { q: "How long will my driveway stay clean?", a: "With our biocide treatment applied after cleaning, most driveways remain clean for 12-18 months. Shaded driveways or those under trees may see re-growth sooner. Annual maintenance keeps costs low and results consistent." },
+            { q: "How long does driveway cleaning take?", a: "A standard residential driveway takes 2-4 hours. Larger driveways or those with heavy contamination, oil stains, or requiring joint re-sanding take longer. We give you an accurate timeframe after assessing your property." },
+            { q: "Do I need to clear my driveway before you arrive?", a: "We ask that vehicles are moved from the area to be cleaned. We handle everything else, including moving any small obstacles. Heavy items like large plant pots should be moved beforehand if possible." },
+          ]}
+        />
 
         <PWBFooter />
       </main>

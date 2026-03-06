@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { SiteHeader } from '@/components/site-header'
 import { PWBFooter } from '@/components/pwb-footer'
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import { Button } from '@/components/ui/button'
 import { MessageCircle, Sun, TrendingUp, Shield, Zap } from 'lucide-react'
 import Script from 'next/script'
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Solar Panel Cleaning Swanage & Purbeck | PowerWash Bros Dorset',
   description: 'Professional solar panel cleaning in Swanage, Purbeck & Dorset. Restore efficiency, increase energy output. Expert PV cleaning service.',
   keywords: 'solar panel cleaning swanage, solar panel cleaning purbeck, solar panel cleaning dorset, pv cleaning swanage, solar panel maintenance purbeck',
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/solar-panel-cleaning",
+  },
 }
 
 export default function SolarPanelCleaningPage() {
@@ -150,7 +154,7 @@ export default function SolarPanelCleaningPage() {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0A1628]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80 rounded-2xl p-12">
+            <div className="bg-[#1E90FF] rounded-2xl p-12">
               <h2 className="text-3xl font-bold mb-6 text-white">Restore Your Solar Panel Efficiency</h2>
               <p className="text-xl text-white/90 mb-8">
                 Professional solar panel cleaning across Swanage, Purbeck and Dorset. Maximise your energy generation today.
@@ -165,6 +169,17 @@ export default function SolarPanelCleaningPage() {
           </div>
         </section>
       </main>
+      <ServiceFaqSection
+        heading="Solar Panel Cleaning FAQs"
+        subheading="Common questions about our solar panel cleaning services across Purbeck and Dorset."
+        faqs={[
+          { q: "How much efficiency do dirty solar panels lose?", a: "Research consistently shows that heavily soiled panels can lose 15-25% of their energy output. Even moderate soiling from sea salt, bird droppings, and pollen in coastal Dorset can reduce generation by 10-15%, making regular cleaning a financially sound investment." },
+          { q: "How do you clean solar panels without scratching them?", a: "We use pure, deionised water with specialist soft brushes and low-pressure application. This removes all contamination without abrasive contact. We never use squeegees, conventional detergents, or high-pressure water on solar panels." },
+          { q: "How often should solar panels be cleaned in Dorset?", a: "We recommend once or twice per year for most Purbeck properties. Coastal locations like Swanage, where sea salt spray accumulates rapidly, often benefit from more frequent cleaning to maintain generation efficiency." },
+          { q: "Is it safe to clean solar panels while they are generating power?", a: "Yes. We work on live systems using insulated equipment and follow strict safety protocols. We are trained to work safely with solar panel installations on all roof types." },
+          { q: "Will cleaning invalidate my solar panel warranty?", a: "No. Regular professional cleaning using manufacturer-recommended methods is required maintenance and does not void warranties. Using abrasive tools or harsh chemicals would void warranties — our pure water method does neither." },
+        ]}
+      />
       <PWBFooter />
     </>
   )

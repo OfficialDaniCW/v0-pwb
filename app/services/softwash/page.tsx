@@ -5,12 +5,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Droplets, Shield, Leaf } from 'lucide-react'
 import { SiteHeader } from "@/components/site-header"
 import { PWBFooter } from "@/components/pwb-footer"
+import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
   title: "Soft Washing Dorset | Render & Stone Cleaning | Biocide Treatment | PowerWash Bros",
   description: "Professional soft washing in Swanage, Purbeck, and across Dorset. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Best soft washing Dorset.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/services/softwash",
+  },
 }
 
 export default function SoftwashPage() {
@@ -437,62 +441,20 @@ export default function SoftwashPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-16 bg-white/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-white">
-                Soft Washing FAQs
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    q: "How long does soft washing take?",
-                    a: "Most Purbeck properties take 2-4 hours depending on size and complexity. The biocide needs 10-20 minutes dwell time to work effectively."
-                  },
-                  {
-                    q: "Is soft washing safe for all surfaces?",
-                    a: "Yes. Soft washing is safe for render, stone, brick, timber, and most external surfaces. We adjust our treatment strength for each surface type."
-                  },
-                  {
-                    q: "How long until I see results?",
-                    a: "You'll see immediate improvement, but full results develop over 1-2 weeks as the biocide continues working and dead growth weathers away naturally."
-                  },
-                  {
-                    q: "Will it damage my plants?",
-                    a: "No. We protect all plants and landscaping before treatment. Our biocides are biodegradable and safe when applied correctly by trained professionals."
-                  },
-                  {
-                    q: "How often should I soft wash my property?",
-                    a: "Typically every 2-3 years for coastal Purbeck properties. Results last 12-24 months depending on exposure and environmental conditions."
-                  },
-                ].map((faq, i) => (
-                  <Card key={i} className="bg-white/10 border-2 border-[#1E90FF]/20">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-white">{faq.q}</h3>
-                      <p className="text-white/80">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#1E90FF] to-[#1E90FF]/80">
+        <section className="py-20 bg-[#1E90FF]">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Transform Your Purbeck Property with Soft Washing
               </h2>
-              <p className="text-xl mb-8 opacity-90 text-white/80">
+              <p className="text-xl mb-8 text-white/90">
                 Gentle, effective cleaning that protects your surfaces
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-8 text-xl
+                className="bg-white text-[#1E90FF] font-bold rounded-lg px-12 py-6 text-lg
                            hover:bg-white/90 hover:shadow-2xl hover:scale-105 transition-all"
               >
                 <a href="https://wa.me/447418610731" target="_blank" rel="noopener noreferrer">
@@ -502,6 +464,18 @@ export default function SoftwashPage() {
             </div>
           </div>
         </section>
+
+        <ServiceFaqSection
+          heading="Soft Washing FAQs"
+          subheading="Common questions about soft washing for Purbeck stone, render, and heritage properties across Dorset."
+          faqs={[
+            { q: "What surfaces is soft washing suitable for?", a: "Soft washing is ideal for render, painted walls, Purbeck stone, heritage buildings, roofs, timber cladding, and any surface that could be damaged by high-pressure cleaning. It is the professional standard for delicate exterior surfaces." },
+            { q: "How is soft washing different from pressure washing?", a: "Soft washing uses very low water pressure combined with professional biocide treatments. The chemicals do the cleaning work rather than physical force, making it safe for fragile materials while providing longer-lasting results." },
+            { q: "Will the chemicals harm my plants or garden?", a: "Our PowerUps biocide treatments are professionally registered and applied following strict environmental protocols. We protect plants and drainage during application and rinse thoroughly when required." },
+            { q: "How long does soft washing take to work?", a: "You will see immediate improvement, but soft washing continues working after application. Over the following weeks, treated organic matter gradually breaks down and washes away with rainfall, often giving even better results over time." },
+            { q: "How often do I need soft washing?", a: "Most surfaces remain clean for 12-18 months with a single treatment. Heavily shaded or damp areas may benefit from more frequent treatment. We offer maintenance plans to keep your property looking its best year-round." },
+          ]}
+        />
 
         <PWBFooter />
       </main>
