@@ -3,15 +3,28 @@
 import { Button } from "@/components/ui/button"
 import { Calculator, MessageCircle, ArrowRight, CheckCircle2, Droplets, Home, Square } from "lucide-react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export function PricingPreview() {
+  const [rates, setRates] = useState<Record<string, any>>({})
+
+  useEffect(() => {
+    fetch("/api/admin/pricing")
+      .then((r) => r.json())
+      .then((data) => { if (!data.error) setRates(data) })
+      .catch(() => {})
+  }, [])
+
+  const fmt = (val: number | undefined, fallback: string) =>
+    val != null ? `£${val % 1 === 0 ? val : val.toFixed(2)}` : fallback
+
   const services = [
     {
       name: "Gutter Cleaning",
       description: "Per linear metre",
-      price: "£6",
+      price: fmt(rates.gutter?.baseRate, "£6"),
       unit: "/metre",
-      typical: "Average 3-bed semi: £90-£120",
+      typical: `Average 3-bed semi: ${fmt(rates.gutter?.baseRate ? rates.gutter.baseRate * 15 : undefined, "£90")}–${fmt(rates.gutter?.baseRate ? rates.gutter.baseRate * 20 : undefined, "£120")}`,
       features: ["Full debris removal", "Downpipe clearing", "Flow testing", "Before/after photos"],
       icon: Droplets,
       color: "#60A5FA",
@@ -19,9 +32,9 @@ export function PricingPreview() {
     {
       name: "Roof Cleaning",
       description: "Per square metre",
-      price: "£11.50",
+      price: fmt(rates.roof?.baseRate, "£11.50"),
       unit: "/m²",
-      typical: "Average 3-bed semi: £1,150-£1,725",
+      typical: `Average 3-bed semi: ${fmt(rates.roof?.baseRate ? rates.roof.baseRate * 100 : undefined, "£1,150")}–${fmt(rates.roof?.baseRate ? rates.roof.baseRate * 150 : undefined, "£1,725")}`,
       features: ["Moss & algae removal", "Soft washing method", "Ridge & valley clean", "Biocide treatment extra"],
       icon: Home,
       color: "#F59E0B",
@@ -29,9 +42,9 @@ export function PricingPreview() {
     {
       name: "Patio Cleaning",
       description: "Per square metre",
-      price: "£5",
+      price: fmt(rates.patio?.baseRate, "£5"),
       unit: "/m²",
-      typical: "Average patio 20m²: £100-£150",
+      typical: `Average patio 20m²: ${fmt(rates.patio?.baseRate ? rates.patio.baseRate * 20 : undefined, "£100")}–${fmt(rates.patio?.baseRate ? rates.patio.baseRate * 30 : undefined, "£150")}`,
       features: ["Deep pressure clean", "Weed removal", "Stain treatment", "Re-sanding available"],
       icon: Square,
       color: "#34D399",

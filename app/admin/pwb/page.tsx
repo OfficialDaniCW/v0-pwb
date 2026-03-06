@@ -207,8 +207,28 @@ export default function PWBAdminDashboard() {
     loadBlogPosts()
     loadGalleryImages()
     loadTransformations()
-    // Pricing data is initialized with default values above
+    loadPricingData()
   }, [])
+
+  const loadPricingData = async () => {
+    try {
+      const response = await fetch("/api/admin/pricing")
+      if (response.ok) {
+        const data = await response.json()
+        if (!data.error && Object.keys(data).length > 0) {
+          // Merge DB values over defaults so any missing keys fall back gracefully
+          setPricingData((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(data).map(([k, v]) => [k, { ...((prev as any)[k] ?? {}), ...(v as any) }])
+            ),
+          }))
+        }
+      }
+    } catch (error) {
+      console.error("Failed to load pricing data:", error)
+    }
+  }
 
   const handleSectionChange = (section: string) => {
     setActiveSection(section || "dashboard")
