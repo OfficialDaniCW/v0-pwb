@@ -10,7 +10,7 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
-  title: "Gutter Cleaning Swanage & Purbeck | Prevent Water Damage | PowerWash Bros",
+  title: "Gutter Cleaning Swanage & Purbeck | PowerWash Bros Dorset",
   description: "Professional gutter clearing and downpipe maintenance in Swanage, Purbeck, and across Dorset. Prevent costly water damage to your property. PASMA trained. Free quotes.",
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/gutter-cleaning",
@@ -74,7 +74,7 @@ export default function GutterCleaningPage() {
                 Professional Gutter Cleaning in Swanage & Purbeck
               </h1>
               <p className="text-xl text-white/80 mb-8">
-                Blocked gutters are the most common cause of preventable water damage on Purbeck properties. We clear, flush, and inspect every gutter and downpipe — leaving your roofline draining correctly and your property protected.
+                Blocked gutters are the most common cause of preventable water damage on Purbeck properties. We clear, flush, and inspect every gutter and downpipe - leaving your roofline draining correctly and your property protected.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -110,7 +110,7 @@ export default function GutterCleaningPage() {
                 Why Gutter Maintenance Matters in Purbeck
               </h2>
               <p className="text-lg mb-6 text-white/80">
-                Gutters exist to move rainwater away from your roof, walls, and foundations. When they block, that water has nowhere to go — and in Purbeck's high-rainfall coastal climate, the consequences escalate quickly.
+                Gutters exist to move rainwater away from your roof, walls, and foundations. When they block, that water has nowhere to go - and in Purbeck's high-rainfall coastal climate, the consequences escalate quickly.
               </p>
               <p className="text-lg mb-8 text-white/80">
                 Purbeck properties face a particularly demanding combination: heavy leaf fall from surrounding woodland, moss shedding from roofs, salt-laden coastal air accelerating corrosion, and strong winds depositing debris from nearby trees and fields year-round.
@@ -121,7 +121,7 @@ export default function GutterCleaningPage() {
                     <Droplets className="h-8 w-8 text-[#1E90FF] mb-4" />
                     <h3 className="text-xl font-semibold mb-3 text-white">Full Clearance</h3>
                     <p className="text-white/80">
-                      All leaves, moss, silt, and compacted debris removed by hand and vacuum — not just flushed further along the system.
+                      All leaves, moss, silt, and compacted debris removed by hand and vacuum - not just flushed further along the system.
                     </p>
                   </CardContent>
                 </Card>
@@ -163,19 +163,19 @@ export default function GutterCleaningPage() {
                   <ul className="space-y-3 text-white/80">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#1E90FF] mt-1 flex-shrink-0" />
-                      <span><strong>Woodland debris</strong> — leaf fall from surrounding trees continues year-round, not just in autumn</span>
+                      <span><strong>Woodland debris</strong> - leaf fall from surrounding trees continues year-round, not just in autumn</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#1E90FF] mt-1 flex-shrink-0" />
-                      <span><strong>Roof moss</strong> — heavy growth on Purbeck roofs breaks off during rain and washes directly into gutters</span>
+                      <span><strong>Roof moss</strong> - heavy growth on Purbeck roofs breaks off during rain and washes directly into gutters</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#1E90FF] mt-1 flex-shrink-0" />
-                      <span><strong>Coastal salt air</strong> — accelerates corrosion of brackets and joints, causing sagging that prevents proper drainage</span>
+                      <span><strong>Coastal salt air</strong> - accelerates corrosion of brackets and joints, causing sagging that prevents proper drainage</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-[#1E90FF] mt-1 flex-shrink-0" />
-                      <span><strong>High rainfall</strong> — Dorset's wet climate means blocked gutters overflow frequently, increasing the damage rate</span>
+                      <span><strong>High rainfall</strong> - Dorset's wet climate means blocked gutters overflow frequently, increasing the damage rate</span>
                     </li>
                   </ul>
                 </div>

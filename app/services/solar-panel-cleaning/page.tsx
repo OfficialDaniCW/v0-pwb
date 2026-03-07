@@ -177,7 +177,7 @@ export default function SolarPanelCleaningPage() {
           { q: "How do you clean solar panels without scratching them?", a: "We use pure, deionised water with specialist soft brushes and low-pressure application. This removes all contamination without abrasive contact. We never use squeegees, conventional detergents, or high-pressure water on solar panels." },
           { q: "How often should solar panels be cleaned in Dorset?", a: "We recommend once or twice per year for most Purbeck properties. Coastal locations like Swanage, where sea salt spray accumulates rapidly, often benefit from more frequent cleaning to maintain generation efficiency." },
           { q: "Is it safe to clean solar panels while they are generating power?", a: "Yes. We work on live systems using insulated equipment and follow strict safety protocols. We are trained to work safely with solar panel installations on all roof types." },
-          { q: "Will cleaning invalidate my solar panel warranty?", a: "No. Regular professional cleaning using manufacturer-recommended methods is required maintenance and does not void warranties. Using abrasive tools or harsh chemicals would void warranties — our pure water method does neither." },
+          { q: "Will cleaning invalidate my solar panel warranty?", a: "No. Regular professional cleaning using manufacturer-recommended methods is required maintenance and does not void warranties. Using abrasive tools or harsh chemicals would void warranties - our pure water method does neither." },
         ]}
       />
       <PWBFooter />

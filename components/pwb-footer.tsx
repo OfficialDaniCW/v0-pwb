@@ -163,7 +163,7 @@ export function PWBFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/get-quote"                 className="hover:text-accent transition-colors flex items-center gap-2">
+                <Link href="/pricing"                 className="hover:text-accent transition-colors flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Get a Quote
                 </Link>

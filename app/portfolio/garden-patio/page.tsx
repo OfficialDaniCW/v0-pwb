@@ -9,6 +9,9 @@ export const metadata = {
   title: "Garden Patio Cleaning | PowerWash Bros Portfolio",
   description:
     "See the transformation of a garden patio in Dorset. We removed years of grime and algae to reveal the beautiful natural stone underneath.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/portfolio/garden-patio",
+  },
 }
 
 export default function GardenPatioProject() {

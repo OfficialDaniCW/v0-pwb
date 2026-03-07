@@ -10,7 +10,7 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
-  title: "Soft Washing Dorset | Render & Stone Cleaning | Biocide Treatment | PowerWash Bros",
+  title: "Soft Washing Swanage & Purbeck | Render & Stone Cleaning | PowerWash Bros",
   description: "Professional soft washing in Swanage, Purbeck, and across Dorset. Gentle biocide treatment for render, stone, and delicate surfaces. No pressure damage. Best soft washing Dorset.",
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/softwash",

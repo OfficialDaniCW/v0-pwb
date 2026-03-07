@@ -9,6 +9,9 @@ export const metadata = {
   title: "Commercial Patio Clean | Santos&Co | PowerWash Bros",
   description:
     "Professional commercial patio cleaning for Santos&Co restaurant in Dorset. See how we restored this premium dining space to pristine condition for Evoca Group's new venue.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/portfolio/commercial-patio",
+  },
 }
 
 export default function CommercialPatioPage() {

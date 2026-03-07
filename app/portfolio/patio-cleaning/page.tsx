@@ -9,6 +9,9 @@ export const metadata = {
   title: "Patio Entrance Cleaning | PowerWash Bros Portfolio",
   description:
     "See the dramatic transformation of a moss-covered patio entrance in Dorset. Professional cleaning by biocide-trained specialists.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/portfolio/patio-cleaning",
+  },
 }
 
 export default function PatioCleaningPage() {

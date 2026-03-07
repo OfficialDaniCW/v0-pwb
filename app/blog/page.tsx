@@ -10,6 +10,9 @@ export const metadata = {
   title: "Blog | PowerWash Bros | Expert Property Care Advice",
   description:
     "Learn from Dorset's biocide-trained specialists. Expert advice on property maintenance, cleaning techniques, and prevention tips.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/blog",
+  },
 }
 
 async function getBlogPosts() {

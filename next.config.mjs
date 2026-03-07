@@ -38,6 +38,15 @@ const nextConfig = {
   experimental: {
     caseSensitiveRoutes: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/get-quote",
+        destination: "/pricing",
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

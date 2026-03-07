@@ -57,7 +57,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h3>Powerful 3300W Motor System</h3>
 
-<p>The Commercial 75 Plus features three double-stage motors generating <strong>3300 watts of cleaning power</strong>. This isn't overkill—it's essential for reliable gutter cleaning across large commercial and residential properties. The 11,750 LPM airflow ensures complete debris removal in a single pass.</p>
+<p>The Commercial 75 Plus features three double-stage motors generating <strong>3300 watts of cleaning power</strong>. This isn't overkill - it's essential for reliable gutter cleaning across large commercial and residential properties. The 11,750 LPM airflow ensures complete debris removal in a single pass.</p>
 
 <p>Heavy wet leaves, decomposed matter, and stubborn moss can all be removed safely and efficiently. This power means we work faster and more thoroughly than traditional methods, completing most jobs in a single visit.</p>
 
@@ -65,7 +65,7 @@ export const blogPosts: BlogPostData[] = [
 
 <p>Reaching gutters at height requires poles that are strong yet manageable. The Skyvac system includes <strong>ultra-lightweight Elite Poles made from high-grade carbon fibre</strong>, weighing just 316g per 1.5m section. These poles are featherweight yet incredibly durable.</p>
 
-<p>Your gutter cleaning team can work throughout the day without fatigue, which means better accuracy and safer operation. Fatigued operators make mistakes—our equipment allows us to maintain precision on every job. The poles extend to 40 feet, reaching gutters on four-storey properties. Most homes and small commercial buildings are completed efficiently without complex scaffolding setup.</p>
+<p>Your gutter cleaning team can work throughout the day without fatigue, which means better accuracy and safer operation. Fatigued operators make mistakes - our equipment allows us to maintain precision on every job. The poles extend to 40 feet, reaching gutters on four-storey properties. Most homes and small commercial buildings are completed efficiently without complex scaffolding setup.</p>
 
 <h3>Smart Vacuum Design for Maximum Capacity</h3>
 
@@ -75,7 +75,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h3>Advanced Filtration System</h3>
 
-<p>The system includes a removable, easy-clean filter cartridge with HEPA options available for sensitive applications. Clean filters mean consistent suction throughout the job—no power loss as the tank fills.</p>
+<p>The system includes a removable, easy-clean filter cartridge with HEPA options available for sensitive applications. Clean filters mean consistent suction throughout the job - no power loss as the tank fills.</p>
 
 <h3>Safe and Stable Operation</h3>
 
@@ -97,7 +97,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>How Often Should You Use Professional Gutter Cleaning?</h2>
 
-<p>Most residential properties benefit from professional gutter cleaning <strong>twice yearly</strong>—spring and autumn. This prevents the worst debris buildup and ensures gutters handle heavy rain and winter weather properly.</p>
+<p>Most residential properties benefit from professional gutter cleaning <strong>twice yearly</strong> - spring and autumn. This prevents the worst debris buildup and ensures gutters handle heavy rain and winter weather properly.</p>
 
 <p>Commercial properties should be evaluated individually, but quarterly cleaning is often recommended for buildings with high roof debris accumulation. We can provide a tailored maintenance plan during your free assessment.</p>
 
@@ -127,7 +127,7 @@ export const blogPosts: BlogPostData[] = [
 <li><strong>Long-term value</strong> – The investment protects your property comprehensively</li>
 </ul>
 
-<p>This commitment to quality equipment reflects our overall service philosophy—we don't cut corners.</p>
+<p>This commitment to quality equipment reflects our overall service philosophy - we don't cut corners.</p>
 
 <h2>Professional Standards in Gutter Cleaning</h2>
 
@@ -218,7 +218,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>Why Timing Matters for Biocide Treatment</h2>
 
-<p>Professional <a href="/services/pressure-washing">jet washing</a> isn't just about pressure—it's about <strong>biocide application timing</strong>:</p>
+<p>Professional <a href="/services/pressure-washing">jet washing</a> isn't just about pressure - it's about <strong>biocide application timing</strong>:</p>
 
 <ul>
 <li>Biocide needs 48 hours of dry weather to cure</li>
@@ -271,7 +271,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>The Problem with Pressure Washing Alone</h2>
 
-<p>Many DIY roof cleaners or budget cleaners use only pressure washing—a critical mistake:</p>
+<p>Many DIY roof cleaners or budget cleaners use only pressure washing - a critical mistake:</p>
 
 <p><strong>Pressure washing only:</strong></p>
 
@@ -305,7 +305,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>Biocide Treatment Benefits in Dorset's Climate</h2>
 
-<p>Dorset's wet, mild climate is perfect for moss and algae growth—but ideal for biocide effectiveness:</p>
+<p>Dorset's wet, mild climate is perfect for moss and algae growth - but ideal for biocide effectiveness:</p>
 
 <ul>
 <li>Rain distributes treatment evenly</li>
@@ -459,7 +459,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>About the Partnership</h2>
 
-<p>Evoca Group operates a collection of premium dining establishments across the UK, and we've been selected to provide professional cleaning services that match their exacting standards. Our first project together was cleaning the stunning outdoor patio at their new restaurant venture, <strong>Santos&Co</strong>—a premium dining destination showcasing contemporary cuisine and exceptional hospitality.</p>
+<p>Evoca Group operates a collection of premium dining establishments across the UK, and we've been selected to provide professional cleaning services that match their exacting standards. Our first project together was cleaning the stunning outdoor patio at their new restaurant venture, <strong>Santos&Co</strong> - a premium dining destination showcasing contemporary cuisine and exceptional hospitality.</p>
 
 <p>This partnership represents the confidence that high-end hospitality venues place in our expertise, professionalism, and quality standards.</p>
 
@@ -485,7 +485,7 @@ export const blogPosts: BlogPostData[] = [
 <li><strong>Attention to detail</strong> that only professional contractors can deliver</li>
 </ul>
 
-<p>The transformation was remarkable—from weather-stained and algae-affected surfaces to an immaculate dining space that meets Evoca Group's premium standards.</p>
+<p>The transformation was remarkable - from weather-stained and algae-affected surfaces to an immaculate dining space that meets Evoca Group's premium standards.</p>
 
 <h2>Our Commercial Cleaning Services</h2>
 
@@ -532,7 +532,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>Expanding Services Across Dorset</h2>
 
-<p>This partnership isn't just good news for us—it's excellent news for Dorset businesses looking for premium cleaning contractors. Our availability for commercial projects means:</p>
+<p>This partnership isn't just good news for us - it's excellent news for Dorset businesses looking for premium cleaning contractors. Our availability for commercial projects means:</p>
 
 <ul>
 <li><strong>Premium hospitality venues</strong> now have access to contractor-level expertise</li>
@@ -543,7 +543,7 @@ export const blogPosts: BlogPostData[] = [
 
 <h2>Looking Forward</h2>
 
-<p>We're excited about what this partnership represents—recognition of PowerWash Bros' commitment to excellence and professionalism. The success of the Santos&Co project demonstrates our ability to deliver at the highest standards, and we're proud to continue working with Evoca Group on their existing and future venues.</p>
+<p>We're excited about what this partnership represents - recognition of PowerWash Bros' commitment to excellence and professionalism. The success of the Santos&Co project demonstrates our ability to deliver at the highest standards, and we're proud to continue working with Evoca Group on their existing and future venues.</p>
 
 <p>For other hospitality businesses, retail venues, or commercial property managers in Dorset looking for professional external cleaning contractors, <strong>our partnership with Evoca Group is your guarantee of quality and reliability.</strong></p>
 
@@ -556,14 +556,14 @@ export const blogPosts: BlogPostData[] = [
 <ul>
 <li>WhatsApp: +44 7418 610731</li>
 <li>Email: info@powerwashbros.co.uk</li>
-<li><a href="/get-quote">Get a Quote</a></li>
+<li><a href="/pricing">Get a Quote</a></li>
 </ul>
 
 <p>Let's discuss how we can help maintain your property to the same standards we bring to Evoca Group venues.</p>
 
 <hr>
 
-<p><em>PowerWash Bros—Professional Property Cleaning Services Across Dorset. Trusted by premium venues, chosen by businesses that demand excellence.</em></p>`,
+<p><em>PowerWash Bros - Professional Property Cleaning Services Across Dorset. Trusted by premium venues, chosen by businesses that demand excellence.</em></p>`,
   },
   {
     title: "Spring Roof Maintenance Checklist: Prepare Now for Summer",

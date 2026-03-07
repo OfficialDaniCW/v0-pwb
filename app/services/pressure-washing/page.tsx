@@ -9,7 +9,7 @@ import { ServiceFaqSection } from "@/components/service-faq-section"
 import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Pressure Washing Swanage & Purbeck | Jet Washing Dorset | PowerWash Bros",
+  title: "Pressure Washing Swanage & Purbeck | PowerWash Bros Dorset",
   description: "Professional jet washing and pressure washing in Swanage, Purbeck, and across Dorset. Expert driveway, patio, and wall cleaning. Best pressure washing Dorset. Free quotes.",
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/pressure-washing",
