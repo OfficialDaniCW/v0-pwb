@@ -847,12 +847,7 @@ export default function PricingPage() {
                               <span className="font-semibold text-white">£{travelSurcharge}</span>
                             </div>
                           )}
-                          {!hasExternalPower && (
-                            <div className="flex justify-between text-xs text-white/70">
-                              <span>Generator</span>
-                              <span className="font-semibold text-white">+£{GENERATOR_SURCHARGE}</span>
-                            </div>
-                          )}
+
                         </div>
                       )}
 
