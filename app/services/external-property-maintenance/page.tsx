@@ -6,7 +6,7 @@ import Script from 'next/script'
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
-  title: 'External Property Maintenance Swanage | Building Cleaning Purbeck Dorset',
+  title: 'External Property Maintenance Swanage & Purbeck | PowerWash Bros',
   description: 'Complete external property maintenance and building cleaning services in Swanage, Purbeck, and Dorset. Protect and maintain your property with PowerWash Bros.',
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/external-property-maintenance",

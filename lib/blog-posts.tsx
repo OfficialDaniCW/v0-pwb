@@ -556,7 +556,7 @@ export const blogPosts: BlogPostData[] = [
 <ul>
 <li>WhatsApp: +44 7418 610731</li>
 <li>Email: info@powerwashbros.co.uk</li>
-<li><a href="/get-quote">Get a Quote</a></li>
+<li><a href="/pricing">Get a Quote</a></li>
 </ul>
 
 <p>Let's discuss how we can help maintain your property to the same standards we bring to Evoca Group venues.</p>

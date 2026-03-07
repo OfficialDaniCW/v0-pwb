@@ -10,7 +10,7 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
-  title: "Driveway Cleaning Dorset | Jet Washing & Biocide Treatment | PowerWash Bros | Swanage, Purbeck",
+  title: "Driveway Cleaning Swanage & Purbeck | PowerWash Bros",
   description:
     "Professional driveway cleaning across Purbeck and Dorset. Expert jet washing and biocide treatments. Transform tired driveways back to pristine condition. Best driveway cleaning Dorset. Free quotes.",
   alternates: {
@@ -128,7 +128,7 @@ export default function DrivewayCleaningPage() {
                   className="border-2 border-[#1E90FF] bg-transparent text-[#1E90FF] rounded-lg px-8 py-6
                              hover:bg-[#1E90FF] hover:text-white transition-all"
                 >
-                  <a href="/quote">Get Free Quote</a>
+                  <a href="/pricing">Get Free Quote</a>
                 </Button>
               </div>
 

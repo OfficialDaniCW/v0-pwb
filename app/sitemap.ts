@@ -82,28 +82,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // All service area location pages
+  // All service area location pages - must match keys in LOCATIONS object in app/service-areas/[location]/page.tsx
   const serviceAreas = [
     "swanage",
-    "purbeck",
-    "poole",
-    "bournemouth",
-    "weymouth",
     "corfe-castle",
-    "langton-matravers",
-    "studland",
-    "worth-matravers",
     "wareham",
-    "wimborne",
-    "christchurch",
-    "ferndown",
+    "bournemouth",
+    "poole",
+    "weymouth",
     "dorchester",
-    "portland",
-    "lulworth",
-    "isle-of-purbeck",
+    "christchurch",
+    "wimborne",
+    "studland",
     "wool",
+    "portland",
+    "ferndown",
     "blandford-forum",
-    "swanage-and-purbeck",
+    "isle-of-purbeck",
+    "lulworth",
   ]
 
   const serviceAreaPages: MetadataRoute.Sitemap = serviceAreas.map((area) => ({

@@ -10,7 +10,7 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
-  title: "Gutter Cleaning Swanage & Purbeck | Prevent Water Damage | PowerWash Bros",
+  title: "Gutter Cleaning Swanage & Purbeck | PowerWash Bros Dorset",
   description: "Professional gutter clearing and downpipe maintenance in Swanage, Purbeck, and across Dorset. Prevent costly water damage to your property. PASMA trained. Free quotes.",
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/gutter-cleaning",

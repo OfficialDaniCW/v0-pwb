@@ -9,6 +9,9 @@ export const metadata = {
   title: "Swanage Patio & Wall Refresh | PowerWash Bros Portfolio",
   description:
     "Dramatic patio transformation in Swanage revealing beautiful natural stone colours. Professional power washing and chemical treatment bringing stunning results that exceeded customer expectations.",
+  alternates: {
+    canonical: "https://powerwashbros.co.uk/portfolio/swanage-patio-wall-refresh",
+  },
 }
 
 export default function SwanagePatioProject() {

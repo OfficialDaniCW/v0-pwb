@@ -10,7 +10,7 @@ import Script from "next/script"
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata: Metadata = {
-  title: 'Commercial Glass Cleaning Swanage & Purbeck | Shop Fronts & Offices | PowerWash Bros',
+  title: 'Commercial Glass Cleaning Swanage & Purbeck | PowerWash Bros',
   description: 'Professional commercial glass cleaning in Swanage and Purbeck. Shop fronts, office buildings, mirrors. Streak-free results. Free quotes.',
   alternates: {
     canonical: "https://powerwashbros.co.uk/services/glass-cleaning",
@@ -318,7 +318,7 @@ export default function GlassCleaningPage() {
                 <h3 className="text-xl font-semibold text-white mb-4">Weekly Service</h3>
                 <p className="text-white/80 mb-4">Perfect for high-traffic retail and hospitality businesses</p>
                 <ul className="space-y-2 text-sm text-white/70">
-                  <li>• Shopfronts</li>
+                  <li>��� Shopfronts</li>
                   <li>• Restaurants</li>
                   <li>• Hotels</li>
                   <li>• Salons</li>
