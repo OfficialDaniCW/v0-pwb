@@ -32,8 +32,8 @@ import {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function FieldNote({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs text-white/50 mt-1.5 flex items-start gap-1">
-      <Info className="h-3 w-3 shrink-0 mt-0.5 text-[#1E90FF]/60" />
+    <p className="text-xs text-[#b0b8c0] mt-1.5 flex items-start gap-1">
+      <Info className="h-3 w-3 shrink-0 mt-0.5 text-[#1E90FF]/70" />
       <span>{children}</span>
     </p>
   )
@@ -62,7 +62,7 @@ function SectionLabel({
         )}
       </div>
       {tooltip && open && (
-        <p className="mt-1.5 text-xs text-white/55 bg-white/5 border border-white/10 rounded-lg px-3 py-2 leading-relaxed">
+        <p className="mt-1.5 text-xs text-[#b0b8c0] glass-border-subtle rounded-lg px-3 py-2 leading-relaxed">
           {tooltip}
         </p>
       )}
@@ -183,8 +183,8 @@ function Opt({
       onClick={onClick}
       className={`flex-1 min-w-[90px] py-2.5 px-3 rounded-lg font-semibold transition-all border-2 text-sm text-left ${
         active
-          ? "bg-[#00C853] border-[#00C853] text-white shadow"
-          : "border-white/20 text-white hover:border-[#00C853]/60 hover:bg-white/5"
+          ? "bg-[#00C853] border-[#00C853] text-white shadow-[0_0_12px_rgba(0,200,83,0.3)]"
+          : "border-[#1a3a52] text-white hover:border-[#00C853]/60 hover:bg-white/5"
       } ${className}`}
     >
       {children}
@@ -216,7 +216,7 @@ function JobCard({
   }
 
   return (
-    <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+    <div className="liquid-glass rounded-xl overflow-hidden">
       {/* Card header */}
       <div
         className="flex items-center justify-between px-5 py-4 bg-white/5 border-b border-white/10 cursor-pointer select-none"
@@ -271,8 +271,8 @@ function JobCard({
                   onClick={() => set("serviceType", id)}
                   className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
                     job.serviceType === id
-                      ? "border-[#1E90FF] bg-[#1E90FF]/15"
-                      : "border-white/15 hover:border-[#1E90FF]/40 hover:bg-white/5"
+                      ? "border-[#1E90FF] bg-[#1E90FF]/15 shadow-[0_0_12px_rgba(30,144,255,0.2)]"
+                      : "border-[#1a3a52] hover:border-[#1E90FF]/50 hover:bg-white/5"
                   }`}
                 >
                   <div className="flex items-start gap-3">
@@ -346,8 +346,8 @@ function JobCard({
                   onClick={() => set("needsResanding", !job.needsResanding)}
                   className={`mt-3 w-full text-left p-3 rounded-lg transition-all border-2 ${
                     job.needsResanding
-                      ? "bg-[#00C853] border-[#00C853] text-white"
-                      : "border-white/20 text-white hover:border-[#00C853]/50 hover:bg-white/5"
+                      ? "bg-[#00C853] border-[#00C853] text-white shadow-[0_0_12px_rgba(0,200,83,0.3)]"
+                      : "border-[#1a3a52] text-white hover:border-[#00C853]/50 hover:bg-white/5"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -381,8 +381,8 @@ function JobCard({
                     onClick={() => set("growthLevel", g.id as Job["growthLevel"])}
                     className={`flex-1 min-w-[90px] p-3 rounded-lg font-semibold transition-all border-2 text-left text-sm ${
                       job.growthLevel === g.id
-                        ? "bg-[#00C853] border-[#00C853] text-white shadow"
-                        : "border-white/20 text-white hover:border-[#00C853]/50 hover:bg-white/5"
+                        ? "bg-[#00C853] border-[#00C853] text-white shadow-[0_0_12px_rgba(0,200,83,0.3)]"
+                        : "border-[#1a3a52] text-white hover:border-[#00C853]/50 hover:bg-white/5"
                     }`}
                   >
                     <p className="font-semibold">{g.label}</p>
@@ -422,8 +422,8 @@ function JobCard({
                     onClick={() => set("mouldLevel", m.id as Job["mouldLevel"])}
                     className={`flex-1 min-w-[90px] p-3 rounded-lg font-semibold transition-all border-2 text-left text-sm ${
                       job.mouldLevel === m.id
-                        ? "bg-[#00C853] border-[#00C853] text-white shadow"
-                        : "border-white/20 text-white hover:border-[#00C853]/50 hover:bg-white/5"
+                        ? "bg-[#00C853] border-[#00C853] text-white shadow-[0_0_12px_rgba(0,200,83,0.3)]"
+                        : "border-[#1a3a52] text-white hover:border-[#00C853]/50 hover:bg-white/5"
                     }`}
                   >
                     <p className="font-semibold">{m.label}</p>
@@ -450,8 +450,8 @@ function JobCard({
               onClick={() => set("biocide", !job.biocide)}
               className={`w-full text-left p-3 rounded-lg transition-all border-2 ${
                 job.biocide
-                  ? "bg-[#00C853] border-[#00C853] text-white"
-                  : "border-white/20 text-white hover:border-[#00C853]/50 hover:bg-white/5"
+                  ? "bg-[#00C853] border-[#00C853] text-white shadow-[0_0_12px_rgba(0,200,83,0.3)]"
+                  : "border-[#1a3a52] text-white hover:border-[#00C853]/50 hover:bg-white/5"
               }`}
             >
               <div className="flex items-center justify-between">
@@ -625,13 +625,14 @@ export default function PricingPage() {
 
             {/* Header */}
             <div className="text-center mb-14">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/20 mb-6 mx-auto">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1E90FF]/15 border border-[#1E90FF]/30 mb-6 mx-auto shadow-[0_0_30px_rgba(30,144,255,0.2)]">
                 <Calculator className="h-10 w-10 text-[#1E90FF]" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 text-balance">
-                Instant Pricing Estimate
+                Instant{" "}
+                <span className="gradient-text">Pricing Estimate</span>
               </h1>
-              <p className="text-lg text-white/70 max-w-2xl mx-auto text-balance">
+              <p className="text-lg text-[#b0b8c0] max-w-2xl mx-auto text-balance">
                 Add every surface you need cleaned — we&apos;ll bundle them together and visit you for a free inspection before confirming your final price.
               </p>
             </div>
@@ -643,14 +644,14 @@ export default function PricingPage() {
                 <div className="md:col-span-2 space-y-8">
 
                   {/* Step 1 — Your Details */}
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                  <div className="liquid-glass rounded-xl p-6">
                     <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm font-bold text-[#1E90FF]">1</span>
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/20 border border-[#1E90FF]/40 flex items-center justify-center text-sm font-bold text-[#1E90FF]">1</span>
                       Your Details
                     </h2>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <Label className="text-white/80 text-sm font-semibold mb-1.5 flex items-center gap-1.5">
+                        <Label className="text-[#b0b8c0] text-sm font-semibold mb-1.5 flex items-center gap-1.5">
                           <User className="h-3.5 w-3.5 text-[#1E90FF]" />
                           Full Name <span className="text-red-400">*</span>
                         </Label>
@@ -658,11 +659,11 @@ export default function PricingPage() {
                           placeholder="e.g. John Smith"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                          className="bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 h-10 focus:border-[#1E90FF]/60 transition-colors"
                         />
                       </div>
                       <div>
-                        <Label className="text-white/80 text-sm font-semibold mb-1.5 flex items-center gap-1.5">
+                        <Label className="text-[#b0b8c0] text-sm font-semibold mb-1.5 flex items-center gap-1.5">
                           <Phone className="h-3.5 w-3.5 text-[#1E90FF]" />
                           Phone Number <span className="text-red-400">*</span>
                         </Label>
@@ -670,11 +671,11 @@ export default function PricingPage() {
                           placeholder="e.g. 07700 900000"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                          className="bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 h-10 focus:border-[#1E90FF]/60 transition-colors"
                         />
                       </div>
                       <div>
-                        <Label className="text-white/80 text-sm font-semibold mb-1.5 flex items-center gap-1.5">
+                        <Label className="text-[#b0b8c0] text-sm font-semibold mb-1.5 flex items-center gap-1.5">
                           <Home className="h-3.5 w-3.5 text-[#1E90FF]" />
                           Address Line 1
                         </Label>
@@ -682,20 +683,20 @@ export default function PricingPage() {
                           placeholder="House number & street"
                           value={addressLine1}
                           onChange={(e) => setAddressLine1(e.target.value)}
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                          className="bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 h-10 focus:border-[#1E90FF]/60 transition-colors"
                         />
                       </div>
                       <div>
-                        <Label className="text-white/80 text-sm font-semibold mb-1.5">Address Line 2</Label>
+                        <Label className="text-[#b0b8c0] text-sm font-semibold mb-1.5">Address Line 2</Label>
                         <Input
                           placeholder="Town / village (optional)"
                           value={addressLine2}
                           onChange={(e) => setAddressLine2(e.target.value)}
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10"
+                          className="bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 h-10 focus:border-[#1E90FF]/60 transition-colors"
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <Label className="text-white/80 text-sm font-semibold mb-1.5 flex items-center gap-1.5">
+                        <Label className="text-[#b0b8c0] text-sm font-semibold mb-1.5 flex items-center gap-1.5">
                           <MapPin className="h-3.5 w-3.5 text-[#1E90FF]" />
                           Postcode <span className="text-red-400">*</span>
                         </Label>
@@ -703,7 +704,7 @@ export default function PricingPage() {
                           placeholder="e.g. BH19 2JJ"
                           value={postcode}
                           onChange={(e) => handlePostcodeChange(e.target.value)}
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-10 max-w-xs"
+                          className="bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 h-10 max-w-xs focus:border-[#1E90FF]/60 transition-colors"
                         />
                         {loadingPostcode && <p className="text-xs text-[#1E90FF] mt-1.5">Checking postcode…</p>}
                         {postcodeError && (
@@ -727,11 +728,11 @@ export default function PricingPage() {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm font-bold text-[#1E90FF]">2</span>
+                        <span className="w-8 h-8 rounded-full bg-[#1E90FF]/20 border border-[#1E90FF]/40 flex items-center justify-center text-sm font-bold text-[#1E90FF]">2</span>
                         Services Required
                       </h2>
                     </div>
-                    <p className="text-sm text-white/55 mb-5">
+                    <p className="text-sm text-[#b0b8c0] mb-5">
                       Need more than one surface cleaned? Add multiple jobs below — we bundle them together for the best price.
                     </p>
 
@@ -751,7 +752,7 @@ export default function PricingPage() {
 
                     <button
                       onClick={addJob}
-                      className="mt-4 w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl border-2 border-dashed border-[#1E90FF]/40 text-[#1E90FF] font-semibold hover:border-[#1E90FF] hover:bg-[#1E90FF]/5 transition-all text-sm"
+                      className="mt-4 w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl border-2 border-dashed border-[#1E90FF]/30 text-[#1E90FF] font-semibold hover:border-[#1E90FF]/70 hover:bg-[#1E90FF]/8 transition-all text-sm"
                     >
                       <Plus className="h-4 w-4" />
                       Add Another Service
@@ -759,12 +760,12 @@ export default function PricingPage() {
                   </div>
 
                   {/* Step 3 — Property Access (info only) */}
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                  <div className="liquid-glass rounded-xl p-6">
                     <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm font-bold text-[#1E90FF]">3</span>
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/20 border border-[#1E90FF]/40 flex items-center justify-center text-sm font-bold text-[#1E90FF]">3</span>
                       Property Access
                     </h2>
-                    <p className="text-sm text-white/55 mb-5">
+                    <p className="text-sm text-[#b0b8c0] mb-5">
                       Helps us bring the right equipment. This does{" "}
                       <strong className="text-white/80">not</strong> affect your estimate — we bring our own generator and water tank where needed.
                     </p>
@@ -776,15 +777,15 @@ export default function PricingPage() {
                           onClick={() => setAccess((prev) => ({ ...prev, [key]: !prev[key] }))}
                           className={`w-full p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
                             access[key]
-                              ? "border-[#00C853] bg-[#00C853]/10"
-                              : "border-white/15 bg-white/5 hover:border-white/30"
+                              ? "border-[#00C853] bg-[#00C853]/10 shadow-[0_0_10px_rgba(0,200,83,0.15)]"
+                              : "border-[#1a3a52] bg-white/3 hover:border-[#1a3a52] hover:bg-white/5"
                           }`}
                         >
                           <div className="flex items-center gap-3 text-left">
                             <Icon className="h-5 w-5 text-[#1E90FF] shrink-0" />
                             <div>
                               <p className="text-white font-medium text-sm">{label}</p>
-                              <p className="text-white/50 text-xs mt-0.5">{desc}</p>
+                              <p className="text-[#b0b8c0] text-xs mt-0.5">{desc}</p>
                             </div>
                           </div>
                           {access[key] && <Check className="h-5 w-5 text-[#00C853] shrink-0" />}
@@ -809,23 +810,23 @@ export default function PricingPage() {
                   </div>
 
                   {/* Step 4 — Notes */}
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                  <div className="liquid-glass rounded-xl p-6">
                     <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/30 flex items-center justify-center text-sm font-bold text-[#1E90FF]">4</span>
+                      <span className="w-8 h-8 rounded-full bg-[#1E90FF]/20 border border-[#1E90FF]/40 flex items-center justify-center text-sm font-bold text-[#1E90FF]">4</span>
                       Additional Notes
                     </h2>
-                    <p className="text-sm text-white/55 mb-4">
+                    <p className="text-sm text-[#b0b8c0] mb-4">
                       Parking info, gate codes, specific problem areas, best times to visit — anything that helps us prepare.
                     </p>
                     <Textarea
                       placeholder="e.g. Gate code is 1234. Stubborn oil stain near garage. Mornings work best."
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
-                      className="min-h-[100px] resize-none bg-white/10 border-white/20 text-white placeholder:text-white/30"
+                      className="min-h-[100px] resize-none bg-[#061429] border-[#1a3a52] text-white placeholder:text-[#b0b8c0]/40 focus:border-[#1E90FF]/60 transition-colors"
                     />
                     <div className="flex items-start gap-2 mt-3">
                       <ClipboardList className="h-4 w-4 text-[#1E90FF]/50 shrink-0 mt-0.5" />
-                      <p className="text-xs text-white/45">
+                      <p className="text-xs text-[#b0b8c0]">
                         Your notes are included in the WhatsApp message so we have everything in one place.
                       </p>
                     </div>
@@ -835,12 +836,12 @@ export default function PricingPage() {
                 {/* ── Right — sticky summary ── */}
                 <div className="md:col-span-1">
                   <div className="sticky top-24 space-y-4">
-                    <div className="bg-gradient-to-br from-[#1E90FF]/25 to-[#00C853]/20 rounded-xl p-6 border-2 border-white/10">
-                      <p className="text-white/70 text-sm font-medium mb-1">Estimated Total</p>
+                    <div className="liquid-glass-enhanced rounded-xl p-6 border-2 border-[#1E90FF]/20">
+                      <p className="text-[#b0b8c0] text-sm font-medium mb-1">Estimated Total</p>
                       <p className="text-5xl font-bold text-white mb-1">
                         {totalPrice > 0 ? `£${totalPrice}` : "—"}
                       </p>
-                      <p className="text-xs text-white/45 mb-5">
+                      <p className="text-xs text-[#b0b8c0] mb-5">
                         {totalPrice > 0
                           ? "Based on your selections — confirmed after inspection"
                           : "Fill in your details to see an estimate"}
@@ -870,8 +871,8 @@ export default function PricingPage() {
                         </div>
                       )}
 
-                      <div className="bg-[#1E90FF]/10 border border-[#1E90FF]/20 rounded-lg p-3 mb-5">
-                        <p className="text-xs text-white/70 leading-relaxed">
+                      <div className="bg-[#1E90FF]/10 border border-[#1E90FF]/25 rounded-lg p-3 mb-5">
+                        <p className="text-xs text-[#b0b8c0] leading-relaxed">
                           <strong className="text-[#1E90FF]">Free in-person inspection included.</strong> Every job gets a site visit before we confirm your final price — no surprises.
                         </p>
                       </div>
@@ -886,16 +887,16 @@ export default function PricingPage() {
                       </Button>
 
                       {!isReady && (
-                        <p className="text-xs text-white/40 mt-2 text-center">
+                        <p className="text-xs text-[#b0b8c0] mt-2 text-center">
                           Fill in name, phone &amp; postcode first
                         </p>
                       )}
                     </div>
 
                     {/* Next steps */}
-                    <div className="bg-white/5 rounded-xl p-5 border border-white/10">
+                    <div className="glass-border rounded-xl p-5">
                       <h3 className="font-bold text-white mb-3 text-sm">What Happens Next</h3>
-                      <ol className="space-y-2.5 text-sm text-white/70">
+                      <ol className="space-y-2.5 text-sm text-[#b0b8c0]">
                         {[
                           "Send your details via WhatsApp",
                           "We arrange a free site visit",
