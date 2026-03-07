@@ -72,18 +72,17 @@ function SectionLabel({
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 const DEFAULT_PRICING: Record<string, any> = {
-  driveway:  { baseRate: 3,    blockPavingResanding: 2  },
-  patio:     { baseRate: 5                              },
-  roof:      { baseRate: 11.5                           },
-  gutter:    { baseRate: 6                              },
-  walls:     { baseRate: 3                              },
-  softwash:  { baseRate: 5                              },
+  driveway:  { baseRate: 5,    blockPavingResanding: 3  },
+  patio:     { baseRate: 7                              },
+  roof:      { baseRate: 14                             },
+  gutter:    { baseRate: 8                              },
+  walls:     { baseRate: 5                              },
+  softwash:  { baseRate: 7                              },
 }
 
-const BIOCIDE_RATE = 1.5
-const GENERATOR_SURCHARGE = 20
-const DISTANCE_RATE = 0.5
-const FUEL_BASE = 15
+const BIOCIDE_RATE = 2.0
+const DISTANCE_RATE = 0.6
+const FUEL_BASE = 20
 
 const SERVICE_META: Record<string, { label: string; note: string; unit: "sqm" | "lm" }> = {
   driveway: {
@@ -98,7 +97,7 @@ const SERVICE_META: Record<string, { label: string; note: string; unit: "sqm" | 
   },
   roof: {
     label: "Roof Cleaning & Moss Removal",
-    note: "Softwash method — safe for all tile types. Biocide treatment recommended to prevent regrowth.",
+    note: "Softwash method - safe for all tile types. Biocide treatment recommended to prevent regrowth.",
     unit: "sqm",
   },
   gutter: {
@@ -113,7 +112,7 @@ const SERVICE_META: Record<string, { label: string; note: string; unit: "sqm" | 
   },
   softwash: {
     label: "Softwash (Render / K-Rend)",
-    note: "Low-pressure chemical clean — ideal for K-Rend, monocouche and cladding. Gentle but highly effective.",
+    note: "Low-pressure chemical clean - ideal for K-Rend, monocouche and cladding. Gentle but highly effective.",
     unit: "sqm",
   },
 }
@@ -313,7 +312,7 @@ function JobCard({
               {job.serviceType === "patio"    && "Average rear patio ≈ 15–25 m²; larger gardens can be 40–60 m²."}
               {job.serviceType === "roof"     && "3-bed semi roof ≈ 80–120 m²; detached house ≈ 150–250 m²."}
               {job.serviceType === "walls"    && "Measure height × width of each wall face to be cleaned."}
-              {job.serviceType === "softwash" && "Measure total facade — front, side and rear walls as needed."}
+              {job.serviceType === "softwash" && "Measure total facade - front, side and rear walls as needed."}
               {job.serviceType === "gutter"   && "Terraced house one side ≈ 10–15 m; semi-detached ≈ 20–30 m."}
             </FieldNote>
           </div>
@@ -396,7 +395,7 @@ function JobCard({
           {/* Mould & mildew */}
           {!isGutter && (
             <div>
-              <SectionLabel tooltip="Mould and mildew penetrate deeper into porous materials than surface moss and require specialist chemical treatments. Knowing the extent upfront lets us bring the right products. Mould often grows in damp shaded spots — north-facing surfaces, under overhangs.">
+              <SectionLabel tooltip="Mould and mildew penetrate deeper into porous materials than surface moss and require specialist chemical treatments. Knowing the extent upfront lets us bring the right products. Mould often grows in damp shaded spots - north-facing surfaces, under overhangs.">
                 Mould &amp; Mildew Condition
               </SectionLabel>
               <div className="flex gap-2 flex-wrap">
@@ -509,7 +508,7 @@ export default function PricingPage() {
   const [access, setAccess] = useState<Record<string, boolean>>({
     electricity: false, water: false, gate: false, paved: false,
   })
-  const [hasExternalPower, setHasExternalPower] = useState(true)
+  const [hasExternalPower, setHasExternalPower] = useState<boolean | null>(null)
   const [jobs, setJobs] = useState<Job[]>([newJob()])
   const [pricing, setPricing] = useState<Record<string, any>>(DEFAULT_PRICING)
 
@@ -546,8 +545,7 @@ export default function PricingPage() {
 
   const jobsSubtotal = jobs.reduce((sum, j) => sum + calcJobPrice(j, pricing), 0)
   const travelSurcharge = distanceMiles > 0 ? Math.round(distanceMiles * 2 * DISTANCE_RATE + FUEL_BASE) : 0
-  const generatorSurcharge = hasExternalPower ? 0 : GENERATOR_SURCHARGE
-  const totalPrice = jobsSubtotal + travelSurcharge + generatorSurcharge
+  const totalPrice = jobsSubtotal + travelSurcharge
 
   const addJob = () => setJobs((prev) => [...prev, newJob()])
   const removeJob = (id: string) => setJobs((prev) => prev.filter((j) => j.id !== id))
@@ -578,11 +576,10 @@ export default function PricingPage() {
     if (distanceMiles > 0) msg += `Distance from Swanage: ~${distanceMiles} miles\n`
 
     msg += `\nProperty Access:\n`
-    msg += `Electricity Available: ${access.electricity ? "Yes" : "No"}\n`
-    msg += `Water Access: ${access.water ? "Yes" : "No"}\n`
-    msg += `Easy Gate Access: ${access.gate ? "Yes" : "No"}\n`
-    msg += `Paved Surface: ${access.paved ? "Yes" : "No"}\n`
-    msg += `External Power: ${hasExternalPower ? "Yes" : "No (generator needed)"}\n`
+    msg += `Electricity on site: ${access.electricity ? "Yes" : "No"}\n`
+    msg += `Water access: ${access.water ? "Yes" : "No"}\n`
+    msg += `Easy gate / entry: ${access.gate ? "Yes" : "No"}\n`
+    msg += `Paved surface: ${access.paved ? "Yes" : "No"}\n`
 
     msg += `\n--- Services Requested ---\n`
     jobs.forEach((job, i) => {
@@ -606,7 +603,6 @@ export default function PricingPage() {
 
     msg += `\nEstimated Total: £${totalPrice}`
     if (travelSurcharge > 0) msg += ` (inc. travel £${travelSurcharge})`
-    if (!hasExternalPower) msg += ` (inc. generator £${GENERATOR_SURCHARGE})`
     if (notes.trim()) msg += `\n\nNotes: ${notes.trim()}`
     msg += `\n\nPlease confirm my final quote after your free inspection. Thanks!`
 
@@ -633,7 +629,7 @@ export default function PricingPage() {
                 <span className="gradient-text">Pricing Estimate</span>
               </h1>
               <p className="text-lg text-[#b0b8c0] max-w-2xl mx-auto text-balance">
-                Add every surface you need cleaned — we&apos;ll bundle them together and visit you for a free inspection before confirming your final price.
+                Add every surface you need cleaned - we&apos;ll bundle them together and visit you for a free inspection before confirming your final price.
               </p>
             </div>
 
@@ -733,7 +729,7 @@ export default function PricingPage() {
                       </h2>
                     </div>
                     <p className="text-sm text-[#b0b8c0] mb-5">
-                      Need more than one surface cleaned? Add multiple jobs below — we bundle them together for the best price.
+                      Need more than one surface cleaned? Add multiple jobs below - we bundle them together for the best price.
                     </p>
 
                     <div className="space-y-4">
@@ -767,7 +763,7 @@ export default function PricingPage() {
                     </h2>
                     <p className="text-sm text-[#b0b8c0] mb-5">
                       Helps us bring the right equipment. This does{" "}
-                      <strong className="text-white/80">not</strong> affect your estimate — we bring our own generator and water tank where needed.
+                      <strong className="text-white/80">not</strong> affect your estimate - we bring our own generator and water tank where needed.
                     </p>
 
                     <div className="space-y-2 mb-5">
@@ -793,20 +789,9 @@ export default function PricingPage() {
                       ))}
                     </div>
 
-                    {/* External power */}
-                    <div>
-                      <p className="text-white font-semibold text-sm mb-2 flex items-center gap-2">
-                        <Zap className="h-4 w-4 text-[#1E90FF]" /> External Power Supply
-                      </p>
-                      <div className="flex gap-2 flex-wrap">
-                        <Opt active={hasExternalPower === true}  onClick={() => setHasExternalPower(true)}>
-                          Yes — socket available
-                        </Opt>
-                        <Opt active={hasExternalPower === false} onClick={() => setHasExternalPower(false)}>
-                          No — bring generator (+£{GENERATOR_SURCHARGE})
-                        </Opt>
-                      </div>
-                    </div>
+                    <p className="text-xs text-[#b0b8c0]">
+                      Tick what applies - this helps us plan the right equipment for your visit.
+                    </p>
                   </div>
 
                   {/* Step 4 — Notes */}
@@ -816,7 +801,7 @@ export default function PricingPage() {
                       Additional Notes
                     </h2>
                     <p className="text-sm text-[#b0b8c0] mb-4">
-                      Parking info, gate codes, specific problem areas, best times to visit — anything that helps us prepare.
+                      Parking info, gate codes, specific problem areas, best times to visit - anything that helps us prepare.
                     </p>
                     <Textarea
                       placeholder="e.g. Gate code is 1234. Stubborn oil stain near garage. Mornings work best."
@@ -843,7 +828,7 @@ export default function PricingPage() {
                       </p>
                       <p className="text-xs text-[#b0b8c0] mb-5">
                         {totalPrice > 0
-                          ? "Based on your selections — confirmed after inspection"
+                          ? "Based on your selections - confirmed after inspection"
                           : "Fill in your details to see an estimate"}
                       </p>
 
@@ -873,7 +858,7 @@ export default function PricingPage() {
 
                       <div className="bg-[#1E90FF]/10 border border-[#1E90FF]/25 rounded-lg p-3 mb-5">
                         <p className="text-xs text-[#b0b8c0] leading-relaxed">
-                          <strong className="text-[#1E90FF]">Free in-person inspection included.</strong> Every job gets a site visit before we confirm your final price — no surprises.
+                          <strong className="text-[#1E90FF]">Free in-person inspection included.</strong> Every job gets a site visit before we confirm your final price - no surprises.
                         </p>
                       </div>
 

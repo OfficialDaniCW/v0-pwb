@@ -372,11 +372,11 @@ export default function ExternalPropertyMaintenancePage() {
         heading="External Property Maintenance FAQs"
         subheading="Common questions about our external property maintenance packages across Purbeck and Dorset."
         faqs={[
-          { q: "What does an external property maintenance package include?", a: "Our packages are tailored to your property but typically include gutter clearing, soffit and fascia cleaning, driveway and patio treatment, window cleaning, and exterior wall or render cleaning — all scheduled and managed for you on an annual or bi-annual basis." },
+          { q: "What does an external property maintenance package include?", a: "Our packages are tailored to your property but typically include gutter clearing, soffit and fascia cleaning, driveway and patio treatment, window cleaning, and exterior wall or render cleaning - all scheduled and managed for you on an annual or bi-annual basis." },
           { q: "Who is this service suitable for?", a: "External maintenance packages are popular with busy homeowners, landlords, letting agents, holiday let owners, and commercial property managers who want their property maintained consistently without having to organise individual visits each year." },
           { q: "Can you manage multiple properties?", a: "Yes. We work with landlords and property managers across Dorset managing multiple properties. We can schedule and coordinate cleaning across your entire portfolio with consolidated invoicing." },
           { q: "What notice do you give before each visit?", a: "We contact you in advance to confirm each scheduled visit. For properties where access is not required, we can work to a set schedule without the need for you to be present." },
-          { q: "Are maintenance contracts flexible?", a: "Yes. We review packages annually and can adjust the scope of services based on changing needs. There is no rigid long-term lock-in — we maintain your business by delivering results, not by contract obligation." },
+          { q: "Are maintenance contracts flexible?", a: "Yes. We review packages annually and can adjust the scope of services based on changing needs. There is no rigid long-term lock-in - we maintain your business by delivering results, not by contract obligation." },
         ]}
       />
 

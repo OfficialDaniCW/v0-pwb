@@ -89,7 +89,7 @@ export default function RenderCleanPage() {
                       >
                         Spinaclean Chemical Pump Box and Lance
                       </a>
-                      , we safely and effectively removed years of dirt, algae, and staining—restoring the render to its
+                      , we safely and effectively removed years of dirt, algae, and staining - restoring the render to its
                       original, fresh appearance.
                     </p>
                   </div>
@@ -106,7 +106,7 @@ export default function RenderCleanPage() {
                     <div>
                       <h4 className="text-xl font-bold text-white mb-3">The Result</h4>
                       <p className="text-white/80 leading-relaxed">
-                        The render went from dull and stained to clean, vibrant, and protected—instantly improving the
+                        The render went from dull and stained to clean, vibrant, and protected - instantly improving the
                         property's curb appeal. Our specialist softwashing approach ensured no damage to the delicate
                         render surface.
                       </p>

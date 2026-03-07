@@ -64,7 +64,7 @@ const SERVICE_META: Record<string, { label: string; note: string; unit: "sqm" | 
   },
   roof: {
     label: "Roof Cleaning & Moss Removal",
-    note:  "Softwash method — safe for all tile types. Biocide treatment available as an add-on.",
+    note:  "Softwash method - safe for all tile types. Biocide treatment available as an add-on.",
     unit:  "sqm",
   },
   gutter: {
@@ -79,7 +79,7 @@ const SERVICE_META: Record<string, { label: string; note: string; unit: "sqm" | 
   },
   softwash: {
     label: "Softwash (Render / K-Rend)",
-    note:  "Low-pressure chemical clean — ideal for K-Rend, monocouche and cladding.",
+    note:  "Low-pressure chemical clean - ideal for K-Rend, monocouche and cladding.",
     unit:  "sqm",
   },
 }
@@ -276,8 +276,8 @@ function JobPanel({
             {job.serviceType === "driveway" && "A typical single-car driveway is 20–30 m²; double is 40–60 m²."}
             {job.serviceType === "patio" && "An average rear patio is 15–25 m²; larger garden patios can be 40–60 m²."}
             {job.serviceType === "roof" && "A 3-bed semi roof is typically 80–120 m²; detached house 150–250 m²."}
-            {job.serviceType === "walls" && "Measure total wall area — height × width of each face to be cleaned."}
-            {job.serviceType === "softwash" && "Measure total facade area — front, side and rear walls as required."}
+            {job.serviceType === "walls" && "Measure total wall area - height x width of each face to be cleaned."}
+            {job.serviceType === "softwash" && "Measure total facade area - front, side and rear walls as required."}
             {job.serviceType === "gutter" && "One side of a terraced house is typically 10–15 m; semi-detached 20–30 m."}
           </FieldNote>
         </div>
@@ -381,9 +381,9 @@ function JobPanel({
               Mould &amp; Mildew Condition
               <InfoTooltip
                 title="Why report mould and mildew?"
-                description="Mould and mildew are different to surface moss — they penetrate deeper into porous materials and require specialist chemical treatments to fully eradicate. Knowing the extent upfront lets us bring the right products."
+                description="Mould and mildew are different to surface moss - they penetrate deeper into porous materials and require specialist chemical treatments to fully eradicate. Knowing the extent upfront lets us bring the right products."
                 benefits={[
-                  "Mould grows in damp shaded spots — often under overhangs and north-facing surfaces",
+                  "Mould grows in damp shaded spots - often under overhangs and north-facing surfaces",
                   "Mildew appears as a white/grey powdery coating on walls, patios and render",
                   "Deep mould penetration needs stronger biocide dwell times",
                   "Early treatment prevents long-term structural staining",
@@ -630,7 +630,7 @@ export default function GetQuotePage() {
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground">Get Your Quote</h1>
               </div>
               <p className="text-xl text-muted-foreground mb-6">
-                Add as many services as you need — we&apos;ll price them together and come to you for a free inspection before confirming.
+                Add as many services as you need - we&apos;ll price them together and come to you for a free inspection before confirming.
               </p>
               <div className="bg-accent/20 border border-accent/50 rounded-lg p-4 mb-8">
                 <p className="text-sm text-foreground flex items-start gap-2">
@@ -735,7 +735,7 @@ export default function GetQuotePage() {
                     </h2>
                   </div>
                   <p className="text-sm text-muted-foreground mb-6">
-                    Need more than one area cleaned? Add multiple jobs below — we&apos;ll bundle them together and give you the best combined price.
+                    Need more than one area cleaned? Add multiple jobs below - we&apos;ll bundle them together and give you the best combined price.
                   </p>
 
                   <div className="space-y-6">
@@ -783,8 +783,8 @@ export default function GetQuotePage() {
                     </Label>
                     <div className="flex gap-3 flex-col">
                       {[
-                        { val: true,  label: "Yes — external power available", sub: "Outdoor socket or accessible supply on site" },
-                        { val: false, label: `No — bring generator (+£${GENERATOR_SURCHARGE})`, sub: "We handle all setup and safety" },
+                        { val: true,  label: "Yes - external power available", sub: "Outdoor socket or accessible supply on site" },
+                        { val: false, label: "No - we bring our own generator", sub: "We handle all setup and safety" },
                       ].map(({ val, label, sub }) => (
                         <button
                           key={String(val)}
@@ -911,7 +911,7 @@ export default function GetQuotePage() {
                     <ol className="space-y-3 text-sm text-foreground/90">
                       {[
                         "Send your details via WhatsApp",
-                        "We arrange a convenient time to visit — free of charge",
+                        "We arrange a convenient time to visit - free of charge",
                         "We measure up and confirm your final price on site",
                         "Schedule your service at your convenience",
                       ].map((step, i) => (

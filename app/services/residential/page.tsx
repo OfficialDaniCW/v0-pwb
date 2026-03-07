@@ -318,7 +318,7 @@ export default function ResidentialServicesPage() {
             { q: "How do I know which service I need?", a: "Send us photos via WhatsApp and we will advise exactly what treatment your property needs. Most enquiries get a same-day response with a clear recommendation and indicative price." },
             { q: "Do you offer package deals for multiple services?", a: "Yes. Many customers combine services such as driveway cleaning with patio and gutter clearing in a single visit, which reduces cost and disruption. Ask us about our combined service packages." },
             { q: "Are you insured to work on residential properties?", a: "Yes. We carry full public liability insurance for all residential work. We are also PASMA trained for safe working at height and registered biocide users, meeting all professional standards required for domestic property work." },
-            { q: "How long will results last?", a: "With our PowerUps biocide treatments, most surfaces remain clean for 12-18 months. We also offer annual maintenance plans so you never have to think about it — we schedule and remind you when treatment is due." },
+            { q: "How long will results last?", a: "With our PowerUps biocide treatments, most surfaces remain clean for 12-18 months. We also offer annual maintenance plans so you never have to think about it - we schedule and remind you when treatment is due."},
           ]}
         />
 
