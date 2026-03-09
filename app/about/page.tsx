@@ -70,7 +70,10 @@ export default function AboutPage() {
                     alt="Daniel Calvo-Westcott and Santos Calvo-Westcott, founders of PowerWash Bros"
                     width={800}
                     height={600}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
+                    quality={80}
                     className="w-full h-auto object-cover"
+                    priority
                   />
                 </div>
 

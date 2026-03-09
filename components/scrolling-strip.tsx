@@ -36,6 +36,7 @@ export function ScrollingStrip({ items }: { items: TransformationItem[] }) {
                 sizes="300px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
+                quality={70}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute top-3 right-3 text-xs font-semibold bg-[#00C853] text-white px-3 py-1.5 rounded-full shadow-lg">

@@ -49,10 +49,10 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
           src={afterImage || "/placeholder.svg"}
           alt={`${alt} - After`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, (max-width: 1280px) 60vw, 800px"
           className="object-cover"
           priority={false}
-          quality={75}
+          quality={80}
         />
         <div className="absolute top-4 right-4 bg-success text-success-foreground px-4 py-2 rounded-full text-sm font-bold">
           AFTER
@@ -65,10 +65,10 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
           src={beforeImage || "/placeholder.svg"}
           alt={`${alt} - Before`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, (max-width: 1280px) 60vw, 800px"
           className="object-cover"
           priority={false}
-          quality={75}
+          quality={80}
         />
         <div className="absolute top-4 left-4 bg-destructive text-white px-4 py-2 rounded-full text-sm font-bold">
           BEFORE
