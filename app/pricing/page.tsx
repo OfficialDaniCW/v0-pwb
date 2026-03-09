@@ -72,11 +72,11 @@ function SectionLabel({
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 const DEFAULT_PRICING: Record<string, any> = {
-  driveway:  { baseRate: 5,    blockPavingResanding: 3  },
-  patio:     { baseRate: 7                              },
+  driveway:  { baseRate: 5.5,  blockPavingResanding: 3  },
+  patio:     { baseRate: 6                              },
   roof:      { baseRate: 14                             },
   gutter:    { baseRate: 8                              },
-  walls:     { baseRate: 5                              },
+  walls:     { baseRate: 5.5                            },
   softwash:  { baseRate: 7                              },
 }
 
