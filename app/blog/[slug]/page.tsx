@@ -80,19 +80,19 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://powerwashbros.co.uk"
+        "item": "https://www.powerwashbros.co.uk"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://powerwashbros.co.uk/blog"
+        "item": "https://www.powerwashbros.co.uk/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://powerwashbros.co.uk/blog/${params.slug}`
+        "item": `https://www.powerwashbros.co.uk/blog/${params.slug}`
       }
     ]
   }
@@ -102,20 +102,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
-    image: post.featured_image_url || "https://powerwashbros.co.uk/og-image.jpg",
+    image: post.featured_image_url || "https://www.powerwashbros.co.uk/og-image.jpg",
     datePublished: post.published_at,
     dateModified: post.published_at,
     author: {
       "@type": "Organization",
       name: post.author || "PowerWash Bros",
-      url: "https://powerwashbros.co.uk",
+      url: "https://www.powerwashbros.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "PowerWash Bros",
       logo: {
         "@type": "ImageObject",
-        url: "https://powerwashbros.co.uk/logo.png",
+        url: "https://www.powerwashbros.co.uk/logo.png",
       },
     },
     mainEntityOfPage: {
