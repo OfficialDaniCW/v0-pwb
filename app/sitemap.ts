@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
 import { neon } from "@neondatabase/serverless"
 
-const baseUrl = "https://powerwashbros.co.uk"
+const baseUrl = "https://www.powerwashbros.co.uk"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch live blog posts from Neon so every published post is indexed by Google
@@ -71,7 +71,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const portfolioPages: MetadataRoute.Sitemap = [
     "commercial-patio",
     "garden-patio",
-    "patio-cleaning",
     "render-clean",
     "roof-clean-biocide-treatment",
     "swanage-patio-wall-refresh",
