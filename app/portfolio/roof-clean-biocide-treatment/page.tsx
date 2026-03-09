@@ -45,7 +45,7 @@ export default function RoofCleanBiocidePage() {
                     Roof Cleaning
                   </Link>
                   <Link
-                    href="/services/powerup"
+                    href="/powerups"
                     className="text-xs bg-[#1E90FF] text-white px-3 py-1 rounded-full hover:bg-[#1E90FF]/90 transition-colors"
                   >
                     PowerUp Treatment
@@ -92,7 +92,7 @@ export default function RoofCleanBiocidePage() {
                     </Link>{" "}
                     service, carefully removing all biological growth without damaging the tiles. Following the clean,
                     we applied our specialist{" "}
-                    <Link href="/services/powerup" className="text-[#1E90FF] hover:underline">
+                    <Link href="/powerups" className="text-[#1E90FF] hover:underline">
                       PowerUp biocide treatment
                     </Link>
                     , which provides long-lasting protection against regrowth and helps maintain the roof's pristine
@@ -133,7 +133,7 @@ export default function RoofCleanBiocidePage() {
                 </Link>
 
                 <Link
-                  href="/services/powerup"
+                  href="/powerups"
                   className="glass-border rounded-xl p-6 hover:border-[#1E90FF] transition-all group"
                 >
                   <div className="flex items-start gap-4">

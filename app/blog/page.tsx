@@ -11,9 +11,11 @@ export const metadata = {
   description:
     "Learn from Dorset's biocide-trained specialists. Expert advice on property maintenance, cleaning techniques, and prevention tips.",
   alternates: {
-    canonical: "https://powerwashbros.co.uk/blog",
+    canonical: "https://www.powerwashbros.co.uk/blog",
   },
 }
+
+export const revalidate = 0
 
 async function getBlogPosts() {
   try {
@@ -42,13 +44,13 @@ export default async function BlogPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://powerwashbros.co.uk"
+        "item": "https://www.powerwashbros.co.uk"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://powerwashbros.co.uk/blog"
+        "item": "https://www.powerwashbros.co.uk/blog"
       }
     ]
   }
@@ -58,14 +60,14 @@ export default async function BlogPage() {
     "@type": "CollectionPage",
     "name": "Expert Property Care Advice Blog",
     "description": "Learn from Dorset's biocide-trained specialists",
-    "url": "https://powerwashbros.co.uk/blog",
+    "url": "https://www.powerwashbros.co.uk/blog",
     "publisher": {
       "@type": "Organization",
       "name": "PowerWash Bros",
-      "url": "https://powerwashbros.co.uk",
+      "url": "https://www.powerwashbros.co.uk",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://powerwashbros.co.uk/logo.png"
+        "url": "https://www.powerwashbros.co.uk/logo.png"
       }
     },
     "mainEntity": {
@@ -73,10 +75,10 @@ export default async function BlogPage() {
       "itemListElement": (posts || []).slice(0, 10).map((post: any, index: number) => ({
         "@type": "ListItem",
         "position": index + 1,
-        "url": `https://powerwashbros.co.uk/blog/${post.slug}`,
+        "url": `https://www.powerwashbros.co.uk/blog/${post.slug}`,
         "name": post.title,
         "description": post.excerpt,
-        "image": post.featured_image_url || "https://powerwashbros.co.uk/og-image.jpg",
+        "image": post.featured_image_url || "https://www.powerwashbros.co.uk/og-image.jpg",
         "datePublished": post.published_at
       }))
     }

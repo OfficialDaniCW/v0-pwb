@@ -35,10 +35,10 @@ const breadcrumbSchema = {
 }
 
 export const metadata: Metadata = {
-  title: "Roof Cleaning & Moss Removal Swanage & Purbeck | PowerWash Bros",
+  title: "Roof Cleaning & Moss Removal | Swanage & Purbeck | PowerWash Bros",
   description: "Professional roof cleaning, moss removal, and biocide treatment in Swanage, Purbeck, and Dorset. Expert roof specialists with biocide training. Protect your property. Free quotes.",
   alternates: {
-    canonical: "https://powerwashbros.co.uk/services/roof-cleaning",
+    canonical: "https://www.powerwashbros.co.uk/services/roof-cleaning",
   },
 }
 

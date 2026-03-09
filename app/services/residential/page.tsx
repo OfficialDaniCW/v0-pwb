@@ -32,10 +32,10 @@ const maintenancePackages = [
 ]
 
 export const metadata = {
-  title: "Residential Property Cleaning | PowerWash Bros | Swanage, Purbeck",
+  title: "Residential Property Cleaning | Swanage & Purbeck | PowerWash Bros",
   description: "Professional residential property cleaning focused on kerb appeal and maintenance packages across Purbeck. Transform your home's exterior.",
   alternates: {
-    canonical: "https://powerwashbros.co.uk/services/residential",
+    canonical: "https://www.powerwashbros.co.uk/services/residential",
   },
 }
 

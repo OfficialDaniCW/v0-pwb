@@ -99,7 +99,11 @@ export function CookieBanner() {
               </div>
                   <Switch checked={true} disabled className="data-[state=checked]:bg-success opacity-70" />
             </div>
-            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+            <div className={`p-4 rounded-lg border transition-all ${
+              preferences.analytics 
+                ? "bg-blue-500/15 border-blue-500/40" 
+                : "bg-[#1a3a5c] border-[#1E90FF]/20"
+            }`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-accent/20 mt-0.5">
@@ -112,14 +116,23 @@ export function CookieBanner() {
                     </p>
                   </div>
                 </div>
-                <Switch
-                  checked={preferences.analytics}
-                  onCheckedChange={() => togglePreference("analytics")}
-                    className="data-[state=checked]:bg-accent"
-                />
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs font-medium ${preferences.analytics ? "text-blue-400" : "text-white/40"}`}>
+                    {preferences.analytics ? "ON" : "OFF"}
+                  </span>
+                  <Switch
+                    checked={preferences.analytics}
+                    onCheckedChange={() => togglePreference("analytics")}
+                    className="data-[state=checked]:bg-blue-500"
+                  />
+                </div>
               </div>
             </div>
-            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+            <div className={`p-4 rounded-lg border transition-all ${
+              preferences.marketing 
+                ? "bg-orange-500/15 border-orange-500/40" 
+                : "bg-[#1a3a5c] border-[#1E90FF]/20"
+            }`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-destructive/20 mt-0.5">
@@ -132,14 +145,23 @@ export function CookieBanner() {
                     </p>
                   </div>
                 </div>
-                <Switch
-                  checked={preferences.marketing}
-                  onCheckedChange={() => togglePreference("marketing")}
-                  className="data-[state=checked]:bg-[#FF6B35]"
-                />
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs font-medium ${preferences.marketing ? "text-orange-400" : "text-white/40"}`}>
+                    {preferences.marketing ? "ON" : "OFF"}
+                  </span>
+                  <Switch
+                    checked={preferences.marketing}
+                    onCheckedChange={() => togglePreference("marketing")}
+                    className="data-[state=checked]:bg-orange-500"
+                  />
+                </div>
               </div>
             </div>
-            <div className="p-4 rounded-lg bg-[#1a3a5c] border border-[#1E90FF]/20">
+            <div className={`p-4 rounded-lg border transition-all ${
+              preferences.functional 
+                ? "bg-purple-500/15 border-purple-500/40" 
+                : "bg-[#1a3a5c] border-[#1E90FF]/20"
+            }`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-[#9C27B0]/20 mt-0.5">
@@ -152,11 +174,16 @@ export function CookieBanner() {
                     </p>
                   </div>
                 </div>
-                <Switch
-                  checked={preferences.functional}
-                  onCheckedChange={() => togglePreference("functional")}
-                  className="data-[state=checked]:bg-[#9C27B0]"
-                />
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs font-medium ${preferences.functional ? "text-purple-400" : "text-white/40"}`}>
+                    {preferences.functional ? "ON" : "OFF"}
+                  </span>
+                  <Switch
+                    checked={preferences.functional}
+                    onCheckedChange={() => togglePreference("functional")}
+                    className="data-[state=checked]:bg-purple-500"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex flex-wrap gap-3 mt-6 pt-6 border-t border-white/10">

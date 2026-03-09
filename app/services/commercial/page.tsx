@@ -8,10 +8,10 @@ import Script from 'next/script'
 import { createServiceBreadcrumbs } from "@/lib/schema-utils"
 
 export const metadata = {
-  title: "Commercial Property Cleaning Dorset | Warehouse & Retail Cleaning | PowerWash Bros",
+  title: "Commercial Property Cleaning Dorset | Warehouse & Retail | PowerWash Bros",
   description: "Professional commercial property cleaning in Dorset with RAMS provided, health & safety focused. Warehouse cleaning, retail property maintenance, jet washing across Swanage, Purbeck, Bournemouth.",
   alternates: {
-    canonical: "https://powerwashbros.co.uk/services/commercial",
+    canonical: "https://www.powerwashbros.co.uk/services/commercial",
   },
 }
 

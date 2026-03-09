@@ -12,7 +12,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://powerwashbros.co.uk"),
+  metadataBase: new URL("https://www.powerwashbros.co.uk"),
   title: {
     default: "Pressure Washing Swanage, Purbeck & Dorset | PowerWash Bros",
     template: "%s | PowerWash Bros",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://powerwashbros.co.uk",
+    url: "https://www.powerwashbros.co.uk",
     title: "Pressure Washing Swanage, Purbeck & Dorset | PowerWash Bros",
     description:
       "Professional pressure washing, roof & gutter cleaning in Swanage, Purbeck & Dorset. Biocide-trained specialists. Free quotes.",
