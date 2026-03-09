@@ -15,6 +15,8 @@ export const metadata = {
   },
 }
 
+export const revalidate = 0
+
 async function getBlogPosts() {
   try {
     const sql = neon(process.env.DATABASE_URL!)
