@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block admin pages from crawling
+Disallow: /admin/
+
+# Block policy pages with noindex meta tags instead (via page metadata)
+# These pages are allowed to be crawled but marked as noindex in their metadata
+
+Sitemap: https://www.powerwashbros.co.uk/sitemap.xml

@@ -6,6 +6,7 @@ import { PWBFooter } from "@/components/pwb-footer"
 export const metadata: Metadata = {
   title: "Privacy Policy | PowerWash Bros Swanage",
   description: "Privacy policy for PowerWash Bros Ltd. Learn how we collect, use, and protect your personal data.",
+  robots: "noindex, follow",
 }
 
 export default function PrivacyPolicy() {

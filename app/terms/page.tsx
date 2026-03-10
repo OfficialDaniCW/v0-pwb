@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Terms & Conditions | PowerWash Bros Swanage",
   description:
     "Terms and conditions for PowerWash Bros Ltd services. Read our service terms, payment policies, and cancellation terms.",
+  robots: "noindex, follow",
 }
 
 export default function TermsAndConditions() {
