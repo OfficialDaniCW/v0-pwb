@@ -15,7 +15,7 @@ export function PWBFooter() {
 
       {/* Main Footer Content */}
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-16 lg:py-20">
-        <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {/* Column 1: Brand */}
           <div className="col-span-2 md:col-span-1 space-y-4 sm:space-y-6">
             <div className="space-y-3 sm:space-y-4">
@@ -239,7 +239,44 @@ export function PWBFooter() {
             </ul>
           </div>
 
-          {/* Column 5: Newsletter */}
+          {/* Column 5: Featured Resources */}
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl font-bold">Resources</h3>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
+              <li>
+                <Link href="/blog/autumn-winter-preparation-guide" className="hover:text-[#1E90FF] transition-colors">
+                  Autumn Maintenance
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/block-paving-maintenance-seasons" className="hover:text-[#1E90FF] transition-colors">
+                  Block Paving Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/caring-for-purbeck-stone-property-guide" className="hover:text-[#1E90FF] transition-colors">
+                  Purbeck Stone Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/gutter-guards-dorset-assessment" className="hover:text-[#1E90FF] transition-colors">
+                  Gutter Guards Review
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/heritage-properties-sensitive-cleaning" className="hover:text-[#1E90FF] transition-colors">
+                  Heritage Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link href="/powerups" className="hover:text-[#1E90FF] transition-colors">
+                  Our Products
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 6: Newsletter */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6">
             <h3 className="text-lg sm:text-xl font-bold">Newsletter</h3>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -271,6 +308,12 @@ export function PWBFooter() {
             </Link>
             <Link href="/data-deletion" className="hover:text-white transition-colors">
               Data Deletion
+            </Link>
+            <Link href="/accessibility" className="hover:text-white transition-colors">
+              Accessibility
+            </Link>
+            <Link href="/complaints" className="hover:text-white transition-colors">
+              Complaints
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
